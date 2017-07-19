@@ -1138,3 +1138,1425 @@ declare class Game_Unit {
     substituteBattler(): Game_Battler;
 }
 
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Party
+ *
+ * The game object declare class for the party. Information such as gold and items is
+ * included.
+ * @class Game_Party
+ */
+declare class Game_Party extends Game_Unit {
+    static ABILITY_ENCOUNTER_HALF: number;
+    static ABILITY_ENCOUNTER_NONE: number;
+    static ABILITY_CANCEL_SURPRISE: number;
+    static ABILITY_RAISE_PREEMPTIVE: number;
+    static ABILITY_GOLD_DOUBLE: number;
+    static ABILITY_DROP_ITEM_DOUBLE: number;
+
+    protected _gold: number;
+    protected _steps: number;
+    protected _lastItem: Game_Item;
+    protected _menuActorId: number;
+    protected _targetActorId: number;
+    protected _actors: Array<Game_Actor>;
+
+    protected _items: {[itemId: number]: number};
+    protected _weapons: {[itemId: number]: number};
+    protected _armors: {[itemId: number]: number};
+
+    members(): Array<Game_Actor>;
+    aliveMembers(): Array<Game_Actor>;
+    deadMembers(): Array<Game_Actor>;
+    movableMembers(): Array<Game_Actor>;
+    battleMembers(): Array<Game_Actor>;
+    initAllItems(): void;
+    exists(): boolean;
+    size(): number;
+    isEmpty(): boolean;
+    maxBattleMembers(): number;
+    leader(): Game_Actor;
+    reviveBattleMembers(): void;
+    items(): Array<RPG.Item>;
+    weapons(): Array<RPG.Weapon>;
+    armors(): Array<RPG.Armor>;
+    equipItems(): Array<RPG.EquipItem>;
+    allItems(): Array<RPG.BaseItem>;
+    itemContainer(item: RPG.BaseItem): {[itemId: number]: number};
+    setupStartingMembers(): void;
+    name(): string;
+    setupBattleTest(): void;
+    setupBattleTestMembers(): void;
+    setupBattleTestItems(): void;
+    highestLevel(): number;
+    addActor(actorId: number): void;
+    removeActor(actorId: number): void;
+    gold(): number;
+    gainGold(amount: number): void;
+    loseGold(amount: number): void;
+    maxGold(): number;
+    steps(): number;
+    increaseSteps(): void;
+    numItems(item: RPG.BaseItem): number;
+    maxItems(item: RPG.BaseItem): number;
+    hasMaxItems(item: RPG.BaseItem): boolean;
+    hasItem(item: RPG.BaseItem, includeEquip: boolean): boolean;
+    isAnyMemberEquipped(item: RPG.EquipItem): boolean;
+    gainItem(item: RPG.BaseItem, amount: number, includeEquip: boolean): void;
+    discardMembersEquip(item: RPG.EquipItem, amount: number): void;
+    loseItem(item: RPG.BaseItem, amount: number, includeEquip: boolean): void;
+    consumeItem(item: RPG.BaseItem): void;
+    canUse(item: RPG.BaseItem): boolean;
+    canInput(): boolean;
+    onPlayerWalk(): void;
+    menuActor(): Game_Actor;
+    setMenuActor(actor: Game_Actor): void;
+    makeMenuActorNext(): void;
+    makeMenuActorPrevious(): void;
+    targetActor(): Game_Actor;
+    setTargetActor(actor: Game_Actor): void;
+    lastItem(): RPG.BaseItem;
+    setLastItem(item: RPG.BaseItem): void;
+    swapOrder(index1: number, index2: number): void;
+    charactersForSavefile(): Array<Array<any>>;
+    facesForSavefile(): Array<Array<any>>;
+    partyAbility(abilityId: number): boolean;
+    hasEncounterHalf(): boolean;
+    hasEncounterNone(): boolean;
+    hasCancelSurprise(): boolean;
+    hasRaisePreemptive(): boolean;
+    hasGoldDouble(): boolean;
+    hasDropItemDouble(): boolean;
+    ratePreemptive(troopAgi: number): number;
+    rateSurprise(troopAgi: number): number;
+    performVictory(): void;
+    performEscape(): void;
+    removeBattleStates(): void;
+    requestMotionRefresh(): void;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Troop
+ *
+ * The game object declare class for a troop and the battle-related data.
+ * @class Game_Troop
+ */
+declare class Game_Troop extends Game_Unit {
+    static LETTER_TABLE_HALF: Array<string>;
+    static LETTER_TABLE_FULL: Array<string>;
+
+    protected _interpreter: Game_Interpreter;
+    protected _troopId: number;
+    protected _eventFlags: {[page: number]: boolean};
+    protected _enemies: Array<Game_Enemy>;
+    protected _turnCount: number;
+    protected _namesCount: {[name: string]: number};
+
+    members(): Array<Game_Enemy>;
+    aliveMembers(): Array<Game_Enemy>;
+    deadMembers(): Array<Game_Enemy>;
+    movableMembers(): Array<Game_Enemy>;
+    isEventRunning(): boolean;
+    updateInterpreter(): void;
+    turnCount(): number;
+    members(): Array<Game_Enemy>;
+    clear(): void;
+    troop(): RPG.Troop;
+    setup(troopId: number): void;
+    makeUniqueNames(): void;
+    letterTable(): Array<string>;
+    enemyNames(): Array<string>;
+    meetsConditions(page: RPG.BattleEventPage): boolean;
+    setupBattleEvent(): void;
+    increaseTurn(): void;
+    expTotal(): number;
+    goldTotal(): number;
+    goldRate(): number;
+    makeDropItems(): Array<RPG.BaseItem>;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Map
+ *
+ * The game object declare class for a map. It contains scrolling and passage
+ * determination functions.
+ * @class Game_Map
+ */
+declare class Game_Map {
+    protected _interpreter: Game_Interpreter;
+    protected _mapId: number;
+    protected _tilesetId: number;
+    protected _events: Array<Game_Event>;
+    protected _commonEvents: Array<Game_CommonEvent>;
+    protected _vehicles: Array<Game_Vehicle>;
+    protected _displayX: number;
+    protected _displayY: number;
+    protected _nameDisplay: boolean;
+    protected _scrollDirection: number;
+    protected _scrollRest: number;
+    protected _scrollSpeed: number;
+    protected _parallaxName: string;
+    protected _parallaxZero: boolean;
+    protected _parallaxLoopX: boolean;
+    protected _parallaxLoopY: boolean;
+    protected _parallaxSx: number;
+    protected _parallaxSy: number;
+    protected _parallaxX: number;
+    protected _parallaxY: number;
+    protected _battleback1Name: string;
+    protected _battleback2Name: string;
+    protected _needsRefresh: boolean;
+
+    setup(mapId: number): void;
+    isEventRunning(): boolean;
+    tileWidth(): number;
+    tileHeight(): number;
+    mapId(): number;
+    tilesetId(): number;
+    displayX(): number;
+    displayY(): number;
+    parallaxName(): string;
+    battleback1Name(): string;
+    battleback2Name(): string;
+    requestRefresh(mapId: number): void;
+    isNameDisplayEnabled(): boolean;
+    disableNameDisplay(): void;
+    enableNameDisplay(): void;
+    createVehicles(): void;
+    refereshVehicles(): void;
+    vehicles(): Array<Game_Vehicle>;
+    vehicle(type: string): Game_Vehicle;
+    boat(): Game_Vehicle;
+    ship(): Game_Vehicle;
+    airship(): Game_Vehicle;
+    setupEvents(): void;
+    events(): Array<Game_Event>;
+    event(eventId: number): Game_Event;
+    eraseEvent(eventId: number): void;
+    parallelCommonEvents(): Array<RPG.CommonEvent>;
+    setupScroll(): void;
+    setupParallax(): void;
+    setupBattleback(): void;
+    setDisplayPos(x: number, y: number): void;
+    parallaxOx(): number;
+    parallaxOy(): number;
+    tileset(): RPG.Tileset;
+    tilesetFlags(): Array<number>;
+    displayName(): string;
+    width(): number;
+    height(): number;
+    data(): Array<number>;
+    isLoopHorizontal(): boolean;
+    isLoopVertical(): boolean;
+    isDashDisabled(): boolean;
+    encounterList(): Array<RPG.Map.Encounter>;
+    encounterStep(): number;
+    isOverworld(): boolean;
+    screenTileX(): number;
+    screenTileY(): number;
+    adjustX(x: number): number;
+    adjustY(y: number): number;
+    roundX(x: number): number;
+    roundY(y: number): number;
+    xWithDirection(x: number, d: number): number;
+    yWithDirection(y: number, d: number): number;
+    roundXWithDirection(x: number, d: number): number;
+    roundYWithDirection(y: number, d: number): number;
+    deltaX(x1: number, x2: number): number;
+    deltaY(y1: number, y2: number): number;
+    distance(x1: number, y1: number, x2: number, y2: number): number;
+    canvasToMapX(x: number): number;
+    canvasToMapY(y: number): number;
+    autoplay(): void;
+    refreshIfNeeded(): void;
+    refresh(): void;
+    refreshTileEvents(): void;
+    eventsXy(x: number, y: number): Array<Game_Event>;
+    eventsXyNt(x: number, y: number): Array<Game_Event>;
+    tileEventsXy(x: number, y: number): Array<Game_Event>;
+    eventIdXy(x: number, y: number): number;
+    scrollDown(distance: number): void;
+    scrollLeft(distance: number): void;
+    scrollRight(distance: number): void;
+    scrollUp(distance: number): void;
+    isValid(x: number, y: number): boolean;
+    checkPassage(x: number, y: number, bit: number): boolean;
+    tileId(x: number, y: number, z: number): number;
+    layeredTiles(x: number, y: number): Array<number>;
+    allTiles(x: number, y: number): Array<number>;
+    autotileType(x: number, y: number, z: number): number;
+    isPassable(x: number, y: number, d: number): boolean;
+    isBoatPassable(x: number, y: number): boolean;
+    isShipPassable(x: number, y: number): boolean;
+    isAirshipLandOk(x: number, y: number): boolean;
+    checkLayeredTilesFlags(x: number, y: number, bit: number): boolean;
+    isLadder(x: number, y: number): boolean;
+    isBush(x: number, y: number): boolean;
+    isCounter(x: number, y: number): boolean;
+    isDamageFloor(x: number, y: number): boolean;
+    terrainTag(x: number, y: number): number;
+    regionId(x: number, y: number): number;
+    startScroll(direction: number, distance: number, speed: number): void;
+    isScrolling(): boolean;
+    update(sceneActive: boolean): void;
+    updateScroll(): void;
+    scrollDistance(): number;
+    doScroll(direction: number, distance: number): void;
+    updateEvents(): void;
+    updateVehicles(): void;
+    updateParallax(): void;
+    changeTileset(tilesetId: number): void;
+    changeBattleback(battleback1Name: string, battleback2Name: string): void;
+    changeParallax(name: string, loopX: boolean, loopY: boolean, sx: number, sy: number): void;
+    updateInterpreter(): void;
+    unlockEvent(eventId: number): void;
+    setupStartingEvent(): boolean;
+    setupTestEvent(): boolean;
+    setupStartingMapEvent(): boolean;
+    setupAutorunCommonEvent(): boolean;
+    isAnyEventStarting(): boolean;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_CommonEvent
+ *
+ * The game object declare class for a common event. It contains functionality for
+ * running parallel process events.
+ * @class Game_CommonEvent
+ */
+declare class Game_CommonEvent {
+    protected _commonEventId: number;
+    protected _interpreter: Game_Interpreter;
+
+    constructor(commonEventId: number);
+
+    event(): RPG.CommonEvent;
+    list(): Array<RPG.EventCommand>;
+    refresh(): void;
+    isActive(): boolean;
+    update(): void;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_CharacterBase
+ *
+ * The superdeclare class of Game_Character. It handles basic information, such as
+ * coordinates and images, shared by all characters.
+ * @class Game_CharacterBase
+ */
+declare class Game_CharacterBase {
+    protected _x: number;
+    protected _y: number;
+    protected _realX: number;
+    protected _realY: number;
+    protected _moveSpeed: number;
+    protected _moveFrequency: number;
+    protected _opacity: number;
+    protected _blendMode: number;
+    protected _direction: number;
+    protected _pattern: number;
+    protected _priorityType: number;
+    protected _tileId: number;
+    protected _characterName: string;
+    protected _characterIndex: number;
+    protected _isObjectCharacter: boolean;
+    protected _walkAnime: boolean;
+    protected _stepAnime: boolean;
+    protected _directionFix: boolean;
+    protected _through: boolean;
+    protected _transparent: boolean;
+    protected _bushDepth: number;
+    protected _animationId: number;
+    protected _balloonId: number;
+    protected _animationPlaying: boolean;
+    protected _balloonPlaying: boolean;
+    protected _animationCount: number;
+    protected _stopCount: number;
+    protected _jumpCount: number;
+    protected _jumpPeak: number;
+    protected _movementSuccess: boolean;
+
+    /** [read-only] */
+    x: number;
+    /** [read-only] */
+    y: number;
+
+    initMembers(): void;
+    pos(x: number, y: number): boolean;
+    posNt(x: number, y: number): boolean;
+    moveSpeed(): number;
+    setMoveSpeed(moveSpeed: number): void;
+    moveFrequency(): number;
+    setMoveFrequency(moveFrequency: number): void;
+    opacity(): number;
+    setOpacity(opacity: number): void;
+    blendMode(): number;
+    setBlendMode(blendMode: number): void;
+    isNormalPriority(): boolean;
+    setPriorityType(priorityType: number): void;
+    isMoving(): boolean;
+    isJumping(): boolean;
+    jumpHeight(): number;
+    isStopping(): boolean;
+    checkStop(threshold: number): boolean;
+    resetStopCount(): void;
+    realMoveSpeed(): number;
+    distancePerFrame(): number;
+    isDashing(): boolean;
+    isDebugThrough(): boolean;
+    straighten(): void;
+    reverseDir(d: number): number;
+    canPass(x: number, y: number, d: number): boolean;
+    canPassDiagonally(x: number, y: number, horz: number, vert: number): boolean;
+    isMapPassable(x: number, y: number, d: number): boolean;
+    isCollidedWithCharacters(x: number, y: number): boolean;
+    isCollidedWithEvents(x: number, y: number): boolean;
+    isCollidedWithVehicles(x: number, y: number): boolean;
+    setPosition(x: number, y: number): void;
+    copyPosition(character: Game_Player): void;
+    locate(x: number, y: number): void;
+    direction(): number;
+    setDirection(d: number): void;
+    isTile(): boolean;
+    isObjectCharacter(): boolean;
+    shiftY(): number;
+    scrolledX(): number;
+    scrolledY(): number;
+    screenX(): number;
+    screenY(): number;
+    screenZ(): number;
+    isNearTheScreen(): boolean;
+    update(): void;
+    updateStop(): void;
+    updateJump(): void;
+    updateMove(): void;
+    updateAnimation(): void;
+    animationWait(): number;
+    updateAnimationCount(): void;
+    updatePattern(): void;
+    maxPattern(): number;
+    pattern(): number;
+    setPattern(pattern: number): void;
+    isOriginalPattern(): boolean;
+    resetPattern(): void;
+    refreshBushDepth(): void;
+    isOnLadder(): boolean;
+    isOnBush(): boolean;
+    terrainTag(): number;
+    regionId(): number;
+    increaseSteps(): void;
+    tileId(): number;
+    characterName(): string;
+    characterIndex(): number;
+    setImage(characterName: string, characterIndex: number): void;
+    setTileImage(tileId: number): void;
+    checkEventTriggerTouchFront(d: number): void;
+    checkEventTriggerTouch(x: number, y: number): boolean;
+    isMovementSucceeded(x: number, y: number): boolean;
+    setMovementSuccess(success: boolean): void;
+    moveStraight(d: number): void;
+    moveDiagonally(horz: number, vert: number): void;
+    jump(xPlus: number, yPlus: number): void;
+    hasWalkAnime(): boolean;
+    setWalkAnime(walkAnime: boolean): void;
+    hasStepAnime(): boolean;
+    setStepAnime(stepAnime: boolean): void;
+    isDirectionFixed(): boolean;
+    setDirectionFix(directionFix: boolean): void;
+    isThrough(): boolean;
+    setThrough(through: boolean): void;
+    isTransparent(): boolean;
+    bushDepth(): number;
+    setTransparent(transparent: boolean): void;
+    requestAnimation(animationId: number): void;
+    requestBalloon(balloonId: number): void;
+    animationId(): number;
+    balloonId(): number;
+    startAnimation(): void;
+    startBalloon(): void;
+    isAnimationPlaying(): boolean;
+    isBalloonPlaying(): boolean;
+    endAnimation(): void;
+    endBalloon(): void;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Character
+ *
+ * The superdeclare class of Game_Player, Game_Follower, GameVehicle, and Game_Event.
+ * @class Game_Character
+ */
+declare class Game_Character extends Game_CharacterBase {
+    static ROUTE_END: number;
+    static ROUTE_MOVE_DOWN: number;
+    static ROUTE_MOVE_LEFT: number;
+    static ROUTE_MOVE_RIGHT: number;
+    static ROUTE_MOVE_UP: number;
+    static ROUTE_MOVE_LOWER_L: number;
+    static ROUTE_MOVE_LOWER_R: number;
+    static ROUTE_MOVE_UPPER_L: number;
+    static ROUTE_MOVE_UPPER_R: number;
+    static ROUTE_MOVE_RANDOM: number;
+    static ROUTE_MOVE_TOWARD: number;
+    static ROUTE_MOVE_AWAY: number;
+    static ROUTE_MOVE_FORWARD: number;
+    static ROUTE_MOVE_BACKWARD: number;
+    static ROUTE_JUMP: number;
+    static ROUTE_WAIT: number;
+    static ROUTE_TURN_DOWN: number;
+    static ROUTE_TURN_LEFT: number;
+    static ROUTE_TURN_RIGHT: number;
+    static ROUTE_TURN_UP: number;
+    static ROUTE_TURN_90D_R: number;
+    static ROUTE_TURN_90D_L: number;
+    static ROUTE_TURN_180D: number;
+    static ROUTE_TURN_90D_R_L: number;
+    static ROUTE_TURN_RANDOM: number;
+    static ROUTE_TURN_TOWARD: number;
+    static ROUTE_TURN_AWAY: number;
+    static ROUTE_SWITCH_ON: number;
+    static ROUTE_SWITCH_OFF: number;
+    static ROUTE_CHANGE_SPEED: number;
+    static ROUTE_CHANGE_FREQ: number;
+    static ROUTE_WALK_ANIME_ON: number;
+    static ROUTE_WALK_ANIME_OFF: number;
+    static ROUTE_STEP_ANIME_ON: number;
+    static ROUTE_STEP_ANIME_OFF: number;
+    static ROUTE_DIR_FIX_ON: number;
+    static ROUTE_DIR_FIX_OFF: number;
+    static ROUTE_THROUGH_ON: number;
+    static ROUTE_THROUGH_OFF: number;
+    static ROUTE_TRANSPARENT_ON: number;
+    static ROUTE_TRANSPARENT_OFF: number;
+    static ROUTE_CHANGE_IMAGE: number;
+    static ROUTE_CHANGE_OPACITY: number;
+    static ROUTE_CHANGE_BLEND_MODE: number;
+    static ROUTE_PLAY_SE: number;
+    static ROUTE_SCRIPT: number;
+
+    protected _moveRouteForcing: boolean;
+    protected _moveRoute: RPG.MoveRoute;
+    protected _moveRouteIndex: number;
+    protected _originalMoveRoute: RPG.MoveRoute;
+    protected _originalMoveRouteIndex: number;
+    protected _waitCount: number;
+
+    initMembers(): void;
+    memorizeMoveRoute(): void;
+    restoreMoveRoute(): void;
+    isMoveRouteForcing(): boolean;
+    setMoveRoute(moveRoute: RPG.MoveRoute): void;
+    forceMoveRoute(moveRoute: RPG.MoveRoute): void;
+    updateStop(): void;
+    updateRoutineMove(): void;
+    processMoveCommand(command: RPG.MoveCommand): void;
+    deltaXFrom(x: number): number;
+    deltaYFrom(y: number): number;
+    moveRandom(): void;
+    moveTowardCharacter(character: Game_Character): void;
+    moveAwayFromCharacter(character: Game_Character): void;
+    turnTowardCharacter(character: Game_Character): void;
+    turnAwayFromCharacter(character: Game_Character): void;
+    turnTowardPlayer(): void;
+    turnAwayFromPlayer(): void;
+    moveTowardPlayer(): void;
+    moveAwayFromPlayer(): void;
+    moveForward(): void;
+    moveBackward(): void;
+    processRouteEnd(): void;
+    advanceMoveRouteIndex(): void;
+    turnRight90(): void;
+    turnLeft90(): void;
+    turn180(): void;
+    turnRightOrLeft90(): void;
+    turnRandom(): void;
+    swap(character: Game_Character): void;
+    findDirectionTo(goalX: number, goalY: number): number;
+    searchLimit(): number;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Player
+ *
+ * The game object declare class for the player. It contains event starting
+ * determinants and map scrolling functions.
+ * @class Game_Player
+ */
+declare class Game_Player extends Game_Character {
+    protected _vehicleType: string;
+    protected _vehicleGettingOn: boolean;
+    protected _vehicleGettingOff: boolean;
+    protected _dashing: boolean;
+    protected _needsMapReload: boolean;
+    protected _transferring: boolean;
+    protected _newMapId: number;
+    protected _newX: number;
+    protected _newY: number;
+    protected _newDirection: number;
+    protected _fadeType: number;
+    protected _followers: Game_Followers;
+    protected _encounterCount: number;
+
+    clearTransferInfo(): void;
+    followers(): Game_Followers;
+    refresh(): void;
+    isStopping(): boolean;
+    reserveTransfer(mapId: number, x: number, y: number, d?: number, fadeType?: number): void;
+    requestMapReload(): void;
+    isTransferring(): boolean;
+    newMapId(): number;
+    fadeType(): number;
+    performTransfer(): void;
+    isMapPassable(x: number, y: number, d: number): boolean;
+    vehicle(): Game_Vehicle;
+    isInBoat(): boolean;
+    isInShip(): boolean;
+    isInAirship(): boolean;
+    isInVehicle(): boolean;
+    isNormal(): boolean;
+    isDashing(): boolean;
+    isDebugThrough(): boolean;
+    isCollided(x: number, y: number): boolean;
+    centerX(): number;
+    centerY(): number;
+    center(x: number, y: number): void;
+    locate(x: number, y: number): void;
+    increaseSteps(): void;
+    makeEncounterCount(): void;
+    makeEncounterTroopId(): number;
+    meetsEncounterConditions(encounter: RPG.Map.Encounter): boolean;
+    executeEncounter(): boolean;
+    startMapEvent(x: number, y: number, triggers: Array<number>, normal: boolean): void;
+    moveByInput(): void;
+    canMove(): boolean;
+    getInputDirection(): number;
+    executeMove(direction: number): void;
+    update(sceneActive?: boolean): void;
+    updateDashing(): void;
+    isDashButtonPressed(): boolean;
+    updateScroll(lastScrolledX: number, lastScrolledY: number): void;
+    updateVehicle(): void;
+    updateVehicleGetOn(): void;
+    updateVehicleGetOff(): void;
+    updateNonmoving(wasMoving: boolean): void;
+    triggerAction(): boolean;
+    triggerButtonAction(): boolean;
+    triggerTouchAction(): boolean;
+    triggerTouchActionD1(x1: number, y1: number): boolean;
+    triggerTouchActionD2(x2: number, y2: number): boolean;
+    triggerTouchActionD3(x2: number, y2: number): boolean;
+    updateEncounterCount(): void;
+    canEncounter(): boolean;
+    encounterProgressValue(): number;
+    checkEventTriggerHere(triggers: Array<number>): void;
+    checkEventTriggerThere(triggers: Array<number>): void;
+    canStartLocalEvents(): boolean;
+    getOnOffVehicle(): boolean;
+    getOnVehicle(): boolean;
+    getOffVehicle(): boolean;
+    forceMoveForward(): void;
+    isOnDamageFloor(): boolean;
+    moveStraight(d: number): void;
+    moveDiagonally(horz: number, vert: number): void;
+    jump(xPlus: number, yPlus: number): void;
+    showFollowers(): void;
+    hideFollowers(): void;
+    gatherFollowers(): void;
+    areFollowersGathering(): boolean;
+    areFollowersGathered(): boolean;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Follower
+ *
+ * The game object declare class for a follower. A follower is an allied character,
+ * other than the front character, displayed in the party.
+ * @class Game_Follower
+ */
+declare class Game_Follower extends Game_Character {
+    protected _memberIndex: number;
+
+    constructor(memberIndex: number);
+
+    refresh(): void;
+    actor(): Game_Actor;
+    isVisible(): boolean;
+    update(): void;
+    chaseCharacter(character: Game_Character): void;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Followers
+ *
+ * The wrapper declare class for a follower array.
+ * @class Game_Followers
+ */
+declare class Game_Followers {
+    protected _visible: boolean;
+    protected _gathering: boolean;
+    protected _data: Array<Game_Follower>;
+
+    isVisible(): boolean;
+    show(): void;
+    hide(): void;
+    follower(index: number): Game_Follower;
+    forEach(callback: () => void, thisObject: any): void;
+    reverseEach(callback: () => void, thisObject: any): void;
+    refresh(): void;
+    update(): void;
+    updateMove(): void;
+    jumpAll(): void;
+    synchronize(x: number, y: number, d: number): void;
+    gather(): void;
+    areGathering(): boolean;
+    visibleFollowers(): Array<Game_Follower>;
+    areMoving(): boolean;
+    areGathered(): boolean;
+    isSomeoneCollided(x: number, y: number): boolean;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Vehicle
+ *
+ * The game object declare class for a vehicle.
+ * @class Game_Vehicle
+ */
+declare class Game_Vehicle extends Game_Character {
+    protected _type: string;
+    protected _mapId: number;
+    protected _altitude: number;
+    protected _driving: boolean;
+    protected _bgm: RPG.AudioFile;
+
+    constructor(type: string);
+    initMembers(): void;
+    isBoat(): boolean;
+    isShip(): boolean;
+    isAirship(): boolean;
+    resetDirection(): void;
+    initMoveSpeed(): void;
+    vehicle(): RPG.System.Vehicle;
+    loadSystemSettings(): void;
+    refresh(): void;
+    setLocation(mapId: number, x: number, y: number): void;
+    pos(x: number, y: number): boolean;
+    isMapPassable(x: number, y: number, d: number): boolean;
+    getOn(): void;
+    getOff(): void;
+    setBgm(bgm: RPG.AudioFile): void;
+    playBgm(): void;
+    syncWithPlayer(): void;
+    screenY(): number;
+    shadowX(): number;
+    shadowY(): number;
+    shadowOpacity(): number;
+    canMove(): boolean;
+    update(): void;
+    updateAirship(): void;
+    updateAirshipAltitude(): void;
+    maxAltitude(): number;
+    isLowest(): boolean;
+    isHighest(): boolean;
+    isTakeoffOk(): boolean;
+    isLandOk(x: number, y: number, d: number): boolean;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Event
+ *
+ * The game object declare class for an event. It contains functionality for event page
+ * switching and running parallel process events.
+ * @class Game_Event
+ */
+declare class Game_Event extends Game_Character {
+    protected _mapId: number;
+    protected _eventId: number;
+    protected _moveType: number;
+    protected _trigger: number;
+    protected _starting: boolean;
+    protected _erased: boolean;
+    protected _pageIndex: number;
+    protected _originalPattern: number;
+    protected _originalDirection: number;
+    protected _prelockDirection: number;
+    protected _locked: boolean;
+
+    constructor(mapId: number, eventId: number);
+
+    initMembers(): void;
+    eventId(): number;
+    event(): RPG.Event;
+    page(): RPG.EventPage;
+    list(): Array<RPG.EventCommand>;
+    isCollidedWithCharacters(x: number, y: number): boolean;
+    isCollidedWithEvents(x: number, y: number): boolean;
+    isCollidedWithPlayerCharacters(x: number, y: number): boolean;
+    lock(): void;
+    unlock(): void;
+    updateStop(): void;
+    updateSelfMovement(): void;
+    stopCountThreshold(): number;
+    moveTypeRandom(): void;
+    moveTypeTowardPlayer(): void;
+    isNearThePlayer(): boolean;
+    moveTypeCustom(): void;
+    isStarting(): boolean;
+    clearStartingFlag(): void;
+    isTriggerIn(triggers: Array<number>): boolean;
+    start(): void;
+    erase(): void;
+    refresh(): void;
+    findProperPageIndex(): number;
+    meetsConditions(page: RPG.EventPage): boolean;
+    setupPage(): void;
+    clearPageSettings(): void;
+    setupPageSettings(): void;
+    isOriginalPattern(): boolean;
+    resetPattern(): void;
+    checkEventTriggerAuto(): void;
+    update(): void;
+    updateParallel(): void;
+    locate(x: number, y: number): void;
+    forceMoveRoute(moveRoute: RPG.MoveRoute): void;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Interpreter
+ *
+ * The interpreter for running event commands.
+ * @class Game_Interpreter
+ */
+declare class Game_Interpreter {
+    protected _depth: number;
+    protected _branch: {[indent: number]: number | boolean};
+    protected _params: Array<any>;
+    protected _indent: number;
+    protected _frameCount: number;
+    protected _freezeChecker: number;
+    protected _mapId: number;
+    protected _eventId: number;
+    protected _list: Array<RPG.EventCommand>;
+    protected _index: number;
+    protected _waitCount: number;
+    protected _waitMode: string;
+    protected _comments: string;
+    protected _character: Game_Event;
+    protected _childInterpreter: Game_Interpreter;
+
+    constructor(depth: number);
+    checkOverflow(): void;
+    clear(): void;
+    setup(list: Array<RPG.EventCommand>, eventId: number): void;
+    eventId(): number;
+    isOnCurrentMap(): boolean;
+    setupReservedCommonEvent(): boolean;
+    isRunning(): boolean;
+    update(): void;
+    updateChild(): boolean;
+    updateWait(): boolean;
+    updateWaitCount(): boolean;
+    updateWaitMode(): boolean;
+    setWaitMode(waitMode: string): void;
+    wait(duration: number): void;
+    fadeSpeed(): number;
+    executeCommand(): boolean;
+    checkFreeze(): boolean;
+    terminate(): void;
+    skipBranch(): void;
+    currentCommand(): RPG.EventCommand;
+    nextEventCode(): number;
+    iterateActorId(param: number, callback: (actor: Game_Actor) => void): void;
+    iterateActorEx(param1: number, param2: number, callback: (actor: Game_Actor) => void): void;
+    iterateActorIndex(param: number, callback: (actor: Game_Actor) => void): void;
+    iterateEnemyIndex(param: number, callback: (enemt: Game_Enemy) => void): void;
+    iterateBattler(param1: number, param2: number, callback: (battler: Game_Battler) => void): void;
+    character(param: number): Game_Character;
+    operateValue(operation: number, operandType: number, operand: number): number;
+    changeHp(target: number, value: number, allowDeath: boolean): void;
+
+    /**
+     * Show Text
+     */
+    command101(): boolean;
+
+    /**
+     * Show Choices
+     */
+    command102(): boolean;
+    setupChoices(params: Array<any>): void;
+
+    /**
+     * When [**]
+     */
+    command402(): boolean;
+
+    /**
+     * When Cancel
+     */
+    command403(): boolean;
+
+    /**
+     * Input Number
+     */
+    command103(): boolean;
+
+    /**
+     *
+     * @param params
+     */
+    setupNumInput(params: Array<number>): void;
+
+    /**
+     * Select Item
+     */
+    command104(): boolean;
+    setupItemChoice(params: Array<number>): void;
+
+    /**
+     * Show Scrolling Text
+     */
+    command105(): boolean;
+
+    /**
+     * Comment
+     */
+    command108(): boolean;
+
+    /**
+     * Conditional Branch
+     */
+    command111(): boolean;
+
+    /**
+     * Else
+     */
+    command411(): boolean;
+
+    /**
+     * Loop
+     */
+    command112(): boolean;
+
+    /**
+     * Repeat Above
+     */
+    command413(): boolean;
+
+    /**
+     * Break Loop
+     */
+    command113(): boolean;
+
+    /**
+     * Exit Event Processing
+     */
+    command115(): boolean;
+
+    /**
+     * Common Event
+     */
+    command117(): boolean;
+    setupChild(list: Array<RPG.EventCommand>, eventId: number): void;
+
+    /**
+     * Label
+     */
+    command118(): boolean;
+
+    /**
+     * Jump to Label
+     */
+    command119(): boolean;
+    jumpTo(index: number): void;
+
+    /**
+     * Control Switches
+     */
+    command121(): boolean;
+
+    /**
+     * Control Variables
+     */
+    command122(): boolean;
+    gameDataOperand(type: number, param1: number, param2: number): number;
+    operateVariable(variableId: number, operationType: number, value: number): void;
+
+    /**
+     * Control Self Switch
+     */
+    command123(): boolean;
+
+    /**
+     * Control Timer
+     */
+    command124(): boolean;
+
+    /**
+     * Change Gold
+     */
+    command125(): boolean;
+
+    /**
+     * Change Items
+     */
+    command126(): boolean;
+
+    /**
+     * Change Weapons
+     */
+    command127(): boolean;
+
+    /**
+     * Change Armors
+     */
+    command128(): boolean;
+
+    /**
+     * Change Party Member
+     */
+    command129(): boolean;
+
+    /**
+     * Change Battle BGM
+     */
+    command132(): boolean;
+
+    /**
+     * Change Victory ME
+     */
+    command133(): boolean;
+
+    /**
+     * Change Save Access
+     */
+    command134(): boolean;
+
+    /**
+     * Change Menu Access
+     */
+    command135(): boolean;
+
+    /**
+     * Change Encounter Disable
+     */
+    command136(): boolean;
+
+    /**
+     * Change Formation Access
+     */
+    command137(): boolean;
+
+    /**
+     * Change Window Color
+     */
+    command138(): boolean;
+
+    /**
+     * Change Defeat ME
+     */
+    command139(): boolean;
+
+    /**
+     * Change Vehicle BGM
+     */
+    command140(): boolean;
+
+    /**
+     * Transfer Player
+     */
+    command201(): boolean;
+
+    /**
+     * Set Vehicle Location
+     */
+    command202(): boolean;
+
+    /**
+     * Set Event Location
+     */
+    command203(): boolean;
+
+    /**
+     * Scroll Map
+     */
+    command204(): boolean;
+
+    /**
+     * Set Movement Route
+     */
+    command205(): boolean;
+
+    /**
+     * Getting On and Off Vehicles
+     */
+    command206(): boolean;
+
+    /**
+     * Change Transparency
+     */
+    command211(): boolean;
+
+    /**
+     * Show Animation
+     */
+    command212(): boolean;
+
+    /**
+     * Show Balloon Icon
+     */
+    command213(): boolean;
+
+    /**
+     * Erase Event
+     */
+    command214(): boolean;
+
+    /**
+     * Change Player Followers
+     */
+    command216(): boolean;
+
+    /**
+     * Gather Followers
+     */
+    command217(): boolean;
+
+    /**
+     * Fadeout Screen
+     */
+    command221(): boolean;
+
+    /**
+     * Fadein Screen
+     */
+    command222(): boolean;
+
+    /**
+     * Tint Screen
+     */
+    command223(): boolean;
+
+    /**
+     * Flash Screen
+     */
+    command224(): boolean;
+
+    /**
+     * Shake Screen
+     */
+    command225(): boolean;
+
+    /**
+     * Wait
+     */
+    command230(): boolean;
+
+    /**
+     * Show Picture
+     */
+    command231(): boolean;
+
+    /**
+     * Move Picture
+     */
+    command232(): boolean;
+
+    /**
+     * Rotate Picture
+     */
+    command233(): boolean;
+
+    /**
+     * Tint Picture
+     */
+    command234(): boolean;
+
+    /**
+     * Erase Picture
+     */
+    command235(): boolean;
+
+    /**
+     * Set Weather Effect
+     */
+    command236(): boolean;
+
+    /**
+     * Play BGM
+     */
+    command241(): boolean;
+
+    /**
+     * Fadeout BGM
+     */
+    command242(): boolean;
+
+    /**
+     * Save BGM
+     */
+    command243(): boolean;
+
+    /**
+     * Resume BGM
+     */
+    command244(): boolean;
+
+    /**
+     * Play BGS
+     */
+    command245(): boolean;
+
+    /**
+     * Fadeout BGS
+     */
+    command246(): boolean;
+
+    /**
+     * Play ME
+     */
+    command249(): boolean;
+
+    /**
+     * Play SE
+     */
+    command250(): boolean;
+
+    /**
+     * Stop SE
+     */
+    command251(): boolean;
+
+    /**
+     * Play Movie
+     */
+    command261(): boolean;
+    videoFileExt(): string;
+
+    /**
+     * Change Map Name Display
+     */
+    command281(): boolean;
+
+    /**
+     * Change Tileset
+     */
+    command282(): boolean;
+
+    /**
+     * Change Battle Back
+     */
+    command283(): boolean;
+
+    /**
+     * Change Parallax
+     */
+    command284(): boolean;
+
+    /**
+     * Get Location Info
+     */
+    command285(): boolean;
+
+    /**
+     * Battle Processing
+     */
+    command301(): boolean;
+
+    /**
+     * If Win
+     */
+    command601(): boolean;
+
+    /**
+     * If Escape
+     */
+    command602(): boolean;
+
+    /**
+     * If Lose
+     */
+    command603(): boolean;
+
+    /**
+     * Shop Processing
+     */
+    command302(): boolean;
+
+    /**
+     * Name Input Processing
+     */
+    command303(): boolean;
+
+    /**
+     * Change HP
+     */
+    command311(): boolean;
+
+    /**
+     * Change MP
+     */
+    command312(): boolean;
+
+    /**
+     * Change TP
+     */
+    command326(): boolean;
+
+    /**
+     * Change State
+     */
+    command313(): boolean;
+
+    /**
+     * Recover All
+     */
+    command314(): boolean;
+
+    /**
+     * Change EXP
+     */
+    command315(): boolean;
+
+    /**
+     * Change Level
+     */
+    command316(): boolean;
+
+    /**
+     * Change Parameter
+     */
+    command317(): boolean;
+
+    /**
+     * Change Skill
+     */
+    command318(): boolean;
+
+    /**
+     * Change Equipment
+     */
+    command319(): boolean;
+
+    /**
+     * Change Name
+     */
+    command320(): boolean;
+
+    /**
+     * Change Class
+     */
+    command321(): boolean;
+
+    /**
+     * Change Actor Images
+     */
+    command322(): boolean;
+
+    /**
+     * Change Vehicle Image
+     */
+    command323(): boolean;
+
+    /**
+     * Change Nickname
+     */
+    command324(): boolean;
+
+    /**
+     * Change Profile
+     */
+    command325(): boolean;
+
+    /**
+     * Change Enemy HP
+     */
+    command331(): boolean;
+
+    /**
+     * Change Enemy MP
+     */
+    command332(): boolean;
+
+    /**
+     * Change Enemy TP
+     */
+    command342(): boolean;
+
+    /**
+     * Change Enemy State
+     */
+    command333(): boolean;
+
+    /**
+     * Enemy Recover All
+     */
+    command334(): boolean;
+
+    /**
+     * Enemy Appear
+     */
+    command335(): boolean;
+
+    /**
+     * Enemy Transform
+     */
+    command336(): boolean;
+
+    /**
+     * Show Battle Animation
+     */
+    command337(): boolean;
+
+    /**
+     * Force Action
+     */
+    command339(): boolean;
+
+    /**
+     * Abort Battle
+     */
+    command340(): boolean;
+
+    /**
+     * Open Menu Screen
+     */
+    command351(): boolean;
+
+    /**
+     * Open Save Screen
+     */
+    command352(): boolean;
+
+    /**
+     * Game Over
+     */
+    command353(): boolean;
+
+    /**
+     * Return to Title Screen
+     */
+    command354(): boolean;
+
+    /**
+     * Script
+     */
+    command355(): boolean;
+
+    /**
+     * Plugin Command
+     */
+    command356(): boolean;
+    pluginCommand(command: string, args: Array<string>): void;
+}
+

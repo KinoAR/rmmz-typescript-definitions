@@ -627,3 +627,4 @@ interface PluginManagerStatic {
     onError(e: Event): void;
 }
 declare var PluginManager: PluginManagerStatic;
+
