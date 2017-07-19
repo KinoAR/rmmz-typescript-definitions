@@ -7,11 +7,17 @@
 //
 // The superclass of all windows within the game.
 
+/**
+ * Super class of all windows within the game.
+ * Inherits from the Window class.
+ * @class Window_Base
+ * @extends {Window}
+ */
 declare class Window_Base {
-  protected _iconWidth: number;
-  protected _iconHeight: number;
-  protected _faceWidth: number;
-  protected _faceHeight: number;
+  protected static _iconWidth: number;
+  protected static _iconHeight: number;
+  protected static _faceWidth: number;
+  protected static _faceHeight: number;
   protected _opening: boolean;
   protected _closing: boolean;
 
@@ -171,7 +177,7 @@ declare class Window_Selectable extends Window_Base {
   protected _scrollX: number;
   protected _scrollY: number;
   
-  constructor(x: number, y: number, width: number, height: number)
+  constructor(x: number, y: number, width: number, height: number);
   index(): number;
   cursorFixed(): boolean;
   setCursorFixed(cursorFixed: boolean): void;
@@ -215,4 +221,203 @@ declare class Window_Selectable extends Window_Base {
   setTopRow(row: number): void;
   resetScroll(): void;
   maxPageRows(): number;
+  maxPageItems(): number;
+  isHorizontal(): boolean;
+  bottomRow(): number;
+  setBottomRow(row: number): void;
+  /**
+   * Creates a new rectangle based on itemWidth and itemHeight.
+   * The rectangle is mainly used for positioning items within
+   * the selectable window.
+   * @param {number} index 
+   * @returns {Rectangle} 
+   * @memberof Window_Selectable
+   */
+  itemRect(index: number): Rectangle;
+  /**
+   * Creates a new rectangle based on itemWidth and itemHeight
+   * The rectangle is used for positioning text within
+   * the selectable window.
+   * @param {number} index 
+   * @returns {Rectangle} 
+   * @memberof Window_Selectable
+   */
+  itemRectForText(index: number): Rectangle;
+  setHelpWindow(helpWindow: Window_Help): void;
+  showHelpWindow(): void;
+  hideHelpWindow(): void;
+  /**
+   * Creates a new handler with the symbol as the handler name
+   * and a method (JS function) bound to it.
+   * @param {string} symbol 
+   * @param {*} method 
+   * @memberof Window_Selectable
+   */
+  setHandler(symbol: string, method: any): void;
+  isHandled(symbol: string): boolean;
+  callHandler(symbol: string): void;
+  isOpenAndActive(): boolean;
+  isCursorMovable(): boolean;
+  cursorDown(wrap: boolean): void;
+  cursorUp(wrap: boolean): void;
+  cursorRight(wrap: boolean): void;
+  cursorLeft(wrap: boolean): void;
+  cursorPagedown(): void;
+  cursorPageup(): void;
+  scrollDown(): void;
+  scrollUp(): void;
+  updateArrows(): void;
+  processCursorMove(): void;
+  processHandling(): void;
+  processWheel(): void;
+  processTouch(): void;
+  isTouchedInsideFrame(): boolean;
+  onTouch(triggered: boolean): void;
+  hitTest(x: number, y: number): number;
+  isContentsArea(x: number, y: number): boolean;
+  isTouchOkEnabled(): boolean;
+  isOkEnabled(): boolean;
+  isCancelEnabled(): boolean;
+  isOkTriggered(): boolean;
+  isCancelTriggered(): boolean;
+  processOk(): void;
+  playOkSound(): void;
+  playBuzzerSound(): void;
+  callOkHandler(): void;
+  processCancel(): void;
+  callCancelHandler(): void;
+  processPageup(): void;
+  processPagedown(): void;
+  updateInputData(): void;
+  updateCursor(): void;
+  isCursorVisible(): boolean;
+  ensureCursorVisible(): void;
+  callUpdateHelp(): void;
+  updateHelp(): void;
+  setHelpWindowItem(item: any): void;
+  isCurrentItemEnabled(): boolean;
+  drawAllItems(): void;
+  drawItem(index: number): void;
+  clearItem(index: number): void;
+  redrawItem(index: number): void;
+  redrawCurrentItem(): void;
+  refresh(): void;
+}
+
+/**
+ * Super class of windows for selecting a command.
+ * 
+ * @class Window_Command
+ * @extends {Window_Selectable}
+ */
+declare class Window_Command extends Window_Selectable {
+  constructor(x: number, y: number)
+  windowWidth(): number;
+  windowHeight(): number;
+  numVisibleRows(): number;
+  maxItems(): number;
+  clearCommandList(): void;
+
+  /**
+   * Convenient method for overwriting and adding
+   * commands with the addCommand method.
+   * @memberof Window_Command
+   */
+  makeCommandList(): void;
+  /**
+   * Adds commands to the window list with the specified
+   * parameters. The actual command can be found as an object.
+   * @param {string} name 
+   * @param {string} symbol 
+   * @param {boolean} enabled 
+   * @param {(any | object)} ext 
+   * @memberof Window_Command
+   */
+  addCommand(name: string, symbol: string, enabled: boolean, ext: any | object)
+  commandName(index: number): string;
+  commandSymbol(index: number): string;
+  isCommandEnabled(index: number): boolean;
+  currentData(): object;
+  currentSymbol(): string;
+  currentExt(): any | object;
+  findSymbol(symbol: string): number;
+  selectSymbol(symbol: string): void;
+  findExt(ext: any | object): number;
+  selectExt(ext: any | object): void;
+  itemTextAlign(): string;
+}
+
+/**
+ * The command window for horizontal selection format.
+ * Same as Window_Command.
+ * @class Window_HorzCommand
+ * @extends {Window_Command}
+ */
+declare class Window_HorzCommand extends Window_Command {
+  constructor(x: number, y:number)
+}
+
+/**
+ * The window for display the description of the
+ * selected item given an item or a text string.
+ * @class Window_Help
+ * @extends {Window_Base}
+ */
+declare class Window_Help extends Window_Base {
+  protected _text: string;
+  constructor(numLines: number);
+  setText(text: string): void;
+  clear(): void;
+  setItem(item: Game_Item | any | object): void;
+}
+
+/**
+ * Window for displaying game gold in RPGMakerMV.
+ * 
+ * @class Window_Gold
+ * @extends {Window_Base}
+ */
+declare class Window_Gold extends Window_Base {
+  constructor(x: number, y: number);
+  /**
+   * Returns the $gameParty gold as a number.
+   * 
+   * @returns {number} 
+   * @memberof Window_Gold
+   */
+  value(): number;
+  /**
+   * Returns the RPGMakerMV database currency
+   * as a string.
+   * @returns {string} 
+   * @memberof Window_Gold
+   */
+  currencyUnit(): string;
+}
+
+declare class Window_MenuCommand extends Window_Command {
+  constructor(x: number, y: number);
+  initCommandPosition(): void;
+  /**
+   * Adds the standard game commands to the
+   * RPGMakerMV main menu.
+   * @memberof Window_MenuCommand
+   */
+  addMainCommands(): void;
+  addFormationCommand(): void;
+  addOriginalCommands(): void;
+  addSaveCommand(): void;
+  addGameEndCommand(): void;
+  /**
+   * Checks if the standard game commands for the menu
+   * are needed based on database system options.
+   * @param {string} name 
+   * @returns {boolean} 
+   * @memberof Window_MenuCommand
+   */
+  needsCommand(name: string): boolean;
+  areMainCommandsEnabled(): boolean;
+  isOptionsEnabled(): boolean;
+  isSaveEnabled(): boolean;
+  selectLast(): void;
 }

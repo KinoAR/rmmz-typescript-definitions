@@ -1,0 +1,1140 @@
+/**
+ * The game object class for temporary data that is not
+ * included in the save data.
+ * @class Game_Temp
+ */
+declare class Game_Temp {
+    protected _isPlaytest: boolean;
+    protected _commonEventId: number;
+    protected _destinationX: number;
+    protected _destinationY: number;
+
+    isPlaytest(): boolean;
+    reserveCommonEvent(commonEventId: number): void;
+    clearCommonEvent(): void;
+    isCommonEventReserved(): boolean;
+    reservedCommonEvent(): void;
+    setDestination(x: number, y: number): void;
+    clearDestination(): void;
+    isDestinationValid(): boolean;
+    destinationX(): number;
+    destinationY(): number;
+}
+
+/**
+ * Game Object class for the system data.
+ * 
+ * @class Game_System
+ */
+declare class Game_System {
+    protected _saveEnabled: boolean;
+    protected _menuEnabled: boolean;
+    protected _encounterEnabled: boolean;
+    protected _formationEnabled: boolean;
+    protected _battleCount: number;
+    protected _winCount: number;
+    protected _escapeCount: number;
+    protected _saveCount: number;
+    protected _versionId: number;
+    protected _framesOnSave: number;
+    protected _bgmOnSave: RPG.AudioFile;
+    protected _bgsOnSave: RPG.AudioFile;
+    protected _windowTone: Array<number>;
+    protected _battleBgm: RPG.AudioFile;
+    protected _victoryMe: RPG.AudioFile;
+    protected _defeatMe: RPG.AudioFile;
+    protected _savedBgm: RPG.AudioFile;
+    protected _walkingBgm: RPG.AudioFile;
+
+    isJapanese(): boolean;
+    isChinese(): boolean;
+    isKorean(): boolean;
+    isCJK(): boolean;
+    isRussian(): boolean;
+    isSideView(): boolean;
+    isSaveEnabled(): boolean;
+    disableSave(): void;
+    enableSave(): void;
+    isMenuEnabled(): boolean;
+    disableMenu(): void;
+    enableMenu(): void;
+    isEncounterEnabled(): boolean;
+    disableEncounter(): void;
+    enableEncounter(): void;
+    isFormationEnabled(): boolean;
+    disableFormation(): void;
+    enableFormation(): void;
+    battleCount(): number;
+    winCount(): number;
+    escapeCount(): number;
+    saveCount(): number;
+    versionId(): number;
+    windowTone(): Array<number>;
+    setWindowTone(value: Array<number>): void;
+    battleBgm(): RPG.AudioFile;
+    setBattleBgm(value: RPG.AudioFile): void;
+    victoryMe(): RPG.AudioFile;
+    setVictoryMe(value: RPG.AudioFile): void;
+    defeatMe(): RPG.AudioFile;
+    setDefeatMe(value: RPG.AudioFile): void;
+    onBattleStart(): void;
+    onBattleWin(): void;
+    onBattleEscape(): void;
+    onBeforeSave(): void;
+    onAfterLoad(): void;
+    playtime(): number;
+    playtimeText(): string;
+    saveBgm(): void;
+    replayBgm(): void;
+    saveWalkingBgm(): void;
+    replayWalkingBgm(): void;
+}
+
+/**
+ * The game object class for the timer.
+ * 
+ * @class Game_Timer
+ */
+declare class Game_Timer {
+    protected _frames: number;
+    protected _working: boolean;
+
+    update(sceneActive: boolean): void;
+    start(count: number): void;
+    stop(): void;
+    isWorking(): boolean;
+    seconds(): number;
+    onExpire(): void;
+}
+
+/**
+ * The game object class for the state of the message window
+ * that displays text or selections.
+ * @class Game_Message
+ */
+declare class Game_Message {
+    protected _texts: Array<string>;
+    protected _choices: Array<string>;
+    protected _faceName: string;
+    protected _faceIndex: number;
+    protected _background: number;
+    protected _positionType: number;
+    protected _choiceDefaultType: number;
+    protected _choiceCancelType: number;
+    protected _choiceBackground: number;
+    protected _choicePostionType: number;
+    protected _numInputVariableId: number;
+    protected _numInputMaxDigits: number;
+    protected _itemChoiceVariableId: number;
+    protected _itemChoiceItypeId: number;
+    protected _scrollMode: boolean;
+    protected _scrollSpeed: number;
+    protected _scrollNoFast: boolean;
+    protected _choiceCallback: (n: number) => void;
+
+    clear(): void;
+    choices(): Array<string>;
+    faceName(): string;
+    faceIndex(): number;
+    background(): number;
+    positionType(): number;
+    choiceDefaultType(): number;
+    choiceCancelType(): number;
+    choiceBackground(): number;
+    choicePositionType(): number;
+    numInputVariableId(): number;
+    numInputMaxDigits(): number;
+    itemChoiceVariableId(): number;
+    itemChoiceItypeId(): number;
+    scrollMode(): boolean;
+    scrollSpeed(): number;
+    scrollNoFast(): boolean;
+    add(text: string): void;
+    setFaceImage(faceName: string, faceIndex: number): void;
+    setBackground(background: number): void;
+    setPositionType(positionType: number): void;
+    setChoices(choices: Array<string>, defaultType: number, cancelType: number): void;
+    setChoiceBackground(background: number): void;
+    setChoicePositionType(positionType: number): void;
+    setNumberInput(variableId: number, maxDigits: number): void;
+    setItemChoice(variableId: number, itemType: number): void;
+    setScroll(speed: number, noFast: boolean): void;
+    setChoiceCallback(callback: ((n: number) => void)): void;
+    onChoice(n: number): void;
+    hasText(): boolean;
+    isChoice(): boolean;
+    isNumberInput(): boolean;
+    isItemChoice(): boolean;
+    isBusy(): boolean;
+    newPage(): void;
+    allText(): string;
+}
+
+/**
+ * The game object class for game switches.
+ *
+ * @class Game_Switches
+ */
+declare class Game_Switches {
+    protected _data: Array<boolean>;
+
+    clear(): void;
+    value(switchId: number): boolean;
+    setValue(switchId: number, value: boolean): void;
+    onChange(): void;
+}
+
+/**
+ * The game object class for game variables.
+ * 
+ * @class Game_Variables
+ */
+declare class Game_Variables {
+    protected _data: Array<number>;
+
+    clear(): void;
+    value(variableId: number): number;
+    setValue(variableId: number, value: number): void;
+    onChange(): void;
+}
+
+/**
+ * The game object class for selfswitches
+ * 
+ * @class Game_SelfSwitches
+ */
+declare class Game_SelfSwitches {
+    protected _data: {key: Array<any>};
+
+    clear(): void;
+    value(key: Array<any>): boolean;
+    setValue(key: Array<any>, value: boolean): void;
+    onChange(): void;
+}
+
+/**
+ * The game object class for screen effect data, such as
+ * changes in color tone and flashes.
+ * aliased as $gameScreen.
+ * @class Game_Screen
+ */
+declare class Game_Screen {
+    protected _shake: number;
+    protected _shakePower: number;
+    protected _shakeSpeed: number;
+    protected _shakeDuration: number;
+    protected _shakeDirection: number;
+
+    protected _zoomX: number;
+    protected _zoomY: number;
+    protected _zoomScale: number;
+    protected _zoomScaleTarget: number;
+    protected _zoomDuration: number;
+
+    protected _weatherType: string;
+    protected _weatherPower: number;
+    protected _weatherPowerTarget: number;
+    protected _weatherDuration: number;
+
+    protected _brightness: number;
+    protected _fadeOutDuration: number;
+    protected _fadeInDuration: number;
+
+    protected _tone: Array<number>;
+    protected _toneTarget: Array<number>;
+    protected _toneDuration: number;
+
+    protected _flashColor: Array<number>;
+    protected _flashDuration: number;
+
+    protected _pictures: Array<Game_Picture>;
+
+    clear(): void;
+    onBattleStart(): void;
+    brightness(): number;
+    tone(): Array<number>;
+    flashColor(): Array<number>;
+    shake(): number;
+    zoomX(): number;
+    zoomY(): number;
+    zoomScale(): number;
+    weatherType(): string;
+    weatherPower(): number;
+    picture(pictureId: number): Game_Picture;
+    realPictureId(pictureId: number): number;
+    clearFade(): void;
+    clearTone(): void;
+    clearFlash(): void;
+    clearShake(): void;
+    clearZoom(): void;
+    clearWeather(): void;
+    clearPictures(): void;
+    eraseBattlePictures(): void;
+    maxPictures(): number;
+    startFadeOut(duration: number): void;
+    startFadeIn(duration: number): void;
+    startTint(tone: Array<number>, duration: number): void;
+    startFlash(color: Array<number>, duration: number): void;
+    startShake(power: number, speed: number, duration: number): void;
+    startZoom(x: number, y: number, scale: number, duration: number): void;
+    setZoom(x: number, y: number, scale: number): void;
+    changeWeather(type: string, power: number, duration: number): void;
+    update(): void;
+    updateFadeOut(): void;
+    updateFadeIn(): void;
+    updateTone(): void;
+    updateFlash(): void;
+    updateShake(): void;
+    updateZoom(): void;
+    updateWeather(): void;
+    updatePictures(): void;
+    startFlashForDamage(): void;
+    showPicture(pictureId: number, name: string, origin: number, x: number, y: number,
+                scaleX: number, scaleY: number, opacity: number, blendMode: number): void;
+    movePicture(pictureId: number, origin: number, x: number, y: number,
+                scaleX: number, scaleY: number, opacity: number, blendMode: number, duration: number): void;
+    rotatePicture(pictureId: number, speed: number): void;
+    tintPicture(pictureId: number, tone: Array<number>, duration: number): void;
+    erasePicture(pictureId: number): void;
+}
+
+/**
+ * The game object class for a picture.
+ * 
+ * @class Game_Picture
+ */
+declare class Game_Picture {
+    protected _name: string;
+    protected _origin: number;
+    protected _x: number;
+    protected _y: number;
+    protected _scaleX: number;
+    protected _scaleY: number;
+    protected _opacity: number;
+    protected _blendMode: number;
+
+    protected _targetX: number;
+    protected _targetY: number;
+    protected _targetScaleX: number;
+    protected _targetScaleY: number;
+    protected _targetOpacity: number;
+    protected _duration: number;
+
+    protected _tone: Array<number>;
+    protected _toneTarget: Array<number>;
+    protected _toneDuration: number;
+
+    protected _angle: number;
+    protected _rotationSpeed: number;
+
+    name(): string;
+    origin(): number;
+    x(): number;
+    y(): number;
+    scaleX(): number;
+    scaleY(): number;
+    opacity(): number;
+    blendMode(): number;
+    tone(): Array<number>;
+    angle(): number;
+    initBasic(): void;
+    initTarget(): void;
+    initTone(): void;
+    initRotation(): void;
+    show(name: string, origin: number, x: number, y: number, scaleX: number, scaleY: number, opacity: number, blendMode: number): void;
+    move(origin: number, x: number, y: number, scaleX: number, scaleY: number, opacity: number, blendMode: number, duration: number): void;
+    rotate(speed: number): void;
+    tint(tone: Array<number>, duration: number): void;
+    erase(): void;
+    update(): void;
+    updateMove(): void;
+    updateTone(): void;
+    updateRotation(): void;
+}
+
+/**
+ * Game_Item
+ * The game object class for handling skills, items, weapons. armor.
+ * This is required, because the save data should not include the database object itself.
+ * @class Game_Item
+ */
+declare class Game_Item {
+    protected _dataClass: string;
+    protected _itemId: number;
+
+    constructor(item: RPG.BaseItem);
+    isSkill(): boolean;
+    isItem(): boolean;
+    isUsableItem(): boolean;
+    isWeapon(): boolean;
+    isArmor(): boolean;
+    isEquipItem(): boolean;
+    isNull(): boolean;
+    itemId(): number;
+    object(): RPG.BaseItem;
+    setObject(item: RPG.BaseItem): void;
+    setEquip(isWeapon: boolean, itemId: number): void;
+}
+
+/**
+ * Game_Action
+ * The game object class representing a battle action.
+ * @class Game_Action
+ */
+declare class Game_Action {
+    static EFFECT_RECOVER_HP: number;
+    static EFFECT_RECOVER_MP: number;
+    static EFFECT_GAIN_TP: number;
+    static EFFECT_ADD_STATE: number;
+    static EFFECT_REMOVE_STATE: number;
+    static EFFECT_ADD_BUFF: number;
+    static EFFECT_ADD_DEBUFF: number;
+    static EFFECT_REMOVE_BUFF: number;
+    static EFFECT_REMOVE_DEBUFF: number;
+    static EFFECT_SPECIAL: number;
+    static EFFECT_GROW: number;
+    static EFFECT_LEARN_SKILL: number;
+    static EFFECT_COMMON_EVENT: number;
+    static SPECIAL_EFFECT_ESCAPE: number;
+    static HITTYPE_CERTAIN: number;
+    static HITTYPE_PHYSICAL: number;
+    static HITTYPE_MAGICAL: number;
+
+    protected _subjectActorId: number;
+    protected _subjectEnemyIndex: number;
+    protected _targetIndex: number;
+    protected _forcing: boolean;
+    protected _item: Game_Item;
+
+    constructor(subject: Game_Battler, forcing: boolean);
+
+    clear(): void;
+    setSubject(subject: Game_Battler): void;
+    subject(): Game_Battler;
+    friendsUnit(): Game_Unit;
+    opponentsUnit(): Game_Unit;
+    setEnemyAction(action: RPG.Enemy.Action): void;
+    setAttack(): void;
+    setGuard(): void;
+    setSkill(skillId: number): void;
+    setItem(itemId: number): void;
+    setItemObject(object: RPG.UsableItem): void;
+    setTarget(targetIndex: number): void;
+    item(): RPG.UsableItem;
+    isSkill(): boolean;
+    isItem(): boolean;
+    numRepeats(): number;
+    checkItemScope(list: Array<number>): boolean;
+    isForOpponent(): boolean;
+    isForFriend(): boolean;
+    isForDeadFriend(): boolean;
+    isForUser(): boolean;
+    isForOne(): boolean;
+    isForRandom(): boolean;
+    isForAll(): boolean;
+    needsSelection(): boolean;
+    numTargets(): number;
+    checkDamageType(list: Array<number>): boolean;
+    isHpEffect(): boolean;
+    isMpEffect(): boolean;
+    isDamage(): boolean;
+    isRecover(): boolean;
+    isDrain(): boolean;
+    isHpRecover(): boolean;
+    isMpRecover(): boolean;
+    isCertainHit(): boolean;
+    isPhysical(): boolean;
+    isMagical(): boolean;
+    isAttack(): boolean;
+    isGuard(): boolean;
+    isMagicSkill(): boolean;
+    decideRandomTarget(): void;
+    setConfusion(): void;
+    prepare(): void;
+    isValid(): boolean;
+    speed(): number;
+    makeTargets(): Array<Game_Battler>;
+    repeatTargets(targets: Array<Game_Battler>): Array<Game_Battler>;
+    confusionTarget(): Game_Battler;
+    targetsForOpponents(): Array<Game_Battler>;
+    targetsForFriends(): Array<Game_Battler>;
+    evaluate(): number;
+    itemTargetCandidates(): Array<Game_Battler>;
+    evaluateWithTarget(target: Game_Battler): number;
+    testApply(target: Game_Battler): boolean;
+    hasItemAnyValidEffects(target: Game_Battler): boolean;
+    testItemEffect(target: Game_Battler, effect: RPG.Effect): boolean;
+    itemCnt(target: Game_Battler): number;
+    itemMrf(target: Game_Battler): number;
+    itemHit(target: Game_Battler): number;
+    itemEva(target: Game_Battler): number;
+    itemCri(target: Game_Battler): number;
+    apply(target: Game_Battler): void;
+    makeDamageValue(target: Game_Battler, critical: boolean): number;
+    evalDamageFormula(target: Game_Battler): number;
+    calcElementRate(target: Game_Battler): number;
+    elementsMaxRate(target: Game_Battler, elements: Array<number>): number;
+    applyCritical(damage: number): number;
+    applyVariance(damage: number, variance: number): number;
+    applyGuard(damage: number, target: Game_Battler): number;
+    executeDamage(target: Game_Battler, value: number): void;
+    executeHpDamage(target: Game_Battler, value: number): void;
+    executeMpDamage(target: Game_Battler, value: number): void;
+    gainDrainedHp(value: number): void;
+    gainDrainedMp(value: number): void;
+    applyItemEffect(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectRecoverHp(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectRecoverMp(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectGainTp(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectAddState(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectAddAttackState(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectAddNormalState(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectRemoveState(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectAddBuff(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectAddDebuff(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectRemoveBuff(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectRemoveDebuff(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectSpecial(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectGrow(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectLearnSkill(target: Game_Battler, effect: RPG.Effect): void;
+    itemEffectCommonEvent(target: Game_Battler, effect: RPG.Effect): void;
+    makeSuccess(target: Game_Battler): void;
+    applyItemUserEffect(target: Game_Battler): void;
+    lukEffectRate(target: Game_Battler): number;
+    applyGlobal(): void;
+}
+
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_ActionResult
+ *
+ * The game object declare class for a result of a battle action. For convinience, all
+ * member variables in this declare class are public.
+ * @class Game_ActionResult
+ */
+declare class Game_ActionResult {
+    used: boolean;
+    missed: boolean;
+    evaded: boolean;
+    physical: boolean;
+    drain: boolean;
+    critical: boolean;
+    success: boolean;
+    hpAffected: boolean;
+    hpDamage: number;
+    mpDamage: number;
+    tpDamage: number;
+    addedStates: Array<number>;
+    removedStates: Array<number>;
+    addedBuffs: Array<number>;
+    addedDebuffs: Array<number>;
+    removedBuffs: Array<number>;
+
+    clear(): void;
+    addedStateObjects(): Array<RPG.State>;
+    removedStateObjects(): Array<RPG.State>;
+    isStatusAffected(): boolean;
+    isHit(): boolean;
+    isStateAdded(stateId: number): boolean;
+    pushAddedState(stateId: number): void;
+    isStateRemoved(stateId: number): boolean;
+    pushRemovedState(stateId: number): void;
+    isBuffAdded(paramId: number): boolean;
+    pushAddedBuff(paramId: number): void;
+    isDebuffAdded(paramId: number): boolean;
+    pushAddedDebuff(paramId: number): void;
+    isBuffRemoved(paramId: number): boolean;
+    pushRemovedBuff(paramId: number): void;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_BattlerBase
+ *
+ * The superdeclare class of Game_Battler. It mainly contains parameters calculation.
+ * @class Game_BattlerBase
+ */
+declare class Game_BattlerBase {
+    static TRAIT_ELEMENT_RATE: number;
+    static TRAIT_DEBUFF_RATE: number;
+    static TRAIT_STATE_RATE: number;
+    static TRAIT_STATE_RESIST: number;
+    static TRAIT_PARAM: number;
+    static TRAIT_XPARAM: number;
+    static TRAIT_SPARAM: number;
+    static TRAIT_ATTACK_ELEMENT: number;
+    static TRAIT_ATTACK_STATE: number;
+    static TRAIT_ATTACK_SPEED: number;
+    static TRAIT_ATTACK_TIMES: number;
+    static TRAIT_STYPE_ADD: number;
+    static TRAIT_STYPE_SEAL: number;
+    static TRAIT_SKILL_ADD: number;
+    static TRAIT_SKILL_SEAL: number;
+    static TRAIT_EQUIP_WTYPE: number;
+    static TRAIT_EQUIP_ATYPE: number;
+    static TRAIT_EQUIP_LOCK: number;
+    static TRAIT_EQUIP_SEAL: number;
+    static TRAIT_SLOT_TYPE: number;
+    static TRAIT_ACTION_PLUS: number;
+    static TRAIT_SPECIAL_FLAG: number;
+    static TRAIT_COLLAPSE_TYPE: number;
+    static TRAIT_PARTY_ABILITY: number;
+    static FLAG_ID_AUTO_BATTLE: number;
+    static FLAG_ID_GUARD: number;
+    static FLAG_ID_SUBSTITUTE: number;
+    static FLAG_ID_PRESERVE_TP: number;
+    static ICON_BUFF_START: number;
+    static ICON_DEBUFF_START: number;
+
+    protected _hp: number;
+    protected _mp: number;
+    protected _tp: number;
+    protected _hidden: boolean;
+
+    protected _paramPlus: Array<number>;
+    protected _states: Array<number>;
+    protected _stateTurns: {[stateId: number]: number};
+    protected _buffs: Array<number>;
+    protected _buffTurns: Array<number>;
+
+    /** [read-only] Hit Points */
+    hp: number;
+    /** [read-only] Magic Points */
+    mp: number;
+    /** [read-only] Tactical Points */
+    tp: number;
+    /** [read-only] Maximum Hit Points - param 0*/
+    mhp: number;
+    /** [read-only] Maximum Magic Points - param 1*/
+    mmp: number;
+    /** [read-only] ATtacK power - param 2*/
+    atk: number;
+    /** [read-only] DEFense power - param 3*/
+    def: number;
+    /** [read-only] Magic Attack power - param 4*/
+    mat: number;
+    /** [read-only] Magic Defense power - param 5*/
+    mdf: number;
+    /** [read-only] Agility - param 6 */
+    agi: number;
+    /** [read-only] LucK - param 7*/
+    luk: number;
+    /** [read-only] HIT rate -xparam 0*/
+    hit: number;
+    /** [read-only] EVAsion rate */
+    eva: number;
+    /** [read-only] CRItical rate */
+    cri: number;
+    /** [read-only] Critical EVasion rate */
+    cev: number;
+    /** [read-only] Magic EVasion rate */
+    mev: number;
+    /** [read-only] Magic ReFlection rate */
+    mrf: number;
+    /** [read-only] CouNTer attack rate */
+    cnt: number;
+    /** [read-only] Hp ReGeneration rate */
+    hrg: number;
+    /** [read-only] Mp ReGeneration rate */
+    mrg: number;
+    /** [read-only] Tp ReGeneration rate */
+    trg: number;
+    /** [read-only] TarGet Rate */
+    tgr: number;
+    /** [read-only] Ggweqrtg*xzuaRD effect rate */
+    grd: number;
+    /** [read-only] RECovery effect rate */
+    rec: number;
+    /** [read-only] PHArmacology */
+    pha: number;
+    /** [read-only] Mp Cost Rate */
+    mcr: number;
+    /** [read-only] Tp Charge Rate */
+    tcr: number;
+    /** [read-only] Physical Damage Rate */
+    pdr: number;
+    /** [read-only] Magical Damage Rate */
+    mdr: number;
+    /** [read-only] Floor Damage Rate */
+    fdr: number;
+    /** [read-only] EXperience Rate */
+    exr: number;
+
+    initMembers(): void;
+    clearParamPlus(): void;
+    clearStates(): void;
+    eraseState(stateId: number): void;
+    isStateAffected(stateId: number): boolean;
+    isDeathStateAffected(): boolean;
+    deathStateId(): number;
+    resetStateCounts(stateId: number): void;
+    isStateExpired(stateId: number): boolean;
+    updateStateTurns(): void;
+    clearBuffs(): void;
+    eraseBuff(paramId: number): void;
+    buffLength(): number;
+    buff(paramId: number): number;
+    isBuffAffected(paramId: number): boolean;
+    isDebuffAffected(paramId: number): boolean;
+    isBuffOrDebuffAffected(paramId: number): boolean;
+    isMaxBuffAffected(paramId: number): boolean;
+    isMaxDebuffAffected(paramId: number): boolean;
+    increaseBuff(paramId: number): void;
+    decreaseBuff(paramId: number): void;
+    overwriteBuffTurns(paramId: number, turns: number): void;
+    isBuffExpired(paramId: number): boolean;
+    updateBuffTurns(): void;
+    die(): void;
+    revive(): void;
+    states(): Array<RPG.State>;
+    stateIcons(): Array<number>;
+    buffIcons(): Array<number>;
+    buffIconIndex(buffLevel: number, paramId: number): number;
+    allIcons(): Array<number>;
+    traitObjects(): Array<any>;
+    allTraits(): Array<RPG.Trait>;
+    traits(code: number): Array<RPG.Trait>;
+    traitsWithId(code: number, id: number): Array<RPG.Trait>;
+    traitsPi(code: number, id: number): number;
+    traitsSum(code: number, id: number): number;
+    traitsSumAll(code: number): number;
+    traitsSet(code: number): Array<number>;
+    paramBase(paramId: number): number;
+    paramPlus(paramId: number): number;
+    paramMin(paramId: number): number;
+    paramMax(paramId: number): number;
+    paramRate(paramId: number): number;
+    paramBuffRate(paramId: number): number;
+    param(paramId: number): number;
+    xparam(xparamId: number): number;
+    sparam(sparamId: number): number;
+    elementRate(elementId: number): number;
+    debuffRate(paramId: number): number;
+    stateRate(stateId: number): number;
+    stateResistSet(): Array<number>;
+    isStateResist(stateId: number): boolean;
+    attackElements(): Array<number>;
+    attackStates(): Array<number>;
+    attackStatesRate(stateId: number): void;
+    attackSpeed(): number;
+    attackTimesAdd(): number;
+    addedSkillTypes(): Array<number>;
+    isSkillTypeSealed(stypeId: number): boolean;
+    addedSkills(): Array<number>;
+    isSkillSealed(skillId: number): boolean;
+    isEquipWtypeOk(wtypeId: number): boolean;
+    isEquipAtypeOk(atypeId: number): boolean;
+    isEquipTypeLocked(etypeId: number): boolean;
+    isEquipTypeSealed(etypeId: number): boolean;
+    slotType(): number;
+    isDualWield(): boolean;
+    actionPlusSet(): Array<number>;
+    specialFlag(flagId: number): boolean;
+    collapseType(): number;
+    partyAbility(abilityId: number): boolean;
+    isAutoBattle(): boolean;
+    isGuard(): boolean;
+    isSubstitute(): boolean;
+    isPreserveTp(): boolean;
+    addParam(paramId: number, value: number): void;
+    setHp(hp: number): void;
+    setMp(mp: number): void;
+    setTp(tp: number): void;
+    maxTp(): number;
+    refresh(): void;
+    recoverAll(): void;
+    hpRate(): number;
+    mpRate(): number;
+    tpRate(): number;
+    hide(): void;
+    appear(): void;
+    isHidden(): boolean;
+    isAppeared(): boolean;
+    isDead(): boolean;
+    isAlive(): boolean;
+    isDying(): boolean;
+    isRestricted(): boolean;
+    canInput(): boolean;
+    canMove(): boolean;
+    isConfused(): boolean;
+    confusionLevel(): number;
+    isActor(): boolean;
+    isEnemy(): boolean;
+    sortStates(): void;
+    restriction(): number;
+    addNewState(stateId: number): void;
+    onRestrict(): void;
+    mostImportantStateText(): string;
+    stateMotionIndex(): number;
+    stateOverlayIndex(): number;
+    isSkillWtypeOk(skill: RPG.Skill): boolean;
+    skillMpCost(skill: RPG.Skill): number;
+    skillTpCost(skill: RPG.Skill): number;
+    canPaySkillCost(skill: RPG.Skill): boolean;
+    paySkillCost(skill: RPG.Skill): void;
+    isOccasionOk(item: RPG.UsableItem): boolean;
+    meetsUsableItemConditions(item: RPG.UsableItem): boolean;
+    meetsSkillConditions(skill: RPG.Skill): boolean;
+    meetsItemConditions(item: RPG.Item): boolean;
+    canUse(item: RPG.UsableItem): boolean;
+    canEquip(item: RPG.EquipItem): boolean;
+    canEquipWeapon(item: RPG.EquipItem): boolean;
+    canEquipArmor(item: RPG.EquipItem): boolean;
+    attackSkillId(): number;
+    guardSkillId(): number;
+    canAttack(): boolean;
+    canGuard(): boolean;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Battler
+ *
+ * The superdeclare class of Game_Actor and Game_Enemy. It contains methods for sprites
+ * and actions.
+ * @class Game_Battler
+ */
+declare class Game_Battler extends Game_BattlerBase {
+    protected _actions: Array<Game_Action>;
+    protected _speed: number;
+    protected _result: Game_ActionResult;
+    protected _actionState: string;
+    protected _lastTargetIndex: number;
+    protected _animations: Array<MV.BattlerAnimation>;
+    protected _damagePopup: boolean;
+    protected _effectType: string;
+    protected _motionType: string;
+    protected _weaponImageId: number;
+    protected _motionRefresh: boolean;
+    protected _selected: boolean;
+
+    name(): string;
+    battlerName(): string;
+    index(): number;
+    friendsUnit(): Game_Unit;
+    opponentsUnit(): Game_Unit;
+    clearAnimations(): void;
+    clearDamagePopup(): void;
+    clearWeaponAnimation(): void;
+    clearEffect(): void;
+    clearMotion(): void;
+    requestEffect(effectType: string): void;
+    requestMotion(motionType: string): void;
+    requestMotionRefresh(): void;
+    select(): void;
+    deselect(): void;
+    isAnimationRequested(): boolean;
+    isDamagePopupRequested(): boolean;
+    isEffectRequested(): boolean;
+    isMotionRequested(): boolean;
+    isWeaponAnimationRequested(): boolean;
+    isMotionRefreshRequested(): boolean;
+    isSelected(): boolean;
+    effectType(): string;
+    motionType(): string;
+    weaponImageId(): number;
+    shiftAnimation(): MV.BattlerAnimation;
+    startAnimation(animationId: number, mirror: boolean, delay: number): void;
+    startDamagePopup(): void;
+    startWeaponAnimation(weaponImageId: number): void;
+    action(index: number): Game_Action;
+    setAction(index: number, action: Game_Action): void;
+    numActions(): number;
+    clearActions(): void;
+    result(): Game_ActionResult;
+    clearResult(): void;
+    refresh(): void;
+    addState(stateId: number): void;
+    isStateAddable(stateId: number): boolean;
+    isStateRestrict(stateId: number): boolean;
+    onRestrict(): void;
+    removeState(stateId: number): void;
+    escape(): void;
+    addBuff(paramId: number, turns: number): void;
+    addDebuff(paramId: number, turns: number): void;
+    removeBuff(paramId: number): void;
+    removeBattleStates(): void;
+    removeAllBuffs(): void;
+    removeStatesAuto(timing: number): void;
+    removeBuffsAuto(): void;
+    removeStatesByDamage(): void;
+    makeActionTimes(): number;
+    makeActions(): void;
+    speed(): number;
+    makeSpeed(): void;
+    currentAction(): Game_Action;
+    removeCurrentAction(): void;
+    setLastTarget(target: Game_Battler): void;
+    forceAction(skillId: number, targetIndex: number): void;
+    useItem(item: RPG.UsableItem): void;
+    consumeItem(item: RPG.UsableItem): void;
+    gainHp(value: number): void;
+    gainMp(value: number): void;
+    gainTp(value: number): void;
+    gainSilentTp(value: number): void;
+    initTp(): void;
+    clearTp(): void;
+    chargeTpByDamage(damageRate: number): void;
+    regenerateHp(): void;
+    maxSlipDamage(): number;
+    regenerateMp(): void;
+    regenerateTp(): void;
+    regenerateAll(): void;
+    onBattleStart(): void;
+    onAllActionsEnd(): void;
+    onTurnEnd(): void;
+    onBattleEnd(): void;
+    onDamage(value: number): void;
+    setActionState(actionState: string): void;
+    isUndecided(): boolean;
+    isInputting(): boolean;
+    isWaiting(): boolean;
+    isActing(): boolean;
+    isChanting(): boolean;
+    isGuardWaiting(): boolean;
+    performActionStart(action: Game_Action): void;
+    performAction(action: Game_Action): void;
+    performActionEnd(): void;
+    performDamage(): void;
+    performMiss(): void;
+    performRecovery(): void;
+    performEvasion(): void;
+    performMagicEvasion(): void;
+    performCounter(): void;
+    performReflection(): void;
+    performSubstitute(target: Game_Battler): void;
+    performCollapse(): void;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Actor
+ *
+ * The game object declare class for an actor.
+ * @class Game_Actor
+ */
+declare class Game_Actor extends Game_Battler {
+    protected _actorId: number;
+    protected _name: string;
+    protected _nickname: string;
+    protected _profile: string;
+    protected _classId: number;
+    protected _level: number;
+    protected _characterName: string;
+    protected _characterIndex: number;
+    protected _faceName: string;
+    protected _faceIndex: number;
+    protected _battlerName: string;
+    protected _exp: {[classId: number]: number};
+    protected _skills: Array<number>;
+    protected _equips: Array<Game_Item>;
+    protected _actionInputIndex: number;
+    protected _lastMenuSkill: Game_Item;
+    protected _lastBattleSkill: Game_Item;
+    protected _lastCommandSymbol: string;
+    protected _stateSteps: {[stateId: number]: number};
+
+    /** [read-only] */
+    level: number;
+
+    constructor(actorId: number);
+
+    setup(actorId: number): void;
+    actorId(): number;
+    actor(): RPG.Actor;
+    setName(name: string): void;
+    nickname(): string;
+    setNickname(nickname: string): void;
+    profile(): string;
+    setProfile(profile: string): void;
+    faceName(): string;
+    faceIndex(): number;
+    clearStates(): void;
+    eraseState(stateId: number): void;
+    resetStateCounts(stateId: number): void;
+    initImages(): void;
+    expForLevel(level: number): number;
+    initExp(): void;
+    currentExp(): number;
+    currentLevelExp(): number;
+    nextLevelExp(): number;
+    nextRequiredExp(): number;
+    maxLevel(): void;
+    isMaxLevel(): boolean;
+    initSkills(): void;
+    initEquips(equips: Array<number>): void;
+    equipSlots(): Array<number>;
+    equips(): Array<RPG.EquipItem>;
+    weapons(): Array<RPG.Weapon>;
+    armors(): Array<RPG.Armor>;
+    hasWeapon(weapon: RPG.Weapon): boolean;
+    hasArmor(armor: RPG.Armor): boolean;
+    isEquipChangeOk(slotId: number): boolean;
+    changeEquip(slotId: number, item: RPG.EquipItem): void;
+    forceChangeEquip(slotId: number, item: RPG.EquipItem): void;
+    tradeItemWithParty(newItem: RPG.EquipItem, oldItem: RPG.EquipItem): boolean;
+    changeEquipById(etypeId: number, itemId: number): void;
+    isEquipped(item: RPG.EquipItem): boolean;
+    discardEquip(item: RPG.EquipItem): void;
+    releaseUnequippableItems(forcing: boolean): void;
+    clearEquipments(): void;
+    optimizeEquipments(): void;
+    bestEquipItem(slotId: number): void;
+    calcEquipItemPerformance(item: RPG.EquipItem): number;
+    isSkillWtypeOk(skill: RPG.Skill): boolean;
+    isWtypeEquipped(wtypeId: number): boolean;
+    refresh(): void;
+    friendsUnit(): Game_Party;
+    opponentsUnit(): Game_Troop;
+    isBattleMember(): boolean;
+    isFormationChangeOk(): boolean;
+    currentClass(): RPG.Class;
+    isClass(gameClass: RPG.Class): boolean;
+    skills(): Array<RPG.Skill>;
+    usableSkills(): Array<RPG.Skill>;
+    attackElements(): Array<number>;
+    hasNoWeapons(): boolean;
+    bareHandsElementId(): number;
+    attackAnimationId1(): number;
+    attackAnimationId2(): number;
+    bareHandsAnimationId(): number;
+    changeExp(exp: number, show: boolean): void;
+    levelUp(): void;
+    levelDown(): void;
+    findNewSkills(lastSkills: Array<RPG.Skill>): Array<RPG.Skill>;
+    displayLevelUp(newSkills: Array<RPG.Skill>): void;
+    gainExp(exp: number): void;
+    finalExpRate(): number;
+    benchMembersExpRate(): number;
+    shouldDisplayLevelUp(): boolean;
+    changeLevel(level: number, show: boolean): void;
+    learnSkill(skillId: number): void;
+    forgetSkill(skillId: number): void;
+    isLearnedSkill(skillId: number): boolean;
+    changeClass(classId: number, keepExp: boolean): void;
+    setCharacterImage(characterName: string, characterIndex: number): void;
+    setFaceImage(faceName: string, faceIndex: number): void;
+    setBattlerImage(battlerName: string): void;
+    isSpriteVisible(): boolean;
+    startAnimation(animationId: number, mirror: boolean, delay: number): void;
+    performAttack(): void;
+    performVictory(): void;
+    performEscape(): void;
+    makeActionList(): Array<Game_Action>;
+    makeAutoBattleActions(): void;
+    makeConfusionActions(): void;
+    onPlayerWalk(): void;
+    updateStateSteps(state: RPG.State): void;
+    showAddedStates(): void;
+    showRemovedStates(): void;
+    stepsForTurn(): number;
+    turnEndOnMap(): void;
+    checkFloorEffect(): void;
+    executeFloorDamage(): void;
+    basicFloorDamage(): number;
+    maxFloorDamage(): number;
+    performMapDamage(): void;
+    clearActions(): void;
+    inputtingAction(): Game_Action;
+    selectNextCommand(): boolean;
+    selectPreviousCommand(): boolean;
+    lastMenuSkill(): RPG.Skill;
+    setLastMenuSkill(skill: RPG.Skill): void;
+    lastBattleSkill(): RPG.Skill;
+    setLastBattleSkill(skill: RPG.Skill): void;
+    lastCommandSymbol(): string;
+    setLastCommandSymbol(symbol: string): void;
+}
+
+/**
+ * -----------------------------------------------------------------------------
+ * Game_Enemy
+ *
+ * The game object declare class for an enemy.
+ * @class Game_Enemy
+ */
+declare class Game_Enemy extends Game_Battler {
+    protected _enemyId: number;
+    protected _letter: string;
+    protected _plural: boolean;
+    protected _screenX: number;
+    protected _screenY: number;
+
+    constructor(enemyId: number, x: number, y: number);
+
+    initMembers(): void;
+    setup(enemyId: number, x: number, y: number): void;
+    friendsUnit(): Game_Troop;
+    opponentsUnit(): Game_Party;
+    isBattleMember(): boolean;
+    enemyId(): number;
+    enemy(): RPG.Enemy;
+    exp(): void;
+    gold(): void;
+    makeDropItems(): Array<RPG.BaseItem>;
+    dropItemRate(): number;
+    itemObject(kind: number, dataId: number): void;
+    isSpriteVisible(): boolean;
+    screenX(): number;
+    screenY(): number;
+    battlerHue(): number;
+    originalName(): string;
+    isLetterEmpty(): boolean;
+    setLetter(letter: string): void;
+    setPlural(plural: boolean): void;
+    transform(enemyId: number): void;
+    meetsCondition(action: RPG.Enemy.Action): boolean;
+    meetsTurnCondition(param1: number, param2: number): boolean;
+    meetsHpCondition(param1: number, param2: number): boolean;
+    meetsMpCondition(param1: number, param2: number): boolean;
+    meetsStateCondition(param: number): boolean;
+    meetsPartyLevelCondition(param: number): boolean;
+    meetsSwitchCondition(param: number): boolean;
+    isActionValid(action: RPG.Enemy.Action): boolean;
+    selectAction(actionList: Array<RPG.Enemy.Action>, ratingZero: number): RPG.Enemy.Action;
+    selectAllActions(actionList: Array<RPG.Enemy.Action>): void;
+}
+
+
+
+/**
+ * Wrapper class for Game_Actor.
+ * This is the array form.
+ * @class Game_Actors
+ */
+declare class Game_Actors {
+    protected _data: Array<Game_Actor>;
+
+    actor(actorId: number): Game_Actor;
+}
+
+/**
+ * Superclass of Game_Party & Game_Troop
+ * 
+ * @class Game_Unit
+ */
+declare class Game_Unit {
+    protected _inBattle: boolean;
+
+    inBattle(): boolean;
+    members(): Array<Game_Battler>;
+    aliveMembers(): Array<Game_Battler>;
+    deadMembers(): Array<Game_Battler>;
+    movableMembers(): Array<Game_Battler>;
+    clearActions(): void;
+    agility(): number;
+    tgrSum(): number;
+    randomTarget(): Game_Battler;
+    randomDeadTarget(): Game_Battler;
+    smoothTarget(index: number): Game_Battler;
+    smoothDeadTarget(index: number): Game_Battler;
+    clearResults(): void;
+    onBattleStart(): void;
+    onBattleEnd(): void;
+    makeActions(): void;
+    select(activeMember: Game_Battler): void;
+    isAllDead(): boolean;
+    substituteBattler(): Game_Battler;
+}
+
