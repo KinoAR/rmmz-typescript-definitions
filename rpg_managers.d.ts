@@ -33,25 +33,31 @@ declare var $dataMapInfos: Array<RPG.MapInfo>;
 declare var $dataMap: RPG.Map;
 /** @global RPGMakerMV Temporary game data; not saved with the game. */
 declare var $gameTemp: Game_Temp;
-/** @global RPGMakerMV Game System data; saved with the game. */
+/** @global RPGMakerMV Game System data; saved with the game.
+ * @type {Game_Temp}
+*/
 declare var $gameSystem: Game_System;
 /** @global RPGMakerMV Game Screen; contains properties and methods
  * for adjusting the game screen.
+ * @type {Game_Screen}
  */
 declare var $gameScreen: Game_Screen;
 declare var $gameTimer: Game_Timer;
 /** @global RPGMakerMV Game Message; contains properties and methods
  * for displaying messages in the game message window. 
+ * @type {Game_Message}
 */
 declare var $gameMessage: Game_Message;
 /** @global RPGMakerMV Game Switches; contains properties and methods
  * for modifying in game switches while the game is running.
  * These are boolean values: true or false.
+ * @type {Game_Switches}
  */
 declare var $gameSwitches: Game_Switches;
 /** @global RPGMakerMV Game Variables; contains properties and methods
  * for modifying the values of game variables.
  * The variables can contain anything.
+ * @type {Game_Variables}
  */
 declare var $gameVariables: Game_Variables;
 declare var $gameSelfSwitches: Game_SelfSwitches;
@@ -59,21 +65,25 @@ declare var $gameActors: Game_Actors;
 /** @global RPGmakerMV Game Party; contains properties and methods
  * for interacting with the game party. Some of the methods include
  * number of party members, etc.
+ * @type {Game_Party}
  */
 declare var $gameParty: Game_Party;
 /** @global RPGMakerMV Game Troop; contains properties and methods
  * for interacting with the game troops. Some of the methods include
  * enemy data, enemy names, etc.
+ * @type {Game_Troop}
  */
 declare var $gameTroop: Game_Troop;
 /** @global RPGMakerMV Game Map; contains properties and methods
  * for interacting with the game map. Some of these methods include
  * interacting with the map's game_interpreter, and event information.
+ * @type {Game_Map}
  */
 declare var $gameMap: Game_Map;
 /** @global RPGMakerMV Game Player; contains properties and methods
  * for interacting with the game player. Some of these methods
  * include interacting with the player's position and move route.
+ * @type {Game_Player}
  */
 declare var $gamePlayer: Game_Player;
 declare var $testEvent: Array<RPG.EventCommand>;
