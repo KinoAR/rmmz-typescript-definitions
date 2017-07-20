@@ -1,34 +1,80 @@
 //=============================================================================
 // rpg_managers.js v1.5.0
 //=============================================================================
-
+/** @global RPGMakerMV Actor data. */
 declare var $dataActors: Array<RPG.Actor>;
+/** @global RPGMakerMV Class data. */
 declare var $dataClasses: Array<RPG.Class>;
+/** @global RPGMakerMV Skill data. */
 declare var $dataSkills: Array<RPG.Skill>;
+/** @global RPGMakerMV Item data. */
 declare var $dataItems: Array<RPG.Item>;
+/** @global RPGMakerMV Weapon data. */
 declare var $dataWeapons: Array<RPG.Weapon>;
+/** @global RPGMakerMV Armor data. */
 declare var $dataArmors: Array<RPG.Armor>;
+/** @global RPGMakerMV Enemy data. */
 declare var $dataEnemies: Array<RPG.Enemy>;
+/** @global RPGMakerMV Troop data. */
 declare var $dataTroops: Array<RPG.Troop>;
+/** @global RPGMakerMV State data. */
 declare var $dataStates: Array<RPG.State>;
+/** @global RPGMakerMV Animation data. */
 declare var $dataAnimations: Array<RPG.Animation>;
+/** @global RPGMakerMV Tileset data. */
 declare var $dataTilesets: Array<RPG.Tileset>;
+/** @global RPGMakerMV CommonEvent data. */
 declare var $dataCommonEvents: Array<RPG.CommonEvent>;
+/** @global RPGMakerMV System data. */
 declare var $dataSystem: RPG.System;
+/** @global RPGMakerMV MapInfo data. */
 declare var $dataMapInfos: Array<RPG.MapInfo>;
+/** @global RPGMakerMV Map data for the current map. */
 declare var $dataMap: RPG.Map;
+/** @global RPGMakerMV Temporary game data; not saved with the game. */
 declare var $gameTemp: Game_Temp;
+/** @global RPGMakerMV Game System data; saved with the game. */
 declare var $gameSystem: Game_System;
+/** @global RPGMakerMV Game Screen; contains properties and methods
+ * for adjusting the game screen.
+ */
 declare var $gameScreen: Game_Screen;
 declare var $gameTimer: Game_Timer;
+/** @global RPGMakerMV Game Message; contains properties and methods
+ * for displaying messages in the game message window. 
+*/
 declare var $gameMessage: Game_Message;
+/** @global RPGMakerMV Game Switches; contains properties and methods
+ * for modifying in game switches while the game is running.
+ * These are boolean values: true or false.
+ */
 declare var $gameSwitches: Game_Switches;
+/** @global RPGMakerMV Game Variables; contains properties and methods
+ * for modifying the values of game variables.
+ * The variables can contain anything.
+ */
 declare var $gameVariables: Game_Variables;
 declare var $gameSelfSwitches: Game_SelfSwitches;
 declare var $gameActors: Game_Actors;
+/** @global RPGmakerMV Game Party; contains properties and methods
+ * for interacting with the game party. Some of the methods include
+ * number of party members, etc.
+ */
 declare var $gameParty: Game_Party;
+/** @global RPGMakerMV Game Troop; contains properties and methods
+ * for interacting with the game troops. Some of the methods include
+ * enemy data, enemy names, etc.
+ */
 declare var $gameTroop: Game_Troop;
+/** @global RPGMakerMV Game Map; contains properties and methods
+ * for interacting with the game map. Some of these methods include
+ * interacting with the map's game_interpreter, and event information.
+ */
 declare var $gameMap: Game_Map;
+/** @global RPGMakerMV Game Player; contains properties and methods
+ * for interacting with the game player. Some of these methods
+ * include interacting with the player's position and move route.
+ */
 declare var $gamePlayer: Game_Player;
 declare var $testEvent: Array<RPG.EventCommand>;
 
@@ -112,8 +158,23 @@ declare class DataManager {
    * @memberof DataManager
    */
   static maxSavefiles(): number;
+  /**
+   * Saves the RPGMakerMV game given a savefileId.
+   * Returns true if successful.
+   * @static
+   * @param {number} savefileId 
+   * @returns {boolean} 
+   * @memberof DataManager
+   */
   static saveGame(savefileId: number): boolean;
   static loadGame(savefileId: number): boolean;
+  /**
+   * Returns the last accessed save fileId upon
+   * saving or loading the game.
+   * @static
+   * @returns {number} 
+   * @memberof DataManager
+   */
   static lastAccessedSavefileId(): number;
   static saveGameWithoutRescue(savefileId: number): boolean;
   static loadGameWithoutRescue(savefileId: number): boolean;
@@ -386,26 +447,192 @@ declare var ConfigManager: ConfigManagerStatic;
 interface ImageManagerStatic {
     cache: CacheMap;
 
+    /**
+     * Loads a Bitmap object from the 'img/animations/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadAnimation(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/battlebacks1/' folder
+     *  and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadBattleback1(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/battlebacks2/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadBattleback2(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/enemies/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadEnemy(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/characters/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadCharacter(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/faces/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadFace(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/parallaxes/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadParallax(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/pictures/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadPicture(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/sv_actors/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadSvActor(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/sv_enemies/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadSvEnemy(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from 'img/system/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadSystem(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/tilesets/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadTileset(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/titles1/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadTitle1(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/titles2/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadTitle2(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from any folder and returns it.
+     * 
+     * @param {string} folder 
+     * @param {string} filename 
+     * @param {number} hue 
+     * @param {boolean} smooth 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadBitmap(folder: string, filename: string, hue: number, smooth: boolean): Bitmap;
+    /**
+     * Loads an empty Bitmap object and returns it.
+     * 
+     * @param {string} path 
+     * @param {number} hue 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadEmptyBitmap(path: string, hue: number): Bitmap;
+    /**
+     * Loads a Bitmap object given a path
+     * and returns it.
+     * @param {string} path 
+     * @param {number} hue 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadNormalBitmap(path: string, hue: number): Bitmap;
+    /**
+     * Clears the image cache in RPGMakerMV.
+     * 
+     * @memberof ImageManagerStatic
+     */
     clear(): void;
+    /**
+     * Returns true if the image cache
+     * is ready.
+     * @returns {boolean} 
+     * @memberof ImageManagerStatic
+     */
     isReady(): boolean;
+    /**
+     * Returns true if the given filename
+     * is an object character. Must contain
+     * a  '!' in the file name to be an
+     * object character.
+     * @param {string} filename 
+     * @returns {boolean} 
+     * @memberof ImageManagerStatic
+     */
     isObjectCharacter(filename: string): boolean;
+    /**
+     * Returns true if the given filename is
+     * a large character. Must contain a '$'
+     * in the file name to be a large character.
+     * @param {string} filename 
+     * @returns {boolean} 
+     * @memberof ImageManagerStatic
+     */
     isBigCharacter(filename: string): boolean;
     isZeroParallax(filename: string): boolean;
 }
