@@ -110,7 +110,7 @@ declare class Window_Base {
   translucentOpacity(): number;
   changeTextColor(color: string): void;
   changePaintOpacity(enabled: boolean): void;
-  drawText(x: string | number, y: number, maxWidth: number, align: string): void;
+  drawText(text: string | number, x: number, y: number, maxWidth: number, align: string): void;
   textWidth(text: string): number;
   drawTextEx(text: string, x: number, y: number): number;
   convertEscapeCharacters(text: string): string;

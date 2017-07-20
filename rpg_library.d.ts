@@ -909,6 +909,22 @@ declare namespace RPG {
          * The adjustment value for the battler graphic's hue (0..360).
          */
         battlerHue: number;
+      
+      /**
+       * The name of the enemy in the database.
+       * 
+       * @type {string}
+       * @memberof Enemy
+       */
+        name: string
+      
+      /**
+       * The ID of the enemy in the database.
+       * 
+       * @type {number}
+       * @memberof Enemy
+       */
+      id:number 
 
         /**
          * Parameters. An array of integers using the following IDs as subscripts:
