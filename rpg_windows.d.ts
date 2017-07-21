@@ -14,26 +14,111 @@
  * @extends {Window}
  */
 declare class Window_Base {
+  /**
+   * The standard icon width;
+   * default is 32.
+   * @protected
+   * @static
+   * @type {number}
+   * @memberof Window_Base
+   */
   protected static _iconWidth: number;
+  /**
+   * The standard icon height;
+   * default is 32.
+   * @protected
+   * @static
+   * @type {number}
+   * @memberof Window_Base
+   */
   protected static _iconHeight: number;
+  /**
+   * The standard face width;
+   * default is 144.
+   * @protected
+   * @static
+   * @type {number}
+   * @memberof Window_Base
+   */
   protected static _faceWidth: number;
+  /**
+   * The standard face height;
+   * default is 144.
+   * @protected
+   * @static
+   * @type {number}
+   * @memberof Window_Base
+   */
   protected static _faceHeight: number;
+  /**
+   * The opening property; determines if
+   * the window is opening.
+   * @protected
+   * @type {boolean}
+   * @memberof Window_Base
+   */
   protected _opening: boolean;
+  /**
+   * The closing property; determines if
+   * the window is closing.
+   * @protected
+   * @type {boolean}
+   * @memberof Window_Base
+   */
   protected _closing: boolean;
 
+  /**
+   * Creates an instance of Window_Base.
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @param {number} height 
+   * @memberof Window_Base
+   */
   constructor(x: number, y: number, width: number, height: number);
 
   /**
-   * Returns the standard line height of the current window
-   * 
+   * Returns the standard line height of the current window;
+   * default is 36.
    * @returns {number} 
    * @memberof Window_Base
    */
   lineHeight(): number;
+  /**
+   * Returns the standard font face of the 
+   * game based on what language the game is in.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   standardFontFace(): string;
+  /**
+   * Returns the standard font size of the text
+   * in window; default is 28.
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   standardFontSize(): number;
+  /**
+   * Returns the standard padding of the window;
+   * default is 18.
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   standardPadding(): number;
+  /**
+   * Returns the text padding of the window;
+   * default is 6.
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   textPadding(): number;
+  /**
+   * Returns the standard back opacity of the window; this is the
+   * opacity of the area behind the window's text content.
+   * Default is 192.
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   standardBackOpacity(): number;
   /**
    * Loads the window skin from the img/system directory.
@@ -41,7 +126,17 @@ declare class Window_Base {
    * @memberof Window_Base
    */
   loadWindowSkin(): void;
+  /**
+   * Updates the window padding based on the 
+   * standardPadding method.
+   * @memberof Window_Base
+   */
   updatePadding(): void;
+  /**
+   * Updates the back opacity of the window
+   * based on the standardBackOpacity method.
+   * @memberof Window_Base
+   */
   updateBackOpacity(): void;
   /**
    * Returns the inner content width of the window.
@@ -57,13 +152,59 @@ declare class Window_Base {
    * @memberof Window_Base
    */
   contentsHeight(): number;
-  fittingHeight(numLine: number): number;
+  /**
+   * Returns the fitting height given a number of lines based on
+   * the line height plus standard padding of the window.
+   * Default formula: numLines * lineHeight + standardPadding * 2
+   *
+   * @param {number} numLines 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
+  fittingHeight(numLines: number): number;
+  /**
+   * Updates the tone of the window based on the
+   * game system window tone defined in the database.
+   * @memberof Window_Base
+   */
   updateTone(): void;
+  /**
+   * Creates the contents of the window; this is the area
+   * of the window which text is drawn to.
+   * @memberof Window_Base
+   */
   createContents(): void;
+  /**
+   * Resets the font settings of the window back to the
+   * default.
+   * @memberof Window_Base
+   */
   resetFontSettings(): void;
+  /**
+   * Resets the text color of the window back to the
+   * default.
+   * @memberof Window_Base
+   */
   resetTextColor(): void;
+  /**
+   * The update method of the window; this is
+   * run every frame to do logic processing for the window.
+   * @memberof Window_Base
+   */
   update(): void;
+  /**
+   * Updates the openness of the window when the
+   * _opening property is set to true.
+   * Openness is increased.
+   * @memberof Window_Base
+   */
   updateOpen(): void;
+  /**
+   * Updates the openness of the window when the 
+   * _closing property is set to true.
+   * Openness is decreased.
+   * @memberof Window_Base
+   */
   updateClose(): void;
   /**
    * Opens the window.
@@ -77,87 +218,593 @@ declare class Window_Base {
    * @memberof Window_Base
    */
   close(): void;
+  /**
+   * Returns true if the window is currently opening.
+   *
+   * @returns {boolean} 
+   * @memberof Window_Base
+   */
   isOpening(): boolean;
+  /**
+   * Returns true if the window is currently closing.
+   * 
+   * @returns {boolean} 
+   * @memberof Window_Base
+   */
   isClosing(): boolean;
+  /**
+   * Shows the window, making it visible.
+   * 
+   * @memberof Window_Base
+   */
   show(): void;
+  /**
+   * Hides the window, making it invisible;
+   * the window is not closed when hidden.
+   * 
+   * @memberof Window_Base
+   */
   hide(): void;
+  /**
+   * Activates the window, allowing it to be processed
+   * and to update.
+   * @memberof Window_Base
+   */
   activate(): void;
+  /**
+   * Deactives the window, preventing further processing.
+   * 
+   * @memberof Window_Base
+   */
   deactivate(): void;
   /**
    * Returns a text color given a numbered index
-   * 
+   * as a css color string; this index maps
+   * directly to the img/system/window.png colors
+   * by default.
    * @param {number} n 
    * @returns {*} 
    * @memberof Window_Base
    */
-  textColor(n: number): any;
-  normalColor(): any;
-  systemColor(): any;
-  crisisColor(): any;
-  deathColor(): any;
-  gaugeBackColor(): any;
-  hpGaugeColor1(): any;
-  hpGaugeColor2(): any;
-  mpGaugeColor1(): any;
-  mpGaugeColor2(): any;
-  mpCostColor(): any;
-  powerUpColor(): any;
-  powerDownColor(): any;
-  tpGaugeColor1(): any;
-  tpGaugeColor2(): any;
-  tpCostColor(): any;
-  pendingColor(): any;
+  textColor(n: number): string;
+  /**
+   * Returns the normal color as a css
+   * color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  normalColor(): string;
+  /**
+   * Returns the system color as a
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  systemColor(): string;
+  /**
+   * Returns the crisis color as a 
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  crisisColor(): string;
+  /**
+   * Returns the death color as a 
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  deathColor(): string;
+  /**
+   * Returns the gauage back color as 
+   * a css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  gaugeBackColor(): string;
+  /**
+   * Returns the hp gauge color 1 
+   * as a css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  hpGaugeColor1(): string;
+  /**
+   * Returns the hp gauge color 2 
+   * as a css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  hpGaugeColor2(): string;
+  /**
+   * Returns the mp gauge color 1
+   * as a css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  mpGaugeColor1(): string;
+  /**
+   * Returns the mp gauge color 2
+   * as a css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  mpGaugeColor2(): string;
+  /**
+   * Returns the mp cost color as a
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  mpCostColor(): string;
+  /**
+   * Returns the power up color as a
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  powerUpColor(): string;
+  /**
+   * Returns the power down color as a 
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  powerDownColor(): string;
+  /**
+   * Returns the tp gauge color 1 as a 
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  tpGaugeColor1(): string;
+  /**
+   * Returns tp gauge color 2 as a
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  tpGaugeColor2(): string;
+  /**
+   * Returns the tp cost color as a 
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  tpCostColor(): string;
+  /**
+   * Returns the pending color as a
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  pendingColor(): string;
+  /**
+   * Returns the translucentOpacity for the window;
+   * The default is 160.
+   * 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   translucentOpacity(): number;
+  /**
+   * Changes the text color property given a css color string.
+   * 
+   * @param {string} color 
+   * @memberof Window_Base
+   */
   changeTextColor(color: string): void;
+  /**
+   * Changes the paintOpacity (the opacity of the text drawn to the window);
+   * if true the opacity is set to 255, otherwise the opacity is set to 160.
+   * @param {boolean} enabled 
+   * @memberof Window_Base
+   */
   changePaintOpacity(enabled: boolean): void;
+  /**
+   * Given text or a number, draws the content to the window's contents
+   * layer at the specified x and y coordinate within the max width.
+   * The text content can also be aligned with the align property.
+   * The possible alignments are: "left", "center", "right".
+   * @param {(string | number)} text 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} maxWidth 
+   * @param {string} align 
+   * @memberof Window_Base
+   */
   drawText(text: string | number, x: number, y: number, maxWidth: number, align: string): void;
+  /**
+   * Calculates the width of a text string and
+   * returns a number.
+   * @param {string} text 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   textWidth(text: string): number;
+  /**
+   * Draws text with text codes included; this will draw
+   * icons, increase text height, and more.
+   * @param {string} text 
+   * @param {number} x 
+   * @param {number} y 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   drawTextEx(text: string, x: number, y: number): number;
+  /**
+   * Converts the escape characters and returns the text content
+   * after processing the characters.
+   * @param {string} text 
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   convertEscapeCharacters(text: string): string;
+  /**
+   * Returns the actor name given an index;
+   * the index starts from 1.
+   * @param {number} actorIndex 
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   actorName(actorIndex: number): string;
+  /**
+   * Returns a party member name given an index;
+   * the index starts from 1.
+   * @param {number} partyMemberIndex 
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   partyMemberName(partyMemberIndex: number): string;
-  processCharacter(textState: any): void;
-  processNormalCharacter(textState: any): void;
-  processNewLine(textState: any): void;
-  processNewPage(textState: any): void;
-  obtainEscapeCode(textState: any): string;
-  obtainEscapeParam(textState: any): number | string;
-  processEscapeCharacter(code: string, textState: any): void;
-  processDrawIcon(iconIndex: number, textState: any): void;
+  /**
+   * Process each character in the text when drawTextEx
+   * is used to draw text.
+   * @param {MV.TextState} textState 
+   * @memberof Window_Base
+   */
+  processCharacter(textState: MV.TextState): void;
+  /**
+   * Processes the normal characters in the text
+   * when drawTextEx is used to draw text.
+   * Normal characters are letters and numbers.
+   * @param {MV.TextState} textState 
+   * @memberof Window_Base
+   */
+  processNormalCharacter(textState: MV.TextState): void;
+  /**
+   * Processes new line when drawTextEx is used to draw text.
+   * 
+   * @param {MV.TextState} textState 
+   * @memberof Window_Base
+   */
+  processNewLine(textState: MV.TextState): void;
+  /**
+   * Processes new page when drawTexttEx is used to draw text.
+   * 
+   * @param {MV.TextState} textState 
+   * @memberof Window_Base
+   */
+  processNewPage(textState: MV.TextState): void;
+  obtainEscapeCode(textState: MV.TextState): string;
+  /**
+   * Obtains the escape parameters from text codes in the text state
+   * when drawTextEx is used to draw text.
+   * @param {MV.TextState} textState 
+   * @returns {(number | string)} 
+   * @memberof Window_Base
+   */
+  obtainEscapeParam(textState: MV.TextState): number | string;
+  /**
+   * Processes escape characters when drawTextEx is used 
+   * for drawing text.
+   * @param {string} code 
+   * @param {MV.TextState} textState 
+   * @memberof Window_Base
+   */
+  processEscapeCharacter(code: string, textState: MV.TextState): void;
+  /**
+   * Processes drawing an icon when drawTextEx is used for
+   * drawing text.
+   * @param {number} iconIndex 
+   * @param {MV.TextState} textState 
+   * @memberof Window_Base
+   */
+  processDrawIcon(iconIndex: number, textState: MV.TextState): void;
+  /**
+   * Makes the font bigger by a value of 12.
+   * 
+   * @memberof Window_Base
+   */
   makeFontBigger(): void;
+  /**
+   * Makes the font smaller by a value of 12.
+   * 
+   * @memberof Window_Base
+   */
   makeFontSmaller(): void;
+  /**
+   * Calculates the text height of the textState (when using drawTextEx);
+   * if all is set to true, all lines of text are calculated, otherwise
+   * only a single line is processed.
+   * @param {MV.TextState} textState 
+   * @param {boolean} all 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   calcTextHeight(textState: any, all: boolean): number;
+  /**
+   * Draws an icon given the specified iconIndex at the specified
+   * x and y coordinates. The Width and Height of the icon is based on the
+   * _iconWidth and _iconHeight properties.
+   * @param {number} iconIndex 
+   * @param {number} x 
+   * @param {number} y 
+   * @memberof Window_Base
+   */
   drawIcon(iconIndex: number, x: number, y: number): void;
   drawFace(faceName: string, faceIndex: number, x: number, y: number, width: number, height: number): void;
+  /**
+   * Draws a character (map sprites) at the specified x and y coordinate.
+   * CharacterName refers to character spritesheet, and characterIndex refers
+   * to the characterIndex on the spritesheet.
+   * @param {string} characterName 
+   * @param {number} characterIndex 
+   * @param {number} x 
+   * @param {number} y 
+   * @memberof Window_Base
+   */
   drawCharacter(characterName: string, characterIndex: number, x: number, y: number): void;
+  /**
+   * Draws a gauge at the specified x and y coordinates within the given width.
+   * Color1 and Color2 represent the gradient as css color strings of the gauge.
+   * 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @param {number} rate 
+   * @param {string} color1 
+   * @param {string} color2 
+   * @memberof Window_Base
+   */
   drawGauge(x: number, y: number, width: number, rate: number, color1: string, color2: string);
+  /**
+   * Returns the hp color as a css string.
+   * 
+   * @param {Game_Actor} actor 
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   hpColor(actor: Game_Actor): string;
+  /**
+   * Returns the mp color as a css color string.
+   * 
+   * @param {Game_Actor} actor 
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   mpColor(actor: Game_Actor): string;
+  /**
+   * Returns the tp color as a css color string.
+   * 
+   * @param {Game_Actor} actor 
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   tpColor(actor: Game_Actor): string;
   drawActorCharacter(actor: Game_Actor, x: number, y: number): void;
+  /**
+   * Draws the actor face at the specified x and y coordinates within
+   * the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @param {number} height 
+   * @memberof Window_Base
+   */
   drawActorFace(actor: Game_Actor, x: number, y: number, width: number, height: number): void;
+  /**
+   * Draws the actor name at the specified x and y coordinates within
+   * the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorName(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws the actor class at the specified x and y coordinates
+   * within the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorClass(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws the actor nickname at the specified x and y coordinates
+   * within the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorNickname(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws the actor level at the specified x and y coordinates.
+   * 
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @memberof Window_Base
+   */
   drawActorLevel(actor: Game_Actor, x: number, y: number);
+  /**
+   * Draws the actor icons at the specified x and y coordinates
+   * within the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorIcons(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws the current and max number at the specified x and y coordinate
+   * within the given width. Color1 represents the current number and color2
+   * represents the max number when the text is drawn.
+   * @param {number} current 
+   * @param {number} max 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @param {string} color1 
+   * @param {string} color2 
+   * @memberof Window_Base
+   */
   drawCurrentAndMax(current: number, max: number, x: number, y: number, width: number, color1: string, color2: string): void;
+  /**
+   * Draws the actor hp at the specified x and y coordinates within
+   * the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorHp(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws the actor mp at the specified x and y coordinates within
+   * the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorMp(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws the actor tp at the specified x and y coordinates within the
+   * given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorTp(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws a simple status for the game actor passed into the method at the
+   * specified x and y coordinates within the given width.
+   * 
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorSimpleStatus(actor: Game_Actor, x: number, y: number, width: number): void;
-  drawItemName(item: any, x: number, y: number, width: number): void;
+  /**
+   * Draws the item name at the specified x and y coordinates within
+   * the given width.
+   * @param {RPG.BaseItem} item 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
+  drawItemName(item: RPG.BaseItem, x: number, y: number, width: number): void;
+  /**
+   * Draws the currency value given at the specified x and y coordinates within
+   * the width given. Useful if you want to write your own custom currency value.
+   * @param {number} value 
+   * @param {string} unit 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawCurrencyValue(value: number, unit: string, x: number, y: number, width: number): void;
+  /**
+   * Changes the text color based on the powerUpColor, powerDownColor
+   * and normal color. powerUpColor is any number greater than 0, powerDownColor
+   * is any color less than 0, otherwise normal color is returned.
+   * @param {number} change 
+   * @memberof Window_Base
+   */
   paramchangeTextColor(change: number): void;
+  /**
+   * Sets the background type of the window.
+   * 0 is 255 window opacity (standard).
+   * 1 is the window with background dimmer.
+   * Any other number changes the opacity
+   * to 0.
+   * @param {number} type 
+   * @memberof Window_Base
+   */
   setBackgroundType(type: number): void;
+  /**
+   * Shows the background dimmer sprite.
+   * 
+   * @memberof Window_Base
+   */
   showBackgroundDimmer(): void;
+  /**
+   * Hides the background dimmer sprite.
+   * 
+   * @memberof Window_Base
+   */
   hideBackgroundDimmer(): void;
+  /**
+   * Updates the background dimmer sprite opacity based on the openness
+   * of the window.
+   * @memberof Window_Base
+   */
   updateBackgroundDimmer(): void;
+  /**
+   * Refreshes the bitmap attached to the dimmer sprite
+   * based on the window dimensions.
+   * @memberof Window_Base
+   */
   refreshDimmerBitmap(): void;
+  /**
+   * Color 1 of the dimmer sprite bitmap.
+   * for the gradient.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   dimColor1(): string;
+  /**
+   * Color 2 of the dimmer sprite bitmap
+   * for the gradient.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   dimColor2(): string;
+  /**
+   * Returns the x coordinate of the mouse to
+   * a local window x coordinate.
+   * @param {number} x 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   canvasToLocalX(x:number): number;
+  /**
+   * Returns the y coordinate of the mouse
+   * to a local window y coordinate.
+   * @param {number} y 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   canvasToLocalY(y: number): number;
+  /**
+   * Reverses the face images of the 
+   * game party members.
+   * @memberof Window_Base
+   */
   reserveFaceImages(): void;
 }
 
