@@ -51,9 +51,14 @@ declare class Scene_Base extends Stage {
      * @memberof Scene_Base
      */
     terminate(): void;
+    /**
+     * Creates the window layer on the current scene
+     * for displaying any and all windows.
+     * @memberof Scene_Base
+     */
     createWindowLayer(): void;
     /**
-    * Add the children window to the windowLayer processing.
+    * Adds a child window to the windowLayer process.
     * 
     * @method addWindow
     * @param {Window_Base}

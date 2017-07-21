@@ -7,15 +7,42 @@
 declare class Sprite_Base extends Sprite {
     protected _animationSprites: Array<Sprite_Animation>;
     protected _effectTarget: Sprite_Base;
+    /**
+     * Property determining the sprite's visibility.
+     * 
+     * @protected
+     * @type {boolean}
+     * @memberof Sprite_Base
+     */
     protected _hiding: boolean;
 
     constructor();
 
+    /**
+     * Hides the sprite.
+     * 
+     * @memberof Sprite_Base
+     */
     hide(): void;
+    /**
+     * Shows the sprite.
+     * 
+     * @memberof Sprite_Base
+     */
     show(): void;
+    /**
+     * Updadtes the visibility of the sprite based
+     * on the _hiding property.
+     * @memberof Sprite_Base
+     */
     updateVisibility(): void;
     updateAnimationSprites(): void;
     startAnimation(animation: RPG.Animation, mirror: boolean, delay: number): void;
+    /**
+     * Returns true if an animation is currently playing.
+     * @returns {boolean} 
+     * @memberof Sprite_Base
+     */
     isAnimationPlaying(): boolean;
 }
 
@@ -37,9 +64,29 @@ declare class Sprite_Button extends Sprite {
     setClickHandler(method: () => void): void;
     callClickHandler(): void;
     processTouch(): void;
+    /**
+     * Returns true if the sprite button
+     * is currently active.
+     * @returns {boolean} 
+     * @memberof Sprite_Button
+     */
     isActive(): boolean;
     isButtonTouched(): boolean;
+    /**
+     * Changes the x coordinate of the screen to
+     * local sprite x coordinate.
+     * @param {number} x 
+     * @returns {number} 
+     * @memberof Sprite_Button
+     */
     canvasToLocalX(x: number): number;
+    /**
+     * Changes the y coordinate of the screen
+     * to local sprite y coordinate.
+     * @param {number} y 
+     * @returns {number} 
+     * @memberof Sprite_Button
+     */
     canvasToLocalY(y: number): number;
 }
 
@@ -87,6 +134,12 @@ declare class Sprite_Character extends Sprite_Base {
     startBalloon(): void;
     updateBalloon(): void;
     endBalloon(): void;
+    /**
+     * Returns true if a balloon animation
+     * is playing on the character. 
+     * @returns {boolean} 
+     * @memberof Sprite_Character
+     */
     isBalloonPlaying(): boolean;
 }
 
@@ -128,6 +181,12 @@ declare class Sprite_Battler extends Sprite_Base {
     startMove(x: number, y: number, duration: number): void;
     onMoveEnd(): void;
     isEffecting(): boolean;
+    /**
+     * Returns true if the sprite for the battler
+     * is moving.
+     * @returns {boolean} 
+     * @memberof Sprite_Battler
+     */
     isMoving(): boolean;
     inHomePosition(): boolean;
 }
