@@ -3,11 +3,8 @@
 // Definitions by: Roman Nikitin <https://github.com/M0ns1gn0r>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-declare var LZString: LZString.LZStringStatic;
-export = LZString;
-export as namespace LZString;
+declare var LZString: LZStringStatic;
 
-declare namespace LZString {
     /**
      * LZ-based compression algorithm for JavaScript.
      */
@@ -90,4 +87,4 @@ declare namespace LZString {
          */
         decompressFromUint8Array(compressed: Uint8Array): string;
     }
-}
+

@@ -41,3 +41,4 @@ declare class FPSMeter {
 	public show(): FPSMeter;
 	public destroy() : void;
 }
+
