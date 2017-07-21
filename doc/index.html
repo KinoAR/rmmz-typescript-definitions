@@ -1,0 +1,785 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>RPGMakerMV Library</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">RPGMakerMV Library</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> RPGMakerMV Library</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="rmmv-typescript-definitions">RMMV-Typescript Definitions</h1>
+				<p>A repository containing typescript definitions for public use in RPGMakerMV.</p>
+				<h2 id="how-to-use-vscode-">How To Use (VSCode):</h2>
+				<ol>
+					<li>Run the concat.sh file within the folder.</li>
+					<li>Drop the *.d.ts file directly into the folder with your jsconfig.json file</li>
+					<li>Enjoy</li>
+				</ol>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Internals</span>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/lzstring.html">LZString</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-not-exported">
+						<a href="modules/mv.html">MV</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-not-exported">
+						<a href="modules/rpg.html">RPG</a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Externals</span>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external tsd-is-not-exported">
+						<a href="modules/_pixi_js_.html">"pixi.js"</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/pixi.html">PIXI</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external tsd-is-not-exported">
+						<a href="modules/pixi.html">pixi</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/bitmap.html" class="tsd-kind-icon">Bitmap</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/cacheentry.html" class="tsd-kind-icon">Cache<wbr>Entry</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/cachemap.html" class="tsd-kind-icon">Cache<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/datamanager.html" class="tsd-kind-icon">Data<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/fpsmeter.html" class="tsd-kind-icon">FPSMeter</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_action.html" class="tsd-kind-icon">Game_<wbr><wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_actionresult.html" class="tsd-kind-icon">Game_<wbr><wbr>Action<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_actor.html" class="tsd-kind-icon">Game_<wbr><wbr>Actor</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_actors.html" class="tsd-kind-icon">Game_<wbr><wbr>Actors</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_battler.html" class="tsd-kind-icon">Game_<wbr><wbr>Battler</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_battlerbase.html" class="tsd-kind-icon">Game_<wbr><wbr>Battler<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_character.html" class="tsd-kind-icon">Game_<wbr><wbr>Character</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_characterbase.html" class="tsd-kind-icon">Game_<wbr><wbr>Character<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_commonevent.html" class="tsd-kind-icon">Game_<wbr><wbr>Common<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_enemy.html" class="tsd-kind-icon">Game_<wbr><wbr>Enemy</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_event.html" class="tsd-kind-icon">Game_<wbr><wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_follower.html" class="tsd-kind-icon">Game_<wbr><wbr>Follower</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_followers.html" class="tsd-kind-icon">Game_<wbr><wbr>Followers</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_interpreter.html" class="tsd-kind-icon">Game_<wbr><wbr>Interpreter</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_item.html" class="tsd-kind-icon">Game_<wbr><wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_map.html" class="tsd-kind-icon">Game_<wbr><wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_message.html" class="tsd-kind-icon">Game_<wbr><wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_party.html" class="tsd-kind-icon">Game_<wbr><wbr>Party</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_picture.html" class="tsd-kind-icon">Game_<wbr><wbr>Picture</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_player.html" class="tsd-kind-icon">Game_<wbr><wbr>Player</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_screen.html" class="tsd-kind-icon">Game_<wbr><wbr>Screen</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_selfswitches.html" class="tsd-kind-icon">Game_<wbr><wbr>Self<wbr>Switches</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_switches.html" class="tsd-kind-icon">Game_<wbr><wbr>Switches</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_system.html" class="tsd-kind-icon">Game_<wbr><wbr>System</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_temp.html" class="tsd-kind-icon">Game_<wbr><wbr>Temp</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_timer.html" class="tsd-kind-icon">Game_<wbr><wbr>Timer</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_troop.html" class="tsd-kind-icon">Game_<wbr><wbr>Troop</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_unit.html" class="tsd-kind-icon">Game_<wbr><wbr>Unit</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_variables.html" class="tsd-kind-icon">Game_<wbr><wbr>Variables</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/game_vehicle.html" class="tsd-kind-icon">Game_<wbr><wbr>Vehicle</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/jsextensions.html" class="tsd-kind-icon">Js<wbr>Extensions</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/point.html" class="tsd-kind-icon">Point</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/rectangle.html" class="tsd-kind-icon">Rectangle</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_base.html" class="tsd-kind-icon">Scene_<wbr><wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_battle.html" class="tsd-kind-icon">Scene_<wbr><wbr>Battle</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_boot.html" class="tsd-kind-icon">Scene_<wbr><wbr>Boot</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_debug.html" class="tsd-kind-icon">Scene_<wbr><wbr>Debug</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_equip.html" class="tsd-kind-icon">Scene_<wbr><wbr>Equip</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_file.html" class="tsd-kind-icon">Scene_<wbr><wbr>File</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_gameend.html" class="tsd-kind-icon">Scene_<wbr><wbr>Game<wbr>End</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_gameover.html" class="tsd-kind-icon">Scene_<wbr><wbr>Gameover</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_item.html" class="tsd-kind-icon">Scene_<wbr><wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_itembase.html" class="tsd-kind-icon">Scene_<wbr><wbr>Item<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_load.html" class="tsd-kind-icon">Scene_<wbr><wbr>Load</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_map.html" class="tsd-kind-icon">Scene_<wbr><wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_menu.html" class="tsd-kind-icon">Scene_<wbr><wbr>Menu</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_menubase.html" class="tsd-kind-icon">Scene_<wbr><wbr>Menu<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_name.html" class="tsd-kind-icon">Scene_<wbr><wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_options.html" class="tsd-kind-icon">Scene_<wbr><wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_save.html" class="tsd-kind-icon">Scene_<wbr><wbr>Save</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_shop.html" class="tsd-kind-icon">Scene_<wbr><wbr>Shop</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_skill.html" class="tsd-kind-icon">Scene_<wbr><wbr>Skill</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_status.html" class="tsd-kind-icon">Scene_<wbr><wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/scene_title.html" class="tsd-kind-icon">Scene_<wbr><wbr>Title</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/screensprite.html" class="tsd-kind-icon">Screen<wbr>Sprite</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/shadertilemap.html" class="tsd-kind-icon">Shader<wbr>Tilemap</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite.html" class="tsd-kind-icon">Sprite</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_actor.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Actor</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_animation.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Animation</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_balloon.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Balloon</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_base.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_battler.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Battler</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_button.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Button</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_character.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Character</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_damage.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Damage</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_destination.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Destination</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_enemy.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Enemy</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_picture.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Picture</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_stateicon.html" class="tsd-kind-icon">Sprite_<wbr><wbr>State<wbr>Icon</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_stateoverlay.html" class="tsd-kind-icon">Sprite_<wbr><wbr>State<wbr>Overlay</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_timer.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Timer</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/sprite_weapon.html" class="tsd-kind-icon">Sprite_<wbr><wbr>Weapon</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/spriteset_base.html" class="tsd-kind-icon">Spriteset_<wbr><wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/spriteset_battle.html" class="tsd-kind-icon">Spriteset_<wbr><wbr>Battle</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/spriteset_map.html" class="tsd-kind-icon">Spriteset_<wbr><wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/stage.html" class="tsd-kind-icon">Stage</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/tilemap.html" class="tsd-kind-icon">Tilemap</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/tilingsprite.html" class="tsd-kind-icon">Tiling<wbr>Sprite</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/tonefilter.html" class="tsd-kind-icon">Tone<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/tonesprite.html" class="tsd-kind-icon">Tone<wbr>Sprite</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/weather.html" class="tsd-kind-icon">Weather</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/webaudio.html" class="tsd-kind-icon">Web<wbr>Audio</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/windowlayer.html" class="tsd-kind-icon">Window<wbr>Layer</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_actorcommand.html" class="tsd-kind-icon">Window_<wbr><wbr>Actor<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_base.html" class="tsd-kind-icon">Window_<wbr><wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_battleactor.html" class="tsd-kind-icon">Window_<wbr><wbr>Battle<wbr>Actor</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_battleenemy.html" class="tsd-kind-icon">Window_<wbr><wbr>Battle<wbr>Enemy</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_battleitem.html" class="tsd-kind-icon">Window_<wbr><wbr>Battle<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_battlelog.html" class="tsd-kind-icon">Window_<wbr><wbr>Battle<wbr>Log</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_battleskill.html" class="tsd-kind-icon">Window_<wbr><wbr>Battle<wbr>Skill</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_battlestatus.html" class="tsd-kind-icon">Window_<wbr><wbr>Battle<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_choicelist.html" class="tsd-kind-icon">Window_<wbr><wbr>Choice<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_command.html" class="tsd-kind-icon">Window_<wbr><wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_debugedit.html" class="tsd-kind-icon">Window_<wbr><wbr>Debug<wbr>Edit</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_debugrange.html" class="tsd-kind-icon">Window_<wbr><wbr>Debug<wbr>Range</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_equipcommand.html" class="tsd-kind-icon">Window_<wbr><wbr>Equip<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_equipitem.html" class="tsd-kind-icon">Window_<wbr><wbr>Equip<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_equipslot.html" class="tsd-kind-icon">Window_<wbr><wbr>Equip<wbr>Slot</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_equipstatus.html" class="tsd-kind-icon">Window_<wbr><wbr>Equip<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_eventitem.html" class="tsd-kind-icon">Window_<wbr><wbr>Event<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_gameend.html" class="tsd-kind-icon">Window_<wbr><wbr>Game<wbr>End</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_gold.html" class="tsd-kind-icon">Window_<wbr><wbr>Gold</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_help.html" class="tsd-kind-icon">Window_<wbr><wbr>Help</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_horzcommand.html" class="tsd-kind-icon">Window_<wbr><wbr>Horz<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_itemcategory.html" class="tsd-kind-icon">Window_<wbr><wbr>Item<wbr>Category</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_itemlist.html" class="tsd-kind-icon">Window_<wbr><wbr>Item<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_mapname.html" class="tsd-kind-icon">Window_<wbr><wbr>Map<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_menuactor.html" class="tsd-kind-icon">Window_<wbr><wbr>Menu<wbr>Actor</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_menucommand.html" class="tsd-kind-icon">Window_<wbr><wbr>Menu<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_menustatus.html" class="tsd-kind-icon">Window_<wbr><wbr>Menu<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_message.html" class="tsd-kind-icon">Window_<wbr><wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_nameedit.html" class="tsd-kind-icon">Window_<wbr><wbr>Name<wbr>Edit</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_nameinput.html" class="tsd-kind-icon">Window_<wbr><wbr>Name<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_numberinput.html" class="tsd-kind-icon">Window_<wbr><wbr>Number<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_options.html" class="tsd-kind-icon">Window_<wbr><wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_partycommand.html" class="tsd-kind-icon">Window_<wbr><wbr>Party<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_savefilelist.html" class="tsd-kind-icon">Window_<wbr><wbr>Savefile<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_scrolltext.html" class="tsd-kind-icon">Window_<wbr><wbr>Scroll<wbr>Text</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_selectable.html" class="tsd-kind-icon">Window_<wbr><wbr>Selectable</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_shopbuy.html" class="tsd-kind-icon">Window_<wbr><wbr>Shop<wbr>Buy</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_shopcommand.html" class="tsd-kind-icon">Window_<wbr><wbr>Shop<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_shopnumber.html" class="tsd-kind-icon">Window_<wbr><wbr>Shop<wbr>Number</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_shopsell.html" class="tsd-kind-icon">Window_<wbr><wbr>Shop<wbr>Sell</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_shopstatus.html" class="tsd-kind-icon">Window_<wbr><wbr>Shop<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_skilllist.html" class="tsd-kind-icon">Window_<wbr><wbr>Skill<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_skillstatus.html" class="tsd-kind-icon">Window_<wbr><wbr>Skill<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_skilltype.html" class="tsd-kind-icon">Window_<wbr><wbr>Skill<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_status.html" class="tsd-kind-icon">Window_<wbr><wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/window_titlecommand.html" class="tsd-kind-icon">Window_<wbr><wbr>Title<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/_window.html" class="tsd-kind-icon">_<wbr>Window</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-not-exported">
+						<a href="interfaces/array.html" class="tsd-kind-icon">Array</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/audiomanagerstatic.html" class="tsd-kind-icon">Audio<wbr>Manager<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/battlemanagerstatic.html" class="tsd-kind-icon">Battle<wbr>Manager<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/configmanagerstatic.html" class="tsd-kind-icon">Config<wbr>Manager<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/decrypterstatic.html" class="tsd-kind-icon">Decrypter<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/fpsmeteroptions.html" class="tsd-kind-icon">FPSMeter<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/graphicsstatic.html" class="tsd-kind-icon">Graphics<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/html5audiostatic.html" class="tsd-kind-icon">Html5<wbr>Audio<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/imagemanagerstatic.html" class="tsd-kind-icon">Image<wbr>Manager<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/inputstatic.html" class="tsd-kind-icon">Input<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/jsonexstatic.html" class="tsd-kind-icon">Json<wbr>ExStatic</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/math.html" class="tsd-kind-icon">Math</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/number.html" class="tsd-kind-icon">Number</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/pluginmanagerstatic.html" class="tsd-kind-icon">Plugin<wbr>Manager<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/scenemanagerstatic.html" class="tsd-kind-icon">Scene<wbr>Manager<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/soundmanagerstatic.html" class="tsd-kind-icon">Sound<wbr>Manager<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/storagemanagerstatic.html" class="tsd-kind-icon">Storage<wbr>Manager<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/string.html" class="tsd-kind-icon">String</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/textmanagerstatic.html" class="tsd-kind-icon">Text<wbr>Manager<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/touchinputstatic.html" class="tsd-kind-icon">Touch<wbr>Input<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/utilsstatic.html" class="tsd-kind-icon">Utils<wbr>Static</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_dataactors" class="tsd-kind-icon">$data<wbr>Actors</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_dataanimations" class="tsd-kind-icon">$data<wbr>Animations</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_dataarmors" class="tsd-kind-icon">$data<wbr>Armors</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_dataclasses" class="tsd-kind-icon">$data<wbr>Classes</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_datacommonevents" class="tsd-kind-icon">$data<wbr>Common<wbr>Events</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_dataenemies" class="tsd-kind-icon">$data<wbr>Enemies</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_dataitems" class="tsd-kind-icon">$data<wbr>Items</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_datamap" class="tsd-kind-icon">$data<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_datamapinfos" class="tsd-kind-icon">$data<wbr>Map<wbr>Infos</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_dataskills" class="tsd-kind-icon">$data<wbr>Skills</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_datastates" class="tsd-kind-icon">$data<wbr>States</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_datasystem" class="tsd-kind-icon">$data<wbr>System</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_datatilesets" class="tsd-kind-icon">$data<wbr>Tilesets</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_datatroops" class="tsd-kind-icon">$data<wbr>Troops</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_dataweapons" class="tsd-kind-icon">$data<wbr>Weapons</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gameactors" class="tsd-kind-icon">$game<wbr>Actors</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gamemap" class="tsd-kind-icon">$game<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gamemessage" class="tsd-kind-icon">$game<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gameparty" class="tsd-kind-icon">$game<wbr>Party</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gameplayer" class="tsd-kind-icon">$game<wbr>Player</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gamescreen" class="tsd-kind-icon">$game<wbr>Screen</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gameselfswitches" class="tsd-kind-icon">$game<wbr>Self<wbr>Switches</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gameswitches" class="tsd-kind-icon">$game<wbr>Switches</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gamesystem" class="tsd-kind-icon">$game<wbr>System</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gametemp" class="tsd-kind-icon">$game<wbr>Temp</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gametimer" class="tsd-kind-icon">$game<wbr>Timer</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gametroop" class="tsd-kind-icon">$game<wbr>Troop</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_gamevariables" class="tsd-kind-icon">$game<wbr>Variables</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#_testevent" class="tsd-kind-icon">$test<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#audiomanager" class="tsd-kind-icon">Audio<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#battlemanager" class="tsd-kind-icon">Battle<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#configmanager" class="tsd-kind-icon">Config<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#decrypter" class="tsd-kind-icon">Decrypter</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#graphics" class="tsd-kind-icon">Graphics</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#html5audio" class="tsd-kind-icon">Html5<wbr>Audio</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#imagemanager" class="tsd-kind-icon">Image<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#input" class="tsd-kind-icon">Input</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#jsonex" class="tsd-kind-icon">Json<wbr>Ex</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#pluginmanager" class="tsd-kind-icon">Plugin<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#scenemanager" class="tsd-kind-icon">Scene<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#soundmanager" class="tsd-kind-icon">Sound<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#storagemanager" class="tsd-kind-icon">Storage<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#textmanager" class="tsd-kind-icon">Text<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#touchinput" class="tsd-kind-icon">Touch<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#utils" class="tsd-kind-icon">Utils</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

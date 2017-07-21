@@ -145,6 +145,11 @@ declare class Scene_Title extends Scene_Base {
     commandNewGame(): void;
     commandContinue(): void;
     commandOptions(): void;
+    /**
+     * Plays the title screen music
+     * upon enter the title scene.
+     * @memberof Scene_Title
+     */
     playTitleMusic(): void;
 }
 
@@ -168,16 +173,61 @@ declare class Scene_Map extends Scene_Base {
 
     menuCalling: boolean;
 
+    /**
+     * Handler for when the map scene is loaded.
+     * 
+     * @memberof Scene_Map
+     */
     onMapLoaded(): void;
+    /**
+     * Speeds up the updateMain if
+     * the map scene is in fast forward mode.
+     * @memberof Scene_Map
+     */
     updateMainMultiply(): void;
+    /**
+     * Updates the main $game globals
+     * if the map scene is active.
+     * @memberof Scene_Map
+     */
     updateMain(): void;
+    /**
+     * Returns true if the player
+     * is holding down the confirm button to
+     * fast forward through text.
+     * @returns {boolean} 
+     * @memberof Scene_Map
+     */
     isFastForward(): boolean;
+    /**
+     * Stops the map scene and prepares
+     * for a new scene.
+     * @memberof Scene_Map
+     */
     stop(): void;
     needsFadeIn(): boolean;
     needsSlowFadeOut(): boolean;
     updateWaitCount(): boolean;
+    /**
+     * Constantly checks if the player
+     * is touching the map, then processes
+     * a map touch for mouse based player character movement.
+     * @memberof Scene_Map
+     */
     updateDestination(): void;
+    /**
+     * Returns true if the map scene is
+     * active and the player can move. Used for
+     * mouse movement on the map scene.
+     * @returns {boolean} 
+     * @memberof Scene_Map
+     */
     isMapTouchOk(): boolean;
+    /**
+     * Processes the map touch and turns it
+     * into coordinates for the player character to move to.
+     * @memberof Scene_Map
+     */
     processMapTouch(): void;
     isSceneChangeOk(): boolean;
     updateScene(): void;
@@ -190,12 +240,40 @@ declare class Scene_Map extends Scene_Base {
      */
     createAllWindows(): void;
     createMapNameWindow(): void;
+    /**
+     * Creates the map name window within
+     * the map scene; display map name.
+     * @memberof Scene_Map
+     */
+    /**
+     * Creates the message window for displaying
+     * text on the map scene. Commonly used with the
+     * showText command.
+     * @memberof Scene_Map
+     */
     createMessageWindow(): void;
     createScrollTextWindow(): void;
+    /**
+     * Checks if the player is transferring;
+     * if the player is transferring, move to a new map scene.
+     * @memberof Scene_Map
+     */
     updateTransferPlayer(): void;
     updateEncounter(): void;
     updateCallMenu(): void;
+    /**
+     * Returns true if the menu is enabled
+     * in the database.
+     * @returns {boolean} 
+     * @memberof Scene_Map
+     */
     isMenuEnabled(): boolean;
+    /**
+     * Returns true if the menu is called
+     * via an input trigger.
+     * @returns {boolean} 
+     * @memberof Scene_Map
+     */
     isMenuCalled(): boolean;
     /**
      * Calls the standard RPGMakerMV menu scene.
@@ -203,7 +281,19 @@ declare class Scene_Map extends Scene_Base {
      * @memberof Scene_Map
      */
     callMenu(): void;
+    /**
+     * Checks if debug is called via input trigger
+     * and starts the debug scene.
+     * 
+     * @memberof Scene_Map
+     */
     updateCallDebug(): void;
+    /**
+     * Returns true if the debug
+     * scene is called via button press and in play test mode.
+     * @returns {boolean} 
+     * @memberof Scene_Map
+     */
     isDebugCalled(): boolean;
     fadeInForTransfer(): void;
     fadeOutForTransfer(): void;
@@ -554,9 +644,30 @@ declare class Scene_Save extends Scene_File {
      */
     mode(): string;
     helpWindowText(): string;
+    /**
+     * Returns the index of the first
+     * save file within the save scene.
+     * @returns {number} 
+     * @memberof Scene_Save
+     */
     firstSavefileIndex(): number;
+    /**
+     * Handler for when a save file
+     * is confirmed within the save scene.
+     * @memberof Scene_Save
+     */
     onSavefileOk(): void;
+    /**
+     * Handler for when save is a success.
+     * 
+     * @memberof Scene_Save
+     */
     onSaveSuccess(): void;
+    /**
+     * Handler for when save fails.
+     * 
+     * @memberof Scene_Save
+     */
     onSaveFailure(): void;
 }
 
@@ -578,6 +689,12 @@ declare class Scene_Load extends Scene_File {
      * @memberof Scene_Load
      */
     mode(): string;
+    /**
+     * Returns the help window text on the
+     * game load scene.
+     * @returns {string} 
+     * @memberof Scene_Load
+     */
     helpWindowText(): string;
     firstSavefileIndex(): number;
     onSavefileOk(): void;
@@ -598,8 +715,23 @@ declare class Scene_GameEnd extends Scene_MenuBase {
     protected _commandWindow: Window_GameEnd;
 
     stop(): void;
+    /**
+     * Creates the background for
+     * the game end scene.
+     * @memberof Scene_GameEnd
+     */
     createBackground(): void;
+    /**
+     * Creates the command window
+     * for the game end screen.
+     * @memberof Scene_GameEnd
+     */
     createCommandWindow(): void;
+    /**
+     * Handler for when to title
+     * is clicked within the game end screen.
+     * @memberof Scene_GameEnd
+     */
     commandToTitle(): void;
 }
 
@@ -652,9 +784,33 @@ declare class Scene_Shop extends Scene_MenuBase {
     endNumberInput(): void;
     maxBuy(): number;
     maxSell(): number;
+    /**
+     * Returns the player gold within
+     * the shop scene.
+     * @returns {number} 
+     * @memberof Scene_Shop
+     */
     money(): number;
+    /**
+     * Returns the currency unit of the
+     * game within the shop scene.
+     * @returns {string} 
+     * @memberof Scene_Shop
+     */
     currencyUnit(): string;
+    /**
+     * Returns the buying price for the current item.
+     * 
+     * @returns {number} 
+     * @memberof Scene_Shop
+     */
     buyingPrice(): number;
+    /**
+     * Returns the selling price for the current item.
+     * 
+     * @returns {number} 
+     * @memberof Scene_Shop
+     */
     sellingPrice(): number;
 }
 
@@ -688,6 +844,12 @@ declare class Scene_Debug extends Scene_MenuBase {
     onRangeOk(): void;
     onEditCancel(): void;
     refreshHelpWindow(): void;
+    /**
+     * Returns the help text within the 
+     * debug scene.
+     * @returns {string} 
+     * @memberof Scene_Debug
+     */
     helpText(): string;
 }
 
@@ -721,7 +883,18 @@ declare class Scene_Battle extends Scene_Base {
     updateStatusWindow(): void;
     updateWindowPositions(): void;
     createDisplayObjects(): void;
+    /**
+     * Creates the spriteset within
+     * the battle scene. This includes
+     * sprites for actors, enemies, etc.
+     * @memberof Scene_Battle
+     */
     createSpriteset(): void;
+    /**
+     * Creates all the windows within the
+     * battle scene.
+     * @memberof Scene_Battle
+     */
     createAllWindows(): void;
     createLogWindow(): void;
     createStatusWindow(): void;
@@ -771,8 +944,22 @@ declare class Scene_Gameover extends Scene_Base {
     protected _backSprite: Sprite;
 
     stop(): void;
+    /**
+     * Plays the game over music
+     * within the game over scene.
+     * @memberof Scene_Gameover
+     */
     playGameoverMusic(): void;
+    /**
+     * Creates the background of
+     * the game over scene.
+     * @memberof Scene_Gameover
+     */
     createBackground(): void;
     isTriggered(): boolean;
+    /**
+     * Returns to the title scene (Scene_Title).
+     * @memberof Scene_Gameover
+     */
     gotoTitle(): void;
 }

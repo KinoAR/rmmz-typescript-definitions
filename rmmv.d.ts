@@ -6907,7 +6907,7 @@ declare class Game_Character extends Game_CharacterBase {
  * -----------------------------------------------------------------------------
  * Game_Player
  *
- * The game object declare class for the player. It contains event starting
+ * The game object class for the player. It contains event starting
  * determinants and map scrolling functions.
  * @class Game_Player
  */
