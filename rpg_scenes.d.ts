@@ -107,8 +107,19 @@ declare class Scene_Base extends Stage {
 declare class Scene_Boot extends Scene_Base {
     protected _startDate: Date;
 
+    /**
+     * Loads the system images upon booting the game.
+     * 
+     * @memberof Scene_Boot
+     */
     loadSystemImages(): void;
     loadSystemWindowImage(): void;
+    /**
+     * Returns true if the game font is loaded.
+     * 
+     * @returns {boolean} 
+     * @memberof Scene_Boot
+     */
     isGameFontLoaded(): boolean;
     updateDocumentTitle(): void;
     checkPlayerLocation(): void;
@@ -172,6 +183,11 @@ declare class Scene_Map extends Scene_Base {
     updateScene(): void;
     createDisplayObjects(): void;
     createSpriteset(): void;
+    /**
+     * Creates all the windows on the map scene
+     * contains other window creation methods.
+     * @memberof Scene_Map
+     */
     createAllWindows(): void;
     createMapNameWindow(): void;
     createMessageWindow(): void;
@@ -181,6 +197,11 @@ declare class Scene_Map extends Scene_Base {
     updateCallMenu(): void;
     isMenuEnabled(): boolean;
     isMenuCalled(): boolean;
+    /**
+     * Calls the standard RPGMakerMV menu scene.
+     * 
+     * @memberof Scene_Map
+     */
     callMenu(): void;
     updateCallDebug(): void;
     isDebugCalled(): boolean;
@@ -190,6 +211,11 @@ declare class Scene_Map extends Scene_Base {
     stopAudioOnBattleStart(): void;
     startEncounterEffect(): void;
     updateEncounterEffect(): void;
+    /**
+     * Takes a snapshot of the map scene for displaying
+     * on the battle scene if no battleback is present.
+     * @memberof Scene_Map
+     */
     snapForBattleBackground(): void;
     startFlashForEncounter(duration: number): void;
     encounterEffectSpeed(): number;
@@ -230,14 +256,50 @@ declare class Scene_Menu extends Scene_MenuBase {
     protected _goldWindow: Window_Gold;
     protected _statusWindow: Window_MenuStatus;
 
+    /**
+     * Creates the main menu window on the 
+     * menu scene; contains the commands for
+     * menu usage.
+     * @memberof Scene_Menu
+     */
     createCommandWindow(): void;
+    /**
+     * Creates the gold window on the menu scene.
+     * 
+     * @memberof Scene_Menu
+     */
     createGoldWindow(): void;
+    /**
+     * Creates the status window on the menu scene.
+     * 
+     * @memberof Scene_Menu
+     */
     createStatusWindow(): void;
+    /**
+     * Handler for what to do when the 'item'
+     * command is clicked.
+     * @memberof Scene_Menu
+     */
     commandItem(): void;
     commandPersonal(): void;
     commandFormation(): void;
+    /**
+     * Handler for what to do when the 'option'
+     * command is clicked.
+     * @memberof Scene_Menu
+     */
     commandOptions(): void;
+    /**
+     * Handler for what to do when the 'save'
+     * command is clicked.
+     * @memberof Scene_Menu
+     */
     commandSave(): void;
+    /**
+     * Handler for what to do when the 'game end'
+     * command is clicked.
+     * @memberof Scene_Menu
+     */
     commandGameEnd(): void;
     onPersonalOk(): void;
     onPersonalCancel(): void;
@@ -286,11 +348,41 @@ declare class Scene_ItemBase extends Scene_MenuBase {
 declare class Scene_Item extends Scene_ItemBase {
     protected _categoryWindow: Window_ItemCategory;
 
+    /**
+     * Creates the category window on the
+     * item scene.
+     * @memberof Scene_Item
+     */
     createCategoryWindow(): void;
+    /**
+     * Creates the item window on the item
+     * scene.
+     * @memberof Scene_Item
+     */
     createItemWindow(): void;
+    /**
+     * Handler for when a cataegory is selected
+     * on the item scene.
+     * @memberof Scene_Item
+     */
     onCategoryOk(): void;
+    /**
+     * Handler for when an item is selected
+     * on the item scene.
+     * @memberof Scene_Item
+     */
     onItemOk(): void;
+    /**
+     * Handler for when an item selection
+     * is canceled on the item scene.
+     * @memberof Scene_Item
+     */
     onItemCancel(): void;
+    /**
+     * Plays a sound effect when the
+     * item is confirmed.
+     * @memberof Scene_Item
+     */
     playSeForItem(): void;
 }
 
@@ -305,13 +397,43 @@ declare class Scene_Item extends Scene_ItemBase {
 declare class Scene_Skill extends Scene_ItemBase {
     protected _skillTypeWindow: Window_SkillType;
 
+    /**
+     * Creates the window for skill types
+     * within the skill scene.
+     * @memberof Scene_Skill
+     */
     createSkillTypeWindow(): void;
+    /**
+     * Creates the status window within
+     * the skill scene.
+     * @memberof Scene_Skill
+     */
     createStatusWindow(): void;
+    /**
+     * Creates the item window
+     * within the skill scene.
+     * @memberof Scene_Skill
+     */
     createItemWindow(): void;
     refreshActor(): void;
+    /**
+     * Handler for when a skill is
+     * selected/confirmed within the skill scene.
+     * @memberof Scene_Skill
+     */
     commandSkill(): void;
     onItemCancel(): void;
+    /**
+     * Plays a sound effect on item
+     * confirmation withiin the skill scene.
+     * @memberof Scene_Skill
+     */
     playSeForItem(): void;
+    /**
+     * Handler for when an an actor is
+     * changed within the skill scene.
+     * @memberof Scene_Skill
+     */
     onActorChange(): void;
 }
 
@@ -384,13 +506,34 @@ declare class Scene_Options extends Scene_MenuBase {
 declare class Scene_File extends Scene_MenuBase {
     protected _listWindow: Window_SavefileList;
 
+    /**
+     * Returns the current savefileId.
+     * 
+     * @memberof Scene_File
+     */
     savefileId(): void;
     createHelpWindow(): void;
     createListWindow(): void;
+    /**
+     * The current mode of the scene;
+     * the modes are 'save' or 'load'.
+     * @memberof Scene_File
+     */
     mode(): void;
     activateListWindow(): void;
     helpWindowText(): string;
+    /**
+     * Returns the index of the first
+     * save file.
+     * @returns {number} 
+     * @memberof Scene_File
+     */
     firstSavefileIndex(): number;
+    /**
+     * Handler for when a 
+     * save file is selected within the file scene.
+     * @memberof Scene_File
+     */
     onSavefileOk(): void;
 }
 
@@ -403,6 +546,12 @@ declare class Scene_File extends Scene_MenuBase {
  * @extends {Scene_File}
  */
 declare class Scene_Save extends Scene_File {
+    /**
+     * Returns the mode of the
+     * save scene.
+     * @returns {string} 
+     * @memberof Scene_Save
+     */
     mode(): string;
     helpWindowText(): string;
     firstSavefileIndex(): number;
@@ -422,6 +571,12 @@ declare class Scene_Save extends Scene_File {
 declare class Scene_Load extends Scene_File {
     protected _loadSuccess: boolean;
 
+    /**
+     * Returns the mode of the
+     * load scene.
+     * @returns {string} 
+     * @memberof Scene_Load
+     */
     mode(): string;
     helpWindowText(): string;
     firstSavefileIndex(): number;
