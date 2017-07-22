@@ -1,7 +1,7 @@
 
 # RPGMakerMV Library Docs
 
----
+
 
 ## What This Is About
 
