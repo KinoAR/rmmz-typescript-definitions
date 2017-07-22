@@ -30,6 +30,10 @@ declare class Sprite_Base extends Sprite {
      */
     protected _hiding: boolean;
 
+    /**
+     * Creates an instance of Sprite_Base.
+     * @memberof Sprite_Base
+     */
     constructor();
 
     /**
@@ -126,18 +130,49 @@ declare class Sprite_Button extends Sprite {
  * The sprite for displaying a character.
  */
 declare class Sprite_Character extends Sprite_Base {
+    /**
+     * The Game_Character object assigned
+     * to the sprite.
+     * @protected
+     * @type {Game_Character}
+     * @memberof Sprite_Character
+     */
     protected _character: Game_Character;
     protected _balloonDuration: number;
     protected _tilesetId: number;
     protected _upperBody: Sprite;
     protected _lowerBody: Sprite;
     protected _bushDepth: number;
+    /**
+     * The current balloon sprite
+     * assigned to the sprite.
+     * @protected
+     * @type {Sprite_Balloon}
+     * @memberof Sprite_Character
+     */
     protected _balloonSprite: Sprite_Balloon;
 
+    /**
+     * Creates an instance of Sprite_Character.
+     * @param {Game_Character} character 
+     * @memberof Sprite_Character
+     */
     constructor(character: Game_Character);
 
     initMembers(): void;
+    /**
+     * Sets the current Game_Character object
+     * attached to the sprite.
+     * @param {Game_Character} character 
+     * @memberof Sprite_Character
+     */
     setCharacter(character: Game_Character): void;
+    /**
+     * Returns true if the Game_Character object
+     * tileId is greater than 0.
+     * @returns {boolean} 
+     * @memberof Sprite_Character
+     */
     isTile(): boolean;
     tilesetBitmap(tileId: number): Bitmap;
     updateBitmap(): void;
@@ -159,9 +194,29 @@ declare class Sprite_Character extends Sprite_Base {
     updateAnimation(): void;
     updateOther(): void;
     setupAnimation(): void;
+    /**
+     * Sets up the Game_Character object
+     * balloon sprite, and calls the startBalloon method.
+     * @memberof Sprite_Character
+     */
     setupBalloon(): void;
+    /**
+     * Starts the balloon sprite on the
+     * Game_Character object.
+     * @memberof Sprite_Character
+     */
     startBalloon(): void;
+    /**
+     * Processes the balloon sprite, calls
+     * the endBaloon method if the balloon sprite is done playing.
+     * @memberof Sprite_Character
+     */
     updateBalloon(): void;
+    /**
+     * Ends the balloon sprite, removing it from
+     * the Game_Character object sprite.
+     * @memberof Sprite_Character
+     */
     endBalloon(): void;
     /**
      * Returns true if a balloon animation
