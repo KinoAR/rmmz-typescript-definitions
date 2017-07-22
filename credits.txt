@@ -6,6 +6,8 @@
 * version 1.0.0
 * - Added most major MV functions.
 * - Added PIXI.js type definitions
+* - Added LZString type definitions
+* - Added FPSMeter type definitions
 //=============================================================================
 //  Credits
 //=============================================================================
