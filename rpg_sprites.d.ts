@@ -5,7 +5,21 @@
  * The sprite class with a feature which displays animations.
  */
 declare class Sprite_Base extends Sprite {
+    /**
+     * The animation sprites assigned to the 
+     * sprite object.
+     * @protected
+     * @type {Array<Sprite_Animation>}
+     * @memberof Sprite_Base
+     */
     protected _animationSprites: Array<Sprite_Animation>;
+    /**
+     * The target that will have the animations applied
+     * to it.
+     * @protected
+     * @type {Sprite_Base}
+     * @memberof Sprite_Base
+     */
     protected _effectTarget: Sprite_Base;
     /**
      * Property determining the sprite's visibility.
@@ -36,7 +50,22 @@ declare class Sprite_Base extends Sprite {
      * @memberof Sprite_Base
      */
     updateVisibility(): void;
+    /**
+     * Updates the animation sprites, cloning them;
+     * if the sprite is playing, pushes the sprites into
+     * animation sprites, otherwise the sprite is removed.
+     * @memberof Sprite_Base
+     */
     updateAnimationSprites(): void;
+    /**
+     * Starts a new animation on the current
+     * sprite by assigning a new Sprite_Animation object to the
+     * sprite's parent.
+     * @param {RPG.Animation} animation 
+     * @param {boolean} mirror 
+     * @param {number} delay 
+     * @memberof Sprite_Base
+     */
     startAnimation(animation: RPG.Animation, mirror: boolean, delay: number): void;
     /**
      * Returns true if an animation is currently playing.
