@@ -1110,11 +1110,46 @@ declare class Window_Selectable extends Window_Base {
  * @extends {Window_Selectable}
  */
 declare class Window_Command extends Window_Selectable {
+  /**
+   * Creates an instance of Window_Command.
+   * @param {number} x 
+   * @param {number} y 
+   * @memberof Window_Command
+   */
   constructor(x: number, y: number)
+  /**
+   * Returns the width of the window;
+   * default is 240.
+   * @returns {number} 
+   * @memberof Window_Command
+   */
   windowWidth(): number;
+  /**
+   * Returns the height of the window;
+   * takes the visible rows and passes it to the fittingHeight method.
+   * @returns {number} 
+   * @memberof Window_Command
+   */
   windowHeight(): number;
+  /**
+   * Returns the number of visible rows within the window.
+   * 
+   * @returns {number} 
+   * @memberof Window_Command
+   */
   numVisibleRows(): number;
+  /**
+   * Returns the maximum number of items within the window.
+   * 
+   * @returns {number} 
+   * @memberof Window_Command
+   */
   maxItems(): number;
+  /**
+   * Clears the list of commands from the window;
+   * this is useful for refreshing changing commands.
+   * @memberof Window_Command
+   */
   clearCommandList(): void;
 
   /**
@@ -1133,16 +1168,87 @@ declare class Window_Command extends Window_Selectable {
    * @memberof Window_Command
    */
   addCommand(name: string, symbol: string, enabled: boolean, ext: any | object)
+  /**
+   * Returns the command name given an index.
+   * 
+   * @param {number} index 
+   * @returns {string} 
+   * @memberof Window_Command
+   */
   commandName(index: number): string;
+  /**
+   * Returns the command symbol given an index.
+   * 
+   * @param {number} index 
+   * @returns {string} 
+   * @memberof Window_Command
+   */
   commandSymbol(index: number): string;
+  /**
+   * Determines if the command is enabled;
+   * checks the enabled property of the command.
+   * @param {number} index 
+   * @returns {boolean} 
+   * @memberof Window_Command
+   */
   isCommandEnabled(index: number): boolean;
+  /**
+   * Returns the command object at the current index.
+   * 
+   * @returns {object} 
+   * @memberof Window_Command
+   */
   currentData(): object;
+  /**
+   * Returns the command symbol at the current index.
+   * 
+   * @returns {string} 
+   * @memberof Window_Command
+   */
   currentSymbol(): string;
+  /**
+   * Returns the ext property of the command at the current index.
+   * 
+   * @returns {(any | object)} 
+   * @memberof Window_Command
+   */
   currentExt(): any | object;
+  /**
+   * Finds a command object and returns the index number based
+   * on the symbol property.
+   * @param {string} symbol 
+   * @returns {number} 
+   * @memberof Window_Command
+   */
   findSymbol(symbol: string): number;
+  /**
+   * Selects a command object based on the symbol property.
+   * 
+   * @param {string} symbol 
+   * @memberof Window_Command
+   */
   selectSymbol(symbol: string): void;
+  /**
+   * Finds a command object and returns the index number
+   * based on the ext property.
+   * @param {(any | object)} ext 
+   * @returns {number} 
+   * @memberof Window_Command
+   */
   findExt(ext: any | object): number;
+  /**
+   * Selects a command object based on the ext property.
+   * 
+   * @param {(any | object)} ext 
+   * @memberof Window_Command
+   */
   selectExt(ext: any | object): void;
+  /**
+   * Returns the text align of the commands;
+   * possible values are: 'left', 'center', 'right'.
+   * @returns {string} 
+   * @memberof Window_Command
+   */
   itemTextAlign(): string;
 }
 
@@ -1163,10 +1269,34 @@ declare class Window_HorzCommand extends Window_Command {
  * @extends {Window_Base}
  */
 declare class Window_Help extends Window_Base {
+  /**
+   * The text that is displayed within the window.
+   * 
+   * @protected
+   * @type {string}
+   * @memberof Window_Help
+   */
   protected _text: string;
+  /**
+   * Creates an instance of Window_Help.
+   * @param {number} numLines 
+   * @memberof Window_Help
+   */
   constructor(numLines: number);
+  /**
+   * Sets the _text property of the window;
+   * this text will be displayed within the window.
+   * @param {string} text 
+   * @memberof Window_Help
+   */
   setText(text: string): void;
   clear(): void;
+  /**
+   * Sets the current item of the help window.
+   * 
+   * @param {RPG.BaseItem} item 
+   * @memberof Window_Help
+   */
   setItem(item: RPG.BaseItem): void;
 }
 
@@ -1203,8 +1333,23 @@ declare class Window_MenuCommand extends Window_Command {
    * @memberof Window_MenuCommand
    */
   addMainCommands(): void;
+  /**
+   * Adds the standard formation command to the
+   * RPGMakerMV main menu.
+   * @memberof Window_MenuCommand
+   */
   addFormationCommand(): void;
+  /**
+   * Adds any user created commands to the 
+   * RPGMakerMV main menu.
+   * @memberof Window_MenuCommand
+   */
   addOriginalCommands(): void;
+  /**
+   * Adds the save command to the 
+   * RPGMakerMV main menu.
+   * @memberof Window_MenuCommand
+   */
   addSaveCommand(): void;
   addGameEndCommand(): void;
   /**
@@ -1215,9 +1360,32 @@ declare class Window_MenuCommand extends Window_Command {
    * @memberof Window_MenuCommand
    */
   needsCommand(name: string): boolean;
+  /**
+   * Determines if the main commands are enabled;
+   * this is based on the settings in the database.
+   * @returns {boolean} 
+   * @memberof Window_MenuCommand
+   */
   areMainCommandsEnabled(): boolean;
+  /**
+   * Determines if the option command is enabled;
+   * based on the setting in the database.
+   * @returns {boolean} 
+   * @memberof Window_MenuCommand
+   */
   isOptionsEnabled(): boolean;
+  /**
+   * Determines if the save command is enabled;
+   * based on the setting in the database.
+   * @returns {boolean} 
+   * @memberof Window_MenuCommand
+   */
   isSaveEnabled(): boolean;
+  /**
+   * Selects the last command in menu.
+   * 
+   * @memberof Window_MenuCommand
+   */
   selectLast(): void;
 }
 
@@ -1233,18 +1401,54 @@ declare class Window_MenuStatus extends Window_Selectable {
     protected _formationMode: boolean;
     protected _pendingIndex: number;
 
+    /**
+     * Creates an instance of Window_MenuStatus.
+     * @param {number} x 
+     * @param {number} y 
+     * @memberof Window_MenuStatus
+     */
     constructor(x: number, y: number);
 
     windowWidth(): number;
     windowHeight(): number;
+    /**
+     * Returns the height of each item (actor status) in the main menu
+     * window.
+     * @returns {number} 
+     * @memberof Window_MenuStatus
+     */
     itemHeight(): number;
+    /**
+     * Returns the number of visible rows in
+     * menu status.
+     * @returns {number} 
+     * @memberof Window_MenuStatus
+     */
     numVisibleRows(): number;
+    /**
+     * Loads the images for the main menu status window.
+     * 
+     * @memberof Window_MenuStatus
+     */
     loadImages(): void;
     drawItemBackground(index: number): void;
     drawItemImage(index: number): void;
     drawItemStatus(index: number): void;
     selectLast(): void;
+    /**
+     * Determines if the window is in formation mode;
+     * if true, the player can select characters to swap
+     * positions with.
+     * @returns {boolean} 
+     * @memberof Window_MenuStatus
+     */
     formationMode(): boolean;
+    /**
+     * Sets the formation mode to true or false.
+     * 
+     * @param {boolean} formationMode 
+     * @memberof Window_MenuStatus
+     */
     setFormationMode(formationMode: boolean): void;
     pendingIndex(): number;
     setPendingIndex(index: number): void;
@@ -1311,13 +1515,50 @@ declare class Window_ItemList extends Window_Selectable {
  * @class Window_SkillType
  */
 declare class Window_SkillType extends Window_Command {
+    /**
+     * The current game actor attached to the window.
+     * 
+     * @protected
+     * @type {Game_Actor}
+     * @memberof Window_SkillType
+     */
     protected _actor: Game_Actor;
+    /**
+     * The current skill window attached to the window.
+     * 
+     * @protected
+     * @type {Window_SkillList}
+     * @memberof Window_SkillType
+     */
     protected _skillWindow: Window_SkillList;
 
+    /**
+     * Creates an instance of Window_SkillType.
+     * @param {number} x 
+     * @param {number} y 
+     * @memberof Window_SkillType
+     */
     constructor(x: number, y: number);
 
+    /**
+     * Sets the current actor for the skill type window.
+     * 
+     * @param {Game_Actor} actor 
+     * @memberof Window_SkillType
+     */
     setActor(actor: Game_Actor): void;
+    /**
+     * Sets the skill window for the current skill type.
+     * 
+     * @param {Window_SkillList} skillWindow 
+     * @memberof Window_SkillType
+     */
     setSkillWindow(skillWindow: Window_SkillList): void;
+    /**
+     * Selects the last command in the window.
+     * 
+     * @memberof Window_SkillType
+     */
     selectLast(): void;
 }
 
@@ -1329,11 +1570,37 @@ declare class Window_SkillType extends Window_Command {
  * @class Window_SkillStatus
  */
 declare class Window_SkillStatus extends Window_Base {
+    /**
+     * The current game actor attached to the window.
+     * 
+     * @protected
+     * @type {Game_Actor}
+     * @memberof Window_SkillStatus
+     */
     protected _actor: Game_Actor;
 
+    /**
+     * Creates an instance of Window_SkillStatus.
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} width 
+     * @param {number} height 
+     * @memberof Window_SkillStatus
+     */
     constructor(x: number, y: number, width: number, height: number);
 
+    /**
+     * Sets the current actor for the window.
+     * 
+     * @param {Game_Actor} actor 
+     * @memberof Window_SkillStatus
+     */
     setActor(actor: Game_Actor): void;
+    /**
+     * Refreshes the window contents.
+     * 
+     * @memberof Window_SkillStatus
+     */
     refresh(): void;
 }
 
@@ -1461,6 +1728,12 @@ declare class Window_Status extends Window_Selectable {
     drawBlock2(y: number): void;
     drawBlock3(y: number): void;
     drawBlock4(y: number): void;
+    /**
+     * Draws a horizontal line at the given y coordinate.
+     * 
+     * @param {number} y 
+     * @memberof Window_Status
+     */
     drawHorzLine(y: number): void;
     lineColor(): string;
     drawBasicInfo(x: number, y: number): void;
@@ -1507,13 +1780,42 @@ declare class Window_SavefileList extends Window_Selectable {
 
     constructor(x: number, y: number, width: number, height: number);
 
+    /**
+     * Sets the mode of the save file window.
+     * 
+     * @param {string} mode 
+     * @memberof Window_SavefileList
+     */
     setMode(mode: string): void;
+    /**
+     * Returns the maximum number of visible items.
+     * 
+     * @returns {number} 
+     * @memberof Window_SavefileList
+     */
     maxVisibleItems(): number;
     itemHeight(): number;
+    /**
+     * Draws the file id at the specified x and y coordinates.
+     * 
+     * @param {number} id 
+     * @param {number} x 
+     * @param {number} y 
+     * @memberof Window_SavefileList
+     */
     drawFileId(id: number, x: number, y: number): void;
     drawContents(info: {key: string}, rect: Rectangle, valid: boolean): void;
     drawGameTitle(info: {key: string}, x: number, y: number, width: number): void;
     drawPartyCharacters(info: {key: string}, x: number, y: number): void;
+    /**
+     * Draws the current playtime at the specified x and y coordinates within the given
+     * width.
+     * @param {{key: string}} info 
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} width 
+     * @memberof Window_SavefileList
+     */
     drawPlaytime(info: {key: string}, x: number, y: number, width: number): void;
 }
 
@@ -1526,8 +1828,22 @@ declare class Window_SavefileList extends Window_Selectable {
  */
 declare class Window_ShopCommand extends Window_HorzCommand {
     protected _windowWidth: number;
+    /**
+     * Determines if the shop is purchase only.
+     * 
+     * @protected
+     * @type {boolean}
+     * @memberof Window_ShopCommand
+     */
     protected _purchaseOnly: boolean;
 
+    /**
+     * Determines the width of the shop buy/sell window;
+     * also determines if the shop is purchase only.
+     * @param {number} width 
+     * @param {boolean} purchaseOnly 
+     * @memberof Window_ShopCommand
+     */
     initialize(width: number, purchaseOnly: boolean): void;
 }
 
@@ -1545,13 +1861,45 @@ declare class Window_ShopBuy extends Window_Selectable {
     protected _price: Array<number>;
     protected _statusWindow: Window_ShopStatus;
 
+    /**
+     * Creates an instance of Window_ShopBuy.
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} height 
+     * @param {Array<Array<any>>} shopGoods 
+     * @memberof Window_ShopBuy
+     */
     constructor(x: number, y: number, height: number, shopGoods: Array<Array<any>>);
 
+    /**
+     * Returns the width of the window.
+     * 
+     * @returns {number} 
+     * @memberof Window_ShopBuy
+     */
     windowWidth(): number;
+    /**
+     * Returns the current item of the window.
+     * 
+     * @returns {RPG.BaseItem} 
+     * @memberof Window_ShopBuy
+     */
     item(): RPG.BaseItem;
     setMoney(money: number): void;
     price(item: RPG.BaseItem): number;
+    /**
+     * Checks if the current item is enabled (can be bought/sold).
+     * 
+     * @param {RPG.BaseItem} item 
+     * @returns {boolean} 
+     * @memberof Window_ShopBuy
+     */
     isEnabled(item: RPG.BaseItem): boolean;
+    /**
+     * Creates a list of items for the shop window.
+     * 
+     * @memberof Window_ShopBuy
+     */
     makeItemList(): void;
     setStatusWindow(statusWindow: Window_ShopStatus): void;
 }
@@ -1566,6 +1914,13 @@ declare class Window_ShopBuy extends Window_Selectable {
 declare class Window_ShopSell extends Window_ItemList {
     constructor(x: number, y: number, width: number, height: number);
 
+    /**
+     * Determines if the item is sellable, otherwise, greyed out.
+     *
+     * @param {RPG.BaseItem} item 
+     * @returns {boolean} 
+     * @memberof Window_ShopSell
+     */
     isEnabled(item: RPG.BaseItem): boolean;
 }
 
@@ -1578,15 +1933,63 @@ declare class Window_ShopSell extends Window_ItemList {
  * @class Window_ShopNumber
  */
 declare class Window_ShopNumber extends Window_Selectable {
+    /**
+     * The current item being bought/sold.
+     * 
+     * @protected
+     * @type {RPG.BaseItem}
+     * @memberof Window_ShopNumber
+     */
     protected _item: RPG.BaseItem;
+    /**
+     * Returns the maximum number of the item
+     * that can be bought/sold.
+     * @protected
+     * @type {number}
+     * @memberof Window_ShopNumber
+     */
     protected _max: number;
+    /**
+     * The current price of the items.
+     * 
+     * @protected
+     * @type {number}
+     * @memberof Window_ShopNumber
+     */
     protected _price: number;
     protected _number: number;
+    /**
+     * Returns the currency unit of the game.
+     * 
+     * @protected
+     * @type {string}
+     * @memberof Window_ShopNumber
+     */
     protected _currencyUnit: string;
+    /**
+     * The buttons to input quantity
+     * for the quantity of the item to be bought/sold.
+     * @protected
+     * @type {Array<Sprite_Button>}
+     * @memberof Window_ShopNumber
+     */
     protected _buttons: Array<Sprite_Button>;
 
+    /**
+     * Creates an instance of Window_ShopNumber.
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} height 
+     * @memberof Window_ShopNumber
+     */
     constructor(x: number, y: number, height: number);
 
+    /**
+     * Returns the width of the window.
+     * 
+     * @returns {number} 
+     * @memberof Window_ShopNumber
+     */
     windowWidth(): number;
     number(): number;
     setup(item: RPG.BaseItem, max: number, price: number): void;
@@ -1594,18 +1997,50 @@ declare class Window_ShopNumber extends Window_Selectable {
     createButtons(): void;
     placeButtons(): void;
     updateButtonsVisiblity(): void;
+    /**
+     * Shows the quantity input buttons.
+     * 
+     * @memberof Window_ShopNumber
+     */
     showButtons(): void;
+    /**
+     * Hides the quantity input buttons.
+     * 
+     * @memberof Window_ShopNumber
+     */
     hideButtons(): void;
     drawMultiplicationSign(): void;
     drawNumber(): void;
+    /**
+     * Draws the total price of the selected
+     * quantity of item.
+     * @memberof Window_ShopNumber
+     */
     drawTotalPrice(): void;
     itemY(): number;
     priceY(): number;
     buttonY(): number;
+    /**
+     * Returns the width of the cursor.
+     * 
+     * @returns {number} 
+     * @memberof Window_ShopNumber
+     */
     cursorWidth(): number;
     cursorX(): number;
     maxDigits(): number;
+    /**
+     * Processes the change in quantity.
+     * 
+     * @memberof Window_ShopNumber
+     */
     processNumberChange(): void;
+    /**
+     * Changes the quantity, given a number.
+     * 
+     * @param {number} amount 
+     * @memberof Window_ShopNumber
+     */
     changeNumber(amount: number): void;
     onButtonUp(): void;
     onButtonUp2(): void;
@@ -1626,24 +2061,85 @@ declare class Window_ShopStatus extends Window_Base {
     protected _item: RPG.BaseItem;
     protected _pageIndex: number;
 
+    /**
+     * Creates an instance of Window_ShopStatus.
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} width 
+     * @param {number} height 
+     * @memberof Window_ShopStatus
+     */
     constructor(x: number, y: number, width: number, height: number);
 
+    /**
+     * Refreshes the window contents.
+     * 
+     * @memberof Window_ShopStatus
+     */
     refresh(): void;
     setItem(item: RPG.BaseItem): void;
     isEquipItem(): boolean;
     drawPossession(x: number, y: number): void;
     drawEquipInfo(x: number, y: number): void;
     statusMembers(): Array<Game_Actor>;
+    /**
+     * Returns the page size.
+     * 
+     * @returns {number} 
+     * @memberof Window_ShopStatus
+     */
     pageSize(): number;
+    /**
+     * Returns the max number of pages.
+     * 
+     * @returns {number} 
+     * @memberof Window_ShopStatus
+     */
     maxPages(): number;
     drawActorEquipInfo(x: number, y: number, actor: Game_Actor): void;
     drawActorParamChange(x: number, y: number, actor: Game_Actor, item1: RPG.EquipItem): void;
+    /**
+     * Returns the parameter id.
+     * 
+     * @returns {number} 
+     * @memberof Window_ShopStatus
+     */
     paramId(): number;
+    /**
+     * Returns the current item equiped by the given actor when
+     * the respective equipment Id is passed.
+     * @param {Game_Actor} actor 
+     * @param {number} etypeId 
+     * @returns {RPG.EquipItem} 
+     * @memberof Window_ShopStatus
+     */
     currentEquippedItem(actor: Game_Actor, etypeId: number): RPG.EquipItem;
+    /**
+     * Updates the current page.
+     * 
+     * @memberof Window_ShopStatus
+     */
     updatePage(): void;
+    /**
+     * Determines if page can be changed.
+     * 
+     * @returns {boolean} 
+     * @memberof Window_ShopStatus
+     */
     isPageChangeEnabled(): boolean;
     isPageChangeRequested(): boolean;
+    /**
+     * Determines if the window is touched within it's frame.
+     * 
+     * @returns {boolean} 
+     * @memberof Window_ShopStatus
+     */
     isTouchedInsideFrame(): boolean;
+    /**
+     * Changes the current page.
+     * 
+     * @memberof Window_ShopStatus
+     */
     changePage(): void;
 }
 
@@ -1658,9 +2154,27 @@ declare class Window_NameEdit extends Window_Base {
     protected _name: string;
     protected _index: number;
 
+    /**
+     * Creates an instance of Window_NameEdit.
+     * @param {Game_Actor} actor 
+     * @param {number} maxLength 
+     * @memberof Window_NameEdit
+     */
     constructor(actor: Game_Actor, maxLength: number);
 
+    /**
+     * Returns the window width.
+     * 
+     * @returns {number} 
+     * @memberof Window_NameEdit
+     */
     windowWidth(): number;
+    /**
+     * Returns the window height.
+     * 
+     * @returns {number} 
+     * @memberof Window_NameEdit
+     */
     windowHeight(): number;
 
     // "name" is defines already by superclass(PIXI.DisplayObject).
@@ -1669,13 +2183,48 @@ declare class Window_NameEdit extends Window_Base {
     restoreDefault(): boolean;
     add(ch: string): boolean;
     back(): boolean;
+    /**
+     * Returns the width of the character face.
+     * 
+     * @returns {number} 
+     * @memberof Window_NameEdit
+     */
     faceWidth(): number;
+    /**
+     * Returns the width of a character.
+     * 
+     * @returns {number} 
+     * @memberof Window_NameEdit
+     */
     charWidth(): number;
     left(): number;
     underlineRect(index: number): Rectangle;
+    /**
+     * Returns the color of the underline as a css color string.
+     * 
+     * @returns {string} 
+     * @memberof Window_NameEdit
+     */
     underlineColor(): string;
+    /**
+     * Draws the underline at the given index of the window.
+     * 
+     * @param {number} index 
+     * @memberof Window_NameEdit
+     */
     drawUnderline(index: number): void;
+    /**
+     * Draws a character within the window at the specified index.
+     * 
+     * @param {number} index 
+     * @memberof Window_NameEdit
+     */
     drawChar(index: number): void;
+    /**
+     * Refreshes the window contents.
+     * 
+     * @memberof Window_NameEdit
+     */
     refresh(): void;
 }
 
