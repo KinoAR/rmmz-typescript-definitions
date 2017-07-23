@@ -814,7 +814,21 @@ declare class Window_Base {
 // The window class with cursor movement and scroll functions.
 
 declare class Window_Selectable extends Window_Base {
+  /**
+   * The index property of Window_Selectable; this is used
+   * to select items from the list within the window.
+   * @protected
+   * @type {number}
+   * @memberof Window_Selectable
+   */
   protected _index: number;
+  /**
+   * The boolean property that determines if the cursor is
+   * fixed(locked to a position).
+   * @protected
+   * @type {boolean}
+   * @memberof Window_Selectable
+   */
   protected _cursorFixed: boolean;
   protected _cursorAll: boolean;
   protected _stayCount: number;
@@ -825,15 +839,58 @@ declare class Window_Selectable extends Window_Base {
   protected _scrollY: number;
   
   constructor(x: number, y: number, width: number, height: number);
+  /**
+   * Returns the current position of the _index property.
+   * 
+   * @returns {number} 
+   * @memberof Window_Selectable
+   */
   index(): number;
+  /**
+   * Returns true if the _cursorFixed property is true;
+   * this means the cursor is locked to a position.
+   * @returns {boolean} 
+   * @memberof Window_Selectable
+   */
   cursorFixed(): boolean;
+  /**
+   * Sets the _cursorFixed property of the
+   * window.
+   * @param {boolean} cursorFixed 
+   * @memberof Window_Selectable
+   */
   setCursorFixed(cursorFixed: boolean): void;
   cursorAll(): boolean;
   setCursorAll(cursorAll: boolean): void;
+  /**
+   * Returns the maximum number of columns
+   * for the window.
+   * @returns {number} 
+   * @memberof Window_Selectable
+   */
   maxCols(): number;
+  /**
+   * Returns the maximum number of items within the window;
+   * useful to overwrite when creating a new window.
+   * This method is used to calculate the number of rows and more.
+   * @returns {number} 
+   * @memberof Window_Selectable
+   */
   maxItems(): number;
   spacing(): number;
+  /**
+   * Returns the width of an item within the window;
+   * determines the width of a column.
+   * @returns {number} 
+   * @memberof Window_Selectable
+   */
   itemWidth(): number;
+  /**
+   * Returns the height of an item within the window;
+   * determines the height of a row.
+   * @returns {number} 
+   * @memberof Window_Selectable
+   */
   itemHeight(): number;
   /**
    * Selects the current index within the window given a number.
@@ -869,6 +926,12 @@ declare class Window_Selectable extends Window_Base {
   resetScroll(): void;
   maxPageRows(): number;
   maxPageItems(): number;
+  /**
+   * Returns true if the window is horizontal;
+   * means the window only has a single row.
+   * @returns {boolean} 
+   * @memberof Window_Selectable
+   */
   isHorizontal(): boolean;
   bottomRow(): number;
   setBottomRow(row: number): void;
@@ -891,7 +954,17 @@ declare class Window_Selectable extends Window_Base {
    */
   itemRectForText(index: number): Rectangle;
   setHelpWindow(helpWindow: Window_Help): void;
+  /**
+   * Shows the attached help window.
+   * 
+   * @memberof Window_Selectable
+   */
   showHelpWindow(): void;
+  /**
+   * Hides the attached help window.
+   * 
+   * @memberof Window_Selectable
+   */
   hideHelpWindow(): void;
   /**
    * Creates a new handler with the symbol as the handler name
@@ -905,7 +978,21 @@ declare class Window_Selectable extends Window_Base {
   callHandler(symbol: string): void;
   isOpenAndActive(): boolean;
   isCursorMovable(): boolean;
+  /**
+   * Moves the cursor down; if wrap is passed
+   * as true, then it will return to the top when
+   * at the end of the list.
+   * @param {boolean} wrap 
+   * @memberof Window_Selectable
+   */
   cursorDown(wrap: boolean): void;
+  /**
+   * Moves the cursor up; if wrap is passed 
+   * as true, then it will return to the bottom
+   * when at the top of the list.
+   * @param {boolean} wrap 
+   * @memberof Window_Selectable
+   */
   cursorUp(wrap: boolean): void;
   cursorRight(wrap: boolean): void;
   cursorLeft(wrap: boolean): void;
@@ -914,22 +1001,71 @@ declare class Window_Selectable extends Window_Base {
   scrollDown(): void;
   scrollUp(): void;
   updateArrows(): void;
+  /**
+   * Handles the processing of cursor movement.
+   * 
+   * @memberof Window_Selectable
+   */
   processCursorMove(): void;
+  /**
+   * Handles the process of attached handlers.
+   * 
+   * @memberof Window_Selectable
+   */
   processHandling(): void;
+  /**
+   * Handles the processing of the scroll wheel within
+   * the window.
+   * @memberof Window_Selectable
+   */
   processWheel(): void;
+  /**
+   * Handles the processing of touch input.
+   * 
+   * @memberof Window_Selectable
+   */
   processTouch(): void;
   isTouchedInsideFrame(): boolean;
   onTouch(triggered: boolean): void;
   hitTest(x: number, y: number): number;
   isContentsArea(x: number, y: number): boolean;
+  /**
+   * Determines if touch ok is enabled as an option;
+   * this means whether you can confirm the selection
+   * of an item within the window with touch input.
+   * @returns {boolean} 
+   * @memberof Window_Selectable
+   */
   isTouchOkEnabled(): boolean;
+  /**
+   * Determines if ok is enabled as an option;
+   * this means whether you can confirm selection
+   * of an item within the window.
+   * @returns {boolean} 
+   * @memberof Window_Selectable
+   */
   isOkEnabled(): boolean;
   isCancelEnabled(): boolean;
   isOkTriggered(): boolean;
   isCancelTriggered(): boolean;
   processOk(): void;
+  /**
+   * Plays a sound effect when okay is processed.
+   * 
+   * @memberof Window_Selectable
+   */
   playOkSound(): void;
+  /**
+   * Plays the buzzer sound effect when input is
+   * incorrect.
+   * @memberof Window_Selectable
+   */
   playBuzzerSound(): void;
+  /**
+   * Calls the ok handler and begins processing
+   * confirmation of selection.
+   * @memberof Window_Selectable
+   */
   callOkHandler(): void;
   processCancel(): void;
   callCancelHandler(): void;
@@ -937,17 +1073,33 @@ declare class Window_Selectable extends Window_Base {
   processPagedown(): void;
   updateInputData(): void;
   updateCursor(): void;
+  /**
+   * Determines if the cursor is visible within
+   * the window.
+   * @returns {boolean} 
+   * @memberof Window_Selectable
+   */
   isCursorVisible(): boolean;
   ensureCursorVisible(): void;
   callUpdateHelp(): void;
   updateHelp(): void;
   setHelpWindowItem(item: any): void;
   isCurrentItemEnabled(): boolean;
+  /**
+   * Draws all items within the window; this method
+   * cals drawItem multiple times.
+   * @memberof Window_Selectable
+   */
   drawAllItems(): void;
   drawItem(index: number): void;
   clearItem(index: number): void;
   redrawItem(index: number): void;
   redrawCurrentItem(): void;
+  /**
+   * Refreshes the window contents.
+   * 
+   * @memberof Window_Selectable
+   */
   refresh(): void;
 }
 
