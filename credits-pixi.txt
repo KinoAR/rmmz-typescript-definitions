@@ -1,0 +1,33 @@
+/*
+* Do Not Remove This Header
+//=============================================================================
+//  ChangeLog
+//=============================================================================
+* version 1.0.0
+* - Added most major MV functions.
+* - Added PIXI.js type definitions
+* - Added LZString type definitions
+* - Added FPSMeter type definitions
+//=============================================================================
+//  Credits
+//=============================================================================
+*
+*  AsterAtwood: https://github.com/AsterAtwood
+*  Sabakan03: https://github.com/sabakan03
+*  For providing the base d.ts files to work from.
+//=============================================================================
+//  Contact Information
+//=============================================================================
+*
+* Contact me via twitter: EISKino, or on the rpg maker forums.
+* Username on forums: Kino.
+*
+* Forum Link: http://forums.rpgmakerweb.com/index.php?/profile/75879-kino/
+* Website Link: http://endlessillusoft.com/
+* Twitter Link: https://twitter.com/EISKino
+* Patreon Link: https://www.patreon.com/EISKino
+*
+* Hope this makes your plugin creation all the better.
+* --Kino
+*/
+

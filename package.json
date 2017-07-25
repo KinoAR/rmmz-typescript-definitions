@@ -8,8 +8,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./conact-mv.js ./src/ > rmmv.d.ts",
-    "build-externals": "./conact-mv.js ./src/ ./libs/PIXI.d.ts ./libs/fpsmeter.d.ts ./libs/lz-string.d.ts > rmmv-pixi.d.ts"
+    "build": "node ./concat-mv.js credits.txt ./src/ > rmmv.d.ts",
+    "build-externals": "node ./concat-mv.js credits-pixi.txt ./src/ ./libs/PIXI.d.ts ./libs/fpsmeter.d.ts ./libs/lz-string.d.ts > rmmv-pixi.d.ts",
+    "gen-doc": "typedoc --mode file --out ./doc ./libs/lz-string.d.ts ./libs/fpsmeter.d.ts ./src/rpg_scenes.d.ts ./src/rpg_sprites.d.ts ./src/rpg_windows.d.ts ./src/rpg_managers.d.ts ./src/rpg_core.d.ts ./src/rpg_library.d.ts ./src/rpg_objects.d.ts ./src/rpg_mv.d.ts --includeDeclarations --name 'RPGMakerMV Library' --readme doc-readme.md"
   },
   "repository": {
     "type": "git",
