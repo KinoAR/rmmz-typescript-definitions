@@ -6,6 +6,8 @@
 * version 1.0.0
 * - Added most major MV functions.
 * - Added PIXI.js type definitions
+* - Added LZString type definitions
+* - Added FPSMeter type definitions
 //=============================================================================
 //  Credits
 //=============================================================================
@@ -3193,7 +3195,4595 @@ declare namespace pixi {
 declare module "pixi.js" {
     export = PIXI;
 }
-declare namespace RPG {
+// Type definitions for FPSmeter v0.3.0
+// Project: http://darsa.in/fpsmeter/
+// Definitions by: Aaron Lampros <http://github.com/alampros/>
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+
+interface FPSMeterOptions {
+	interval?: number; 		// Update interval in milliseconds.
+	smoothing?: number;		// Spike smoothing strength. 1 means no smoothing.
+	show?: string;			// Whether to show 'fps', or 'ms' = frame duration in milliseconds.
+	toggleOn?: string;		// Toggle between show 'fps' and 'ms' on this event.
+	decimals?: number;		// Number of decimals in FPS number. 1 = 59.9, 2 = 59.94, ...
+	maxFps?: number;		// Max expected FPS value.
+	threshold?: number;		// Minimal tick reporting interval in milliseconds.
+	position?: string;		// Meter position.
+	zIndex?: number;		// Meter Z index.
+	left?: string;			// Meter left offset.
+	top?: string;			// Meter top offset.
+	right?: string;			// Meter right offset.
+	bottom?: string;		// Meter bottom offset.
+	margin?: string;		// Meter margin. Helps with centering the counter when left: 50%;
+
+	theme?: string;			// Meter theme. Build in: 'dark', 'light', 'transparent', 'colorful'.
+	heat?: number;			// Allow themes to use coloring by FPS heat. 0 FPS = red, maxFps = green.
+
+	graph?: number;			// Whether to show history graph.
+	history?: number;		// How many history states to show in a graph.
+}
+
+declare class FPSMeter {
+	constructor(anchor?: HTMLElement, options?: FPSMeterOptions);
+	public options : FPSMeterOptions;
+	public tick(): void;
+	public tickStart(): void;
+	public pause(): FPSMeter;
+	public resume(): FPSMeter;
+	public set(name: string, value: any): FPSMeter;
+	public showDuration(): FPSMeter;
+	public showFps(): FPSMeter;
+	public toggle(): FPSMeter;
+	public hide(): FPSMeter;
+	public show(): FPSMeter;
+	public destroy() : void;
+}
+
+// Type definitions for lz-string 1.3
+// Project: https://github.com/pieroxy/lz-string
+// Definitions by: Roman Nikitin <https://github.com/M0ns1gn0r>
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+
+declare var LZString: LZStringStatic;
+
+    /**
+     * LZ-based compression algorithm for JavaScript.
+     */
+    interface LZStringStatic {
+        /**
+         * Compresses input string producing an instance of an "invalid" UTF-16 string.
+         * Such string could be stored in localStorage only on webkit
+         * browsers (tested on Android, Chrome, Safari).
+         *
+         * @param uncompressed A string which should be compressed.
+         */
+        compress(uncompressed: string): string;
+
+        /**
+         * Decompresses "invalid" input string created by the method compress().
+         *
+         * @param compressed A string obtained from a call to compress().
+         */
+        decompress(compressed: string): string;
+
+        /**
+         * Compresses input string producing an instance of a "valid" UTF-16 string,
+         * in the sense that all browsers can store them safely.
+         *
+         * @param uncompressed A string which should be compressed.
+         */
+        compressToUTF16(uncompressed: string): string;
+
+        /**
+         * Decompresses "valid" input string created by the method compressToUTF16().
+         *
+         * @param compressed A string obtained from a call to compressToUTF16().
+         */
+        decompressFromUTF16(compressed: string): string;
+
+        /**
+         * Compresses input string producing an instance of a ASCII UTF-16 string,
+         * which represents the original string encoded in Base64.
+         * The result can be safely transported outside the browser with a
+         * guarantee that none of the characters produced need to be URL-encoded.
+         *
+         * @param uncompressed A string which should be compressed.
+         */
+        compressToBase64(uncompressed: string): string;
+
+        /**
+         * Decompresses ASCII UTF-16 input string created by the method compressToBase64().
+         *
+         * @param compressed A string obtained from a call to compressToBase64().
+         */
+        decompressFromBase64(compressed: string): string;
+
+        /**
+         * produces ASCII strings representing the original string encoded in Base64 with a few
+         * tweaks to make these URI safe. Hence, you can send them to the server without thinking
+         * about URL encoding them. This saves bandwidth and CPU
+         *
+         * @param uncompressed A string which should be compressed.
+         */
+        compressToEncodedURIComponent(uncompressed: string): string;
+
+        /**
+         * Decompresses "valid" input string created by the method compressToEncodedURIComponent().
+         *
+         * @param compressed A string obtained from a call to compressToEncodedURIComponent().
+         */
+        decompressFromEncodedURIComponent(compressed: string): string;
+
+        /**
+         * produces an uint8Array
+         *
+         * @param uncompressed A string which should be compressed.
+         */
+        compressToUint8Array(uncompressed: string): Uint8Array;
+
+        /**
+         * Decompresses "valid" array created by the method compressToUint8Array().
+         *
+         * @param compressed A string obtained from a call to compressToUint8Array().
+         */
+        decompressFromUint8Array(compressed: Uint8Array): string;
+    }
+
+declare class Bitmap {
+    /**
+     * Loads a image file and returns a new bitmap object.
+     *
+     * @static
+     * @method load
+     * @param {String} url The image url of the texture
+     * @return Bitmap
+     */
+    static load(url: string): Bitmap;
+
+    /**
+     * Takes a snapshot of the game screen and returns a new bitmap object.
+     *
+     * @static
+     * @method snap
+     * @param {Stage} stage The stage object
+     * @return Bitmap
+     */
+    static snap(stage: Stage): Bitmap;
+
+    /**
+     * The face name of the font.
+     *
+     * @property fontFace
+     * @type String
+     */
+    fontFace: string;
+
+    /**
+     * The size of the font in pixels.
+     *
+     * @property fontSize
+     * @type Number
+     */
+    fontSize: number;
+
+    /**
+     * Whether the font is italic.
+     *
+     * @property fontItalic
+     * @type Boolean
+     */
+    fontItalic: number;
+
+    /**
+     * The color of the text in CSS format.
+     *
+     * @property textColor
+     * @type String
+     */
+    textColor: string;
+
+    /**
+     * The color of the outline of the text in CSS format.
+     *
+     * @property outlineColor
+     * @type String
+     */
+    outlineColor: string;
+
+    /**
+     * The width of the outline of the text.
+     *
+     * @property outlineWidth
+     * @type Number
+     */
+    outlineWidth: number;
+
+    /**
+     * [read-only] The url of the image file.
+     *
+     * @property url
+     * @type String
+     */
+    url: string;
+
+    /**
+     * [read-only] The base texture that holds the image.
+     *
+     * @property baseTexture
+     * @type PIXI.BaseTexture
+     */
+    baseTexture: PIXI.BaseTexture;
+
+    /**
+     * [read-only] The bitmap canvas.
+     *
+     * @property canvas
+     * @type HTMLCanvasElement
+     */
+    canvas: HTMLCanvasElement;
+
+    /**
+     * [read-only] The 2d context of the bitmap canvas.
+     *
+     * @property context
+     * @type CanvasRenderingContext2D
+     */
+    context: CanvasRenderingContext2D;
+
+    /**
+     * [read-only] The width of the bitmap.
+     *
+     * @property width
+     * @type Number
+     */
+    width: number;
+
+    /**
+     * [read-only] The height of the bitmap.
+     *
+     * @property height
+     * @type Number
+     */
+    height: number;
+
+    /**
+     * [read-only] The rectangle of the bitmap.
+     *
+     * @property rect
+     * @type Rectangle
+     */
+    rect: Rectangle;
+
+    /**
+     * Whether the smooth scaling is applied.
+     *
+     * @property smooth
+     * @type Boolean
+     */
+    smooth: boolean;
+
+    /**
+     * The opacity of the drawing object in the range (0, 255).
+     *
+     * @property paintOpacity
+     * @type Number
+     */
+    paintOpacity: number;
+
+    /**
+     * Cache entry, for images. In all cases _url is the same as cacheEntry.key
+     * @type CacheEntry
+     */
+    cacheEntry: CacheEntry;
+
+    /**
+     * The basic object that represents an image.
+     *
+     * @class Bitmap
+     * @constructor
+     * @param {Number} width The width of the bitmap
+     * @param {Number} height The height of the bitmap
+     */
+    constructor();
+    constructor(width: number, height: number);
+
+    /**
+     * Checks whether the bitmap is ready to render.
+     *
+     * @method isReady
+     * @return {Boolean} True if the bitmap is ready to render
+     */
+    isReady(): boolean;
+
+    /**
+     * Checks whether a loading error has occurred.
+     *
+     * @method isError
+     * @return {Boolean} True if a loading error has occurred
+     */
+    isError(): boolean;
+
+    /**
+     * Resizes the bitmap.
+     *
+     * @method resize
+     * @param {Number} width The new width of the bitmap
+     * @param {Number} height The new height of the bitmap
+     */
+    resize(width: number, height: number): void;
+
+    /**
+     * Performs a block transfer.
+     *
+     * @method blt
+     * @param {Bitmap} source The bitmap to draw
+     * @param {Number} sx The x coordinate in the source
+     * @param {Number} sy The y coordinate in the source
+     * @param {Number} sw The width of the source image
+     * @param {Number} sh The height of the source image
+     * @param {Number} dx The x coordinate in the destination
+     * @param {Number} dy The y coordinate in the destination
+     * @param {Number} [dw=sw] The width to draw the image in the destination
+     * @param {Number} [dh=sh] The height to draw the image in the destination
+     */
+    blt(source: Bitmap, sx: number, sy: number, sw: number, sh: number,
+                        dx: number, dy: number, dw?: number, dh?: number): void;
+
+    /**
+     * Returns pixel color at the specified point.
+     *
+     * @method getPixel
+     * @param {Number} x The x coordinate of the pixel in the bitmap
+     * @param {Number} y The y coordinate of the pixel in the bitmap
+     * @return {String} The pixel color (hex format)
+     */
+    getPixel(x: number, y: number): string;
+
+    /**
+     * Returns alpha pixel value at the specified point.
+     *
+     * @method getAlphaPixel
+     * @param {Number} x The x coordinate of the pixel in the bitmap
+     * @param {Number} y The y coordinate of the pixel in the bitmap
+     * @return {String} The alpha value
+     */
+    getAlphaPixel(x: number, y: number): string;
+
+    /**
+     * Clears the specified rectangle.
+     *
+     * @method clearRect
+     * @param {Number} x The x coordinate for the upper-left corner
+     * @param {Number} y The y coordinate for the upper-left corner
+     * @param {Number} width The width of the rectangle to clear
+     * @param {Number} height The height of the rectangle to clear
+     */
+    clearRect(x: number, y: number, width: number, height: number): void;
+
+    /**
+     * Clears the entire bitmap.
+     *
+     * @method clear
+     */
+    clear(): void;
+
+    /**
+     * Fills the specified rectangle.
+     *
+     * @method fillRect
+     * @param {Number} x The x coordinate for the upper-left corner
+     * @param {Number} y The y coordinate for the upper-left corner
+     * @param {Number} width The width of the rectangle to clear
+     * @param {Number} height The height of the rectangle to clear
+     * @param {String} color The color of the rectangle in CSS format
+     */
+    fillRect(x: number, y: number, width: number, height: number, color: string): void;
+
+    /**
+     * Fills the entire bitmap.
+     *
+     * @method fillAll
+     * @param {String} color The color of the rectangle in CSS format
+     */
+    fillAll(color: string): void;
+
+    /**
+     * Draws the rectangle with a gradation.
+     *
+     * @method gradientFillRect
+     * @param {Number} x The x coordinate for the upper-left corner
+     * @param {Number} y The y coordinate for the upper-left corner
+     * @param {Number} width The width of the rectangle to clear
+     * @param {Number} height The height of the rectangle to clear
+     * @param {String} color1 The start color of the gradation
+     * @param {String} color2 The end color of the gradation
+     * @param {Boolean} vertical Whether it draws a vertical gradient
+     */
+    gradientFillRect(x: number, y: number, width: number, height: number,
+                     color1: string, color2: string, vertical?: boolean): void;
+
+    /**
+     * Draw the filled circle.
+     *
+     * @method drawCircle
+     * @param {Number} x The x coordinate of the center of the circle
+     * @param {Number} y The y coordinate of the center of the circle
+     * @param {Number} radius The radius of the circle
+     * @param {String} color The color of the circle in CSS format
+     */
+    drawCircle(x: number, y: number, radius: number, color: string): void;
+
+    /**
+     * Draws the outline text to the bitmap.
+     *
+     * @method drawText
+     * @param {String} text The text that will be drawn
+     * @param {Number} x The x coordinate for the left of the text
+     * @param {Number} y The y coordinate for the top of the text
+     * @param {Number} maxWidth The maximum allowed width of the text
+     * @param {Number} lineHeight The height of the text line
+     * @param {String} align The alignment of the text
+     */
+    drawText(text: string, x: number, y: number,
+             maxWidth: number, lineHeight: number, align: string): void;
+
+    /**
+     * Returns the width of the specified text.
+     *
+     * @method measureTextWidth
+     * @param {String} text The text to be measured
+     * @return {Number} The width of the text in pixels
+     */
+    measureTextWidth(text: string): number;
+
+    /**
+     * Changes the color tone of the entire bitmap.
+     *
+     * @method adjustTone
+     * @param {Number} r The red strength in the range (-255, 255)
+     * @param {Number} g The green strength in the range (-255, 255)
+     * @param {Number} b The blue strength in the range (-255, 255)
+     */
+    adjustTone(r: number, g: number, b: number): void;
+
+    /**
+     * Rotates the hue of the entire bitmap.
+     *
+     * @method rotateHue
+     * @param {Number} offset The hue offset in 360 degrees
+     */
+    rotateHue(offset: number): void;
+
+    /**
+     * Applies a blur effect to the bitmap.
+     *
+     * @method blur
+     */
+    blur(): void;
+
+    /**
+     * Add a callback function that will be called when the bitmap is loaded.
+     *
+     * @method addLoadListener
+     * @param {Function} listner The callback function
+     */
+    addLoadListener(listner: () => void): void;
+
+    /**
+     * touch the resource
+     * @method touch
+     */
+    touch(): void;
+
+    /**
+     * Performs a block transfer, using assumption that original image was not modified (no hue)
+     *
+     * @method blt
+     * @param {Bitmap} source The bitmap to draw
+     * @param {Number} sx The x coordinate in the source
+     * @param {Number} sy The y coordinate in the source
+     * @param {Number} sw The width of the source image
+     * @param {Number} sh The height of the source image
+     * @param {Number} dx The x coordinate in the destination
+     * @param {Number} dy The y coordinate in the destination
+     * @param {Number} [dw=sw] The width to draw the image in the destination
+     * @param {Number} [dh=sh] The height to draw the image in the destination
+     */
+    bltImage(source: Bitmap, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): void;
+
+    protected _canvas: HTMLCanvasElement;
+    protected _context: CanvasRenderingContext2D;
+    protected _baseTexture: PIXI.BaseTexture;
+    protected _image: HTMLImageElement;
+    protected _url: string;
+    protected _paintOpacity: number;
+    protected _smooth: boolean;
+    protected _loadListeners: () => void;
+    protected _isLoading: boolean;
+    protected _hasError: boolean;
+
+    /**
+     * @method _makeFontNameText
+     * @return {String} FontNameText
+     * @private
+     */
+    protected _makeFontNameText(): string;
+
+    /**
+     * @method _drawTextOutline
+     * @param {String} text
+     * @param {Number} tx
+     * @param {Number} ty
+     * @param {Number} maxWidth
+     * @private
+     */
+    protected _drawTextOutline(text: number, tx: number, ty: number, maxWidth: number): void;
+
+    /**
+     * @method _drawTextBody
+     * @param {String} text
+     * @param {Number} tx
+     * @param {Number} ty
+     * @param {Number} maxWidth
+     * @private
+     */
+    protected _drawTextBody(text: string, tx: number, ty: number, maxWidth: number): void;
+
+    /**
+     * @method _onLoad
+     * @private
+     */
+    protected _onLoad(): void;
+
+    /**
+     * @method _callLoadListeners
+     * @private
+     */
+    protected _callLoadListeners(): void;
+
+    /**
+     * @method _onError
+     * @private
+     */
+    protected _onError(): void;
+
+    /**
+     * @method _setDirty
+     * @private
+     */
+    protected _setDirty(): void;
+}
+
+/**
+ * The static class that carries out graphics processing.
+ *
+ * @class Graphics
+ */
+interface GraphicsStatic {
+    /**
+     * The total frame count of the game screen.
+     *
+     * @static
+     * @property frameCount
+     * @type Number
+     */
+    frameCount: number;
+
+    /**
+     * The alias of PIXI.blendModes.NORMAL.
+     *
+     * @static
+     * @property BLEND_NORMAL
+     * @type Number
+     * @final
+     */
+    BLEND_NORMAL: number;
+
+    /**
+     * The alias of PIXI.blendModes.ADD.
+     *
+     * @static
+     * @property BLEND_ADD
+     * @type Number
+     * @final
+     */
+    BLEND_ADD: number;
+
+    /**
+     * The alias of PIXI.blendModes.MULTIPLY.
+     *
+     * @static
+     * @property BLEND_MULTIPLY
+     * @type Number
+     * @final
+     */
+    BLEND_MULTIPLY: number;
+
+    /**
+     * The alias of PIXI.blendModes.SCREEN.
+     *
+     * @static
+     * @property BLEND_SCREEN
+     * @type Number
+     * @final
+     */
+    BLEND_SCREEN: number;
+
+    /**
+     * The width of the game screen.
+     *
+     * @static
+     * @property width
+     * @type Number
+     */
+    width: number;
+
+    /**
+     * The height of the game screen.
+     *
+     * @static
+     * @property height
+     * @type Number
+     */
+    height: number;
+
+    /**
+     * The width of the window display area.
+     *
+     * @static
+     * @property boxWidth
+     * @type Number
+     */
+    boxWidth: number;
+
+    /**
+     * The height of the window display area.
+     *
+     * @static
+     * @property boxHeight
+     * @type Number
+     */
+    boxHeight: number;
+
+    /**
+     * The zoom scale of the game screen.
+     *
+     * @static
+     * @property scale
+     * @type Number
+     */
+    scale: number;
+
+    /**
+     * Initializes the graphics system.
+     *
+     * @static
+     * @method initialize
+     * @param {Number} width The width of the game screen
+     * @param {Number} height The height of the game screen
+     * @param {String} type The type of the renderer.
+     *                 'canvas', 'webgl', or 'auto'.
+     */
+    initialize(): void;
+    initialize(width: number, height: number, type: string): void;
+
+    /**
+     * Marks the beginning of each frame for FPSMeter.
+     *
+     * @static
+     * @method tickStart
+     */
+    tickStart(): void;
+
+    /**
+     * Marks the end of each frame for FPSMeter.
+     *
+     * @static
+     * @method tickEnd
+     */
+    tickEnd(): void;
+
+    /**
+     * Renders the stage to the game screen.
+     *
+     * @static
+     * @method render
+     * @param {Stage} stage The stage object to be rendered
+     */
+    render(stage?: Stage): void;
+
+    /**
+     * Checks whether the renderer type is WebGL.
+     *
+     * @static
+     * @method isWebGL
+     * @return {Boolean} True if the renderer type is WebGL
+     */
+    isWebGL(): boolean;
+
+    /**
+     * Checks whether the current browser supports WebGL.
+     *
+     * @static
+     * @method hasWebGL
+     * @return {Boolean} True if the current browser supports WebGL.
+     */
+    hasWebGL(): boolean;
+
+    /**
+     * Checks whether the canvas blend mode 'difference' is supported.
+     *
+     * @static
+     * @method canUseDifferenceBlend
+     * @return {Boolean} True if the canvas blend mode 'difference' is supported
+     */
+    canUseDifferenceBlend(): boolean;
+
+    /**
+     * Checks whether the canvas blend mode 'saturation' is supported.
+     *
+     * @static
+     * @method canUseSaturationBlend
+     * @return {Boolean} True if the canvas blend mode 'saturation' is supported
+     */
+    canUseSaturationBlend(): boolean;
+
+    /**
+     * Sets the source of the "Now Loading" image.
+     *
+     * @static
+     * @method setLoadingImage
+     * @param {String} Path of image
+     */
+    setLoadingImage(src: string);
+
+    /**
+     * Initializes the counter for displaying the "Now Loading" image.
+     *
+     * @static
+     * @method startLoading
+     */
+    startLoading(): void;
+
+    /**
+     * Increments the loading counter and displays the "Now Loading" image if necessary.
+     *
+     * @static
+     * @method updateLoading
+     */
+    updateLoading(): void;
+
+    /**
+     * Erases the "Now Loading" image.
+     *
+     * @static
+     * @method endLoading
+     */
+    endLoading(): void;
+
+    /**
+     * Displays the error text to the screen.
+     *
+     * @static
+     * @method printError
+     * @param {String} name The name of the error
+     * @param {String} message The message of the error
+     */
+    printError(name: string, message: string): void;
+
+    /**
+     * Shows the FPSMeter element.
+     *
+     * @static
+     * @method showFps
+     */
+    showFps(): void;
+
+    /**
+     * Hides the FPSMeter element.
+     *
+     * @static
+     * @method hideFps
+     */
+    hideFps(): void;
+
+    /**
+     * Loads a font file.
+     *
+     * @static
+     * @method loadFont
+     * @param {String} name The face name of the font
+     * @param {String} url The url of the font file
+     */
+    loadFont(name: string, url: string): void;
+
+    /**
+     * Checks whether the font file is loaded.
+     *
+     * @static
+     * @method isFontLoaded
+     * @param {String} name The face name of the font
+     * @return {Boolean} True if the font file is loaded
+     */
+    isFontLoaded(name: string): boolean;
+
+    /**
+     * Starts playback of a video.
+     *
+     * @static
+     * @method playVideo
+     * @param {String} src
+     */
+    playVideo(src: string): void;
+
+    /**
+     * Checks whether the video is playing.
+     *
+     * @static
+     * @method isVideoPlaying
+     * @return {Boolean} True if the video is playing
+     */
+    isVideoPlaying(): boolean;
+
+    /**
+     * Checks whether the browser can play the specified video type.
+     *
+     * @static
+     * @method canPlayVideoType
+     * @param {String} type The video type to test support for
+     * @return {Boolean} True if the browser can play the specified video type
+     */
+    canPlayVideoType(type: string): boolean;
+
+    /**
+     * Converts an x coordinate on the page to the corresponding
+     * x coordinate on the canvas area.
+     *
+     * @static
+     * @method pageToCanvasX
+     * @param {Number} x The x coordinate on the page to be converted
+     * @return {Number} The x coordinate on the canvas area
+     */
+    pageToCanvasX(x: number): number;
+
+    /**
+     * Converts a y coordinate on the page to the corresponding
+     * y coordinate on the canvas area.
+     *
+     * @static
+     * @method pageToCanvasY
+     * @param {Number} y The y coordinate on the page to be converted
+     * @return {Number} The y coordinate on the canvas area
+     */
+    pageToCanvasY(y: number): number;
+
+    /**
+     * Checks whether the specified point is inside the game canvas area.
+     *
+     * @static
+     * @method isInsideCanvas
+     * @param {Number} x The x coordinate on the canvas area
+     * @param {Number} y The y coordinate on the canvas area
+     * @return {Boolean} True if the specified point is inside the game canvas area
+     */
+    isInsideCanvas(x: number, y: number): boolean;
+
+    /**
+     * Calls pixi.js garbage collector
+     */
+    callGC(): void;
+
+
+
+    _width: number;
+    _height: number;
+    _rendererType: string;
+    _boxWidth: number;
+    _boxHeight: number;
+    _scale: number;
+    _realScale : number;
+    _errorPrinter: boolean;
+    _canvas: HTMLCanvasElement;
+    _video: HTMLVideoElement;
+    _upperCanvas: HTMLCanvasElement;
+    _renderer: PIXI.SystemRenderer;
+    _fpsMeter: FPSMeter;
+    _modeBox: HTMLDivElement;
+    _skipCount: number;
+    _maxSkip: number;
+    _rendered: boolean;
+    _loadingImage: HTMLImageElement;
+    _loadingCount: number;
+    _fpsMeterToggled: boolean;
+    _stretchEnabled: boolean;
+    _canUseDifferenceBlend: boolean;
+    _canUseSaturationBlend: boolean;
+    _hiddenCanvas: HTMLCanvasElement;
+
+    /**
+     * @static
+     * @method _createAllElements
+     * @private
+     */
+    _createAllElements(): void;
+
+    /**
+     * @static
+     * @method _updateAllElements
+     * @private
+     */
+    _updateAllElements(): void;
+
+    /**
+     * @static
+     * @method _updateRealScale
+     * @private
+     */
+    _updateRealScale(): void;
+
+    /**
+     * @static
+     * @method _makeErrorHtml
+     * @param {String} name
+     * @param {String} message
+     * @return {String}
+     * @private
+     */
+    _makeErrorHtml(name: string, message: string): void;
+
+    /**
+     * @static
+     * @method _defaultStretchMode
+     * @private
+     */
+    _defaultStretchMode(): boolean;
+
+    /**
+     * @static
+     * @method _testCanvasBlendModes
+     * @private
+     */
+    _testCanvasBlendModes(): void;
+
+    /**
+     * @static
+     * @method _modifyExistingElements
+     * @private
+     */
+    _modifyExistingElements(): void;
+
+    /**
+     * @static
+     * @method _createErrorPrinter
+     * @private
+     */
+    _createErrorPrinter(): void;
+
+    /**
+     * @static
+     * @method _updateErrorPrinter
+     * @private
+     */
+    _updateErrorPrinter(): void;
+
+    /**
+     * @static
+     * @method _createCanvas
+     * @private
+     */
+    _createCanvas(): void;
+
+    /**
+     * @static
+     * @method _updateCanvas
+     * @private
+     */
+    _updateCanvas(): void;
+
+    /**
+     * @static
+     * @method _createVideo
+     * @private
+     */
+    _createVideo(): void;
+
+    /**
+     * @static
+     * @method _updateVideo
+     * @private
+     */
+    _updateVideo(): void;
+
+    /**
+     * @static
+     * @method _createUpperCanvas
+     * @private
+     */
+    _createUpperCanvas(): void;
+
+    /**
+     * @static
+     * @method _updateUpperCanvas
+     * @private
+     */
+    _updateUpperCanvas(): void;
+
+    /**
+     * @static
+     * @method _clearUpperCanvas
+     * @private
+     */
+    _clearUpperCanvas(): void;
+
+    /**
+     * @static
+     * @method _paintUpperCanvas
+     * @private
+     */
+    _paintUpperCanvas(): void;
+
+    /**
+     * @static
+     * @method _createRenderer
+     * @private
+     */
+    _createRenderer(): void;
+
+    /**
+     * @static
+     * @method _updateRenderer
+     * @private
+     */
+    _updateRenderer(): void;
+
+    /**
+     * @static
+     * @method _createFPSMeter
+     * @private
+     */
+    _createFPSMeter(): void;
+
+    /**
+     * @static
+     * @method _createModeBox
+     * @private
+     */
+    _createModeBox(): void;
+
+    /**
+     * @static
+     * @method _createGameFontLoader
+     * @private
+     */
+    _createGameFontLoader(): void;
+
+    /**
+     * @static
+     * @method _createFontLoader
+     * @param {String} name
+     * @private
+     */
+    _createFontLoader(name: string): void;
+
+    /**
+     * @static
+     * @method _centerElement
+     * @param {HTMLCanvasElement} element
+     * @private
+     */
+    _centerElement(element: HTMLCanvasElement): void;
+
+    /**
+     * @static
+     * @method _disableTextSelection
+     * @private
+     */
+    _disableTextSelection(): void;
+
+    /**
+     * @static
+     * @method _disableContextMenu
+     * @private
+     */
+    _disableContextMenu(): void;
+
+    /**
+     * @static
+     * @method _applyCanvasFilter
+     * @private
+     */
+    _applyCanvasFilter(): void;
+
+    /**
+     * @static
+     * @method _onVideoLoad
+     * @private
+     */
+    _onVideoLoad(): void;
+
+    /**
+     * @static
+     * @method _onVideoError
+     * @private
+     */
+    _onVideoError(): void;
+
+    /**
+     * @static
+     * @method _onVideoEnd
+     * @private
+     */
+    _onVideoEnd(): void;
+
+    /**
+     * @static
+     * @method _updateVisibility
+     * @param {Boolean} videoVisible
+     * @private
+     */
+    _updateVisibility(videoVisible: boolean): void;
+
+    /**
+     * @static
+     * @method _isVideoVisible
+     * @return {Boolean}
+     * @private
+     */
+    _isVideoVisible(): boolean;
+
+    /**
+     * @static
+     * @method _setupEventHandlers
+     * @private
+     */
+    _setupEventHandlers(): void;
+
+    /**
+     * @static
+     * @method _onWindowResize
+     * @private
+     */
+    _onWindowResize(): void;
+
+    /**
+     * @static
+     * @method _onKeyDown
+     * @param {KeyboardEvent} event
+     * @private
+     */
+    _onKeyDown(event: KeyboardEvent): void;
+
+    /**
+     * @static
+     * @method _switchFPSMeter
+     * @private
+     */
+    _switchFPSMeter(): void;
+
+    /**
+     * @static
+     * @method _switchStretchMode
+     * @return {Boolean}
+     * @private
+     */
+    _switchStretchMode(): void;
+
+    /**
+     * @static
+     * @method _switchFullScreen
+     * @private
+     */
+    _switchFullScreen(): void;
+
+    /**
+     * @static
+     * @method _isFullScreen
+     * @return {Boolean}
+     * @private
+     */
+    _isFullScreen(): boolean;
+
+    /**
+     * @static
+     * @method _requestFullScreen
+     * @private
+     */
+    _requestFullScreen(): void;
+
+    /**
+     * @static
+     * @method _cancelFullScreen
+     * @private
+     */
+    _cancelFullScreen(): void;
+}
+declare var Graphics: GraphicsStatic;
+
+/**
+ * The static class that handles HTML5 Audio.
+ *
+ * @class Html5Audio
+ * @constructor
+ */
+interface Html5AudioStatic {
+    _initialized: boolean;
+    _unlocked: boolean;
+    _audioElement: HTMLAudioElement;
+    _gainTweenInterval: number;
+    _tweenGain: number;
+    _tweenTargetGain: number;
+    _tweenGainStep: number;
+    _staticSePath: boolean;
+    _volume: number;
+    _loadListeners: Array<() => void>;
+    _hasError: boolean;
+    _autoPlay: boolean;
+    _isLoading: boolean;
+    _buffered: boolean;
+
+    /**
+     * [read-only] The url of the audio file.
+     *
+     * @property url
+     * @type String
+     */
+    url: string;
+
+    /**
+     * The volume of the audio.
+     *
+     * @property volume
+     * @type Number
+     */
+    volume: number;
+
+    /**
+     * Sets up the Html5 Audio.
+     *
+     * @static
+     * @method setup
+     * @param {String} url The url of the audio file
+     */
+    setup(url: string): void;
+
+    /**
+     * Initializes the audio system.
+     *
+     * @static
+     * @method initialize
+     * @return {Boolean} True if the audio system is available
+     */
+    initialize(): void;
+
+    /**
+     * Clears the audio data.
+     *
+     * @static
+     * @method clear
+     */
+    clear(): void;
+
+    /**
+     * Set the URL of static se.
+     *
+     * @static
+     * @param {String} url
+     */
+    setStaticSe(url: string): void;
+
+    /**
+     * Checks whether the audio data is ready to play.
+     *
+     * @static
+     * @method isReady
+     * @return {Boolean} True if the audio data is ready to play
+     */
+    isReady(): boolean;
+
+    /**
+     * Checks whether a loading error has occurred.
+     *
+     * @static
+     * @method isError
+     * @return {Boolean} True if a loading error has occurred
+     */
+    isError(): boolean;
+
+    /**
+     * Checks whether the audio is playing.
+     *
+     * @static
+     * @method isPlaying
+     * @return {Boolean} True if the audio is playing
+     */
+    isPlaying(): boolean;
+
+    /**
+     * Plays the audio.
+     *
+     * @static
+     * @method play
+     * @param {Boolean} loop Whether the audio data play in a loop
+     * @param {Number} offset The start position to play in seconds
+     */
+    play(loop: boolean, offset: number): void;
+
+    /**
+     * Stops the audio.
+     *
+     * @static
+     * @method stop
+     */
+    stop(): void;
+
+    /**
+     * Performs the audio fade-in.
+     *
+     * @static
+     * @method fadeIn
+     * @param {Number} duration Fade-in time in seconds
+     */
+    fadeIn(duration: number): void;
+
+    /**
+     * Performs the audio fade-out.
+     *
+     * @static
+     * @method fadeOut
+     * @param {Number} duration Fade-out time in seconds
+     */
+    fadeOut(duration: number): void;
+
+    /**
+     * Gets the seek position of the audio.
+     *
+     * @static
+     * @method seek
+     */
+    seek(): void;
+
+    /**
+     * Add a callback function that will be called when the audio data is loaded.
+     *
+     * @static
+     * @method addLoadListener
+     * @param {Function} listner The callback function
+     */
+    addLoadListener(listner: () => void): void;
+
+    /**
+     * @static
+     * @method _setupEventHandlers
+     * @private
+     */
+    _setupEventHandlers(): void;
+
+    /**
+     * @static
+     * @method _onTouchStart
+     * @private
+     */
+    _onTouchStart(): void;
+
+    /**
+     * @static
+     * @method _onVisibilityChange
+     * @private
+     */
+    _onVisibilityChange(): void;
+
+    /**
+     * @static
+     * @method _onLoadedData
+     * @private
+     */
+    _onLoadedData(): void;
+
+    /**
+     * @static
+     * @method _onError
+     * @private
+     */
+    _onError(): void;
+
+    /**
+     * @static
+     * @method _onEnded
+     * @private
+     */
+    _onEnded(): void;
+
+    /**
+     * @static
+     * @method _onHide
+     * @private
+     */
+    _onHide(): void;
+
+    /**
+     * @static
+     * @method _onShow
+     * @private
+     */
+    _onShow(): void;
+
+    /**
+     * @static
+     * @method _load
+     * @param {String} url
+     * @private
+     */
+    _load(url: string): void;
+
+    /**
+     * @static
+     * @method _startPlaying
+     * @param {Boolean} loop
+     * @param {Number} offset
+     * @private
+     */
+    _startPlaying(loop: boolean, offset: number): void;
+
+    /**
+     * @static
+     * @method _onLoad
+     * @private
+     */
+    _onLoad(): void;
+
+    /**
+     * @static
+     * @method _startGainTween
+     * @params {Number} duration
+     * @private
+     */
+    _startGainTweenfunction(duration: number): void;
+
+    /**
+     * @static
+     * @method _applyTweenValue
+     * @param {Number} volume
+     * @private
+     */
+    _applyTweenValue(volume: number): void;
+}
+declare var Html5Audio: Html5AudioStatic;
+
+/**
+ * The static class that handles input data from the keyboard and gamepads.
+ *
+ * @class Input
+ */
+interface InputStatic {
+    _currentState: {[key: string]: boolean};
+    _previousState: {[key: string]: boolean};
+    _gamepadStates: Array<Array<boolean>>;
+    _latestButton: string;
+    _pressedTime: number;
+    _dir4: number;
+    _dir8: number;
+    _preferredAxis: string;
+    _date: number;
+
+    /**
+     * The wait time of the key repeat in frames.
+     *
+     * @static
+     * @property keyRepeatWait
+     * @type Number
+     */
+    keyRepeatWait: number;
+
+    /**
+     * The interval of the key repeat in frames.
+     *
+     * @static
+     * @property keyRepeatInterval
+     * @type Number
+     */
+    keyRepeatInterval: number;
+
+    /**
+     * A hash table to convert from a virtual key code to a mapped key name.
+     *
+     * @static
+     * @property keyMapper
+     * @type Object
+     */
+    keyMapper: {[key: number]: string};
+
+    /**
+     * A hash table to convert from a gamepad button to a mapped key name.
+     *
+     * @static
+     * @property gamepadMapper
+     * @type Object
+     */
+    gamepadMapper: {[key: number]: string};
+
+    /**
+     * [read-only] The four direction value as a number of the numpad, or 0 for neutral.
+     *
+     * @static
+     * @property dir4
+     * @type Number
+     */
+    dir4: number;
+
+    /**
+     * [read-only] The eight direction value as a number of the numpad, or 0 for neutral.
+     *
+     * @static
+     * @property dir8
+     * @type Number
+     */
+    dir8: number;
+
+    /**
+     * [read-only] The time of the last input in milliseconds.
+     *
+     * @static
+     * @property date
+     * @type Number
+     */
+    date: number;
+
+    /**
+     * Initializes the input system.
+     *
+     * @static
+     * @method initialize
+     */
+    initialize(): void;
+
+    /**
+     * Clears all the input data.
+     *
+     * @static
+     * @method clear
+     */
+    clear(): void;
+
+    /**
+     * Updates the input data.
+     *
+     * @static
+     * @method update
+     */
+    update(): void;
+
+    /**
+     * Checks whether a key is currently pressed down.
+     *
+     * @static
+     * @method isPressed
+     * @param {String} keyName The mapped name of the key
+     * @return {Boolean} True if the key is pressed
+     */
+    isPressed(keyName: string): boolean;
+
+    /**
+     * Checks whether a key is just pressed.
+     *
+     * @static
+     * @method isTriggered
+     * @param {String} keyName The mapped name of the key
+     * @return {Boolean} True if the key is triggered
+     */
+    isTriggered(keyName: string): boolean;
+
+    /**
+     * Checks whether a key is just pressed or a key repeat occurred.
+     *
+     * @static
+     * @method isRepeated
+     * @param {String} keyName The mapped name of the key
+     * @return {Boolean} True if the key is repeated
+     */
+    isRepeated(keyName: string): boolean;
+
+    /**
+     * Checks whether a key is kept depressed.
+     *
+     * @static
+     * @method isLongPressed
+     * @param {String} keyName The mapped name of the key
+     * @return {Boolean} True if the key is long-pressed
+     */
+    isLongPressed(keyName: string): boolean;
+
+    /**
+     * @static
+     * @method _wrapNwjsAlert
+     * @private
+     */
+    _wrapNwjsAlert(): void;
+
+    /**
+     * @static
+     * @method _setupEventHandlers
+     * @private
+     */
+    _setupEventHandlers(): void;
+
+    /**
+     * @static
+     * @method _onKeyDown
+     * @param {KeyboardEvent} event
+     * @private
+     */
+    _onKeyDown(event: KeyboardEvent): void;
+
+    /**
+     * @static
+     * @method _shouldPreventDefault
+     * @param {Number} keyCode
+     * @return {Boolean}
+     * @private
+     */
+    _shouldPreventDefault(keyCode: number): boolean;
+
+    /**
+     * @static
+     * @method _onKeyUp
+     * @param {KeyboardEvent} event
+     * @private
+     */
+    _onKeyUp(event: KeyboardEvent): void;
+
+    /**
+     * @static
+     * @method _onLostFocus
+     * @private
+     */
+    _onLostFocus(): void;
+
+    /**
+     * @static
+     * @method _pollGamepads
+     * @private
+     */
+    _pollGamepads(): void;
+
+    /**
+     * @static
+     * @method _updateGamepadState
+     * @param {Gamepad} gamepad
+     * @private
+     */
+    _updateGamepadState(gamepad: Gamepad): void;
+
+    /**
+     * @static
+     * @method _updateDirection
+     * @private
+     */
+    _updateDirection(): void;
+
+    /**
+     * @static
+     * @method _signX
+     * @return {Number}
+     * @private
+     */
+    _signX(): number;
+
+    /**
+     * @static
+     * @method _signY
+     * @return {Number}
+     * @private
+     */
+    _signY(): number;
+
+    /**
+     * @static
+     * @method _makeNumpadDirection
+     * @param {Number} x
+     * @param {Number} y
+     * @return {Number}
+     * @private
+     */
+    _makeNumpadDirection(x: number, y: number): number;
+
+    /**
+     * @static
+     * @method _isEscapeCompatible
+     * @param {String} keyName
+     * @return {Boolean}
+     * @private
+     */
+    _isEscapeCompatible(keyName: string): boolean;
+}
+declare var Input: InputStatic;
+
+/**
+ * This is not a class, but contains some methods that will be added to the
+ * standard Javascript objects.
+ *
+ * @class JsExtensions
+ */
+declare class JsExtensions {}
+
+interface Array<T> {
+    /**
+     * Makes a shallow copy of the array.
+     *
+     * @method Array.prototype.clone
+     * @return {Array} A shallow copy of the array
+     */
+    clone(): Array<T>;
+
+    /**
+     * Checks whether the array contains a given element.
+     *
+     * @method Array.prototype.contains
+     * @param {Any} element The element to search for
+     * @return {Boolean} True if the array contains a given element
+     */
+    contains(element: T): boolean;
+
+    /**
+     * Checks whether the two arrays are same.
+     *
+     * @method Array.prototype.equals
+     * @param {Array} array The array to compare to
+     * @return {Boolean} True if the two arrays are same
+     */
+    equals(array: Array<any>): boolean;
+}
+
+interface Math {
+    /**
+     * Generates a random integer in the range (0, max-1).
+     *
+     * @static
+     * @method Math.randomInt
+     * @param {Number} max The upper boundary (excluded)
+     * @return {Number} A random integer
+     */
+    randomInt(max: number): number;
+}
+
+interface Number {
+    /**
+     * Returns a number whose value is limited to the given range.
+     *
+     * @method Number.prototype.clamp
+     * @param {Number} min The lower boundary
+     * @param {Number} max The upper boundary
+     * @return {Number} A number in the range (min, max)
+     */
+    clamp(min: number, max: number): number;
+
+    /**
+     * Returns a modulo value which is always positive.
+     *
+     * @method Number.prototype.mod
+     * @param {Number} n The divisor
+     * @return {Number} A modulo value
+     */
+    mod(n: number): number;
+
+    /**
+     * Makes a number string with leading zeros.
+     *
+     * @method Number.prototype.padZero
+     * @param {Number} length The length of the output string
+     * @return {String} A string with leading zeros
+     */
+    padZero(length: number): string;
+}
+
+interface String {
+    /**
+     * Checks whether the string contains a given string.
+     *
+     * @method String.prototype.contains
+     * @param {String} string The string to search for
+     * @return {Boolean} True if the string contains a given string
+     */
+    contains(string): boolean;
+
+    /**
+     * Replaces %1, %2 and so on in the string to the arguments.
+     *
+     * @method String.prototype.format
+     * @param {Any} ...args The objects to format
+     * @return {String} A formatted string
+     */
+    format(...args: Array<any>): string;
+
+    /**
+     * Makes a number string with leading zeros.
+     *
+     * @method String.prototype.padZero
+     * @param {Number} length The length of the output string
+     * @return {String} A string with leading zeros
+     */
+    padZero(length: number): string;
+}
+
+declare class Point extends PIXI.Point {
+    /**
+     * The point class.
+     *
+     * @class Point
+     * @constructor
+     * @param {Number} x The x coordinate
+     * @param {Number} y The y coordinate
+     */
+    constructor(x?: number, y?: number);
+
+    /**
+     * The x coordinate.
+     *
+     * @property x
+     * @type Number
+     */
+    x: number;
+
+    /**
+     * The y coordinate.
+     *
+     * @property y
+     * @type Number
+     */
+    y: number;
+}
+
+declare class Rectangle extends PIXI.Rectangle {
+    /**
+     * @static
+     * @property emptyRectangle
+     * @type Rectangle
+     */
+    static emptyRectangle: Rectangle;
+
+    /**
+     * The rectangle class.
+     *
+     * @class Rectangle
+     * @constructor
+     * @param {Number} x The x coordinate for the upper-left corner
+     * @param {Number} y The y coordinate for the upper-left corner
+     * @param {Number} width The width of the rectangle
+     * @param {Number} height The height of the rectangle
+     */
+    constructor(x?: number, y?: number, width?: number, height?: number);
+
+    /**
+     * The x coordinate for the upper-left corner.
+     *
+     * @property x
+     * @type Number
+     */
+    x: number;
+
+    /**
+     * The y coordinate for the upper-left corner.
+     *
+     * @property y
+     * @type Number
+     */
+    y: number;
+
+    /**
+     * The width of the rectangle.
+     *
+     * @property width
+     * @type Number
+     */
+    width: number;
+
+    /**
+     * The height of the rectangle.
+     *
+     * @property height
+     * @type Number
+     */
+    height: number;
+}
+
+/**
+ * The static class that handles JSON with object information.
+ *
+ * @class JsonEx
+ */
+interface JsonExStatic {
+    /**
+     * The maximum depth of objects.
+     *
+     * @static
+     * @property maxDepth
+     * @type Number
+     * @default 100
+     */
+    maxDepth: number;
+
+    /**
+     * Makes a deep copy of the specified object.
+     *
+     * @static
+     * @method makeDeepCopy
+     * @param {Object} object The object to be copied
+     * @return {Object} The copied object
+     */
+    makeDeepCopy(object: any): any;
+
+    /**
+     * Converts an object to a JSON string with object information.
+     *
+     * @static
+     * @method stringify
+     * @param {Object} object The object to be converted
+     * @return {String} The JSON string
+     */
+    stringify(object: any): string;
+
+    /**
+     * Parses a JSON string and reconstructs the corresponding object.
+     *
+     * @static
+     * @method parse
+     * @param {String} json The JSON string
+     * @return {Object} The reconstructed object
+     */
+    parse(json: string): any;
+
+    /**
+     * @static
+     * @method _encode
+     * @param {Object} value
+     * @param {Number} depth
+     * @return {Object}
+     * @private
+     */
+    _encode(value: any, depth: number): any;
+
+    /**
+     * @static
+     * @method _decode
+     * @param {Object} value
+     * @return {Object}
+     * @private
+     */
+    _decode(value: any): any;
+
+    /**
+     * @static
+     * @method _getConstructorName
+     * @param {Object} value
+     * @return {String}
+     * @private
+     */
+    _getConstructorName(value: any): string;
+
+    /**
+     * @static
+     * @method _resetPrototype
+     * @param {Object} value
+     * @param {Object} prototype
+     * @return {Object}
+     * @private
+     */
+    _resetPrototype(value: any, prototype: any): any;
+}
+
+/**
+ * The static class that handles JSON with object information.
+ *
+ * @class JsonEx
+ */
+declare var JsonEx: JsonExStatic;
+
+declare class ScreenSprite extends PIXI.Sprite {
+    /**
+     * The opacity of the sprite (0 to 255).
+     *
+     * @property opacity
+     * @type Number
+     */
+    opacity: number;
+
+    /**
+     * The sprite which covers the entire game screen.
+     *
+     * @class ScreenSprite
+     * @constructor
+     */
+    constructor();
+
+    /**
+     * Sets black to the color of the screen sprite.
+     *
+     * @method setBlack
+     */
+    setBlack(): void;
+
+    /**
+     * Sets white to the color of the screen sprite.
+     *
+     * @method setWhite
+     */
+    setWhite(): void;
+
+    /**
+     * Sets the color of the screen sprite by values.
+     *
+     * @method setColor
+     * @param {Number} r The red value in the range (0, 255)
+     * @param {Number} g The green value in the range (0, 255)
+     * @param {Number} b The blue value in the range (0, 255)
+     */
+    setColor(r?: number, g?: number, b?: number): void;
+
+    protected _graphics: PIXI.Graphics;
+    protected _red: number;
+    protected _green: number;
+    protected _blue: number;
+    protected _colorText: string;
+}
+
+declare class Sprite extends PIXI.Sprite {
+    /**
+     * Number of the created objects.
+     *
+     * @static
+     * @property _counter
+     * @type Number
+     */
+    static _counter: number;
+
+    /**
+     * The image for the sprite.
+     *
+     * @property bitmap
+     * @type Bitmap
+     */
+    bitmap: Bitmap;
+
+    /**
+     * The width of the sprite without the scale.
+     *
+     * @property width
+     * @type Number
+     */
+    width: number;
+
+    /**
+     * The height of the sprite without the scale.
+     *
+     * @property height
+     * @type Number
+     */
+    height: number;
+
+    /**
+     * The opacity of the sprite (0 to 255).
+     *
+     * @property opacity
+     * @type Number
+     */
+    opacity: number;
+
+    /**
+     * The visibility of the sprite.
+     *
+     * @property visible
+     * @type Boolean
+     */
+    visible: boolean;
+
+    /**
+     * The x coordinate of the sprite.
+     *
+     * @property x
+     * @type Number
+     */
+    x: number;
+
+    /**
+     * The y coordinate of the sprite.
+     *
+     * @property y
+     * @type Number
+     */
+    y: number;
+
+    /**
+     * The origin point of the sprite. (0,0) to (1,1).
+     *
+     * @property anchor
+     * @type Point
+     */
+    point: Point;
+
+    /**
+     * The scale factor of the sprite.
+     *
+     * @property scale
+     * @type Point
+     */
+    scale: Point;
+
+    /**
+     * The rotation of the sprite in radians.
+     *
+     * @property rotation
+     * @type Number
+     */
+    rotation: number;
+
+    /**
+     * The blend mode to be applied to the sprite.
+     *
+     * @property blendMode
+     * @type Number
+     */
+    blendMode: number;
+
+    /**
+     * Sets the filters for the sprite.
+     *
+     * @property filters
+     * @type Array<PIXI.Filter>
+     */
+    filters: Array<PIXI.Filter>;
+
+    /**
+     * [read-only] The array of children of the sprite.
+     *
+     * @property children
+     * @type Array<PIXI.DisplayObject>
+     */
+    children: Array<PIXI.DisplayObject>;
+
+    /**
+     * [read-only] The object that contains the sprite.
+     *
+     * @property parent
+     * @type PIXI.DisplayObjectContainer
+     */
+    parent: PIXI.Container;
+
+    spriteId: number;
+    opaque: boolean;
+    voidFilter: PIXI.Filter;
+
+    /**
+     * The basic object that is rendered to the game screen.
+     *
+     * @class Sprite
+     * @constructor
+     * @param {Bitmap} bitmap The image for the sprite
+     */
+    constructor(bitmap?: Bitmap);
+
+    /**
+     * Updates the sprite for each frame.
+     *
+     * @method update
+     */
+    update(): void;
+
+    /**
+     * @method updateTransform
+     * @private
+     */
+    updateTransform(): void;
+
+    /**
+     * Sets the x and y at once.
+     *
+     * @method move
+     * @param {Number} x The x coordinate of the sprite
+     * @param {Number} y The y coordinate of the sprite
+     */
+    move(x: number, y: number): void;
+
+    /**
+     * Sets the rectagle of the bitmap that the sprite displays.
+     *
+     * @method setFrame
+     * @param {Number} x The x coordinate of the frame
+     * @param {Number} y The y coordinate of the frame
+     * @param {Number} width The width of the frame
+     * @param {Number} height The height of the frame
+     */
+    setFrame(x: number, y: number, width: number, height: number): void;
+
+    /**
+     * Gets the blend color for the sprite.
+     *
+     * @method getBlendColor
+     * @return {Array} The blend color [r, g, b, a]
+     */
+    getBlendColor(): Array<number>;
+
+    /**
+     * Sets the blend color for the sprite.
+     *
+     * @method setBlendColor
+     * @param {Array} color The blend color [r, g, b, a]
+     */
+    setBlendColor(color: Array<number>): void;
+
+    /**
+     * Gets the color tone for the sprite.
+     *
+     * @method getColorTone
+     * @return {Array} The color tone [r, g, b, gray]
+     */
+    getColorTone(): Array<number>;
+
+    /**
+     * Sets the color tone for the sprite.
+     *
+     * @method setColorTone
+     * @param {Array} tone The color tone [r, g, b, gray]
+     */
+    setColorTone(tone: Array<number>): void;
+
+    /**
+     * Adds a child to the container.
+     *
+     * @method addChild
+     * @param {PIXI.DisplayObject} child The child to add
+     * @return {PIXI.DisplayObject} The child that was added
+     */
+    addChild(child: PIXI.DisplayObject): PIXI.DisplayObject;
+
+    /**
+     * Adds a child to the container at a specified index.
+     *
+     * @method addChildAt
+     * @param {PIXI.DisplayObject} child The child to add
+     * @param {Number} index The index to place the child in
+     * @return {PIXI.DisplayObject} The child that was added
+     */
+    addChildAt(child: PIXI.DisplayObject, index: number): PIXI.DisplayObject;
+
+    /**
+     * Removes a child from the container.
+     *
+     * @method removeChild
+     * @param {PIXI.DisplayObject} child The child to remove
+     * @return {PIXI.DisplayObject} The child that was removed
+     */
+    removeChild(child: PIXI.DisplayObject): PIXI.DisplayObject;
+
+    /**
+     * Removes a child from the specified index position.
+     *
+     * @method removeChildAt
+     * @param {Number} index The index to get the child from
+     * @return {PIXI.DisplayObject} The child that was removed
+     */
+    removeChildAt(index: number): PIXI.DisplayObject;
+
+    protected _bitmap: Bitmap;
+    protected _frame: Rectangle;
+    protected _realFrame: Rectangle;
+    protected _offset: Point;
+    protected _blendColor: Array<Number>;
+    protected _colorTone: Array<Number>;
+    protected _canvas: HTMLCanvasElement;
+    protected _context: CanvasRenderingContext2D;
+    protected _tintTexture: PIXI.BaseTexture;
+
+    /**
+     * use heavy renderer that will reduce border artifacts and apply advanced blendModes
+     * @type {boolean}
+     * @private
+     */
+    protected _isPicture: boolean;
+
+    /**
+     * @method _onBitmapLoad
+     * @private
+     */
+    protected _onBitmapLoad(): void;
+
+    /**
+     * @method _refresh
+     * @private
+     */
+    protected _refresh(): void;
+
+    /**
+     * @method _isInBitmapRect
+     * @param {Number} x
+     * @param {Number} y
+     * @param {Number} w
+     * @param {Number} h
+     * @return {Boolean}
+     * @private
+     */
+    protected _isInBitmapRect(x: number, y: number, w: number, h: number): boolean;
+
+    /**
+     * @method _needsTint
+     * @return {Boolean}
+     * @private
+     */
+    protected _needsTint(): boolean;
+
+    /**
+     * @method _createTinter
+     * @param {Number} w
+     * @param {Number} h
+     * @private
+     */
+    protected _createTinter(w: number, h: number): void;
+
+    /**
+     * @method _executeTint
+     * @param {Number} x
+     * @param {Number} y
+     * @param {Number} w
+     * @param {Number} h
+     * @private
+     */
+    protected _executeTint(x: number, y: number, w: number, h: number): void;
+
+    /**
+     * @method _renderCanvas
+     * @param {PIXI.CanvasRenderer} renderer
+     * @private
+     */
+    protected _renderCanvas_PIXI(renderer: PIXI.CanvasRenderer): void;
+
+    /**
+     * @method _renderWebGL
+     * @param {PIXI.WebGLRenderer} renderer
+     * @private
+     */
+    protected _renderWebGL_PIXI(renderer: PIXI.WebGLRenderer): void;
+
+    /**
+     * @method _renderCanvas
+     * @param {PIXI.CanvasRenderer} renderer
+     * @private
+     */
+    protected _renderCanvas(renderer: PIXI.CanvasRenderer): void;
+
+    /**
+     * @method _renderWebGL
+     * @param {PIXI.WebGLRenderer} renderer
+     * @private
+     */
+    protected _renderWebGL(renderer: PIXI.WebGLRenderer): void;
+
+    /**
+     * checks if we need to speed up custom blendmodes
+     * @param renderer
+     * @private
+     */
+    protected _speedUpCustomBlendModes(renderer: PIXI.WebGLRenderer): void;
+}
+
+declare class Stage extends PIXI.Container {
+    // The interactive flag causes a memory leak.
+    interactive: boolean;
+
+    /**
+     * The root object of the display tree.
+     *
+     * @class Stage
+     * @constructor
+     */
+    constructor();
+
+    /**
+     * Adds a child to the container.
+     *
+     * @method addChild
+     * @param {PIXI.DisplayObject} child The child to add
+     * @return {PIXI.DisplayObject} The child that was added
+     */
+    addChild(child: PIXI.DisplayObject): PIXI.DisplayObject;
+
+    /**
+     * Adds a child to the container at a specified index.
+     *
+     * @method addChildAt
+     * @param {PIXI.DisplayObject} child The child to add
+     * @param {Number} index The index to place the child in
+     * @return {PIXI.DisplayObject} The child that was added
+     */
+    addChildAt(child: PIXI.DisplayObject, index: number): PIXI.DisplayObject;
+
+    /**
+     * Removes a child from the container.
+     *
+     * @method removeChild
+     * @param {PIXI.DisplayObject} child The child to remove
+     * @return {PIXI.DisplayObject} The child that was removed
+     */
+    removeChild(child: PIXI.DisplayObject): PIXI.DisplayObject;
+
+    /**
+     * Removes a child from the specified index position.
+     *
+     * @method removeChildAt
+     * @param {Number} index The index to get the child from
+     * @return {PIXI.DisplayObject} The child that was removed
+     */
+    removeChildAt(index: number): PIXI.DisplayObject;
+}
+
+declare class Tilemap extends PIXI.Container {
+    // Tile type checkers
+
+    static TILE_ID_A1: number;
+    static TILE_ID_A2: number;
+    static TILE_ID_A3: number;
+    static TILE_ID_A4: number;
+    static TILE_ID_A5: number;
+    static TILE_ID_B: number;
+    static TILE_ID_C: number;
+    static TILE_ID_D: number;
+    static TILE_ID_E: number;
+    static TILE_ID_MAX: number;
+
+    static FLOOR_AUTOTILE_TABLE: Array<Array<Array<number>>>;
+    static WALL_AUTOTILE_TABLE: Array<Array<Array<number>>>;
+    static WATERFALL_AUTOTILE_TABLE: Array<Array<Array<number>>>;
+
+    static isVisibleTile(tileId: number): boolean;
+    static isAutotile(tileId: number): boolean;
+    static getAutotileKind(tileId: number): number;
+    static getAutotileShape(tileId: number): number;
+    static makeAutotileId(kind: number, shape: number): number;
+    static isSameKindTile(tileID1: number, tileID2: number): boolean;
+    static isTileA1(tileId: number): boolean;
+    static isTileA2(tileId: number): boolean;
+    static isTileA3(tileId: number): boolean;
+    static isTileA4(tileId: number): boolean;
+    static isTileA5(tileId: number): boolean;
+    static isWaterTile(tileId: number): boolean;
+    static isWaterfallTile(tileId: number): boolean;
+    static isGroundTile(tileId: number): boolean;
+    static isShadowingTile(tileId: number): boolean;
+    static isRoofTile(tileId: number): boolean;
+    static isWallTopTile(tileId: number): boolean;
+    static isWallSideTile(tileId: number): boolean;
+    static isWallTile(tileId: number): boolean;
+    static isFloorTypeAutotile(tileId: number): boolean;
+    static isWallTypeAutotile(tileId: number): boolean;
+    static isWaterfallTypeAutotile(tileId: number): boolean;
+
+    /**
+     * The bitmaps used as a tileset.
+     *
+     * @property bitmaps
+     * @type Array
+     */
+    bitmaps: Array<Bitmap>;
+
+    /**
+     * The origin point of the tilemap for scrolling.
+     *
+     * @property origin
+     * @type Point
+     */
+    origin: Point;
+
+    /**
+     * The tileset flags.
+     *
+     * @property flags
+     * @type Array
+     */
+    flags: Array<number>;
+
+    /**
+     * The animation count for autotiles.
+     *
+     * @property animationCount
+     * @type Number
+     */
+    animationCount: number;
+
+    /**
+     * Whether the tilemap loops horizontal.
+     *
+     * @property horizontalWrap
+     * @type Boolean
+     */
+    horizontalWrap: boolean;
+
+    /**
+     * Whether the tilemap loops vertical.
+     *
+     * @property verticalWrap
+     * @type Boolean
+     */
+    verticalWrap: boolean;
+
+    /**
+     * The width of the screen in pixels.
+     *
+     * @property width
+     * @type Number
+     */
+    width: number;
+
+    /**
+     * The height of the screen in pixels.
+     *
+     * @property height
+     * @type Number
+     */
+    height: number;
+
+    /**
+     * The width of a tile in pixels.
+     *
+     * @property tileWidth
+     * @type Number
+     */
+    tileWidth: number;
+
+    /**
+     * The height of a tile in pixels.
+     *
+     * @property tileHeight
+     * @type Number
+     */
+    tileHeight: number;
+
+    /**
+     * [read-only] The array of children of the sprite.
+     *
+     * @property children
+     * @type Array<PIXI.DisplayObject>
+     */
+    children: Array<PIXI.DisplayObject>;
+
+    /**
+     * [read-only] The object that contains the sprite.
+     *
+     * @property parent
+     * @type PIXI.DisplayObjectContainer
+     */
+    parent: PIXI.Container;
+
+    /**
+     * The tilemap which displays 2D tile-based game map.
+     *
+     * @class Tilemap
+     * @constructor
+     */
+    constructor();
+
+    /**
+     * Sets the tilemap data.
+     *
+     * @method setData
+     * @param {Number} width The width of the map in number of tiles
+     * @param {Number} height The height of the map in number of tiles
+     * @param {Array} data The one dimensional array for the map data
+     */
+    setData(width: number, height: number, data: Array<number>);
+
+    /**
+     * Checks whether the tileset is ready to render.
+     *
+     * @method isReady
+     * @type Boolean
+     * @return {Boolean} True if the tilemap is ready
+     */
+    isReady(): boolean;
+
+    /**
+     * Updates the tilemap for each frame.
+     *
+     * @method update
+     */
+    update(): void;
+
+    /**
+     * @method updateTransform
+     * @private
+     */
+    updateTransform(): void;
+
+    /**
+     * Forces to repaint the entire static
+     *
+     * @method refresh
+     */
+    refresh(): void;
+
+    /**
+     * Adds a child to the container.
+     *
+     * @method addChild
+     * @param {PIXI.DisplayObject} child The child to add
+     * @return {PIXI.DisplayObject} The child that was added
+     */
+    addChild(child: PIXI.DisplayObject): PIXI.DisplayObject;
+
+    /**
+     * Adds a child to the container at a specified index.
+     *
+     * @method addChildAt
+     * @param {PIXI.DisplayObject} child The child to add
+     * @param {Number} index The index to place the child in
+     * @return {PIXI.DisplayObject} The child that was added
+     */
+    addChildAt(child: PIXI.DisplayObject, index: number): PIXI.DisplayObject;
+
+    /**
+     * Removes a child from the container.
+     *
+     * @method removeChild
+     * @param {PIXI.DisplayObject} child The child to remove
+     * @return {PIXI.DisplayObject} The child that was removed
+     */
+    removeChild(child: PIXI.DisplayObject): PIXI.DisplayObject;
+
+    /**
+     * Removes a child from the specified index position.
+     *
+     * @method removeChildAt
+     * @param {Number} index The index to get the child from
+     * @return {PIXI.DisplayObject} The child that was removed
+     */
+    removeChildAt(index: number): PIXI.DisplayObject;
+
+    /**
+     * Forces to refresh the tileset
+     *
+     * @method refresh
+     */
+    refreshTileset(): void;
+
+
+    protected _margin: number;
+    protected _width: number;
+    protected _height: number;
+    protected _tileWidth: number;
+    protected _tileHeight: number;
+    protected _mapWidth: number;
+    protected _mapHeight : number;
+    protected _mapData: Array<number>;
+    protected _layerWidth: number;
+    protected _layerHeight: number;
+    protected _lastTiles: Array<Array<Array<Array<number>>>>;
+    protected _lowerLayer: Sprite;
+    protected _upperLayer: Sprite;
+
+    /**
+     * @method _createLayers
+     * @private
+     */
+    protected _createLayers(): void;
+
+    /**
+     * @method _updateLayerPositions
+     * @param {Number} startX
+     * @param {Number} startY
+     * @private
+     */
+    protected _updateLayerPositions(startX: number, startY: number): void;
+
+    /**
+     * @method _paintAllTiles
+     * @param {Number} startX
+     * @param {Number} startY
+     * @private
+     */
+    protected _paintAllTiles(startX: number, startY: number): void;
+
+    /**
+     * @method _paintTiles
+     * @param {Number} startX
+     * @param {Number} startY
+     * @param {Number} x
+     * @param {Number} y
+     * @private
+     */
+    protected _paintTiles(startX: number, startY: number, x: number, y: number): void;
+
+    /**
+     * @method _readLastTiles
+     * @param {Number} i
+     * @param {Number} x
+     * @param {Number} y
+     * @private
+     */
+    protected _readLastTiles(i: number, x: number, y: number): Array<number>;
+
+    /**
+     * @method _writeLastTiles
+     * @param {Number} i
+     * @param {Number} x
+     * @param {Number} y
+     * @param {Array} tiles
+     * @private
+     */
+    protected _writeLastTiles(i: number, x: number, y: number, tiles: Array<number>): void;
+
+    /**
+     * @method _drawTile
+     * @param {Bitmap} bitmap
+     * @param {Number} tileId
+     * @param {Number} dx
+     * @param {Number} dy
+     * @private
+     */
+    protected _drawTile(bitmap: Bitmap, tileId: number, dx: number, dy: number): void;
+
+    /**
+     * @method _drawNormalTile
+     * @param {Bitmap} bitmap
+     * @param {Number} tileId
+     * @param {Number} dx
+     * @param {Number} dy
+     * @private
+     */
+    protected _drawNormalTile(bitmap: Bitmap, tileId: number, dx: number, dy: number): void;
+
+    /**
+     * @method _drawAutotile
+     * @param {Bitmap} bitmap
+     * @param {Number} tileId
+     * @param {Number} dx
+     * @param {Number} dy
+     * @private
+     */
+    protected _drawAutotile(bitmap: Bitmap, tileId: number, dx: number, dy: number): void;
+
+    /**
+     * @method _drawTableEdge
+     * @param {Bitmap} bitmap
+     * @param {Number} tileId
+     * @param {Number} dx
+     * @param {Number} dy
+     * @private
+     */
+    protected _drawTableEdge(bitmap: Bitmap, tileId: number, dx: number, dy: number): void;
+
+    /**
+     * @method _drawShadow
+     * @param {Bitmap} bitmap
+     * @param {Number} shadowBits
+     * @param {Number} dx
+     * @param {Number} dy
+     * @private
+     */
+    protected _drawShadow(bitmap: Bitmap, shadowBits: number, dx: number, dy: number): void;
+
+    /**
+     * @method _readMapData
+     * @param {Number} x
+     * @param {Number} y
+     * @param {Number} z
+     * @return {Number}
+     * @private
+     */
+    protected _readMapData(x: number, y: number, z: number): number;
+
+    /**
+     * @method _isHigherTile
+     * @param {Number} tileId
+     * @return {Boolean}
+     * @private
+     */
+    protected _isHigherTile(tileId: number): boolean;
+
+    /**
+     * @method _isTableTile
+     * @param {Number} tileId
+     * @return {Boolean}
+     * @private
+     */
+    protected _isTableTile(tileId: number): boolean;
+
+    /**
+     * @method _isOverpassPosition
+     * @param {Number} mx
+     * @param {Number} my
+     * @return {Boolean}
+     * @private
+     */
+    protected _isOverpassPosition(mx: number, my: number): boolean;
+
+    /**
+     * @method _sortChildren
+     * @private
+     */
+    protected _sortChildren(): void;
+
+    /**
+     * @method _compareChildOrder
+     * @param {Sprite} a
+     * @param {Sprite} b
+     * @private
+     */
+    protected _compareChildOrder(a: Sprite, b: Sprite): number;
+}
+
+declare class ShaderTilemap extends Tilemap {
+    /**
+     * Uploads animation state in renderer
+     *
+     * @method _hackRenderer
+     * @param {PIXI.SystemRenderer} pixi renderer
+     * @private
+     */
+    _hackRenderer(renderer: PIXI.SystemRenderer): PIXI.SystemRenderer;
+
+    /**
+     * PIXI render method
+     *
+     * @method renderWebGL
+     * @param {PIXI.WebGLRenderer} pixi renderer
+     */
+    renderWebGL(renderer: PIXI.WebGLRenderer): void;
+
+    /**
+     * PIXI render method
+     *
+     * @method renderCanvas
+     * @param {PIXI.CanvasRenderer} pixi renderer
+     */
+    renderCanvas(renderer: PIXI.CanvasRenderer): void;
+
+    /**
+     * Forces to repaint the entire tilemap AND update bitmaps list if needed
+     *
+     * @method refresh
+     */
+    refresh(): void;
+
+    /**
+     * Call after you update tileset
+     *
+     * @method refreshTileset
+     */
+    refreshTileset(): void;
+}
+
+declare class TilingSprite extends PIXI.extras.TilingSprite {
+    /**
+     * The origin point of the tiling sprite for scrolling.
+     *
+     * @property origin
+     * @type Point
+     */
+    origin: Point;
+
+    /**
+     * The image for the tiling sprite.
+     *
+     * @property bitmap
+     * @type Bitmap
+     */
+    bitmap: Bitmap;
+
+    /**
+     * The opacity of the tiling sprite (0 to 255).
+     *
+     * @property opacity
+     * @type Number
+     */
+    opacity: number;
+
+    /**
+     * The visibility of the tiling sprite.
+     *
+     * @property visible
+     * @type Boolean
+     */
+    visibility: boolean;
+
+    /**
+     * The x coordinate of the tiling sprite.
+     *
+     * @property x
+     * @type Number
+     */
+    x: number;
+
+    /**
+     * The y coordinate of the tiling sprite.
+     *
+     * @property y
+     * @type Number
+     */
+    y: number;
+
+    spriteId: number;
+
+    /**
+     * The sprite object for a tiling image.
+     *
+     * @class TilingSprite
+     * @constructor
+     * @param {Bitmap} bitmap The image for the tiling sprite
+     */
+    constructor(bitmap: Bitmap);
+
+    /**
+     * Updates the tiling sprite for each frame.
+     *
+     * @method update
+     */
+    update(): void;
+
+    /**
+     * @method updateTransform
+     * @private
+     */
+    updateTransform(): void;
+
+    /**
+     * Sets the x, y, width, and height all at once.
+     *
+     * @method move
+     * @param {Number} x The x coordinate of the tiling sprite
+     * @param {Number} y The y coordinate of the tiling sprite
+     * @param {Number} width The width of the tiling sprite
+     * @param {Number} height The height of the tiling sprite
+     */
+    move(x?: number, y?: number, width?: number, height?: number): void;
+
+    /**
+     * Specifies the region of the image that the tiling sprite will use.
+     *
+     * @method setFrame
+     * @param {Number} x The x coordinate of the frame
+     * @param {Number} y The y coordinate of the frame
+     * @param {Number} width The width of the frame
+     * @param {Number} height The height of the frame
+     */
+    setFrame(x: number, y: number, width: number, height: number): void;
+
+    updateTransformTS(): void;
+
+    protected _bitmap: Bitmap;
+    protected _width: number;
+    protected _height: number;
+    protected _frame: Rectangle;
+
+    /**
+     * @method _onBitmapLoad
+     * @private
+     */
+    protected _onBitmapLoad(): void;
+
+    /**
+     * @method _refresh
+     * @private
+     */
+    protected _refresh(): void;
+
+    /**
+     * @method _renderCanvas
+     * @param {PIXI.CanvasRenderer} renderer
+     * @private
+     */
+    protected _renderCanvas(renderer: PIXI.CanvasRenderer): void;
+
+    /**
+     * @method _renderWebGL
+     * @param {PIXI.WebGLRenderer} renderer
+     * @private
+     */
+    protected _renderWebGL(renderer: PIXI.WebGLRenderer): void;
+
+    /**
+     * @method generateTilingTexture
+     * @param {Boolean} arg
+     */
+    // generateTilingTexture(arg: boolean): void;
+}
+
+declare class ToneFilter extends PIXI.filters.ColorMatrixFilter {
+    /**
+     * The color matrix filter for WebGL.
+     *
+     * @class ToneFilter
+     * @extends PIXI.Filter
+     * @constructor
+     */
+    constructor();
+
+    /**
+     * Changes the hue.
+     *
+     * @method adjustHue
+     * @param {Number} value The hue value in the range (-360, 360)
+     */
+    adjustHue(value?: number): void;
+
+    /**
+     * Changes the saturation.
+     *
+     * @method adjustSaturation
+     * @param {Number} value The saturation value in the range (-255, 255)
+     */
+    adjustSaturation(value?: number): void;
+
+    /**
+     * Changes the tone.
+     *
+     * @method adjustTone
+     * @param {Number} r The red strength in the range (-255, 255)
+     * @param {Number} g The green strength in the range (-255, 255)
+     * @param {Number} b The blue strength in the range (-255, 255)
+     */
+    adjustTone(r?: number, g?: number, b?: number): void;
+}
+
+declare class ToneSprite extends PIXI.Container {
+    /**
+     * The sprite which changes the screen color in 2D canvas mode.
+     *
+     * @class ToneSprite
+     * @constructor
+     */
+    constructor();
+
+    /**
+     * Clears the tone.
+     *
+     * @method reset
+     */
+    clear(): void;
+
+    /**
+     * Sets the tone.
+     *
+     * @method setTone
+     * @param {Number} r The red strength in the range (-255, 255)
+     * @param {Number} g The green strength in the range (-255, 255)
+     * @param {Number} b The blue strength in the range (-255, 255)
+     * @param {Number} gray The grayscale level in the range (0, 255)
+     */
+    setTone(r: number, g: number, b: number, gray: number): void;
+
+    protected _red: number;
+    protected _green: number;
+    protected _blue: number;
+    protected _gray: number;
+
+    /**
+     * @method _renderCanvas
+     * @param {PIXI.CanvasRenderer} renderer
+     * @private
+     */
+    protected _renderCanvas(renderer: PIXI.CanvasRenderer): void;
+
+    /**
+     * @method _renderWebGL
+     * @param {PIXI.WebGLRenderer} renderer
+     * @private
+     */
+    protected _renderWebGL(renderer: PIXI.WebGLRenderer): void;
+}
+
+interface TouchInputStatic {
+    _mousePressed: boolean;
+    _screenPressed: boolean;
+    _pressedTime: number;
+    _events: MV.TouchInputEvents;
+    _triggered: boolean;
+    _cancelled: boolean;
+    _moved: boolean;
+    _released: boolean;
+    _wheelX: number;
+    _wheelY: number;
+    _x: number;
+    _y: number;
+    _date: number;
+
+    /**
+     * The wait time of the pseudo key repeat in frames.
+     *
+     * @static
+     * @property keyRepeatWait
+     * @type Number
+     */
+    keyRepeatWait: number;
+
+    /**
+     * The interval of the pseudo key repeat in frames.
+     *
+     * @static
+     * @property keyRepeatInterval
+     * @type Number
+     */
+    keyRepeatInterval: number;
+
+    /**
+     * [read-only] The horizontal scroll amount.
+     *
+     * @static
+     * @property wheelX
+     * @type Number
+     */
+    wheelX: number;
+
+    /**
+     * [read-only] The vertical scroll amount.
+     *
+     * @static
+     * @property wheelY
+     * @type Number
+     */
+    wheelY: number;
+
+    /**
+     * [read-only] The x coordinate on the canvas area of the latest touch event.
+     *
+     * @static
+     * @property x
+     * @type Number
+     */
+    x: number;
+
+    /**
+     * [read-only] The y coordinate on the canvas area of the latest touch event.
+     *
+     * @static
+     * @property y
+     * @type Number
+     */
+    y: number;
+
+    /**
+     * [read-only] The time of the last input in milliseconds.
+     *
+     * @static
+     * @property date
+     * @type Number
+     */
+    date: number;
+
+    /**
+     * Initializes the touch system.
+     *
+     * @static
+     * @method initialize
+     */
+    initialize(): void;
+
+    /**
+     * Clears all the touch data.
+     *
+     * @static
+     * @method clear
+     */
+    clear(): void;
+
+    /**
+     * Updates the touch data.
+     *
+     * @static
+     * @method update
+     */
+    update(): void;
+
+    /**
+     * Checks whether the mouse button or touchscreen is currently pressed down.
+     *
+     * @static
+     * @method isPressed
+     * @return {Boolean} True if the mouse button or touchscreen is pressed
+     */
+    isPressed(): boolean;
+
+    /**
+     * Checks whether the left mouse button or touchscreen is just pressed.
+     *
+     * @static
+     * @method isTriggered
+     * @return {Boolean} True if the mouse button or touchscreen is triggered
+     */
+    isTriggered(): boolean;
+
+    /**
+     * Checks whether the left mouse button or touchscreen is just pressed
+     * or a pseudo key repeat occurred.
+     *
+     * @static
+     * @method isRepeated
+     * @return {Boolean} True if the mouse button or touchscreen is repeated
+     */
+    isRepeated(): boolean;
+
+    /**
+     * Checks whether the left mouse button or touchscreen is kept depressed.
+     *
+     * @static
+     * @method isLongPressed
+     * @return {Boolean} True if the left mouse button or touchscreen is long-pressed
+     */
+    isLongPressed(): boolean;
+
+    /**
+     * Checks whether the right mouse button is just pressed.
+     *
+     * @static
+     * @method isCancelled
+     * @return {Boolean} True if the right mouse button is just pressed
+     */
+    isCancelled(): boolean;
+
+    /**
+     * Checks whether the mouse or a finger on the touchscreen is moved.
+     *
+     * @static
+     * @method isMoved
+     * @return {Boolean} True if the mouse or a finger on the touchscreen is moved
+     */
+    isMoved(): boolean;
+
+    /**
+     * Checks whether the left mouse button or touchscreen is released.
+     *
+     * @static
+     * @method isReleased
+     * @return {Boolean} True if the mouse button or touchscreen is released
+     */
+    isReleased(): boolean;
+
+    /**
+     * @static
+     * @method _setupEventHandlers
+     * @private
+     */
+    _setupEventHandlers(): void;
+
+    /**
+     * @static
+     * @method _onMouseDown
+     * @param {MouseEvent} event
+     * @private
+     */
+    _onMouseDown(event: MouseEvent): void;
+
+    /**
+     * @static
+     * @method _onLeftButtonDown
+     * @param {MouseEvent} event
+     * @private
+     */
+    _onLeftButtonDown(event: MouseEvent): void;
+
+    /**
+     * @static
+     * @method _onMiddleButtonDown
+     * @param {MouseEvent} event
+     * @private
+     */
+    _onMiddleButtonDown(event: MouseEvent): void;
+
+    /**
+     * @static
+     * @method _onRightButtonDown
+     * @param {MouseEvent} event
+     * @private
+     */
+    _onRightButtonDown(event: MouseEvent): void;
+
+    /**
+     * @static
+     * @method _onMouseMove
+     * @param {MouseEvent} event
+     * @private
+     */
+    _onMouseMove(event: MouseEvent): void;
+
+    /**
+     * @static
+     * @method _onMouseUp
+     * @param {MouseEvent} event
+     * @private
+     */
+    _onMouseUp (event: MouseEvent): void;
+
+    /**
+     * @static
+     * @method _onWheel
+     * @param {WheelEvent} event
+     * @private
+     */
+    _onWheel(event: WheelEvent): void;
+
+    /**
+     * @static
+     * @method _onTouchStart
+     * @param {TouchEvent} event
+     * @private
+     */
+    _onTouchStart(event: TouchEvent): void;
+
+    /**
+     * @static
+     * @method _onTouchMove
+     * @param {TouchEvent} event
+     * @private
+     */
+    _onTouchMove(event: TouchEvent): void;
+
+    /**
+     * @static
+     * @method _onTouchEnd
+     * @param {TouchEvent} event
+     * @private
+     */
+    _onTouchEnd(event: TouchEvent): void;
+
+    /**
+     * @static
+     * @method _onTouchCancel
+     * @param {TouchEvent} event
+     * @private
+     */
+    _onTouchCancel(event: TouchEvent): void;
+
+    /**
+     * @static
+     * @method _onPointerDown
+     * @param {PointerEvent} event
+     * @private
+     */
+    _onPointerDown(event: PointerEvent): void;
+
+    /**
+     * @static
+     * @method _onTrigger
+     * @param {Number} x
+     * @param {Number} y
+     * @private
+     */
+    _onTrigger(x: number, y: number): void;
+
+    /**
+     * @static
+     * @method _onCancel
+     * @param {Number} x
+     * @param {Number} y
+     * @private
+     */
+    _onCancel(x: number, y: number): void;
+
+    /**
+     * @static
+     * @method _onMove
+     * @param {Number} x
+     * @param {Number} y
+     * @private
+     */
+    _onMove(x: number, y: number): void;
+
+    /**
+     * @static
+     * @method _onRelease
+     * @param {Number} x
+     * @param {Number} y
+     * @private
+     */
+    _onRelease(x: number, y: number): void;
+}
+declare var TouchInput: TouchInputStatic;
+
+/**
+ * The static class that defines utility methods.
+ *
+ * @class Utils
+ */
+interface UtilsStatic {
+    /**
+     * The name of the RPG Maker. 'MV' in the current version.
+     *
+     * @static
+     * @property RPGMAKER_NAME
+     * @type String
+     * @final
+     */
+    RPGMAKER_NAME: string;
+
+    /**
+     * The version of the RPG Maker.
+     *
+     * @static
+     * @property RPGMAKER_VERSION
+     * @type String
+     * @final
+     */
+    RPGMAKER_VERSION: string;
+
+    /**
+     * Checks whether the option is in the query string.
+     *
+     * @static
+     * @method isOptionValid
+     * @param {String} name The option name
+     * @return {Boolean} True if the option is in the query string
+     */
+    isOptionValid(name: string): boolean;
+
+    /**
+     * Checks whether the platform is NW.js.
+     *
+     * @static
+     * @method isNwjs
+     * @return {Boolean} True if the platform is NW.js
+     */
+    isNwjs(): boolean;
+
+    /**
+     * Checks whether the platform is a mobile device.
+     *
+     * @static
+     * @method isMobileDevice
+     * @return {Boolean} True if the platform is a mobile device
+     */
+    isMobileDevice(): boolean;
+
+    /**
+     * Checks whether the browser is Mobile Safari.
+     *
+     * @static
+     * @method isMobileSafari
+     * @return {Boolean} True if the browser is Mobile Safari
+     */
+    isMobileSafari(): boolean;
+
+    /**
+     * Checks whether the browser is Android Chrome.
+     *
+     * @static
+     * @method isAndroidChrome
+     * @return {Boolean} True if the browser is Android Chrome
+     */
+    isAndroidChrome(): boolean;
+
+    /**
+     * Checks whether the browser can read files in the game folder.
+     *
+     * @static
+     * @method canReadGameFiles
+     * @return {Boolean} True if the browser can read files in the game folder
+     */
+    canReadGameFiles(): boolean;
+
+    /**
+     * Makes a CSS color string from RGB values.
+     *
+     * @static
+     * @method rgbToCssColor
+     * @param {Number} r The red value in the range (0, 255)
+     * @param {Number} g The green value in the range (0, 255)
+     * @param {Number} b The blue value in the range (0, 255)
+     * @return {String} CSS color string
+     */
+    rgbToCssColor(r: number, g: number, b: number): string;
+}
+declare var Utils: UtilsStatic;
+
+
+declare class WebAudio {
+    static _context: AudioContext;
+    static _masterGainNode: GainNode;
+    static _initialized: boolean;
+    static _unlocked: boolean;
+
+    /**
+     * Initializes the audio system.
+     *
+     * @static
+     * @method initialize
+     * @param {Boolean} noAudio Flag for the no-audio mode
+     * @return {Boolean} True if the audio system is available
+     */
+    static initialize(noAudio?: boolean): boolean;
+
+    /**
+     * Checks whether the browser can play ogg files.
+     *
+     * @static
+     * @method canPlayOgg
+     * @return {Boolean} True if the browser can play ogg files
+     */
+    static canPlayOgg(): boolean;
+
+    /**
+     * Checks whether the browser can play m4a files.
+     *
+     * @static
+     * @method canPlayM4a
+     * @return {Boolean} True if the browser can play m4a files
+     */
+    static canPlayM4a(): boolean;
+
+    /**
+     * @static
+     * @method _createContext
+     * @private
+     */
+    static _createContext(): void;
+
+    /**
+     * @static
+     * @method _detectCodecs
+     * @private
+     */
+    static _detectCodecs(): void;
+
+    /**
+     * @static
+     * @method _createMasterGainNode
+     * @private
+     */
+    static _createMasterGainNode(): void;
+
+    /**
+     * @static
+     * @method _setupEventHandlers
+     * @private
+     */
+    static _setupEventHandlers(): void;
+
+    /**
+     * @static
+     * @method _onTouchStart
+     * @private
+     */
+    static _onTouchStart(): void;
+
+    /**
+     * @static
+     * @method _onVisibilityChange
+     * @private
+     */
+    static _onVisibilityChange(): void;
+
+    /**
+     * @static
+     * @method _onHide
+     * @private
+     */
+    static _onHide(): void;
+
+    /**
+     * @static
+     * @method _onShow
+     * @private
+     */
+    static _onShow(): void;
+
+    /**
+     * @static
+     * @method _shouldMuteOnHide
+     * @private
+     */
+    static _shouldMuteOnHide(): void;
+
+    /**
+     * @static
+     * @method _fadeIn
+     * @param {Number} duration
+     * @private
+     */
+    static _fadeIn(duration: number): void;
+
+    /**
+     * @static
+     * @method _fadeOut
+     * @param {Number} duration
+     * @private
+     */
+    static _fadeOut(duration: number): void;
+
+    /**
+     * [read-only] The url of the audio file.
+     *
+     * @property url
+     * @type String
+     */
+    url: string;
+
+    /**
+     * The volume of the audio.
+     *
+     * @property volume
+     * @type Number
+     */
+    volume: number;
+
+    /**
+     * The pitch of the audio.
+     *
+     * @property pitch
+     * @type Number
+     */
+    pitch: number;
+
+    /**
+     * The pan of the audio.
+     *
+     * @property pan
+     * @type Number
+     */
+    pan: number;
+
+    /**
+     * The audio object of Web Audio API.
+     *
+     * @class WebAudio
+     * @constructor
+     * @param {String} url The url of the audio file
+     */
+    constructor(url: string);
+
+    /**
+     * Clears the audio data.
+     *
+     * @method clear
+     */
+    clear(): void;
+
+    /**
+     * Checks whether the audio data is ready to play.
+     *
+     * @method isReady
+     * @return {Boolean} True if the audio data is ready to play
+     */
+    isReady(): boolean;
+
+    /**
+     * Checks whether a loading error has occurred.
+     *
+     * @method isError
+     * @return {Boolean} True if a loading error has occurred
+     */
+    isError(): boolean;
+
+    /**
+     * Checks whether the audio is playing.
+     *
+     * @method isPlaying
+     * @return {Boolean} True if the audio is playing
+     */
+    isPlaying(): boolean;
+
+    /**
+     * Plays the audio.
+     *
+     * @method play
+     * @param {Boolean} loop Whether the audio data play in a loop
+     * @param {Number} offset The start position to play in seconds
+     */
+    play(loop: boolean, offset: number): void;
+
+    /**
+     * Stops the audio.
+     *
+     * @method stop
+     */
+    stop(): void;
+
+    /**
+     * Performs the audio fade-in.
+     *
+     * @method fadeIn
+     * @param {Number} duration Fade-in time in seconds
+     */
+    fadeIn(duration: number): void;
+
+    /**
+     * Performs the audio fade-out.
+     *
+     * @method fadeOut
+     * @param {Number} duration Fade-out time in seconds
+     */
+    fadeOut(duration: number): void;
+
+    /**
+     * Gets the seek position of the audio.
+     *
+     * @method seek
+     */
+    seek(): void;
+
+    /**
+     * Add a callback function that will be called when the audio data is loaded.
+     *
+     * @method addLoadListener
+     * @param {Function} listner The callback function
+     */
+    addLoadListener(listner: () => void): void;
+
+    /**
+     * Add a callback function that will be called when the playback is stopped.
+     *
+     * @method addStopListener
+     * @param {Function} listner The callback function
+     */
+    addStopListener(listner: () => void): void;
+
+    protected _buffer: AudioNode;
+    protected _sourceNode: AudioBufferSourceNode;
+    protected _gainNode: GainNode;
+    protected _pannerNode: PannerNode;
+    protected _totalTime: number;
+    protected _sampleRate: number;
+    protected _loopStart: number;
+    protected _loopLength: number;
+    protected _startTime: number;
+    protected _volume: number;
+    protected _pitch: number;
+    protected _pan: number;
+    protected _endTimer: number;
+    protected _loadListeners: Array<() => void>;
+    protected _stopListeners: Array<() => void>;
+    protected _hasError: boolean;
+    protected _autoPlay: boolean;
+
+    /**
+     * @method _load
+     * @param {String} url
+     * @private
+     */
+    protected _load(url: string): void;
+
+    /**
+     * @method _onXhrLoad
+     * @param {XMLHttpRequest} xhr
+     * @private
+     */
+    protected _onXhrLoad(xhr: XMLHttpRequest): void;
+
+    /**
+     * @method _startPlaying
+     * @param {Boolean} loop
+     * @param {Number} offset
+     * @private
+     */
+    protected _startPlaying(loop: boolean, offset: number): void;
+
+    /**
+     * @method _createNodes
+     * @private
+     */
+    protected _createNodes(): void;
+
+    /**
+     * @method _connectNodes
+     * @private
+     */
+    protected _connectNodes(): void;
+
+    /**
+     * @method _removeNodes
+     * @private
+     */
+    protected _removeNodes(): void;
+
+    /**
+     * @method _createEndTimer
+     * @private
+     */
+    protected _createEndTimer(): void;
+
+    /**
+     * @method _removeEndTimer
+     * @private
+     */
+    protected _removeEndTimer(): void;
+
+    /**
+     * @method _updatePanner
+     * @private
+     */
+    protected _updatePanner(): void;
+
+    /**
+     * @method _onLoad
+     * @private
+     */
+    protected _onLoad(): void;
+
+    /**
+     * @method _readLoopComments
+     * @param {Uint8Array} array
+     * @private
+     */
+    protected _readLoopComments(array: Uint8Array): void;
+
+    /**
+     * @method _readOgg
+     * @param {Uint8Array} array
+     * @private
+     */
+    protected _readOgg(array: Uint8Array): void;
+
+    /**
+     * @method _readMp4
+     * @param {Uint8Array} array
+     * @private
+     */
+    protected _readMp4(array: Uint8Array): void;
+
+    /**
+     * @method _readMetaData
+     * @param {Uint8Array} array
+     * @param {Number} index
+     * @param {Number} size
+     * @private
+     */
+    protected _readMetaData(array: Uint8Array, index: number, size: number): void;
+
+    /**
+     * @method _readLittleEndian
+     * @param {Uint8Array} array
+     * @param {Number} index
+     * @private
+     */
+    protected _readLittleEndian(array: Uint8Array, index: number): void;
+
+    /**
+     * @method _readBigEndian
+     * @param {Uint8Array} array
+     * @param {Number} index
+     * @private
+     */
+    protected _readBigEndian(array: Uint8Array, index: number): void;
+
+    /**
+     * @method _readFourCharacters
+     * @param {Uint8Array} array
+     * @param {Number} index
+     * @private
+     */
+    protected _readFourCharacters(array: Uint8Array, index: number): void;
+}
+
+declare class Weather extends PIXI.Container {
+    /**
+     * The type of the weather in ['none', 'rain', 'storm', 'snow'].
+     *
+     * @property type
+     * @type String
+     */
+    type: string;
+
+    /**
+     * The power of the weather in the range (0, 9).
+     *
+     * @property power
+     * @type Number
+     */
+    power: number;
+
+    /**
+     * The origin point of the weather for scrolling.
+     *
+     * @property origin
+     * @type Point
+     */
+    origin: Point;
+
+    /**
+     * The weather effect which displays rain, storm, or snow.
+     *
+     * @class Weather
+     * @constructor
+     */
+    constructor();
+
+    /**
+     * Updates the weather for each frame.
+     *
+     * @method update
+     */
+    update(): void;
+
+    protected _width: number;
+    protected _height: number;
+    protected _sprites: Array<Sprite>;
+    protected _rainBitmap: Bitmap;
+    protected _stormBitmap: Bitmap;
+    protected _snowBitmap: Bitmap;
+    protected _dimmerSprite: ScreenSprite;
+
+    /**
+     * @method _createBitmaps
+     * @private
+     */
+    protected _createBitmaps(): void;
+
+    /**
+     * @method _createDimmer
+     * @private
+     */
+    protected _createDimmer(): void;
+
+    /**
+     * @method _updateDimmer
+     * @private
+     */
+    protected _updateDimmer(): void;
+
+    /**
+     * @method _updateAllSprites
+     * @private
+     */
+    protected _updateAllSprites(): void;
+
+    /**
+     * @method _addSprite
+     * @private
+     */
+    protected _addSprite(): void;
+
+    /**
+     * @method _removeSprite
+     * @private
+     */
+    protected _removeSprite(): void;
+
+    /**
+     * @method _updateSprite
+     * @param {Sprite} sprite
+     * @private
+     */
+    protected _updateSprite(sprite: Sprite): void;
+
+    /**
+     * @method _updateRainSprite
+     * @param {Sprite} sprite
+     * @private
+     */
+    protected _updateRainSprite(sprite: Sprite): void;
+
+    /**
+     * @method _updateStormSprite
+     * @param {Sprite} sprite
+     * @private
+     */
+    protected _updateStormSprite(sprite: Sprite): void;
+
+    /**
+     * @method _updateSnowSprite
+     * @param {Sprite} sprite
+     * @private
+     */
+    protected _updateSnowSprite(sprite: Sprite): void;
+
+    /**
+     * @method _rebornSprite
+     * @param {Sprite} sprite
+     * @private
+     */
+    protected _rebornSprite(sprite: Sprite): void;
+}
+
+declare abstract class _Window extends PIXI.Container {
+    /**
+     * The origin point of the window for scrolling.
+     *
+     * @property origin
+     * @type Point
+     */
+    origin: Point;
+
+    /**
+     * The active state for the window.
+     *
+     * @property active
+     * @type Boolean
+     */
+    active: boolean;
+
+    /**
+     * The visibility of the down scroll arrow.
+     *
+     * @property downArrowVisible
+     * @type Boolean
+     */
+    downArrowVisible: boolean;
+
+    /**
+     * The visibility of the up scroll arrow.
+     *
+     * @property upArrowVisible
+     * @type Boolean
+     */
+    upArrowVisible: boolean;
+
+    /**
+     * The visibility of the pause sign.
+     *
+     * @property pause
+     * @type Boolean
+     */
+    pause: boolean;
+
+    /**
+     * The image used as a window skin.
+     *
+     * @property windowskin
+     * @type Bitmap
+     */
+    windowskin: Bitmap;
+
+    /**
+     * The bitmap used for the window contents.
+     *
+     * @property contents
+     * @type Bitmap
+     */
+    contents: Bitmap;
+
+    /**
+     * The width of the window in pixels.
+     *
+     * @property width
+     * @type Number
+     */
+    width: number;
+
+    /**
+     * The height of the window in pixels.
+     *
+     * @property height
+     * @type Number
+     */
+    height: number;
+
+    /**
+     * The size of the padding between the frame and contents.
+     *
+     * @property padding
+     * @type Number
+     */
+    padding: number;
+
+    /**
+     * The size of the margin for the window background.
+     *
+     * @property margin
+     * @type Number
+     */
+    margin: number;
+
+    /**
+     * The opacity of the window without contents (0 to 255).
+     *
+     * @property opacity
+     * @type Number
+     */
+    opacity: number;
+
+    /**
+     * The opacity of the window background (0 to 255).
+     *
+     * @property backOpacity
+     * @type Number
+     */
+    backOpacity: number;
+
+    /**
+     * The opacity of the window contents (0 to 255).
+     *
+     * @property contentsOpacity
+     * @type Number
+     */
+    contentsOpacity: number;
+
+    /**
+     * The openness of the window (0 to 255).
+     *
+     * @property openness
+     * @type Number
+     */
+    openness: number;
+
+    /**
+     * The visibility of the sprite.
+     *
+     * @property visible
+     * @type Boolean
+     */
+    visible: boolean;
+
+    /**
+     * The x coordinate of the sprite.
+     *
+     * @property x
+     * @type Number
+     */
+    x: number;
+
+    /**
+     * The y coordinate of the sprite.
+     *
+     * @property y
+     * @type Number
+     */
+    y: number;
+
+    /**
+     * [read-only] The array of children of the sprite.
+     *
+     * @property children
+     * @type Array<PIXI.DisplayObject>
+     */
+    children: Array<PIXI.DisplayObject>;
+
+    /**
+     * [read-only] The object that contains the sprite.
+     *
+     * @property parent
+     * @type PIXI.DisplayObjectContainer
+     */
+    parent: PIXI.Container;
+
+    /**
+     * The window in the game.
+     *
+     * @class Window
+     * @constructor
+     */
+    constructor();
+
+    /**
+     * Updates the window for each frame.
+     *
+     * @method update
+     */
+    update(): void;
+
+    /**
+     * Sets the x, y, width, and height all at once.
+     *
+     * @method move
+     * @param {Number} x The x coordinate of the window
+     * @param {Number} y The y coordinate of the window
+     * @param {Number} width The width of the window
+     * @param {Number} height The height of the window
+     */
+    move(x?: number, y?: number, width?: number, height?: number): void;
+
+    /**
+     * Returns true if the window is completely open (openness == 255).
+     *
+     * @method isOpen
+     * @return {Boolean}
+     */
+    isOpen(): boolean;
+
+    /**
+     * Returns true if the window is completely closed (openness == 0).
+     *
+     * @method isClosed
+     * @return {Boolean}
+     */
+    isClosed(): boolean;
+
+    /**
+     * Sets the position of the command cursor.
+     *
+     * @method setCursorRect
+     * @param {Number} x The x coordinate of the cursor
+     * @param {Number} y The y coordinate of the cursor
+     * @param {Number} width The width of the cursor
+     * @param {Number} height The height of the cursor
+     */
+    setCursorRect(x?: number, y?: number, width?: number, height?: number): void;
+
+    /**
+     * Changes the color of the background.
+     *
+     * @method setTone
+     * @param {Number} r The red value in the range (-255, 255)
+     * @param {Number} g The green value in the range (-255, 255)
+     * @param {Number} b The blue value in the range (-255, 255)
+     */
+    setTone(r: number, g: number, b: number): void;
+
+    /**
+     * Adds a child between the background and contents.
+     *
+     * @method addChildToBack
+     * @param {PIXI.DisplayObject} child The child to add
+     * @return {PIXI.DisplayObject} The child that was added
+     */
+    addChildToBack(child: PIXI.DisplayObject): PIXI.DisplayObject;
+
+    /**
+     * Adds a child to the container.
+     *
+     * @method addChild
+     * @param {PIXI.DisplayObject} child The child to add
+     * @return {PIXI.DisplayObject} The child that was added
+     */
+    addChild(child: PIXI.DisplayObject): PIXI.DisplayObject;
+
+    /**
+     * Adds a child to the container at a specified index.
+     *
+     * @method addChildAt
+     * @param {PIXI.DisplayObject} child The child to add
+     * @param {Number} index The index to place the child in
+     * @return {PIXI.DisplayObject} The child that was added
+     */
+    addChildAt(child: PIXI.DisplayObject, index: number): PIXI.DisplayObject;
+
+    /**
+     * Removes a child from the container.
+     *
+     * @method removeChild
+     * @param {PIXI.DisplayObject} child The child to remove
+     * @return {PIXI.DisplayObject} The child that was removed
+     */
+    removeChild(child: PIXI.DisplayObject): PIXI.DisplayObject;
+
+    /**
+     * Removes a child from the specified index position.
+     *
+     * @method removeChildAt
+     * @param {Number} index The index to get the child from
+     * @return {PIXI.DisplayObject} The child that was removed
+     */
+    removeChildAt(index: number): PIXI.DisplayObject;
+
+    /**
+     * @method updateTransform
+     * @private
+     */
+    updateTransform(): void;
+
+    protected _isWindow: boolean;
+    protected _windowskin: Bitmap;
+    protected _width: number;
+    protected _height: number;
+    protected _cursorRect: Rectangle;
+    protected _openness: number;
+    protected _animationCount: number;
+    protected _padding: number;
+    protected _margin: number;
+    protected _colorTone: Array<number>;
+    protected _windowSpriteContainer: PIXI.Container;
+    protected _windowBackSprite: Sprite;
+    protected _windowCursorSprite: Sprite;
+    protected _windowFrameSprite: Sprite;
+    protected _windowContentsSprite: Sprite;
+    protected _windowArrowSprites: Array<any>;
+    protected _windowPauseSignSprite: Sprite;
+    protected _downArrowSprite: Sprite;
+    protected _upArrowSprite: Sprite;
+
+    /**
+     * @method _createAllParts
+     * @private
+     */
+    protected _createAllParts(): void;
+
+    /**
+     * @method _onWindowskinLoad
+     * @private
+     */
+    protected _onWindowskinLoad(): void;
+
+    /**
+     * @method _refreshAllParts
+     * @private
+     */
+    protected _refreshAllParts(): void;
+
+    /**
+     * @method _refreshBack
+     * @private
+     */
+    protected _refreshBack(): void;
+
+    /**
+     * @method _refreshFrame
+     * @private
+     */
+    protected _refreshFrame(): void;
+
+    /**
+     * @method _refreshCursor
+     * @private
+     */
+    protected _refreshCursor(): void;
+
+    /**
+     * @method _refreshContents
+     * @private
+     */
+    protected _refreshContents(): void;
+
+    /**
+     * @method _refreshArrows
+     * @private
+     */
+    protected _refreshArrows(): void;
+
+    /**
+     * @method _refreshPauseSign
+     * @private
+     */
+    protected _refreshPauseSign(): void;
+
+    /**
+     * @method _updateCursor
+     * @private
+     */
+    protected _updateCursor(): void;
+
+    /**
+     * @method _updateContents
+     * @private
+     */
+    protected _updateContents(): void;
+
+    /**
+     * @method _updateArrows
+     * @private
+     */
+    protected _updateArrows(): void;
+
+    /**
+     * @method _updatePauseSign
+     * @private
+     */
+    protected _updatePauseSign(): void;
+}
+
+
+declare class WindowLayer extends PIXI.Container {
+    /**
+     * The width of the window layer in pixels.
+     *
+     * @property width
+     * @type Number
+     */
+    width: number;
+
+    /**
+     * The height of the window layer in pixels.
+     *
+     * @property height
+     * @type Number
+     */
+    height: number;
+
+    /**
+     * The x coordinate of the sprite.
+     *
+     * @property x
+     * @type Number
+     */
+    x: number;
+
+    /**
+     * The y coordinate of the sprite.
+     *
+     * @property y
+     * @type Number
+     */
+    y: number;
+
+    /**
+     * [read-only] The array of children of the sprite.
+     *
+     * @property children
+     * @type Array<PIXI.DisplayObject>
+     */
+    children: Array<PIXI.DisplayObject>;
+
+    /**
+     * [read-only] The object that contains the sprite.
+     *
+     * @property parent
+     * @type PIXI.DisplayObjectContainer
+     */
+    parent: PIXI.Container;
+
+    voidFilter: PIXI.Filter;
+
+    /**
+     * The layer which contains game windows.
+     *
+     * @class WindowLayer
+     * @constructor
+     */
+    constructor();
+
+    /**
+     * Sets the x, y, width, and height all at once.
+     *
+     * @method move
+     * @param {Number} x The x coordinate of the window layer
+     * @param {Number} y The y coordinate of the window layer
+     * @param {Number} width The width of the window layer
+     * @param {Number} height The height of the window layer
+     */
+    move(x: number, y: number, width: number, height: number): void;
+
+    /**
+     * Updates the window layer for each frame.
+     *
+     * @method update
+     */
+    update(): void;
+
+    /**
+     * Adds a child to the container.
+     *
+     * @method addChild
+     * @param {PIXI.DisplayObject} child The child to add
+     * @return {PIXI.DisplayObject} The child that was added
+     */
+    addChild(child: PIXI.DisplayObject): PIXI.DisplayObject;
+
+    /**
+     * Adds a child to the container at a specified index.
+     *
+     * @method addChildAt
+     * @param {PIXI.DisplayObject} child The child to add
+     * @param {Number} index The index to place the child in
+     * @return {PIXI.DisplayObject} The child that was added
+     */
+    addChildAt(child: PIXI.DisplayObject, index: number): PIXI.DisplayObject;
+
+    /**
+     * Removes a child from the container.
+     *
+     * @method removeChild
+     * @param {PIXI.DisplayObject} child The child to remove
+     * @return {PIXI.DisplayObject} The child that was removed
+     */
+    removeChild(child: PIXI.DisplayObject): PIXI.DisplayObject;
+
+    /**
+     * Removes a child from the specified index position.
+     *
+     * @method removeChildAt
+     * @param {Number} index The index to get the child from
+     * @return {PIXI.DisplayObject} The child that was removed
+     */
+    removeChildAt(index: number): PIXI.DisplayObject;
+
+    /**
+     * @method _renderCanvas
+     * @param {PIXI.CanvasRenderer} renderer
+     * @private
+     */
+    renderCanvas(renderer: PIXI.CanvasRenderer);
+
+    /**
+     * @method _renderWebGL
+     * @param {PIXI.WebGLRenderer} renderer
+     * @private
+     */
+    renderWebGL(renderer: PIXI.WebGLRenderer): void;
+
+    protected _width: number;
+    protected _height: number;
+    protected _tempCanvas: HTMLCanvasElement;
+    protected _translationMatrix: Array<number>;
+    protected _windowMask: PIXI.Graphics;
+    protected _renderSprite: PIXI.Container;
+
+    /**
+     * @method _canvasClearWindowRect
+     * @param {PIXI.CanvasRenderer} renderSession
+     * @param {Window} window
+     * @private
+     */
+    protected _canvasClearWindowRect(renderSession: PIXI.CanvasRenderer, window: Window): void;
+
+    /**
+     * @method _maskWindow
+     * @param {Window} window
+     * @private
+     */
+     protected _maskWindow(window: _Window): void;
+}
+
+declare class CacheEntry {
+    /**
+     * The resource class. Allows to be collected as a garbage if not use for some time or ticks
+     *
+     * @class CacheEntry
+     * @constructor
+     * @param {ResourceManager} resource manager
+     * @param {string} key, url of the resource
+     * @param {string} item - Bitmap, HTML5Audio, WebAudio - whatever you want to store in the cache
+     */
+    constructor(cache: CacheMap, key: string, item: string)
+
+    /**
+     * frees the resource
+     */
+    free(byTTL?: boolean): void;
+
+    /**
+     * Allocates the resource
+     * @returns {CacheEntry}
+     */
+    allocate(): CacheEntry;
+
+    /**
+     * Sets the time to live
+     * @param {number} ticks TTL in ticks, 0 if not set
+     * @param {number} time TTL in seconds, 0 if not set
+     * @returns {CacheEntry}
+     */
+    setTimeToLive(ticks?: number, seconds?: number): CacheEntry;
+
+    isStillAlive(): boolean;
+
+    /**
+     * makes sure that resource wont freed by Time To Live
+     * if resource was already freed by TTL, put it in cache again
+     */
+    touch(): void;
+}
+
+declare class CacheMap {
+    /**
+     * Cache for images, audio, or any other kind of resource
+     * @param manager
+     * @constructor
+     */
+    constructor(manager: ImageManagerStatic);
+
+    /**
+     * checks ttl of all elements and removes dead ones
+     */
+    checkTTL(): void;
+
+    /**
+     * cache item
+     * @param key url of cache element
+     * @returns {*|null}
+     */
+    getItem(key: string): any;
+
+    clear(): void;
+    setItem(key, item): CacheEntry;
+    update(ticks: number, delta: number): void;
+}
+
+
+interface DecrypterStatic {
+    hasEncryptedImages: boolean;
+    hasEncryptedAudio: boolean;
+
+    _requestImgFile: Array<string>;
+    _headerlength: number;
+    _xhrOk: number;
+    _encryptionKey: string;
+    _ignoreList: Array<string>;
+
+    SIGNATURE: string;
+    VER: string;
+    REMAIN: string;
+
+    checkImgIgnore(url: string): boolean;
+    decryptImg(url: string, bitmap: Bitmap): void;
+    decryptHTML5Audio(url: string, bgm: MV.AudioParameters, pos?: number): void;
+    cutArrayHeader(arrayBuffer: ArrayBuffer, length: number): ArrayBuffer;
+    decryptArrayBuffer(arrayBuffer: ArrayBuffer): void;
+    createBlobUrl(arrayBuffer: ArrayBuffer): string;
+    extToEncryptExt(url: string): string;
+    readEncryptionkey(): void;
+}
+declare var Decrypter: DecrypterStatic;declare namespace RPG {
     export interface MetaData {
         /**
          * The text of the note.
@@ -4104,6 +8694,22 @@ declare namespace RPG {
          * The adjustment value for the battler graphic's hue (0..360).
          */
         battlerHue: number;
+      
+      /**
+       * The name of the enemy in the database.
+       * 
+       * @type {string}
+       * @memberof Enemy
+       */
+        name: string
+      
+      /**
+       * The ID of the enemy in the database.
+       * 
+       * @type {number}
+       * @memberof Enemy
+       */
+      id:number 
 
         /**
          * Parameters. An array of integers using the following IDs as subscripts:
@@ -6907,7 +11513,7 @@ declare class Game_Character extends Game_CharacterBase {
  * -----------------------------------------------------------------------------
  * Game_Player
  *
- * The game object class for the player. It contains event starting
+ * The game object declare class for the player. It contains event starting
  * determinants and map scrolling functions.
  * @class Game_Player
  */
@@ -7786,34 +12392,90 @@ declare class Game_Interpreter {
 //=============================================================================
 // rpg_managers.js v1.5.0
 //=============================================================================
-
+/** @global RPGMakerMV Actor data. */
 declare var $dataActors: Array<RPG.Actor>;
+/** @global RPGMakerMV Class data. */
 declare var $dataClasses: Array<RPG.Class>;
+/** @global RPGMakerMV Skill data. */
 declare var $dataSkills: Array<RPG.Skill>;
+/** @global RPGMakerMV Item data. */
 declare var $dataItems: Array<RPG.Item>;
+/** @global RPGMakerMV Weapon data. */
 declare var $dataWeapons: Array<RPG.Weapon>;
+/** @global RPGMakerMV Armor data. */
 declare var $dataArmors: Array<RPG.Armor>;
+/** @global RPGMakerMV Enemy data. */
 declare var $dataEnemies: Array<RPG.Enemy>;
+/** @global RPGMakerMV Troop data. */
 declare var $dataTroops: Array<RPG.Troop>;
+/** @global RPGMakerMV State data. */
 declare var $dataStates: Array<RPG.State>;
+/** @global RPGMakerMV Animation data. */
 declare var $dataAnimations: Array<RPG.Animation>;
+/** @global RPGMakerMV Tileset data. */
 declare var $dataTilesets: Array<RPG.Tileset>;
+/** @global RPGMakerMV CommonEvent data. */
 declare var $dataCommonEvents: Array<RPG.CommonEvent>;
+/** @global RPGMakerMV System data. */
 declare var $dataSystem: RPG.System;
+/** @global RPGMakerMV MapInfo data. */
 declare var $dataMapInfos: Array<RPG.MapInfo>;
+/** @global RPGMakerMV Map data for the current map. */
 declare var $dataMap: RPG.Map;
+/** @global RPGMakerMV Temporary game data; not saved with the game. */
 declare var $gameTemp: Game_Temp;
+/** @global RPGMakerMV Game System data; saved with the game.
+ * @type {Game_Temp}
+*/
 declare var $gameSystem: Game_System;
+/** @global RPGMakerMV Game Screen; contains properties and methods
+ * for adjusting the game screen.
+ * @type {Game_Screen}
+ */
 declare var $gameScreen: Game_Screen;
 declare var $gameTimer: Game_Timer;
+/** @global RPGMakerMV Game Message; contains properties and methods
+ * for displaying messages in the game message window. 
+ * @type {Game_Message}
+*/
 declare var $gameMessage: Game_Message;
+/** @global RPGMakerMV Game Switches; contains properties and methods
+ * for modifying in game switches while the game is running.
+ * These are boolean values: true or false.
+ * @type {Game_Switches}
+ */
 declare var $gameSwitches: Game_Switches;
+/** @global RPGMakerMV Game Variables; contains properties and methods
+ * for modifying the values of game variables.
+ * The variables can contain anything.
+ * @type {Game_Variables}
+ */
 declare var $gameVariables: Game_Variables;
 declare var $gameSelfSwitches: Game_SelfSwitches;
 declare var $gameActors: Game_Actors;
+/** @global RPGmakerMV Game Party; contains properties and methods
+ * for interacting with the game party. Some of the methods include
+ * number of party members, etc.
+ * @type {Game_Party}
+ */
 declare var $gameParty: Game_Party;
+/** @global RPGMakerMV Game Troop; contains properties and methods
+ * for interacting with the game troops. Some of the methods include
+ * enemy data, enemy names, etc.
+ * @type {Game_Troop}
+ */
 declare var $gameTroop: Game_Troop;
+/** @global RPGMakerMV Game Map; contains properties and methods
+ * for interacting with the game map. Some of these methods include
+ * interacting with the map's game_interpreter, and event information.
+ * @type {Game_Map}
+ */
 declare var $gameMap: Game_Map;
+/** @global RPGMakerMV Game Player; contains properties and methods
+ * for interacting with the game player. Some of these methods
+ * include interacting with the player's position and move route.
+ * @type {Game_Player}
+ */
 declare var $gamePlayer: Game_Player;
 declare var $testEvent: Array<RPG.EventCommand>;
 
@@ -7897,8 +12559,23 @@ declare class DataManager {
    * @memberof DataManager
    */
   static maxSavefiles(): number;
+  /**
+   * Saves the RPGMakerMV game given a savefileId.
+   * Returns true if successful.
+   * @static
+   * @param {number} savefileId 
+   * @returns {boolean} 
+   * @memberof DataManager
+   */
   static saveGame(savefileId: number): boolean;
   static loadGame(savefileId: number): boolean;
+  /**
+   * Returns the last accessed save fileId upon
+   * saving or loading the game.
+   * @static
+   * @returns {number} 
+   * @memberof DataManager
+   */
   static lastAccessedSavefileId(): number;
   static saveGameWithoutRescue(savefileId: number): boolean;
   static loadGameWithoutRescue(savefileId: number): boolean;
@@ -8171,26 +12848,192 @@ declare var ConfigManager: ConfigManagerStatic;
 interface ImageManagerStatic {
     cache: CacheMap;
 
+    /**
+     * Loads a Bitmap object from the 'img/animations/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadAnimation(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/battlebacks1/' folder
+     *  and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadBattleback1(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/battlebacks2/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadBattleback2(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/enemies/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadEnemy(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/characters/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadCharacter(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/faces/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadFace(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/parallaxes/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadParallax(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/pictures/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadPicture(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/sv_actors/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadSvActor(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/sv_enemies/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadSvEnemy(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from 'img/system/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadSystem(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/tilesets/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadTileset(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/titles1/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadTitle1(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from the 'img/titles2/' folder
+     * and returns it.
+     * @param {string} filename 
+     * @param {number} [hue] 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadTitle2(filename: string, hue?: number): Bitmap;
+    /**
+     * Loads a Bitmap object from any folder and returns it.
+     * 
+     * @param {string} folder 
+     * @param {string} filename 
+     * @param {number} hue 
+     * @param {boolean} smooth 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadBitmap(folder: string, filename: string, hue: number, smooth: boolean): Bitmap;
+    /**
+     * Loads an empty Bitmap object and returns it.
+     * 
+     * @param {string} path 
+     * @param {number} hue 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadEmptyBitmap(path: string, hue: number): Bitmap;
+    /**
+     * Loads a Bitmap object given a path
+     * and returns it.
+     * @param {string} path 
+     * @param {number} hue 
+     * @returns {Bitmap} 
+     * @memberof ImageManagerStatic
+     */
     loadNormalBitmap(path: string, hue: number): Bitmap;
+    /**
+     * Clears the image cache in RPGMakerMV.
+     * 
+     * @memberof ImageManagerStatic
+     */
     clear(): void;
+    /**
+     * Returns true if the image cache
+     * is ready.
+     * @returns {boolean} 
+     * @memberof ImageManagerStatic
+     */
     isReady(): boolean;
+    /**
+     * Returns true if the given filename
+     * is an object character. Must contain
+     * a  '!' in the file name to be an
+     * object character.
+     * @param {string} filename 
+     * @returns {boolean} 
+     * @memberof ImageManagerStatic
+     */
     isObjectCharacter(filename: string): boolean;
+    /**
+     * Returns true if the given filename is
+     * a large character. Must contain a '$'
+     * in the file name to be a large character.
+     * @param {string} filename 
+     * @returns {boolean} 
+     * @memberof ImageManagerStatic
+     */
     isBigCharacter(filename: string): boolean;
     isZeroParallax(filename: string): boolean;
 }
@@ -8420,17 +13263,77 @@ declare var PluginManager: PluginManagerStatic;
  * The sprite class with a feature which displays animations.
  */
 declare class Sprite_Base extends Sprite {
+    /**
+     * The animation sprites assigned to the 
+     * sprite object.
+     * @protected
+     * @type {Array<Sprite_Animation>}
+     * @memberof Sprite_Base
+     */
     protected _animationSprites: Array<Sprite_Animation>;
+    /**
+     * The target that will have the animations applied
+     * to it.
+     * @protected
+     * @type {Sprite_Base}
+     * @memberof Sprite_Base
+     */
     protected _effectTarget: Sprite_Base;
+    /**
+     * Property determining the sprite's visibility.
+     * 
+     * @protected
+     * @type {boolean}
+     * @memberof Sprite_Base
+     */
     protected _hiding: boolean;
 
+    /**
+     * Creates an instance of Sprite_Base.
+     * @memberof Sprite_Base
+     */
     constructor();
 
+    /**
+     * Hides the sprite.
+     * 
+     * @memberof Sprite_Base
+     */
     hide(): void;
+    /**
+     * Shows the sprite.
+     * 
+     * @memberof Sprite_Base
+     */
     show(): void;
+    /**
+     * Updadtes the visibility of the sprite based
+     * on the _hiding property.
+     * @memberof Sprite_Base
+     */
     updateVisibility(): void;
+    /**
+     * Updates the animation sprites, cloning them;
+     * if the sprite is playing, pushes the sprites into
+     * animation sprites, otherwise the sprite is removed.
+     * @memberof Sprite_Base
+     */
     updateAnimationSprites(): void;
+    /**
+     * Starts a new animation on the current
+     * sprite by assigning a new Sprite_Animation object to the
+     * sprite's parent.
+     * @param {RPG.Animation} animation 
+     * @param {boolean} mirror 
+     * @param {number} delay 
+     * @memberof Sprite_Base
+     */
     startAnimation(animation: RPG.Animation, mirror: boolean, delay: number): void;
+    /**
+     * Returns true if an animation is currently playing.
+     * @returns {boolean} 
+     * @memberof Sprite_Base
+     */
     isAnimationPlaying(): boolean;
 }
 
@@ -8452,9 +13355,29 @@ declare class Sprite_Button extends Sprite {
     setClickHandler(method: () => void): void;
     callClickHandler(): void;
     processTouch(): void;
+    /**
+     * Returns true if the sprite button
+     * is currently active.
+     * @returns {boolean} 
+     * @memberof Sprite_Button
+     */
     isActive(): boolean;
     isButtonTouched(): boolean;
+    /**
+     * Changes the x coordinate of the screen to
+     * local sprite x coordinate.
+     * @param {number} x 
+     * @returns {number} 
+     * @memberof Sprite_Button
+     */
     canvasToLocalX(x: number): number;
+    /**
+     * Changes the y coordinate of the screen
+     * to local sprite y coordinate.
+     * @param {number} y 
+     * @returns {number} 
+     * @memberof Sprite_Button
+     */
     canvasToLocalY(y: number): number;
 }
 
@@ -8465,18 +13388,49 @@ declare class Sprite_Button extends Sprite {
  * The sprite for displaying a character.
  */
 declare class Sprite_Character extends Sprite_Base {
+    /**
+     * The Game_Character object assigned
+     * to the sprite.
+     * @protected
+     * @type {Game_Character}
+     * @memberof Sprite_Character
+     */
     protected _character: Game_Character;
     protected _balloonDuration: number;
     protected _tilesetId: number;
     protected _upperBody: Sprite;
     protected _lowerBody: Sprite;
     protected _bushDepth: number;
+    /**
+     * The current balloon sprite
+     * assigned to the sprite.
+     * @protected
+     * @type {Sprite_Balloon}
+     * @memberof Sprite_Character
+     */
     protected _balloonSprite: Sprite_Balloon;
 
+    /**
+     * Creates an instance of Sprite_Character.
+     * @param {Game_Character} character 
+     * @memberof Sprite_Character
+     */
     constructor(character: Game_Character);
 
     initMembers(): void;
+    /**
+     * Sets the current Game_Character object
+     * attached to the sprite.
+     * @param {Game_Character} character 
+     * @memberof Sprite_Character
+     */
     setCharacter(character: Game_Character): void;
+    /**
+     * Returns true if the Game_Character object
+     * tileId is greater than 0.
+     * @returns {boolean} 
+     * @memberof Sprite_Character
+     */
     isTile(): boolean;
     tilesetBitmap(tileId: number): Bitmap;
     updateBitmap(): void;
@@ -8498,10 +13452,36 @@ declare class Sprite_Character extends Sprite_Base {
     updateAnimation(): void;
     updateOther(): void;
     setupAnimation(): void;
+    /**
+     * Sets up the Game_Character object
+     * balloon sprite, and calls the startBalloon method.
+     * @memberof Sprite_Character
+     */
     setupBalloon(): void;
+    /**
+     * Starts the balloon sprite on the
+     * Game_Character object.
+     * @memberof Sprite_Character
+     */
     startBalloon(): void;
+    /**
+     * Processes the balloon sprite, calls
+     * the endBaloon method if the balloon sprite is done playing.
+     * @memberof Sprite_Character
+     */
     updateBalloon(): void;
+    /**
+     * Ends the balloon sprite, removing it from
+     * the Game_Character object sprite.
+     * @memberof Sprite_Character
+     */
     endBalloon(): void;
+    /**
+     * Returns true if a balloon animation
+     * is playing on the character. 
+     * @returns {boolean} 
+     * @memberof Sprite_Character
+     */
     isBalloonPlaying(): boolean;
 }
 
@@ -8543,6 +13523,12 @@ declare class Sprite_Battler extends Sprite_Base {
     startMove(x: number, y: number, duration: number): void;
     onMoveEnd(): void;
     isEffecting(): boolean;
+    /**
+     * Returns true if the sprite for the battler
+     * is moving.
+     * @returns {boolean} 
+     * @memberof Sprite_Battler
+     */
     isMoving(): boolean;
     inHomePosition(): boolean;
 }
@@ -9006,26 +13992,111 @@ declare class Spriteset_Battle extends Spriteset_Base {
  * @extends {Window}
  */
 declare class Window_Base {
+  /**
+   * The standard icon width;
+   * default is 32.
+   * @protected
+   * @static
+   * @type {number}
+   * @memberof Window_Base
+   */
   protected static _iconWidth: number;
+  /**
+   * The standard icon height;
+   * default is 32.
+   * @protected
+   * @static
+   * @type {number}
+   * @memberof Window_Base
+   */
   protected static _iconHeight: number;
+  /**
+   * The standard face width;
+   * default is 144.
+   * @protected
+   * @static
+   * @type {number}
+   * @memberof Window_Base
+   */
   protected static _faceWidth: number;
+  /**
+   * The standard face height;
+   * default is 144.
+   * @protected
+   * @static
+   * @type {number}
+   * @memberof Window_Base
+   */
   protected static _faceHeight: number;
+  /**
+   * The opening property; determines if
+   * the window is opening.
+   * @protected
+   * @type {boolean}
+   * @memberof Window_Base
+   */
   protected _opening: boolean;
+  /**
+   * The closing property; determines if
+   * the window is closing.
+   * @protected
+   * @type {boolean}
+   * @memberof Window_Base
+   */
   protected _closing: boolean;
 
+  /**
+   * Creates an instance of Window_Base.
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @param {number} height 
+   * @memberof Window_Base
+   */
   constructor(x: number, y: number, width: number, height: number);
 
   /**
-   * Returns the standard line height of the current window
-   * 
+   * Returns the standard line height of the current window;
+   * default is 36.
    * @returns {number} 
    * @memberof Window_Base
    */
   lineHeight(): number;
+  /**
+   * Returns the standard font face of the 
+   * game based on what language the game is in.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   standardFontFace(): string;
+  /**
+   * Returns the standard font size of the text
+   * in window; default is 28.
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   standardFontSize(): number;
+  /**
+   * Returns the standard padding of the window;
+   * default is 18.
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   standardPadding(): number;
+  /**
+   * Returns the text padding of the window;
+   * default is 6.
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   textPadding(): number;
+  /**
+   * Returns the standard back opacity of the window; this is the
+   * opacity of the area behind the window's text content.
+   * Default is 192.
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   standardBackOpacity(): number;
   /**
    * Loads the window skin from the img/system directory.
@@ -9033,7 +14104,17 @@ declare class Window_Base {
    * @memberof Window_Base
    */
   loadWindowSkin(): void;
+  /**
+   * Updates the window padding based on the 
+   * standardPadding method.
+   * @memberof Window_Base
+   */
   updatePadding(): void;
+  /**
+   * Updates the back opacity of the window
+   * based on the standardBackOpacity method.
+   * @memberof Window_Base
+   */
   updateBackOpacity(): void;
   /**
    * Returns the inner content width of the window.
@@ -9049,13 +14130,59 @@ declare class Window_Base {
    * @memberof Window_Base
    */
   contentsHeight(): number;
-  fittingHeight(numLine: number): number;
+  /**
+   * Returns the fitting height given a number of lines based on
+   * the line height plus standard padding of the window.
+   * Default formula: numLines * lineHeight + standardPadding * 2
+   *
+   * @param {number} numLines 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
+  fittingHeight(numLines: number): number;
+  /**
+   * Updates the tone of the window based on the
+   * game system window tone defined in the database.
+   * @memberof Window_Base
+   */
   updateTone(): void;
+  /**
+   * Creates the contents of the window; this is the area
+   * of the window which text is drawn to.
+   * @memberof Window_Base
+   */
   createContents(): void;
+  /**
+   * Resets the font settings of the window back to the
+   * default.
+   * @memberof Window_Base
+   */
   resetFontSettings(): void;
+  /**
+   * Resets the text color of the window back to the
+   * default.
+   * @memberof Window_Base
+   */
   resetTextColor(): void;
+  /**
+   * The update method of the window; this is
+   * run every frame to do logic processing for the window.
+   * @memberof Window_Base
+   */
   update(): void;
+  /**
+   * Updates the openness of the window when the
+   * _opening property is set to true.
+   * Openness is increased.
+   * @memberof Window_Base
+   */
   updateOpen(): void;
+  /**
+   * Updates the openness of the window when the 
+   * _closing property is set to true.
+   * Openness is decreased.
+   * @memberof Window_Base
+   */
   updateClose(): void;
   /**
    * Opens the window.
@@ -9069,87 +14196,593 @@ declare class Window_Base {
    * @memberof Window_Base
    */
   close(): void;
+  /**
+   * Returns true if the window is currently opening.
+   *
+   * @returns {boolean} 
+   * @memberof Window_Base
+   */
   isOpening(): boolean;
+  /**
+   * Returns true if the window is currently closing.
+   * 
+   * @returns {boolean} 
+   * @memberof Window_Base
+   */
   isClosing(): boolean;
+  /**
+   * Shows the window, making it visible.
+   * 
+   * @memberof Window_Base
+   */
   show(): void;
+  /**
+   * Hides the window, making it invisible;
+   * the window is not closed when hidden.
+   * 
+   * @memberof Window_Base
+   */
   hide(): void;
+  /**
+   * Activates the window, allowing it to be processed
+   * and to update.
+   * @memberof Window_Base
+   */
   activate(): void;
+  /**
+   * Deactives the window, preventing further processing.
+   * 
+   * @memberof Window_Base
+   */
   deactivate(): void;
   /**
    * Returns a text color given a numbered index
-   * 
+   * as a css color string; this index maps
+   * directly to the img/system/window.png colors
+   * by default.
    * @param {number} n 
    * @returns {*} 
    * @memberof Window_Base
    */
-  textColor(n: number): any;
-  normalColor(): any;
-  systemColor(): any;
-  crisisColor(): any;
-  deathColor(): any;
-  gaugeBackColor(): any;
-  hpGaugeColor1(): any;
-  hpGaugeColor2(): any;
-  mpGaugeColor1(): any;
-  mpGaugeColor2(): any;
-  mpCostColor(): any;
-  powerUpColor(): any;
-  powerDownColor(): any;
-  tpGaugeColor1(): any;
-  tpGaugeColor2(): any;
-  tpCostColor(): any;
-  pendingColor(): any;
+  textColor(n: number): string;
+  /**
+   * Returns the normal color as a css
+   * color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  normalColor(): string;
+  /**
+   * Returns the system color as a
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  systemColor(): string;
+  /**
+   * Returns the crisis color as a 
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  crisisColor(): string;
+  /**
+   * Returns the death color as a 
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  deathColor(): string;
+  /**
+   * Returns the gauage back color as 
+   * a css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  gaugeBackColor(): string;
+  /**
+   * Returns the hp gauge color 1 
+   * as a css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  hpGaugeColor1(): string;
+  /**
+   * Returns the hp gauge color 2 
+   * as a css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  hpGaugeColor2(): string;
+  /**
+   * Returns the mp gauge color 1
+   * as a css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  mpGaugeColor1(): string;
+  /**
+   * Returns the mp gauge color 2
+   * as a css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  mpGaugeColor2(): string;
+  /**
+   * Returns the mp cost color as a
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  mpCostColor(): string;
+  /**
+   * Returns the power up color as a
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  powerUpColor(): string;
+  /**
+   * Returns the power down color as a 
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  powerDownColor(): string;
+  /**
+   * Returns the tp gauge color 1 as a 
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  tpGaugeColor1(): string;
+  /**
+   * Returns tp gauge color 2 as a
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  tpGaugeColor2(): string;
+  /**
+   * Returns the tp cost color as a 
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  tpCostColor(): string;
+  /**
+   * Returns the pending color as a
+   * css color string.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
+  pendingColor(): string;
+  /**
+   * Returns the translucentOpacity for the window;
+   * The default is 160.
+   * 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   translucentOpacity(): number;
+  /**
+   * Changes the text color property given a css color string.
+   * 
+   * @param {string} color 
+   * @memberof Window_Base
+   */
   changeTextColor(color: string): void;
+  /**
+   * Changes the paintOpacity (the opacity of the text drawn to the window);
+   * if true the opacity is set to 255, otherwise the opacity is set to 160.
+   * @param {boolean} enabled 
+   * @memberof Window_Base
+   */
   changePaintOpacity(enabled: boolean): void;
-  drawText(x: string | number, y: number, maxWidth: number, align: string): void;
+  /**
+   * Given text or a number, draws the content to the window's contents
+   * layer at the specified x and y coordinate within the max width.
+   * The text content can also be aligned with the align property.
+   * The possible alignments are: "left", "center", "right".
+   * @param {(string | number)} text 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} maxWidth 
+   * @param {string} align 
+   * @memberof Window_Base
+   */
+  drawText(text: string | number, x: number, y: number, maxWidth: number, align: string): void;
+  /**
+   * Calculates the width of a text string and
+   * returns a number.
+   * @param {string} text 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   textWidth(text: string): number;
+  /**
+   * Draws text with text codes included; this will draw
+   * icons, increase text height, and more.
+   * @param {string} text 
+   * @param {number} x 
+   * @param {number} y 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   drawTextEx(text: string, x: number, y: number): number;
+  /**
+   * Converts the escape characters and returns the text content
+   * after processing the characters.
+   * @param {string} text 
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   convertEscapeCharacters(text: string): string;
+  /**
+   * Returns the actor name given an index;
+   * the index starts from 1.
+   * @param {number} actorIndex 
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   actorName(actorIndex: number): string;
+  /**
+   * Returns a party member name given an index;
+   * the index starts from 1.
+   * @param {number} partyMemberIndex 
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   partyMemberName(partyMemberIndex: number): string;
-  processCharacter(textState: any): void;
-  processNormalCharacter(textState: any): void;
-  processNewLine(textState: any): void;
-  processNewPage(textState: any): void;
-  obtainEscapeCode(textState: any): string;
-  obtainEscapeParam(textState: any): number | string;
-  processEscapeCharacter(code: string, textState: any): void;
-  processDrawIcon(iconIndex: number, textState: any): void;
+  /**
+   * Process each character in the text when drawTextEx
+   * is used to draw text.
+   * @param {MV.TextState} textState 
+   * @memberof Window_Base
+   */
+  processCharacter(textState: MV.TextState): void;
+  /**
+   * Processes the normal characters in the text
+   * when drawTextEx is used to draw text.
+   * Normal characters are letters and numbers.
+   * @param {MV.TextState} textState 
+   * @memberof Window_Base
+   */
+  processNormalCharacter(textState: MV.TextState): void;
+  /**
+   * Processes new line when drawTextEx is used to draw text.
+   * 
+   * @param {MV.TextState} textState 
+   * @memberof Window_Base
+   */
+  processNewLine(textState: MV.TextState): void;
+  /**
+   * Processes new page when drawTexttEx is used to draw text.
+   * 
+   * @param {MV.TextState} textState 
+   * @memberof Window_Base
+   */
+  processNewPage(textState: MV.TextState): void;
+  obtainEscapeCode(textState: MV.TextState): string;
+  /**
+   * Obtains the escape parameters from text codes in the text state
+   * when drawTextEx is used to draw text.
+   * @param {MV.TextState} textState 
+   * @returns {(number | string)} 
+   * @memberof Window_Base
+   */
+  obtainEscapeParam(textState: MV.TextState): number | string;
+  /**
+   * Processes escape characters when drawTextEx is used 
+   * for drawing text.
+   * @param {string} code 
+   * @param {MV.TextState} textState 
+   * @memberof Window_Base
+   */
+  processEscapeCharacter(code: string, textState: MV.TextState): void;
+  /**
+   * Processes drawing an icon when drawTextEx is used for
+   * drawing text.
+   * @param {number} iconIndex 
+   * @param {MV.TextState} textState 
+   * @memberof Window_Base
+   */
+  processDrawIcon(iconIndex: number, textState: MV.TextState): void;
+  /**
+   * Makes the font bigger by a value of 12.
+   * 
+   * @memberof Window_Base
+   */
   makeFontBigger(): void;
+  /**
+   * Makes the font smaller by a value of 12.
+   * 
+   * @memberof Window_Base
+   */
   makeFontSmaller(): void;
+  /**
+   * Calculates the text height of the textState (when using drawTextEx);
+   * if all is set to true, all lines of text are calculated, otherwise
+   * only a single line is processed.
+   * @param {MV.TextState} textState 
+   * @param {boolean} all 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   calcTextHeight(textState: any, all: boolean): number;
+  /**
+   * Draws an icon given the specified iconIndex at the specified
+   * x and y coordinates. The Width and Height of the icon is based on the
+   * _iconWidth and _iconHeight properties.
+   * @param {number} iconIndex 
+   * @param {number} x 
+   * @param {number} y 
+   * @memberof Window_Base
+   */
   drawIcon(iconIndex: number, x: number, y: number): void;
   drawFace(faceName: string, faceIndex: number, x: number, y: number, width: number, height: number): void;
+  /**
+   * Draws a character (map sprites) at the specified x and y coordinate.
+   * CharacterName refers to character spritesheet, and characterIndex refers
+   * to the characterIndex on the spritesheet.
+   * @param {string} characterName 
+   * @param {number} characterIndex 
+   * @param {number} x 
+   * @param {number} y 
+   * @memberof Window_Base
+   */
   drawCharacter(characterName: string, characterIndex: number, x: number, y: number): void;
+  /**
+   * Draws a gauge at the specified x and y coordinates within the given width.
+   * Color1 and Color2 represent the gradient as css color strings of the gauge.
+   * 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @param {number} rate 
+   * @param {string} color1 
+   * @param {string} color2 
+   * @memberof Window_Base
+   */
   drawGauge(x: number, y: number, width: number, rate: number, color1: string, color2: string);
+  /**
+   * Returns the hp color as a css string.
+   * 
+   * @param {Game_Actor} actor 
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   hpColor(actor: Game_Actor): string;
+  /**
+   * Returns the mp color as a css color string.
+   * 
+   * @param {Game_Actor} actor 
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   mpColor(actor: Game_Actor): string;
+  /**
+   * Returns the tp color as a css color string.
+   * 
+   * @param {Game_Actor} actor 
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   tpColor(actor: Game_Actor): string;
   drawActorCharacter(actor: Game_Actor, x: number, y: number): void;
+  /**
+   * Draws the actor face at the specified x and y coordinates within
+   * the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @param {number} height 
+   * @memberof Window_Base
+   */
   drawActorFace(actor: Game_Actor, x: number, y: number, width: number, height: number): void;
+  /**
+   * Draws the actor name at the specified x and y coordinates within
+   * the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorName(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws the actor class at the specified x and y coordinates
+   * within the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorClass(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws the actor nickname at the specified x and y coordinates
+   * within the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorNickname(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws the actor level at the specified x and y coordinates.
+   * 
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @memberof Window_Base
+   */
   drawActorLevel(actor: Game_Actor, x: number, y: number);
+  /**
+   * Draws the actor icons at the specified x and y coordinates
+   * within the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorIcons(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws the current and max number at the specified x and y coordinate
+   * within the given width. Color1 represents the current number and color2
+   * represents the max number when the text is drawn.
+   * @param {number} current 
+   * @param {number} max 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @param {string} color1 
+   * @param {string} color2 
+   * @memberof Window_Base
+   */
   drawCurrentAndMax(current: number, max: number, x: number, y: number, width: number, color1: string, color2: string): void;
+  /**
+   * Draws the actor hp at the specified x and y coordinates within
+   * the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorHp(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws the actor mp at the specified x and y coordinates within
+   * the given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorMp(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws the actor tp at the specified x and y coordinates within the
+   * given width.
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorTp(actor: Game_Actor, x: number, y: number, width: number): void;
+  /**
+   * Draws a simple status for the game actor passed into the method at the
+   * specified x and y coordinates within the given width.
+   * 
+   * @param {Game_Actor} actor 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawActorSimpleStatus(actor: Game_Actor, x: number, y: number, width: number): void;
-  drawItemName(item: any, x: number, y: number, width: number): void;
+  /**
+   * Draws the item name at the specified x and y coordinates within
+   * the given width.
+   * @param {RPG.BaseItem} item 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
+  drawItemName(item: RPG.BaseItem, x: number, y: number, width: number): void;
+  /**
+   * Draws the currency value given at the specified x and y coordinates within
+   * the width given. Useful if you want to write your own custom currency value.
+   * @param {number} value 
+   * @param {string} unit 
+   * @param {number} x 
+   * @param {number} y 
+   * @param {number} width 
+   * @memberof Window_Base
+   */
   drawCurrencyValue(value: number, unit: string, x: number, y: number, width: number): void;
+  /**
+   * Changes the text color based on the powerUpColor, powerDownColor
+   * and normal color. powerUpColor is any number greater than 0, powerDownColor
+   * is any color less than 0, otherwise normal color is returned.
+   * @param {number} change 
+   * @memberof Window_Base
+   */
   paramchangeTextColor(change: number): void;
+  /**
+   * Sets the background type of the window.
+   * 0 is 255 window opacity (standard).
+   * 1 is the window with background dimmer.
+   * Any other number changes the opacity
+   * to 0.
+   * @param {number} type 
+   * @memberof Window_Base
+   */
   setBackgroundType(type: number): void;
+  /**
+   * Shows the background dimmer sprite.
+   * 
+   * @memberof Window_Base
+   */
   showBackgroundDimmer(): void;
+  /**
+   * Hides the background dimmer sprite.
+   * 
+   * @memberof Window_Base
+   */
   hideBackgroundDimmer(): void;
+  /**
+   * Updates the background dimmer sprite opacity based on the openness
+   * of the window.
+   * @memberof Window_Base
+   */
   updateBackgroundDimmer(): void;
+  /**
+   * Refreshes the bitmap attached to the dimmer sprite
+   * based on the window dimensions.
+   * @memberof Window_Base
+   */
   refreshDimmerBitmap(): void;
+  /**
+   * Color 1 of the dimmer sprite bitmap.
+   * for the gradient.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   dimColor1(): string;
+  /**
+   * Color 2 of the dimmer sprite bitmap
+   * for the gradient.
+   * @returns {string} 
+   * @memberof Window_Base
+   */
   dimColor2(): string;
+  /**
+   * Returns the x coordinate of the mouse to
+   * a local window x coordinate.
+   * @param {number} x 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   canvasToLocalX(x:number): number;
+  /**
+   * Returns the y coordinate of the mouse
+   * to a local window y coordinate.
+   * @param {number} y 
+   * @returns {number} 
+   * @memberof Window_Base
+   */
   canvasToLocalY(y: number): number;
+  /**
+   * Reverses the face images of the 
+   * game party members.
+   * @memberof Window_Base
+   */
   reserveFaceImages(): void;
 }
 
@@ -9159,7 +14792,21 @@ declare class Window_Base {
 // The window class with cursor movement and scroll functions.
 
 declare class Window_Selectable extends Window_Base {
+  /**
+   * The index property of Window_Selectable; this is used
+   * to select items from the list within the window.
+   * @protected
+   * @type {number}
+   * @memberof Window_Selectable
+   */
   protected _index: number;
+  /**
+   * The boolean property that determines if the cursor is
+   * fixed(locked to a position).
+   * @protected
+   * @type {boolean}
+   * @memberof Window_Selectable
+   */
   protected _cursorFixed: boolean;
   protected _cursorAll: boolean;
   protected _stayCount: number;
@@ -9170,15 +14817,58 @@ declare class Window_Selectable extends Window_Base {
   protected _scrollY: number;
   
   constructor(x: number, y: number, width: number, height: number);
+  /**
+   * Returns the current position of the _index property.
+   * 
+   * @returns {number} 
+   * @memberof Window_Selectable
+   */
   index(): number;
+  /**
+   * Returns true if the _cursorFixed property is true;
+   * this means the cursor is locked to a position.
+   * @returns {boolean} 
+   * @memberof Window_Selectable
+   */
   cursorFixed(): boolean;
+  /**
+   * Sets the _cursorFixed property of the
+   * window.
+   * @param {boolean} cursorFixed 
+   * @memberof Window_Selectable
+   */
   setCursorFixed(cursorFixed: boolean): void;
   cursorAll(): boolean;
   setCursorAll(cursorAll: boolean): void;
+  /**
+   * Returns the maximum number of columns
+   * for the window.
+   * @returns {number} 
+   * @memberof Window_Selectable
+   */
   maxCols(): number;
+  /**
+   * Returns the maximum number of items within the window;
+   * useful to overwrite when creating a new window.
+   * This method is used to calculate the number of rows and more.
+   * @returns {number} 
+   * @memberof Window_Selectable
+   */
   maxItems(): number;
   spacing(): number;
+  /**
+   * Returns the width of an item within the window;
+   * determines the width of a column.
+   * @returns {number} 
+   * @memberof Window_Selectable
+   */
   itemWidth(): number;
+  /**
+   * Returns the height of an item within the window;
+   * determines the height of a row.
+   * @returns {number} 
+   * @memberof Window_Selectable
+   */
   itemHeight(): number;
   /**
    * Selects the current index within the window given a number.
@@ -9214,6 +14904,12 @@ declare class Window_Selectable extends Window_Base {
   resetScroll(): void;
   maxPageRows(): number;
   maxPageItems(): number;
+  /**
+   * Returns true if the window is horizontal;
+   * means the window only has a single row.
+   * @returns {boolean} 
+   * @memberof Window_Selectable
+   */
   isHorizontal(): boolean;
   bottomRow(): number;
   setBottomRow(row: number): void;
@@ -9236,7 +14932,17 @@ declare class Window_Selectable extends Window_Base {
    */
   itemRectForText(index: number): Rectangle;
   setHelpWindow(helpWindow: Window_Help): void;
+  /**
+   * Shows the attached help window.
+   * 
+   * @memberof Window_Selectable
+   */
   showHelpWindow(): void;
+  /**
+   * Hides the attached help window.
+   * 
+   * @memberof Window_Selectable
+   */
   hideHelpWindow(): void;
   /**
    * Creates a new handler with the symbol as the handler name
@@ -9250,7 +14956,21 @@ declare class Window_Selectable extends Window_Base {
   callHandler(symbol: string): void;
   isOpenAndActive(): boolean;
   isCursorMovable(): boolean;
+  /**
+   * Moves the cursor down; if wrap is passed
+   * as true, then it will return to the top when
+   * at the end of the list.
+   * @param {boolean} wrap 
+   * @memberof Window_Selectable
+   */
   cursorDown(wrap: boolean): void;
+  /**
+   * Moves the cursor up; if wrap is passed 
+   * as true, then it will return to the bottom
+   * when at the top of the list.
+   * @param {boolean} wrap 
+   * @memberof Window_Selectable
+   */
   cursorUp(wrap: boolean): void;
   cursorRight(wrap: boolean): void;
   cursorLeft(wrap: boolean): void;
@@ -9259,22 +14979,71 @@ declare class Window_Selectable extends Window_Base {
   scrollDown(): void;
   scrollUp(): void;
   updateArrows(): void;
+  /**
+   * Handles the processing of cursor movement.
+   * 
+   * @memberof Window_Selectable
+   */
   processCursorMove(): void;
+  /**
+   * Handles the process of attached handlers.
+   * 
+   * @memberof Window_Selectable
+   */
   processHandling(): void;
+  /**
+   * Handles the processing of the scroll wheel within
+   * the window.
+   * @memberof Window_Selectable
+   */
   processWheel(): void;
+  /**
+   * Handles the processing of touch input.
+   * 
+   * @memberof Window_Selectable
+   */
   processTouch(): void;
   isTouchedInsideFrame(): boolean;
   onTouch(triggered: boolean): void;
   hitTest(x: number, y: number): number;
   isContentsArea(x: number, y: number): boolean;
+  /**
+   * Determines if touch ok is enabled as an option;
+   * this means whether you can confirm the selection
+   * of an item within the window with touch input.
+   * @returns {boolean} 
+   * @memberof Window_Selectable
+   */
   isTouchOkEnabled(): boolean;
+  /**
+   * Determines if ok is enabled as an option;
+   * this means whether you can confirm selection
+   * of an item within the window.
+   * @returns {boolean} 
+   * @memberof Window_Selectable
+   */
   isOkEnabled(): boolean;
   isCancelEnabled(): boolean;
   isOkTriggered(): boolean;
   isCancelTriggered(): boolean;
   processOk(): void;
+  /**
+   * Plays a sound effect when okay is processed.
+   * 
+   * @memberof Window_Selectable
+   */
   playOkSound(): void;
+  /**
+   * Plays the buzzer sound effect when input is
+   * incorrect.
+   * @memberof Window_Selectable
+   */
   playBuzzerSound(): void;
+  /**
+   * Calls the ok handler and begins processing
+   * confirmation of selection.
+   * @memberof Window_Selectable
+   */
   callOkHandler(): void;
   processCancel(): void;
   callCancelHandler(): void;
@@ -9282,17 +15051,33 @@ declare class Window_Selectable extends Window_Base {
   processPagedown(): void;
   updateInputData(): void;
   updateCursor(): void;
+  /**
+   * Determines if the cursor is visible within
+   * the window.
+   * @returns {boolean} 
+   * @memberof Window_Selectable
+   */
   isCursorVisible(): boolean;
   ensureCursorVisible(): void;
   callUpdateHelp(): void;
   updateHelp(): void;
   setHelpWindowItem(item: any): void;
   isCurrentItemEnabled(): boolean;
+  /**
+   * Draws all items within the window; this method
+   * cals drawItem multiple times.
+   * @memberof Window_Selectable
+   */
   drawAllItems(): void;
   drawItem(index: number): void;
   clearItem(index: number): void;
   redrawItem(index: number): void;
   redrawCurrentItem(): void;
+  /**
+   * Refreshes the window contents.
+   * 
+   * @memberof Window_Selectable
+   */
   refresh(): void;
 }
 
@@ -9303,11 +15088,46 @@ declare class Window_Selectable extends Window_Base {
  * @extends {Window_Selectable}
  */
 declare class Window_Command extends Window_Selectable {
+  /**
+   * Creates an instance of Window_Command.
+   * @param {number} x 
+   * @param {number} y 
+   * @memberof Window_Command
+   */
   constructor(x: number, y: number)
+  /**
+   * Returns the width of the window;
+   * default is 240.
+   * @returns {number} 
+   * @memberof Window_Command
+   */
   windowWidth(): number;
+  /**
+   * Returns the height of the window;
+   * takes the visible rows and passes it to the fittingHeight method.
+   * @returns {number} 
+   * @memberof Window_Command
+   */
   windowHeight(): number;
+  /**
+   * Returns the number of visible rows within the window.
+   * 
+   * @returns {number} 
+   * @memberof Window_Command
+   */
   numVisibleRows(): number;
+  /**
+   * Returns the maximum number of items within the window.
+   * 
+   * @returns {number} 
+   * @memberof Window_Command
+   */
   maxItems(): number;
+  /**
+   * Clears the list of commands from the window;
+   * this is useful for refreshing changing commands.
+   * @memberof Window_Command
+   */
   clearCommandList(): void;
 
   /**
@@ -9326,16 +15146,87 @@ declare class Window_Command extends Window_Selectable {
    * @memberof Window_Command
    */
   addCommand(name: string, symbol: string, enabled: boolean, ext: any | object)
+  /**
+   * Returns the command name given an index.
+   * 
+   * @param {number} index 
+   * @returns {string} 
+   * @memberof Window_Command
+   */
   commandName(index: number): string;
+  /**
+   * Returns the command symbol given an index.
+   * 
+   * @param {number} index 
+   * @returns {string} 
+   * @memberof Window_Command
+   */
   commandSymbol(index: number): string;
+  /**
+   * Determines if the command is enabled;
+   * checks the enabled property of the command.
+   * @param {number} index 
+   * @returns {boolean} 
+   * @memberof Window_Command
+   */
   isCommandEnabled(index: number): boolean;
+  /**
+   * Returns the command object at the current index.
+   * 
+   * @returns {object} 
+   * @memberof Window_Command
+   */
   currentData(): object;
+  /**
+   * Returns the command symbol at the current index.
+   * 
+   * @returns {string} 
+   * @memberof Window_Command
+   */
   currentSymbol(): string;
+  /**
+   * Returns the ext property of the command at the current index.
+   * 
+   * @returns {(any | object)} 
+   * @memberof Window_Command
+   */
   currentExt(): any | object;
+  /**
+   * Finds a command object and returns the index number based
+   * on the symbol property.
+   * @param {string} symbol 
+   * @returns {number} 
+   * @memberof Window_Command
+   */
   findSymbol(symbol: string): number;
+  /**
+   * Selects a command object based on the symbol property.
+   * 
+   * @param {string} symbol 
+   * @memberof Window_Command
+   */
   selectSymbol(symbol: string): void;
+  /**
+   * Finds a command object and returns the index number
+   * based on the ext property.
+   * @param {(any | object)} ext 
+   * @returns {number} 
+   * @memberof Window_Command
+   */
   findExt(ext: any | object): number;
+  /**
+   * Selects a command object based on the ext property.
+   * 
+   * @param {(any | object)} ext 
+   * @memberof Window_Command
+   */
   selectExt(ext: any | object): void;
+  /**
+   * Returns the text align of the commands;
+   * possible values are: 'left', 'center', 'right'.
+   * @returns {string} 
+   * @memberof Window_Command
+   */
   itemTextAlign(): string;
 }
 
@@ -9356,10 +15247,34 @@ declare class Window_HorzCommand extends Window_Command {
  * @extends {Window_Base}
  */
 declare class Window_Help extends Window_Base {
+  /**
+   * The text that is displayed within the window.
+   * 
+   * @protected
+   * @type {string}
+   * @memberof Window_Help
+   */
   protected _text: string;
+  /**
+   * Creates an instance of Window_Help.
+   * @param {number} numLines 
+   * @memberof Window_Help
+   */
   constructor(numLines: number);
+  /**
+   * Sets the _text property of the window;
+   * this text will be displayed within the window.
+   * @param {string} text 
+   * @memberof Window_Help
+   */
   setText(text: string): void;
   clear(): void;
+  /**
+   * Sets the current item of the help window.
+   * 
+   * @param {RPG.BaseItem} item 
+   * @memberof Window_Help
+   */
   setItem(item: RPG.BaseItem): void;
 }
 
@@ -9396,8 +15311,23 @@ declare class Window_MenuCommand extends Window_Command {
    * @memberof Window_MenuCommand
    */
   addMainCommands(): void;
+  /**
+   * Adds the standard formation command to the
+   * RPGMakerMV main menu.
+   * @memberof Window_MenuCommand
+   */
   addFormationCommand(): void;
+  /**
+   * Adds any user created commands to the 
+   * RPGMakerMV main menu.
+   * @memberof Window_MenuCommand
+   */
   addOriginalCommands(): void;
+  /**
+   * Adds the save command to the 
+   * RPGMakerMV main menu.
+   * @memberof Window_MenuCommand
+   */
   addSaveCommand(): void;
   addGameEndCommand(): void;
   /**
@@ -9408,9 +15338,32 @@ declare class Window_MenuCommand extends Window_Command {
    * @memberof Window_MenuCommand
    */
   needsCommand(name: string): boolean;
+  /**
+   * Determines if the main commands are enabled;
+   * this is based on the settings in the database.
+   * @returns {boolean} 
+   * @memberof Window_MenuCommand
+   */
   areMainCommandsEnabled(): boolean;
+  /**
+   * Determines if the option command is enabled;
+   * based on the setting in the database.
+   * @returns {boolean} 
+   * @memberof Window_MenuCommand
+   */
   isOptionsEnabled(): boolean;
+  /**
+   * Determines if the save command is enabled;
+   * based on the setting in the database.
+   * @returns {boolean} 
+   * @memberof Window_MenuCommand
+   */
   isSaveEnabled(): boolean;
+  /**
+   * Selects the last command in menu.
+   * 
+   * @memberof Window_MenuCommand
+   */
   selectLast(): void;
 }
 
@@ -9426,18 +15379,54 @@ declare class Window_MenuStatus extends Window_Selectable {
     protected _formationMode: boolean;
     protected _pendingIndex: number;
 
+    /**
+     * Creates an instance of Window_MenuStatus.
+     * @param {number} x 
+     * @param {number} y 
+     * @memberof Window_MenuStatus
+     */
     constructor(x: number, y: number);
 
     windowWidth(): number;
     windowHeight(): number;
+    /**
+     * Returns the height of each item (actor status) in the main menu
+     * window.
+     * @returns {number} 
+     * @memberof Window_MenuStatus
+     */
     itemHeight(): number;
+    /**
+     * Returns the number of visible rows in
+     * menu status.
+     * @returns {number} 
+     * @memberof Window_MenuStatus
+     */
     numVisibleRows(): number;
+    /**
+     * Loads the images for the main menu status window.
+     * 
+     * @memberof Window_MenuStatus
+     */
     loadImages(): void;
     drawItemBackground(index: number): void;
     drawItemImage(index: number): void;
     drawItemStatus(index: number): void;
     selectLast(): void;
+    /**
+     * Determines if the window is in formation mode;
+     * if true, the player can select characters to swap
+     * positions with.
+     * @returns {boolean} 
+     * @memberof Window_MenuStatus
+     */
     formationMode(): boolean;
+    /**
+     * Sets the formation mode to true or false.
+     * 
+     * @param {boolean} formationMode 
+     * @memberof Window_MenuStatus
+     */
     setFormationMode(formationMode: boolean): void;
     pendingIndex(): number;
     setPendingIndex(index: number): void;
@@ -9504,13 +15493,50 @@ declare class Window_ItemList extends Window_Selectable {
  * @class Window_SkillType
  */
 declare class Window_SkillType extends Window_Command {
+    /**
+     * The current game actor attached to the window.
+     * 
+     * @protected
+     * @type {Game_Actor}
+     * @memberof Window_SkillType
+     */
     protected _actor: Game_Actor;
+    /**
+     * The current skill window attached to the window.
+     * 
+     * @protected
+     * @type {Window_SkillList}
+     * @memberof Window_SkillType
+     */
     protected _skillWindow: Window_SkillList;
 
+    /**
+     * Creates an instance of Window_SkillType.
+     * @param {number} x 
+     * @param {number} y 
+     * @memberof Window_SkillType
+     */
     constructor(x: number, y: number);
 
+    /**
+     * Sets the current actor for the skill type window.
+     * 
+     * @param {Game_Actor} actor 
+     * @memberof Window_SkillType
+     */
     setActor(actor: Game_Actor): void;
+    /**
+     * Sets the skill window for the current skill type.
+     * 
+     * @param {Window_SkillList} skillWindow 
+     * @memberof Window_SkillType
+     */
     setSkillWindow(skillWindow: Window_SkillList): void;
+    /**
+     * Selects the last command in the window.
+     * 
+     * @memberof Window_SkillType
+     */
     selectLast(): void;
 }
 
@@ -9522,11 +15548,37 @@ declare class Window_SkillType extends Window_Command {
  * @class Window_SkillStatus
  */
 declare class Window_SkillStatus extends Window_Base {
+    /**
+     * The current game actor attached to the window.
+     * 
+     * @protected
+     * @type {Game_Actor}
+     * @memberof Window_SkillStatus
+     */
     protected _actor: Game_Actor;
 
+    /**
+     * Creates an instance of Window_SkillStatus.
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} width 
+     * @param {number} height 
+     * @memberof Window_SkillStatus
+     */
     constructor(x: number, y: number, width: number, height: number);
 
+    /**
+     * Sets the current actor for the window.
+     * 
+     * @param {Game_Actor} actor 
+     * @memberof Window_SkillStatus
+     */
     setActor(actor: Game_Actor): void;
+    /**
+     * Refreshes the window contents.
+     * 
+     * @memberof Window_SkillStatus
+     */
     refresh(): void;
 }
 
@@ -9654,6 +15706,12 @@ declare class Window_Status extends Window_Selectable {
     drawBlock2(y: number): void;
     drawBlock3(y: number): void;
     drawBlock4(y: number): void;
+    /**
+     * Draws a horizontal line at the given y coordinate.
+     * 
+     * @param {number} y 
+     * @memberof Window_Status
+     */
     drawHorzLine(y: number): void;
     lineColor(): string;
     drawBasicInfo(x: number, y: number): void;
@@ -9700,13 +15758,42 @@ declare class Window_SavefileList extends Window_Selectable {
 
     constructor(x: number, y: number, width: number, height: number);
 
+    /**
+     * Sets the mode of the save file window.
+     * 
+     * @param {string} mode 
+     * @memberof Window_SavefileList
+     */
     setMode(mode: string): void;
+    /**
+     * Returns the maximum number of visible items.
+     * 
+     * @returns {number} 
+     * @memberof Window_SavefileList
+     */
     maxVisibleItems(): number;
     itemHeight(): number;
+    /**
+     * Draws the file id at the specified x and y coordinates.
+     * 
+     * @param {number} id 
+     * @param {number} x 
+     * @param {number} y 
+     * @memberof Window_SavefileList
+     */
     drawFileId(id: number, x: number, y: number): void;
     drawContents(info: {key: string}, rect: Rectangle, valid: boolean): void;
     drawGameTitle(info: {key: string}, x: number, y: number, width: number): void;
     drawPartyCharacters(info: {key: string}, x: number, y: number): void;
+    /**
+     * Draws the current playtime at the specified x and y coordinates within the given
+     * width.
+     * @param {{key: string}} info 
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} width 
+     * @memberof Window_SavefileList
+     */
     drawPlaytime(info: {key: string}, x: number, y: number, width: number): void;
 }
 
@@ -9719,8 +15806,22 @@ declare class Window_SavefileList extends Window_Selectable {
  */
 declare class Window_ShopCommand extends Window_HorzCommand {
     protected _windowWidth: number;
+    /**
+     * Determines if the shop is purchase only.
+     * 
+     * @protected
+     * @type {boolean}
+     * @memberof Window_ShopCommand
+     */
     protected _purchaseOnly: boolean;
 
+    /**
+     * Determines the width of the shop buy/sell window;
+     * also determines if the shop is purchase only.
+     * @param {number} width 
+     * @param {boolean} purchaseOnly 
+     * @memberof Window_ShopCommand
+     */
     initialize(width: number, purchaseOnly: boolean): void;
 }
 
@@ -9738,13 +15839,45 @@ declare class Window_ShopBuy extends Window_Selectable {
     protected _price: Array<number>;
     protected _statusWindow: Window_ShopStatus;
 
+    /**
+     * Creates an instance of Window_ShopBuy.
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} height 
+     * @param {Array<Array<any>>} shopGoods 
+     * @memberof Window_ShopBuy
+     */
     constructor(x: number, y: number, height: number, shopGoods: Array<Array<any>>);
 
+    /**
+     * Returns the width of the window.
+     * 
+     * @returns {number} 
+     * @memberof Window_ShopBuy
+     */
     windowWidth(): number;
+    /**
+     * Returns the current item of the window.
+     * 
+     * @returns {RPG.BaseItem} 
+     * @memberof Window_ShopBuy
+     */
     item(): RPG.BaseItem;
     setMoney(money: number): void;
     price(item: RPG.BaseItem): number;
+    /**
+     * Checks if the current item is enabled (can be bought/sold).
+     * 
+     * @param {RPG.BaseItem} item 
+     * @returns {boolean} 
+     * @memberof Window_ShopBuy
+     */
     isEnabled(item: RPG.BaseItem): boolean;
+    /**
+     * Creates a list of items for the shop window.
+     * 
+     * @memberof Window_ShopBuy
+     */
     makeItemList(): void;
     setStatusWindow(statusWindow: Window_ShopStatus): void;
 }
@@ -9759,6 +15892,13 @@ declare class Window_ShopBuy extends Window_Selectable {
 declare class Window_ShopSell extends Window_ItemList {
     constructor(x: number, y: number, width: number, height: number);
 
+    /**
+     * Determines if the item is sellable, otherwise, greyed out.
+     *
+     * @param {RPG.BaseItem} item 
+     * @returns {boolean} 
+     * @memberof Window_ShopSell
+     */
     isEnabled(item: RPG.BaseItem): boolean;
 }
 
@@ -9771,15 +15911,63 @@ declare class Window_ShopSell extends Window_ItemList {
  * @class Window_ShopNumber
  */
 declare class Window_ShopNumber extends Window_Selectable {
+    /**
+     * The current item being bought/sold.
+     * 
+     * @protected
+     * @type {RPG.BaseItem}
+     * @memberof Window_ShopNumber
+     */
     protected _item: RPG.BaseItem;
+    /**
+     * Returns the maximum number of the item
+     * that can be bought/sold.
+     * @protected
+     * @type {number}
+     * @memberof Window_ShopNumber
+     */
     protected _max: number;
+    /**
+     * The current price of the items.
+     * 
+     * @protected
+     * @type {number}
+     * @memberof Window_ShopNumber
+     */
     protected _price: number;
     protected _number: number;
+    /**
+     * Returns the currency unit of the game.
+     * 
+     * @protected
+     * @type {string}
+     * @memberof Window_ShopNumber
+     */
     protected _currencyUnit: string;
+    /**
+     * The buttons to input quantity
+     * for the quantity of the item to be bought/sold.
+     * @protected
+     * @type {Array<Sprite_Button>}
+     * @memberof Window_ShopNumber
+     */
     protected _buttons: Array<Sprite_Button>;
 
+    /**
+     * Creates an instance of Window_ShopNumber.
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} height 
+     * @memberof Window_ShopNumber
+     */
     constructor(x: number, y: number, height: number);
 
+    /**
+     * Returns the width of the window.
+     * 
+     * @returns {number} 
+     * @memberof Window_ShopNumber
+     */
     windowWidth(): number;
     number(): number;
     setup(item: RPG.BaseItem, max: number, price: number): void;
@@ -9787,18 +15975,50 @@ declare class Window_ShopNumber extends Window_Selectable {
     createButtons(): void;
     placeButtons(): void;
     updateButtonsVisiblity(): void;
+    /**
+     * Shows the quantity input buttons.
+     * 
+     * @memberof Window_ShopNumber
+     */
     showButtons(): void;
+    /**
+     * Hides the quantity input buttons.
+     * 
+     * @memberof Window_ShopNumber
+     */
     hideButtons(): void;
     drawMultiplicationSign(): void;
     drawNumber(): void;
+    /**
+     * Draws the total price of the selected
+     * quantity of item.
+     * @memberof Window_ShopNumber
+     */
     drawTotalPrice(): void;
     itemY(): number;
     priceY(): number;
     buttonY(): number;
+    /**
+     * Returns the width of the cursor.
+     * 
+     * @returns {number} 
+     * @memberof Window_ShopNumber
+     */
     cursorWidth(): number;
     cursorX(): number;
     maxDigits(): number;
+    /**
+     * Processes the change in quantity.
+     * 
+     * @memberof Window_ShopNumber
+     */
     processNumberChange(): void;
+    /**
+     * Changes the quantity, given a number.
+     * 
+     * @param {number} amount 
+     * @memberof Window_ShopNumber
+     */
     changeNumber(amount: number): void;
     onButtonUp(): void;
     onButtonUp2(): void;
@@ -9819,24 +16039,85 @@ declare class Window_ShopStatus extends Window_Base {
     protected _item: RPG.BaseItem;
     protected _pageIndex: number;
 
+    /**
+     * Creates an instance of Window_ShopStatus.
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} width 
+     * @param {number} height 
+     * @memberof Window_ShopStatus
+     */
     constructor(x: number, y: number, width: number, height: number);
 
+    /**
+     * Refreshes the window contents.
+     * 
+     * @memberof Window_ShopStatus
+     */
     refresh(): void;
     setItem(item: RPG.BaseItem): void;
     isEquipItem(): boolean;
     drawPossession(x: number, y: number): void;
     drawEquipInfo(x: number, y: number): void;
     statusMembers(): Array<Game_Actor>;
+    /**
+     * Returns the page size.
+     * 
+     * @returns {number} 
+     * @memberof Window_ShopStatus
+     */
     pageSize(): number;
+    /**
+     * Returns the max number of pages.
+     * 
+     * @returns {number} 
+     * @memberof Window_ShopStatus
+     */
     maxPages(): number;
     drawActorEquipInfo(x: number, y: number, actor: Game_Actor): void;
     drawActorParamChange(x: number, y: number, actor: Game_Actor, item1: RPG.EquipItem): void;
+    /**
+     * Returns the parameter id.
+     * 
+     * @returns {number} 
+     * @memberof Window_ShopStatus
+     */
     paramId(): number;
+    /**
+     * Returns the current item equiped by the given actor when
+     * the respective equipment Id is passed.
+     * @param {Game_Actor} actor 
+     * @param {number} etypeId 
+     * @returns {RPG.EquipItem} 
+     * @memberof Window_ShopStatus
+     */
     currentEquippedItem(actor: Game_Actor, etypeId: number): RPG.EquipItem;
+    /**
+     * Updates the current page.
+     * 
+     * @memberof Window_ShopStatus
+     */
     updatePage(): void;
+    /**
+     * Determines if page can be changed.
+     * 
+     * @returns {boolean} 
+     * @memberof Window_ShopStatus
+     */
     isPageChangeEnabled(): boolean;
     isPageChangeRequested(): boolean;
+    /**
+     * Determines if the window is touched within it's frame.
+     * 
+     * @returns {boolean} 
+     * @memberof Window_ShopStatus
+     */
     isTouchedInsideFrame(): boolean;
+    /**
+     * Changes the current page.
+     * 
+     * @memberof Window_ShopStatus
+     */
     changePage(): void;
 }
 
@@ -9851,9 +16132,27 @@ declare class Window_NameEdit extends Window_Base {
     protected _name: string;
     protected _index: number;
 
+    /**
+     * Creates an instance of Window_NameEdit.
+     * @param {Game_Actor} actor 
+     * @param {number} maxLength 
+     * @memberof Window_NameEdit
+     */
     constructor(actor: Game_Actor, maxLength: number);
 
+    /**
+     * Returns the window width.
+     * 
+     * @returns {number} 
+     * @memberof Window_NameEdit
+     */
     windowWidth(): number;
+    /**
+     * Returns the window height.
+     * 
+     * @returns {number} 
+     * @memberof Window_NameEdit
+     */
     windowHeight(): number;
 
     // "name" is defines already by superclass(PIXI.DisplayObject).
@@ -9862,13 +16161,48 @@ declare class Window_NameEdit extends Window_Base {
     restoreDefault(): boolean;
     add(ch: string): boolean;
     back(): boolean;
+    /**
+     * Returns the width of the character face.
+     * 
+     * @returns {number} 
+     * @memberof Window_NameEdit
+     */
     faceWidth(): number;
+    /**
+     * Returns the width of a character.
+     * 
+     * @returns {number} 
+     * @memberof Window_NameEdit
+     */
     charWidth(): number;
     left(): number;
     underlineRect(index: number): Rectangle;
+    /**
+     * Returns the color of the underline as a css color string.
+     * 
+     * @returns {string} 
+     * @memberof Window_NameEdit
+     */
     underlineColor(): string;
+    /**
+     * Draws the underline at the given index of the window.
+     * 
+     * @param {number} index 
+     * @memberof Window_NameEdit
+     */
     drawUnderline(index: number): void;
+    /**
+     * Draws a character within the window at the specified index.
+     * 
+     * @param {number} index 
+     * @memberof Window_NameEdit
+     */
     drawChar(index: number): void;
+    /**
+     * Refreshes the window contents.
+     * 
+     * @memberof Window_NameEdit
+     */
     refresh(): void;
 }
 
@@ -10421,9 +16755,14 @@ declare class Scene_Base extends Stage {
      * @memberof Scene_Base
      */
     terminate(): void;
+    /**
+     * Creates the window layer on the current scene
+     * for displaying any and all windows.
+     * @memberof Scene_Base
+     */
     createWindowLayer(): void;
     /**
-    * Add the children window to the windowLayer processing.
+    * Adds a child window to the windowLayer process.
     * 
     * @method addWindow
     * @param {Window_Base}
@@ -10477,8 +16816,19 @@ declare class Scene_Base extends Stage {
 declare class Scene_Boot extends Scene_Base {
     protected _startDate: Date;
 
+    /**
+     * Loads the system images upon booting the game.
+     * 
+     * @memberof Scene_Boot
+     */
     loadSystemImages(): void;
     loadSystemWindowImage(): void;
+    /**
+     * Returns true if the game font is loaded.
+     * 
+     * @returns {boolean} 
+     * @memberof Scene_Boot
+     */
     isGameFontLoaded(): boolean;
     updateDocumentTitle(): void;
     checkPlayerLocation(): void;
@@ -10504,6 +16854,11 @@ declare class Scene_Title extends Scene_Base {
     commandNewGame(): void;
     commandContinue(): void;
     commandOptions(): void;
+    /**
+     * Plays the title screen music
+     * upon enter the title scene.
+     * @memberof Scene_Title
+     */
     playTitleMusic(): void;
 }
 
@@ -10527,32 +16882,127 @@ declare class Scene_Map extends Scene_Base {
 
     menuCalling: boolean;
 
+    /**
+     * Handler for when the map scene is loaded.
+     * 
+     * @memberof Scene_Map
+     */
     onMapLoaded(): void;
+    /**
+     * Speeds up the updateMain if
+     * the map scene is in fast forward mode.
+     * @memberof Scene_Map
+     */
     updateMainMultiply(): void;
+    /**
+     * Updates the main $game globals
+     * if the map scene is active.
+     * @memberof Scene_Map
+     */
     updateMain(): void;
+    /**
+     * Returns true if the player
+     * is holding down the confirm button to
+     * fast forward through text.
+     * @returns {boolean} 
+     * @memberof Scene_Map
+     */
     isFastForward(): boolean;
+    /**
+     * Stops the map scene and prepares
+     * for a new scene.
+     * @memberof Scene_Map
+     */
     stop(): void;
     needsFadeIn(): boolean;
     needsSlowFadeOut(): boolean;
     updateWaitCount(): boolean;
+    /**
+     * Constantly checks if the player
+     * is touching the map, then processes
+     * a map touch for mouse based player character movement.
+     * @memberof Scene_Map
+     */
     updateDestination(): void;
+    /**
+     * Returns true if the map scene is
+     * active and the player can move. Used for
+     * mouse movement on the map scene.
+     * @returns {boolean} 
+     * @memberof Scene_Map
+     */
     isMapTouchOk(): boolean;
+    /**
+     * Processes the map touch and turns it
+     * into coordinates for the player character to move to.
+     * @memberof Scene_Map
+     */
     processMapTouch(): void;
     isSceneChangeOk(): boolean;
     updateScene(): void;
     createDisplayObjects(): void;
     createSpriteset(): void;
+    /**
+     * Creates all the windows on the map scene
+     * contains other window creation methods.
+     * @memberof Scene_Map
+     */
     createAllWindows(): void;
     createMapNameWindow(): void;
+    /**
+     * Creates the map name window within
+     * the map scene; display map name.
+     * @memberof Scene_Map
+     */
+    /**
+     * Creates the message window for displaying
+     * text on the map scene. Commonly used with the
+     * showText command.
+     * @memberof Scene_Map
+     */
     createMessageWindow(): void;
     createScrollTextWindow(): void;
+    /**
+     * Checks if the player is transferring;
+     * if the player is transferring, move to a new map scene.
+     * @memberof Scene_Map
+     */
     updateTransferPlayer(): void;
     updateEncounter(): void;
     updateCallMenu(): void;
+    /**
+     * Returns true if the menu is enabled
+     * in the database.
+     * @returns {boolean} 
+     * @memberof Scene_Map
+     */
     isMenuEnabled(): boolean;
+    /**
+     * Returns true if the menu is called
+     * via an input trigger.
+     * @returns {boolean} 
+     * @memberof Scene_Map
+     */
     isMenuCalled(): boolean;
+    /**
+     * Calls the standard RPGMakerMV menu scene.
+     * 
+     * @memberof Scene_Map
+     */
     callMenu(): void;
+    /**
+     * Checks if debug is called via input trigger
+     * and starts the debug scene.
+     * 
+     * @memberof Scene_Map
+     */
     updateCallDebug(): void;
+    /**
+     * Returns true if the debug
+     * scene is called via button press and in play test mode.
+     * @returns {boolean} 
+     * @memberof Scene_Map
+     */
     isDebugCalled(): boolean;
     fadeInForTransfer(): void;
     fadeOutForTransfer(): void;
@@ -10560,6 +17010,11 @@ declare class Scene_Map extends Scene_Base {
     stopAudioOnBattleStart(): void;
     startEncounterEffect(): void;
     updateEncounterEffect(): void;
+    /**
+     * Takes a snapshot of the map scene for displaying
+     * on the battle scene if no battleback is present.
+     * @memberof Scene_Map
+     */
     snapForBattleBackground(): void;
     startFlashForEncounter(duration: number): void;
     encounterEffectSpeed(): number;
@@ -10600,14 +17055,50 @@ declare class Scene_Menu extends Scene_MenuBase {
     protected _goldWindow: Window_Gold;
     protected _statusWindow: Window_MenuStatus;
 
+    /**
+     * Creates the main menu window on the 
+     * menu scene; contains the commands for
+     * menu usage.
+     * @memberof Scene_Menu
+     */
     createCommandWindow(): void;
+    /**
+     * Creates the gold window on the menu scene.
+     * 
+     * @memberof Scene_Menu
+     */
     createGoldWindow(): void;
+    /**
+     * Creates the status window on the menu scene.
+     * 
+     * @memberof Scene_Menu
+     */
     createStatusWindow(): void;
+    /**
+     * Handler for what to do when the 'item'
+     * command is clicked.
+     * @memberof Scene_Menu
+     */
     commandItem(): void;
     commandPersonal(): void;
     commandFormation(): void;
+    /**
+     * Handler for what to do when the 'option'
+     * command is clicked.
+     * @memberof Scene_Menu
+     */
     commandOptions(): void;
+    /**
+     * Handler for what to do when the 'save'
+     * command is clicked.
+     * @memberof Scene_Menu
+     */
     commandSave(): void;
+    /**
+     * Handler for what to do when the 'game end'
+     * command is clicked.
+     * @memberof Scene_Menu
+     */
     commandGameEnd(): void;
     onPersonalOk(): void;
     onPersonalCancel(): void;
@@ -10656,11 +17147,41 @@ declare class Scene_ItemBase extends Scene_MenuBase {
 declare class Scene_Item extends Scene_ItemBase {
     protected _categoryWindow: Window_ItemCategory;
 
+    /**
+     * Creates the category window on the
+     * item scene.
+     * @memberof Scene_Item
+     */
     createCategoryWindow(): void;
+    /**
+     * Creates the item window on the item
+     * scene.
+     * @memberof Scene_Item
+     */
     createItemWindow(): void;
+    /**
+     * Handler for when a cataegory is selected
+     * on the item scene.
+     * @memberof Scene_Item
+     */
     onCategoryOk(): void;
+    /**
+     * Handler for when an item is selected
+     * on the item scene.
+     * @memberof Scene_Item
+     */
     onItemOk(): void;
+    /**
+     * Handler for when an item selection
+     * is canceled on the item scene.
+     * @memberof Scene_Item
+     */
     onItemCancel(): void;
+    /**
+     * Plays a sound effect when the
+     * item is confirmed.
+     * @memberof Scene_Item
+     */
     playSeForItem(): void;
 }
 
@@ -10675,13 +17196,43 @@ declare class Scene_Item extends Scene_ItemBase {
 declare class Scene_Skill extends Scene_ItemBase {
     protected _skillTypeWindow: Window_SkillType;
 
+    /**
+     * Creates the window for skill types
+     * within the skill scene.
+     * @memberof Scene_Skill
+     */
     createSkillTypeWindow(): void;
+    /**
+     * Creates the status window within
+     * the skill scene.
+     * @memberof Scene_Skill
+     */
     createStatusWindow(): void;
+    /**
+     * Creates the item window
+     * within the skill scene.
+     * @memberof Scene_Skill
+     */
     createItemWindow(): void;
     refreshActor(): void;
+    /**
+     * Handler for when a skill is
+     * selected/confirmed within the skill scene.
+     * @memberof Scene_Skill
+     */
     commandSkill(): void;
     onItemCancel(): void;
+    /**
+     * Plays a sound effect on item
+     * confirmation withiin the skill scene.
+     * @memberof Scene_Skill
+     */
     playSeForItem(): void;
+    /**
+     * Handler for when an an actor is
+     * changed within the skill scene.
+     * @memberof Scene_Skill
+     */
     onActorChange(): void;
 }
 
@@ -10754,13 +17305,34 @@ declare class Scene_Options extends Scene_MenuBase {
 declare class Scene_File extends Scene_MenuBase {
     protected _listWindow: Window_SavefileList;
 
+    /**
+     * Returns the current savefileId.
+     * 
+     * @memberof Scene_File
+     */
     savefileId(): void;
     createHelpWindow(): void;
     createListWindow(): void;
+    /**
+     * The current mode of the scene;
+     * the modes are 'save' or 'load'.
+     * @memberof Scene_File
+     */
     mode(): void;
     activateListWindow(): void;
     helpWindowText(): string;
+    /**
+     * Returns the index of the first
+     * save file.
+     * @returns {number} 
+     * @memberof Scene_File
+     */
     firstSavefileIndex(): number;
+    /**
+     * Handler for when a 
+     * save file is selected within the file scene.
+     * @memberof Scene_File
+     */
     onSavefileOk(): void;
 }
 
@@ -10773,11 +17345,38 @@ declare class Scene_File extends Scene_MenuBase {
  * @extends {Scene_File}
  */
 declare class Scene_Save extends Scene_File {
+    /**
+     * Returns the mode of the
+     * save scene.
+     * @returns {string} 
+     * @memberof Scene_Save
+     */
     mode(): string;
     helpWindowText(): string;
+    /**
+     * Returns the index of the first
+     * save file within the save scene.
+     * @returns {number} 
+     * @memberof Scene_Save
+     */
     firstSavefileIndex(): number;
+    /**
+     * Handler for when a save file
+     * is confirmed within the save scene.
+     * @memberof Scene_Save
+     */
     onSavefileOk(): void;
+    /**
+     * Handler for when save is a success.
+     * 
+     * @memberof Scene_Save
+     */
     onSaveSuccess(): void;
+    /**
+     * Handler for when save fails.
+     * 
+     * @memberof Scene_Save
+     */
     onSaveFailure(): void;
 }
 
@@ -10792,7 +17391,19 @@ declare class Scene_Save extends Scene_File {
 declare class Scene_Load extends Scene_File {
     protected _loadSuccess: boolean;
 
+    /**
+     * Returns the mode of the
+     * load scene.
+     * @returns {string} 
+     * @memberof Scene_Load
+     */
     mode(): string;
+    /**
+     * Returns the help window text on the
+     * game load scene.
+     * @returns {string} 
+     * @memberof Scene_Load
+     */
     helpWindowText(): string;
     firstSavefileIndex(): number;
     onSavefileOk(): void;
@@ -10813,8 +17424,23 @@ declare class Scene_GameEnd extends Scene_MenuBase {
     protected _commandWindow: Window_GameEnd;
 
     stop(): void;
+    /**
+     * Creates the background for
+     * the game end scene.
+     * @memberof Scene_GameEnd
+     */
     createBackground(): void;
+    /**
+     * Creates the command window
+     * for the game end screen.
+     * @memberof Scene_GameEnd
+     */
     createCommandWindow(): void;
+    /**
+     * Handler for when to title
+     * is clicked within the game end screen.
+     * @memberof Scene_GameEnd
+     */
     commandToTitle(): void;
 }
 
@@ -10867,9 +17493,33 @@ declare class Scene_Shop extends Scene_MenuBase {
     endNumberInput(): void;
     maxBuy(): number;
     maxSell(): number;
+    /**
+     * Returns the player gold within
+     * the shop scene.
+     * @returns {number} 
+     * @memberof Scene_Shop
+     */
     money(): number;
+    /**
+     * Returns the currency unit of the
+     * game within the shop scene.
+     * @returns {string} 
+     * @memberof Scene_Shop
+     */
     currencyUnit(): string;
+    /**
+     * Returns the buying price for the current item.
+     * 
+     * @returns {number} 
+     * @memberof Scene_Shop
+     */
     buyingPrice(): number;
+    /**
+     * Returns the selling price for the current item.
+     * 
+     * @returns {number} 
+     * @memberof Scene_Shop
+     */
     sellingPrice(): number;
 }
 
@@ -10903,6 +17553,12 @@ declare class Scene_Debug extends Scene_MenuBase {
     onRangeOk(): void;
     onEditCancel(): void;
     refreshHelpWindow(): void;
+    /**
+     * Returns the help text within the 
+     * debug scene.
+     * @returns {string} 
+     * @memberof Scene_Debug
+     */
     helpText(): string;
 }
 
@@ -10936,7 +17592,18 @@ declare class Scene_Battle extends Scene_Base {
     updateStatusWindow(): void;
     updateWindowPositions(): void;
     createDisplayObjects(): void;
+    /**
+     * Creates the spriteset within
+     * the battle scene. This includes
+     * sprites for actors, enemies, etc.
+     * @memberof Scene_Battle
+     */
     createSpriteset(): void;
+    /**
+     * Creates all the windows within the
+     * battle scene.
+     * @memberof Scene_Battle
+     */
     createAllWindows(): void;
     createLogWindow(): void;
     createStatusWindow(): void;
@@ -10986,8 +17653,22 @@ declare class Scene_Gameover extends Scene_Base {
     protected _backSprite: Sprite;
 
     stop(): void;
+    /**
+     * Plays the game over music
+     * within the game over scene.
+     * @memberof Scene_Gameover
+     */
     playGameoverMusic(): void;
+    /**
+     * Creates the background of
+     * the game over scene.
+     * @memberof Scene_Gameover
+     */
     createBackground(): void;
     isTriggered(): boolean;
+    /**
+     * Returns to the title scene (Scene_Title).
+     * @memberof Scene_Gameover
+     */
     gotoTitle(): void;
 }

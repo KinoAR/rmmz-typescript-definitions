@@ -1,0 +1,37 @@
+{
+  "name": "rmmv-typescript-definitions",
+  "version": "1.1.0",
+  "description": "The typescript definitions of MV",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./conact-mv.js ./src/ > rmmv.d.ts",
+    "build-externals": "./conact-mv.js ./src/ ./libs/PIXI.d.ts ./libs/fpsmeter.d.ts ./libs/lz-string.d.ts > rmmv-pixi.d.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KinoAR/rmmv-typescript-definitions.git"
+  },
+  "keywords": [
+    "MV",
+    "RPG",
+    "Maker",
+    "Typescript"
+  ],
+  "author": "Nio Kasgami & Kino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KinoAR/rmmv-typescript-definitions/issues"
+  },
+  "homepage": "https://github.com/KinoAR/rmmv-typescript-definitions#readme",
+  "dependencies": {
+    "typescript": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/fpsmeter": "^0.3.28",
+    "@types/pixi.js": "^4.5.1"
+  }
+}
