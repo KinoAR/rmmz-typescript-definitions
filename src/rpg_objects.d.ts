@@ -199,15 +199,34 @@ declare class Game_Variables {
 }
 
 /**
- * The game object class for selfswitches
+ * The game object class for self switches.
  * 
  * @class Game_SelfSwitches
  */
 declare class Game_SelfSwitches {
     protected _data: {key: Array<any>};
 
+    /**
+     * Clears the array of data for the game's self switches.
+     * 
+     * @memberof Game_SelfSwitches
+     */
     clear(): void;
+    /**
+     * Returns the value of the switch at the current key;
+     * the value is a boolean (true or false).
+     * @param {Array<any>} key 
+     * @returns {boolean} 
+     * @memberof Game_SelfSwitches
+     */
     value(key: Array<any>): boolean;
+    /**
+     * Sets the value of the key of the respected self switch.
+     * 
+     * @param {Array<any>} key 
+     * @param {boolean} value 
+     * @memberof Game_SelfSwitches
+     */
     setValue(key: Array<any>, value: boolean): void;
     onChange(): void;
 }
@@ -225,7 +244,21 @@ declare class Game_Screen {
     protected _shakeDuration: number;
     protected _shakeDirection: number;
 
+    /**
+     * _zoomX property of the game screen.
+     * 
+     * @protected
+     * @type {number}
+     * @memberof Game_Screen
+     */
     protected _zoomX: number;
+    /**
+     * _zoomY property of the game screen.
+     * 
+     * @protected
+     * @type {number}
+     * @memberof Game_Screen
+     */
     protected _zoomY: number;
     protected _zoomScale: number;
     protected _zoomScaleTarget: number;
@@ -236,6 +269,13 @@ declare class Game_Screen {
     protected _weatherPowerTarget: number;
     protected _weatherDuration: number;
 
+    /**
+     * The _brightness property of the game screen;
+     * returned when calling the brightness method.
+     * @protected
+     * @type {number}
+     * @memberof Game_Screen
+     */
     protected _brightness: number;
     protected _fadeOutDuration: number;
     protected _fadeInDuration: number;
@@ -247,16 +287,52 @@ declare class Game_Screen {
     protected _flashColor: Array<number>;
     protected _flashDuration: number;
 
+    /**
+     * The array of Game_Pictures that are 
+     * attached to the game screen.
+     * @protected
+     * @type {Array<Game_Picture>}
+     * @memberof Game_Screen
+     */
     protected _pictures: Array<Game_Picture>;
 
     clear(): void;
+    /**
+     * Handler for when the battle starts in game; prepares
+     * the screen for the battle scene.
+     * @memberof Game_Screen
+     */
     onBattleStart(): void;
+    /**
+     * Returns the brightness of the game screen.
+     * 
+     * @returns {number} 
+     * @memberof Game_Screen
+     */
     brightness(): number;
     tone(): Array<number>;
     flashColor(): Array<number>;
     shake(): number;
+    /**
+     * Returns the  zoom x coordinate of the screen.
+     * 
+     * @returns {number} 
+     * @memberof Game_Screen
+     */
     zoomX(): number;
+    /**
+     * Returns the zoom y coordiante of the screen.
+     * 
+     * @returns {number} 
+     * @memberof Game_Screen
+     */
     zoomY(): number;
+    /**
+     * Returns the zoom scale of the screen.
+     * 
+     * @returns {number} 
+     * @memberof Game_Screen
+     */
     zoomScale(): number;
     weatherType(): string;
     weatherPower(): number;
@@ -268,8 +344,19 @@ declare class Game_Screen {
     clearShake(): void;
     clearZoom(): void;
     clearWeather(): void;
+    /**
+     * Clears the pictures set on the game screen.
+     * 
+     * @memberof Game_Screen
+     */
     clearPictures(): void;
     eraseBattlePictures(): void;
+    /**
+     * Returns the maximum number of pictures set on the game screen.
+     * 
+     * @returns {number} 
+     * @memberof Game_Screen
+     */
     maxPictures(): number;
     startFadeOut(duration: number): void;
     startFadeIn(duration: number): void;
@@ -295,6 +382,12 @@ declare class Game_Screen {
                 scaleX: number, scaleY: number, opacity: number, blendMode: number, duration: number): void;
     rotatePicture(pictureId: number, speed: number): void;
     tintPicture(pictureId: number, tone: Array<number>, duration: number): void;
+    /**
+     * Erases a picture from the screen given the respected picture id.
+     * 
+     * @param {number} pictureId 
+     * @memberof Game_Screen
+     */
     erasePicture(pictureId: number): void;
 }
 
@@ -304,6 +397,13 @@ declare class Game_Screen {
  * @class Game_Picture
  */
 declare class Game_Picture {
+    /**
+     * _name property of the current picture.
+     * 
+     * @protected
+     * @type {string}
+     * @memberof Game_Picture
+     */
     protected _name: string;
     protected _origin: number;
     protected _x: number;
@@ -327,6 +427,12 @@ declare class Game_Picture {
     protected _angle: number;
     protected _rotationSpeed: number;
 
+    /**
+     * Returns the name of the game picture.
+     * 
+     * @returns {string} 
+     * @memberof Game_Picture
+     */
     name(): string;
     origin(): number;
     x(): number;
@@ -363,15 +469,69 @@ declare class Game_Item {
     protected _itemId: number;
 
     constructor(item: RPG.BaseItem);
+    /**
+     * Returns true the item is a skill.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Item
+     */
     isSkill(): boolean;
+    /**
+     * Returns true if the item is an item.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Item
+     */
     isItem(): boolean;
+    /**
+     * Returns true if the item is a usable item, similar to a potion.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Item
+     */
     isUsableItem(): boolean;
+    /**
+     * Returns true if the item is a weapon.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Item
+     */
     isWeapon(): boolean;
+    /**
+     * Returns true if the item is an armor.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Item
+     */
     isArmor(): boolean;
+    /**
+     * Returns true if the item is equippable (weapon or armor).
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Item
+     */
     isEquipItem(): boolean;
+    /**
+     * Returns true if the item is 'null'.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Item
+     */
     isNull(): boolean;
+    /**
+     * Returns the current itemId.
+     * 
+     * @returns {number} 
+     * @memberof Game_Item
+     */
     itemId(): number;
     object(): RPG.BaseItem;
+    /**
+     * Sets the current item of the current Game_Item object.
+     * 
+     * @param {RPG.BaseItem} item 
+     * @memberof Game_Item
+     */
     setObject(item: RPG.BaseItem): void;
     setEquip(isWeapon: boolean, itemId: number): void;
 }
@@ -664,6 +824,12 @@ declare class Game_BattlerBase {
     initMembers(): void;
     clearParamPlus(): void;
     clearStates(): void;
+    /**
+     * Erases the current state from the game battler given the 
+     * stateId in the editor database.
+     * @param {number} stateId 
+     * @memberof Game_BattlerBase
+     */
     eraseState(stateId: number): void;
     isStateAffected(stateId: number): boolean;
     isDeathStateAffected(): boolean;
@@ -673,7 +839,20 @@ declare class Game_BattlerBase {
     updateStateTurns(): void;
     clearBuffs(): void;
     eraseBuff(paramId: number): void;
+    /**
+     * Returns the length of the buff.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     buffLength(): number;
+    /**
+     * Buffs the current parameter id.
+     * 
+     * @param {number} paramId 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     buff(paramId: number): number;
     isBuffAffected(paramId: number): boolean;
     isDebuffAffected(paramId: number): boolean;
@@ -685,12 +864,40 @@ declare class Game_BattlerBase {
     overwriteBuffTurns(paramId: number, turns: number): void;
     isBuffExpired(paramId: number): boolean;
     updateBuffTurns(): void;
+    /**
+     * Kills the battler.
+     * 
+     * @memberof Game_BattlerBase
+     */
     die(): void;
+    /**
+     * Revives the battler.
+     * 
+     * @memberof Game_BattlerBase
+     */
     revive(): void;
     states(): Array<RPG.State>;
+    /**
+     * Returns the array of state icons attached to the battler;
+     * this is determined by the active states on the battler.
+     * @returns {Array<number>} 
+     * @memberof Game_BattlerBase
+     */
     stateIcons(): Array<number>;
+    /**
+     * Returns the array of buff icons attached to the battler;
+     * this is determined by the active buffs on the battler.
+     * @returns {Array<number>} 
+     * @memberof Game_BattlerBase
+     */
     buffIcons(): Array<number>;
     buffIconIndex(buffLevel: number, paramId: number): number;
+    /**
+     * Returns all of the icons attached to the battler.
+     * 
+     * @returns {Array<number>} 
+     * @memberof Game_BattlerBase
+     */
     allIcons(): Array<number>;
     traitObjects(): Array<any>;
     allTraits(): Array<RPG.Trait>;
@@ -700,12 +907,26 @@ declare class Game_BattlerBase {
     traitsSum(code: number, id: number): number;
     traitsSumAll(code: number): number;
     traitsSet(code: number): Array<number>;
+    /**
+     * Returns the base parameters of the battler; this is determined by their
+     * current level and the paramId given.
+     * @param {number} paramId 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     paramBase(paramId: number): number;
     paramPlus(paramId: number): number;
     paramMin(paramId: number): number;
     paramMax(paramId: number): number;
     paramRate(paramId: number): number;
     paramBuffRate(paramId: number): number;
+    /**
+     * Returns a standard parameter, given a paramId;
+     * standard parameters include: HP, MP, Atk, M.Atk, Def, M.Def, Luck, Agility.
+     * @param {number} paramId 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     param(paramId: number): number;
     xparam(xparamId: number): number;
     sparam(sparamId: number): number;
@@ -717,7 +938,19 @@ declare class Game_BattlerBase {
     attackElements(): Array<number>;
     attackStates(): Array<number>;
     attackStatesRate(stateId: number): void;
+    /**
+     * Returns the attack speed of the battler.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     attackSpeed(): number;
+    /**
+     * Returns the number of attacks available to the battler.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     attackTimesAdd(): number;
     addedSkillTypes(): Array<number>;
     isSkillTypeSealed(stypeId: number): boolean;
@@ -728,6 +961,12 @@ declare class Game_BattlerBase {
     isEquipTypeLocked(etypeId: number): boolean;
     isEquipTypeSealed(etypeId: number): boolean;
     slotType(): number;
+    /**
+     * Returns true if the battler dual wields.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isDualWield(): boolean;
     actionPlusSet(): Array<number>;
     specialFlag(flagId: number): boolean;
@@ -744,46 +983,210 @@ declare class Game_BattlerBase {
     maxTp(): number;
     refresh(): void;
     recoverAll(): void;
+    /**
+     * Returns the percentage of the battler's hp left as a float.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     hpRate(): number;
+    /**
+     * Returns the percentage of the battler's mp left as a float.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     mpRate(): number;
+    /**
+     * Returns the percentage of the battler's tp left as a float.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     tpRate(): number;
     hide(): void;
     appear(): void;
     isHidden(): boolean;
     isAppeared(): boolean;
+    /**
+     * Returns true if the battler is dead.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isDead(): boolean;
+    /**
+     * Returns true if the battler is alive.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isAlive(): boolean;
+    /**
+     * Returns true if the battler is dying.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isDying(): boolean;
     isRestricted(): boolean;
+    /**
+     * Returns true if the battler can input actions.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     canInput(): boolean;
     canMove(): boolean;
+    /**
+     * Returns true if the battler is confused.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isConfused(): boolean;
     confusionLevel(): number;
+    /**
+     * Returns true if the battler is an actor.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isActor(): boolean;
+    /**
+     * Returns true if the battler is an enemy.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isEnemy(): boolean;
+    /**
+     * Sorts the states attached to the battler.
+     * 
+     * @memberof Game_BattlerBase
+     */
     sortStates(): void;
     restriction(): number;
+    /**
+     * Adds a new state given a state id to the battler.
+     * 
+     * @param {number} stateId 
+     * @memberof Game_BattlerBase
+     */
     addNewState(stateId: number): void;
     onRestrict(): void;
     mostImportantStateText(): string;
     stateMotionIndex(): number;
     stateOverlayIndex(): number;
+    /**
+     * Returns true if the skill is a weapon type
+     * oriented skill.
+     * @param {RPG.Skill} skill 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isSkillWtypeOk(skill: RPG.Skill): boolean;
+    /**
+     * Returns the mp cost of the skill.
+     * 
+     * @param {RPG.Skill} skill 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     skillMpCost(skill: RPG.Skill): number;
+    /**
+     * Returns the tp cost of the skill.
+     * 
+     * @param {RPG.Skill} skill 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     skillTpCost(skill: RPG.Skill): number;
     canPaySkillCost(skill: RPG.Skill): boolean;
+    /**
+     * Pays the cost of the skill when activating the skill.
+     * 
+     * @param {RPG.Skill} skill 
+     * @memberof Game_BattlerBase
+     */
     paySkillCost(skill: RPG.Skill): void;
     isOccasionOk(item: RPG.UsableItem): boolean;
     meetsUsableItemConditions(item: RPG.UsableItem): boolean;
+    /**
+     * Returns true if the battler meets the skill conditions.
+     * 
+     * @param {RPG.Skill} skill 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     meetsSkillConditions(skill: RPG.Skill): boolean;
+    /**
+     * Returns true if the battler meets the item conditions.
+     * 
+     * @param {RPG.Item} item 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     meetsItemConditions(item: RPG.Item): boolean;
+    /**
+     * Returns true if the battler can use the item.
+     * 
+     * @param {RPG.UsableItem} item 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     canUse(item: RPG.UsableItem): boolean;
+    /**
+     * Returns true if the battler can equip the item.
+     * 
+     * @param {RPG.EquipItem} item 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     canEquip(item: RPG.EquipItem): boolean;
+    /**
+     * Returns true if the battler can equip a weapon.
+     * 
+     * @param {RPG.EquipItem} item 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     canEquipWeapon(item: RPG.EquipItem): boolean;
+    /**
+     * Returns true if the battler can equip armor.
+     * 
+     * @param {RPG.EquipItem} item 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     canEquipArmor(item: RPG.EquipItem): boolean;
+    /**
+     * Returns the attack skill id in the database.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     attackSkillId(): number;
+    /**
+     * Returns the guard skill id in the database.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     guardSkillId(): number;
+    /**
+     * Returns true if the battler can attack.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     canAttack(): boolean;
+    /**
+     * Returns true if the battler can guard.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     canGuard(): boolean;
 }
 
