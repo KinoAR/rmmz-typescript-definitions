@@ -1212,7 +1212,19 @@ declare class Game_Battler extends Game_BattlerBase {
     protected _motionRefresh: boolean;
     protected _selected: boolean;
 
+    /**
+     * Returns the name of the battler.
+     * 
+     * @returns {string} 
+     * @memberof Game_Battler
+     */
     name(): string;
+    /**
+     * Returns the battler name of the battler;
+     * the battler name is associated with the file used as the battler graphic.
+     * @returns {string} 
+     * @memberof Game_Battler
+     */
     battlerName(): string;
     index(): number;
     friendsUnit(): Game_Unit;
@@ -1291,9 +1303,33 @@ declare class Game_Battler extends Game_BattlerBase {
     onDamage(value: number): void;
     setActionState(actionState: string): void;
     isUndecided(): boolean;
+    /**
+     * Returns true if the battler is inputting commands in battle.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Battler
+     */
     isInputting(): boolean;
+    /**
+     * Returns true if the battler is waiting in battle.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Battler
+     */
     isWaiting(): boolean;
+    /**
+     * Returns true if the battler is performing an action in battle.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Battler
+     */
     isActing(): boolean;
+    /**
+     * Returns true if the battler is chanting in combat.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Battler
+     */
     isChanting(): boolean;
     isGuardWaiting(): boolean;
     performActionStart(action: Game_Action): void;
@@ -1344,7 +1380,19 @@ declare class Game_Actor extends Game_Battler {
     constructor(actorId: number);
 
     setup(actorId: number): void;
+    /**
+     * Returns the id of the actor.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     actorId(): number;
+    /**
+     * Returns the database information of the actor.
+     * 
+     * @returns {RPG.Actor} 
+     * @memberof Game_Actor
+     */
     actor(): RPG.Actor;
     setName(name: string): void;
     nickname(): string;
