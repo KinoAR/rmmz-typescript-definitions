@@ -7,6 +7,10 @@
 
 This is all about **information!** This website contains **all of the documentation for the RPGMakerMV classes, globals, and more!** 
 
+## RPGMakerMV Intellisense
+
+For those who want to code using the documentation, there is a way for most code editors: http://endlessillusoft.com/rpgmakermv-intellisense/
+
 ## Credits
 
 * Kino: http://endlessillusoft.com/
