@@ -764,17 +764,62 @@ declare class Scene_Shop extends Scene_MenuBase {
     protected _helpWindow: Window_Help;
 
     prepare(goods: Array<Array<any>>, purchaseOnly: boolean): void;
+    /**
+     * Creates the gold window on the shop scene.
+     * 
+     * @memberof Scene_Shop
+     */
     createGoldWindow(): void;
+    /**
+     * Creates the command window for buying or selling.
+     * 
+     * @memberof Scene_Shop
+     */
     createCommandWindow(): void;
     createDummyWindow(): void;
+    /**
+     * Creates the number input window on the shop scene.
+     * 
+     * @memberof Scene_Shop
+     */
     createNumberWindow(): void;
+    /**
+     * Creates the status window.
+     * 
+     * @memberof Scene_Shop
+     */
     createStatusWindow(): void;
+    /**
+     * Creates the buy window.
+     * 
+     * @memberof Scene_Shop
+     */
     createBuyWindow(): void;
+    /**
+     * Creates the category window.
+     * 
+     * @memberof Scene_Shop
+     */
     createCategoryWindow(): void;
+    /**
+     * Creates the sell window.
+     * 
+     * @memberof Scene_Shop
+     */
     createSellWindow(): void;
     activateBuyWindow(): void;
     activateSellWindow(): void;
+    /**
+     * Handler for pressing buy on the shop scene.
+     * 
+     * @memberof Scene_Shop
+     */
     commandBuy(): void;
+    /**
+     * Handler for pressing sell on the shop scene.
+     * 
+     * @memberof Scene_Shop
+     */
     commandSell(): void;
     onBuyOk(): void;
     onBuyCancel(): void;
@@ -787,7 +832,19 @@ declare class Scene_Shop extends Scene_MenuBase {
     doBuy(number: number): void;
     doSell(number: number): void;
     endNumberInput(): void;
+    /**
+     * Returns the maximum number bought.
+     * 
+     * @returns {number} 
+     * @memberof Scene_Shop
+     */
     maxBuy(): number;
+    /**
+     * Returns the maximum number sold.
+     * 
+     * @returns {number} 
+     * @memberof Scene_Shop
+     */
     maxSell(): number;
     /**
      * Returns the player gold within
@@ -828,9 +885,32 @@ declare class Scene_Shop extends Scene_MenuBase {
  * @extends {Scene_MenuBase}
  */
 declare class Scene_Name extends Scene_MenuBase {
+    /**
+     * Prepares the name input scene for giving the specified
+     * actor at actorId a name with a maximum number of characters
+     * given by maxLength.
+     * @param {number} actorId 
+     * @param {number} maxLength 
+     * @memberof Scene_Name
+     */
     prepare(actorId: number, maxLength: number): void;
+    /**
+     * Creates the edit window.
+     * 
+     * @memberof Scene_Name
+     */
     createEditWindow(): void;
+    /**
+     * Creates the input window.
+     * 
+     * @memberof Scene_Name
+     */
     createInputWindow(): void;
+    /**
+     * Handler for when ok is processed on the name input scene.
+     * 
+     * @memberof Scene_Name
+     */
     onInputOk(): void;
 }
 
@@ -843,8 +923,23 @@ declare class Scene_Name extends Scene_MenuBase {
  * @extends {Scene_MenuBase}
  */
 declare class Scene_Debug extends Scene_MenuBase {
+    /**
+     * Creates the range window.
+     * 
+     * @memberof Scene_Debug
+     */
     createRangeWindow(): void;
+    /**
+     * Creates the edit window.
+     * 
+     * @memberof Scene_Debug
+     */
     createEditWindow(): void;
+    /**
+     * Creates the debug help .window.
+     * 
+     * @memberof Scene_Debug
+     */
     createDebugHelpWindow(): void;
     onRangeOk(): void;
     onEditCancel(): void;
@@ -883,10 +978,26 @@ declare class Scene_Battle extends Scene_Base {
     updateBattleProcess(): void;
     isAnyInputWindowActive(): boolean;
     changeInputWindow(): void;
+    /**
+     * Stops the battle scene.
+     * 
+     * @memberof Scene_Battle
+     */
     stop(): void;
     needsSlowFadeOut(): boolean;
+    /**
+     * Updates the status window on the battle scene.
+     * 
+     * @memberof Scene_Battle
+     */
     updateStatusWindow(): void;
     updateWindowPositions(): void;
+    /**
+     * Creates all the display objects including:
+     * the spritesheet, window layer, windows, and more.
+     * 
+     * @memberof Scene_Battle
+     */
     createDisplayObjects(): void;
     /**
      * Creates the spriteset within
@@ -901,20 +1012,75 @@ declare class Scene_Battle extends Scene_Base {
      * @memberof Scene_Battle
      */
     createAllWindows(): void;
+    /**
+     * Creates the log window.
+     * 
+     * @memberof Scene_Battle
+     */
     createLogWindow(): void;
     createStatusWindow(): void;
     createPartyCommandWindow(): void;
+    /**
+     * Creates the actor command window.
+     * 
+     * @memberof Scene_Battle
+     */
     createActorCommandWindow(): void;
+    /**
+     * Creates the help window.
+     * 
+     * @memberof Scene_Battle
+     */
     createHelpWindow(): void;
+    /**
+     * Creates the skill window.
+     * 
+     * @memberof Scene_Battle
+     */
     createSkillWindow(): void;
+    /**
+     * Creates the item window.
+     * 
+     * @memberof Scene_Battle
+     */
     createItemWindow(): void;
+    /**
+     * Creates the actor window.
+     * 
+     * @memberof Scene_Battle
+     */
     createActorWindow(): void;
+    /**
+     * Creates the enemy window.
+     * 
+     * @memberof Scene_Battle
+     */
     createEnemyWindow(): void;
+    /**
+     * Creates the message window on the battle scene.
+     * 
+     * @memberof Scene_Battle
+     */
     createMessageWindow(): void;
+    /**
+     * Creates the scroll text window.
+     * 
+     * @memberof Scene_Battle
+     */
     createScrollTextWindow(): void;
     refreshStatus(): void;
     startPartyCommandSelection(): void;
+    /**
+     * Handler for the fight command on battle start..
+     * 
+     * @memberof Scene_Battle
+     */
     commandFight(): void;
+    /**
+     * Handler for the escape command on battle start.
+     * 
+     * @memberof Scene_Battle
+     */
     commandEscape(): void;
     startActorCommandSelection(): void;
     commandAttack(): void;

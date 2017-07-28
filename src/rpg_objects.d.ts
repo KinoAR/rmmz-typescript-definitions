@@ -410,9 +410,33 @@ declare class Game_Message {
      * @memberof Game_Message
      */
     choicePositionType(): number;
+    /**
+     * Returns the number input variable id.
+     * 
+     * @returns {number} 
+     * @memberof Game_Message
+     */
     numInputVariableId(): number;
+    /**
+     * Returns the number input maximum digits.
+     * 
+     * @returns {number} 
+     * @memberof Game_Message
+     */
     numInputMaxDigits(): number;
+    /**
+     * Returns the item choice variable id.
+     * 
+     * @returns {number} 
+     * @memberof Game_Message
+     */
     itemChoiceVariableId(): number;
+    /**
+     * Returns the item choice item type id.
+     * 
+     * @returns {number} 
+     * @memberof Game_Message
+     */
     itemChoiceItypeId(): number;
     /**
      * Returns true if the scroll mode is set to true.
@@ -443,21 +467,111 @@ declare class Game_Message {
      */
     add(text: string): void;
     setFaceImage(faceName: string, faceIndex: number): void;
+    /**
+     * Sets the background of the message window;
+     * options are 0 (fully opaque), 1 (transparent), 2 (invisible background).
+     * The default is 0.
+     * @param {number} background 
+     * @memberof Game_Message
+     */
     setBackground(background: number): void;
+    /**
+     * Sets the position of the message window;
+     * default is 2.
+     * @param {number} positionType 
+     * @memberof Game_Message
+     */
     setPositionType(positionType: number): void;
+    /**
+     * Sets the choices within the choice window;
+     * sets the default and cancel choices for the window.
+     * @param {Array<string>} choices 
+     * @param {number} defaultType 
+     * @param {number} cancelType 
+     * @memberof Game_Message
+     */
     setChoices(choices: Array<string>, defaultType: number, cancelType: number): void;
     setChoiceBackground(background: number): void;
+    /**
+     * Sets the position of the choice window associated with the
+     * message window.
+     * @param {number} positionType 
+     * @memberof Game_Message
+     */
     setChoicePositionType(positionType: number): void;
+    /**
+     * Sets the number input and associates it with a variable id;
+     * the max number of digits can also be set.
+     * @param {number} variableId 
+     * @param {number} maxDigits 
+     * @memberof Game_Message
+     */
     setNumberInput(variableId: number, maxDigits: number): void;
+    /**
+     * Sets the choice and associates it with a variable id;
+     * sets the itemtype id associated with the choice.
+     * @param {number} variableId 
+     * @param {number} itemType 
+     * @memberof Game_Message
+     */
     setItemChoice(variableId: number, itemType: number): void;
+    /**
+     * Sets the scroll speed of the message window;
+     * disable fast movement if noFast is set to true.
+     * @param {number} speed 
+     * @param {boolean} noFast 
+     * @memberof Game_Message
+     */
     setScroll(speed: number, noFast: boolean): void;
+    /**
+     * Sets a callback to be associated with a specific choice;
+     * a callback is a JavaScript function that will be run when the
+     * choice is selected.
+     * @param {((n: number) => void)} callback 
+     * @memberof Game_Message
+     */
     setChoiceCallback(callback: ((n: number) => void)): void;
     onChoice(n: number): void;
+    /**
+     * Returns true if the game message object has text.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Message
+     */
     hasText(): boolean;
+    /**
+     * Returns true if the game message object has a set of choices.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Message
+     */
     isChoice(): boolean;
+    /**
+     * Returns true if the game message object has a number input attached.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Message
+     */
     isNumberInput(): boolean;
+    /**
+     * Returns true if the game message object has an item choice attached.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Message
+     */
     isItemChoice(): boolean;
+    /**
+     * Returns true if the game message object has text, choices, number input,
+     * or item choice.
+     * @returns {boolean} 
+     * @memberof Game_Message
+     */
     isBusy(): boolean;
+    /**
+     * Creates a new page for the text within the message window.
+     * 
+     * @memberof Game_Message
+     */
     newPage(): void;
     /**
      * Returns all of the text contained within the message.
