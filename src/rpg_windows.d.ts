@@ -1431,6 +1431,12 @@ declare class Window_MenuStatus extends Window_Selectable {
      * @memberof Window_MenuStatus
      */
     loadImages(): void;
+    /**
+     * Draws the item background at the given index.
+     * 
+     * @param {number} index 
+     * @memberof Window_MenuStatus
+     */
     drawItemBackground(index: number): void;
     drawItemImage(index: number): void;
     drawItemStatus(index: number): void;
@@ -1480,6 +1486,12 @@ declare class Window_ItemCategory extends Window_HorzCommand {
 
     constructor();
 
+    /**
+     * Sets the item window on the item category window.
+     * 
+     * @param {Window_ItemList} itemWindow 
+     * @memberof Window_ItemCategory
+     */
     setItemWindow(itemWindow: Window_ItemList): void;
 }
 
@@ -1497,12 +1509,43 @@ declare class Window_ItemList extends Window_Selectable {
     constructor(x: number, y: number, width: number, height: number);
 
     setCategory(category: string): void;
+    /**
+     * Returns the current item.
+     * 
+     * @returns {RPG.BaseItem} 
+     * @memberof Window_ItemList
+     */
     item(): RPG.BaseItem;
+    /**
+     * Returns true if the given item is included.
+     * 
+     * @param {RPG.BaseItem} item 
+     * @returns {boolean} 
+     * @memberof Window_ItemList
+     */
     includes(item: RPG.BaseItem): boolean;
     needsNumber(): boolean;
+    /**
+     * Returns true if the given item is enabled.
+     * 
+     * @param {RPG.BaseItem} item 
+     * @returns {boolean} 
+     * @memberof Window_ItemList
+     */
     isEnabled(item: RPG.BaseItem): boolean;
     selectLast(): void;
+    /**
+     * Creates the item list.
+     * 
+     * @memberof Window_ItemList
+     */
     makeItemList(): void;
+    /**
+     * Returns the width of the numbers.
+     * 
+     * @returns {number} 
+     * @memberof Window_ItemList
+     */
     numberWidth(): number;
     drawItemNumber(item: RPG.BaseItem, x: number, y: number, width: number): void;
 }
@@ -1618,11 +1661,48 @@ declare class Window_SkillList extends Window_Selectable {
 
     constructor(x: number, y: number, witth: number, height: number);
 
+    /**
+     * Sets the current actor of the skill list window.
+     * 
+     * @param {Game_Actor} actor 
+     * @memberof Window_SkillList
+     */
     setActor(actor: Game_Actor): void;
+    /**
+     * Sets the skill type id of the skill list window.
+     * 
+     * @param {number} stypeId 
+     * @memberof Window_SkillList
+     */
     setStypeId(stypeId: number): void;
+    /**
+     * Returns the current skill from the databse.
+     * 
+     * @returns {RPG.Skill} 
+     * @memberof Window_SkillList
+     */
     item(): RPG.Skill;
+    /**
+     * Returns true if the given skill is included.
+     * 
+     * @param {RPG.Skill} item 
+     * @returns {boolean} 
+     * @memberof Window_SkillList
+     */
     includes(item: RPG.Skill): boolean;
+    /**
+     * Returns true if the given skill is enabled.
+     * 
+     * @param {RPG.Skill} item 
+     * @returns {boolean} 
+     * @memberof Window_SkillList
+     */
     isEnabled(item: RPG.Skill): boolean;
+    /**
+     * Creates the item list.
+     * 
+     * @memberof Window_SkillList
+     */
     makeItemList(): void;
     selectLast(): void;
     costWidth(): number;
@@ -1682,11 +1762,49 @@ declare class Window_EquipSlot extends Window_Selectable {
 
     constructor(x: number, y: number, width: number, height: number);
 
+    /**
+     * Sets the current game actor.
+     * 
+     * @param {Game_Actor} actor 
+     * @memberof Window_EquipSlot
+     */
     setActor(actor: Game_Actor): void;
+    /**
+     * Returns the current equip item.
+     * 
+     * @returns {RPG.EquipItem} 
+     * @memberof Window_EquipSlot
+     */
     item(): RPG.EquipItem;
+    /**
+     * Returns the name of the slot at the specified index.
+     * 
+     * @param {number} index 
+     * @returns {string} 
+     * @memberof Window_EquipSlot
+     */
     slotName(index: number): string;
+    /**
+     * Returns true if the current slot is enabled.
+     * 
+     * @param {number} index 
+     * @returns {boolean} 
+     * @memberof Window_EquipSlot
+     */
     isEnabled(index: number): boolean;
+    /**
+     * Sets the status window within the equip slot window.
+     * 
+     * @param {Window_EquipStatus} statusWindow 
+     * @memberof Window_EquipSlot
+     */
     setStatusWindow(statusWindow: Window_EquipStatus): void;
+    /**
+     * Sets the item window within the equip slot window.
+     * 
+     * @param {Window_EquipItem} itemWindow 
+     * @memberof Window_EquipSlot
+     */
     setItemWindow(itemWindow: Window_EquipItem): void;
 }
 
@@ -2249,7 +2367,19 @@ declare class Window_NameInput extends Window_Selectable {
 
     constructor(editWindow: Window_NameEdit);
 
+    /**
+     * Returns the window height.
+     * 
+     * @returns {number} 
+     * @memberof Window_NameInput
+     */
     windowHeight(): number;
+    /**
+     * Returns the table of characters to input.
+     * 
+     * @returns {Array<Array<string>>} 
+     * @memberof Window_NameInput
+     */
     table(): Array<Array<string>>;
     character(): string;
     isPageChange(): boolean;
