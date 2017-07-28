@@ -235,8 +235,23 @@ declare class Scene_Map extends Scene_Base {
      */
     processMapTouch(): void;
     isSceneChangeOk(): boolean;
+    /**
+     * Updates the scene.
+     * 
+     * @memberof Scene_Map
+     */
     updateScene(): void;
+    /**
+     * Creates all the display objects on the map scene;
+     * this includes the sprites, window layer, windows, and more.
+     * @memberof Scene_Map
+     */
     createDisplayObjects(): void;
+    /**
+     * Creates the spriteset on the map scene; 
+     * this shows all the characters and events on the map.
+     * @memberof Scene_Map
+     */
     createSpriteset(): void;
     /**
      * Creates all the windows on the map scene
@@ -244,12 +259,12 @@ declare class Scene_Map extends Scene_Base {
      * @memberof Scene_Map
      */
     createAllWindows(): void;
-    createMapNameWindow(): void;
     /**
-     * Creates the map name window within
-     * the map scene; display map name.
-     * @memberof Scene_Map
-     */
+    * Creates the map name window within
+    * the map scene; display map name.
+    * @memberof Scene_Map
+    */
+    createMapNameWindow(): void;
     /**
      * Creates the message window for displaying
      * text on the map scene. Commonly used with the
@@ -257,6 +272,11 @@ declare class Scene_Map extends Scene_Base {
      * @memberof Scene_Map
      */
     createMessageWindow(): void;
+    /**
+     * Creates a scrolling text window on the map scene.
+     * 
+     * @memberof Scene_Map
+     */
     createScrollTextWindow(): void;
     /**
      * Checks if the player is transferring;
@@ -264,7 +284,17 @@ declare class Scene_Map extends Scene_Base {
      * @memberof Scene_Map
      */
     updateTransferPlayer(): void;
+    /**
+     * Processes starting an encounter on the map scene.
+     * 
+     * @memberof Scene_Map
+     */
     updateEncounter(): void;
+    /**
+     * Processes calling the menu on the map scene.
+     * 
+     * @memberof Scene_Map
+     */
     updateCallMenu(): void;
     /**
      * Returns true if the menu is enabled
@@ -302,7 +332,17 @@ declare class Scene_Map extends Scene_Base {
     isDebugCalled(): boolean;
     fadeInForTransfer(): void;
     fadeOutForTransfer(): void;
+    /**
+     * Launches into the battle scene.
+     * 
+     * @memberof Scene_Map
+     */
     launchBattle(): void;
+    /**
+     * Stops all audio on battle start.
+     * 
+     * @memberof Scene_Map
+     */
     stopAudioOnBattleStart(): void;
     startEncounterEffect(): void;
     updateEncounterEffect(): void;
@@ -323,16 +363,74 @@ declare class Scene_Map extends Scene_Base {
  * @extends {Scene_Base}
  */
 declare class Scene_MenuBase extends Scene_Base {
+    /**
+     * The current actor selected in the base menu scene.
+     * 
+     * @protected
+     * @type {Game_Actor}
+     * @memberof Scene_MenuBase
+     */
     protected _actor: Game_Actor;
+    /**
+     * The background sprite used to display the scene background.
+     * 
+     * @protected
+     * @type {Sprite}
+     * @memberof Scene_MenuBase
+     */
     protected _backgroundSprite: Sprite;
+    /**
+     * The help window attached to the base menu scene.
+     * 
+     * @protected
+     * @type {Window_Help}
+     * @memberof Scene_MenuBase
+     */
     protected _helpWindow: Window_Help;
 
+    /**
+     * Returns the current game actor.
+     * 
+     * @returns {Game_Actor} 
+     * @memberof Scene_MenuBase
+     */
     actor(): Game_Actor;
+    /**
+     * Updates the current actor.
+     * 
+     * @memberof Scene_MenuBase
+     */
     updateActor(): void;
+    /**
+     * Creates the background of the base menu scene.
+     * 
+     * @memberof Scene_MenuBase
+     */
     createBackground(): void;
+    /**
+     * Sets the background opacity of the base menu scene background.
+     * 
+     * @param {number} opacity 
+     * @memberof Scene_MenuBase
+     */
     setBackgroundOpacity(opacity: number): void;
+    /**
+     * Creates the help window.
+     * 
+     * @memberof Scene_MenuBase
+     */
     createHelpWindow(): void;
+    /**
+     * Moves to the next actor in the party.
+     * 
+     * @memberof Scene_MenuBase
+     */
     nextActor(): void;
+    /**
+     * Moves to the previous actor in the party.
+     * 
+     * @memberof Scene_MenuBase
+     */
     previousActor(): void;
     onActorChange(): void;
 }
@@ -414,21 +512,83 @@ declare class Scene_ItemBase extends Scene_MenuBase {
     protected _actorWindow: Window_MenuActor;
     protected _itemWindow: Window_Selectable;
 
+    /**
+     * Creates the actor window within the base item scene.
+     * 
+     * @memberof Scene_ItemBase
+     */
     createActorWindow(): void;
-    item(): void;
+    /**
+     * Returns the item attached to the item window within the base item scene.
+     * 
+     * @returns {*} 
+     * @memberof Scene_ItemBase
+     */
+    item(): any;
+    /**
+     * Returns the current game actor.
+     * 
+     * @returns {Game_Actor} 
+     * @memberof Scene_ItemBase
+     */
     user(): Game_Actor;
+    /**
+     * Returns true if the cursor is left.
+     * 
+     * @returns {boolean} 
+     * @memberof Scene_ItemBase
+     */
     isCursorLeft(): boolean;
+    /**
+     * Shows the sub window.
+     * 
+     * @param {Window_Base} window 
+     * @memberof Scene_ItemBase
+     */
     showSubWindow(window: Window_Base): void;
+    /**
+     * Hides the sub window.
+     * 
+     * @param {Window_Base} window 
+     * @memberof Scene_ItemBase
+     */
     hideSubWindow(window: Window_Base): void;
     onActorOk(): void;
     onActorCancel(): void;
     determineItem(): void;
+    /**
+     * Uses the current item.
+     * 
+     * @memberof Scene_ItemBase
+     */
     useItem(): void;
+    /**
+     * Activates the item window.
+     * 
+     * @memberof Scene_ItemBase
+     */
     activateItemWindow(): void;
     itemTargetActors(): Game_Actor;
+    /**
+     * Returns true if the user (game actor) can use the item.
+     * 
+     * @returns {boolean} 
+     * @memberof Scene_ItemBase
+     */
     canUse(): boolean;
+    /**
+     * Returns true if the item effects are valid on the target(the user).
+     * 
+     * @returns {boolean} 
+     * @memberof Scene_ItemBase
+     */
     isItemEffectsValid(): boolean;
     applyItem(): void;
+    /**
+     * Checks the common event set on the item.
+     * 
+     * @memberof Scene_ItemBase
+     */
     checkCommonEvent(): void;
 }
 
@@ -546,10 +706,35 @@ declare class Scene_Equip extends Scene_MenuBase {
     protected _slotWindow: Window_EquipSlot;
     protected _itemWindow: Window_EquipItem;
 
+    /**
+     * Creates the status window within the equip scene.
+     * 
+     * @memberof Scene_Equip
+     */
     createStatusWindow(): void;
+    /**
+     * Creates the status window within the equip scene.
+     * 
+     * @memberof Scene_Equip
+     */
     createCommandWindow(): void;
+    /**
+     * Creates the slot window within the  equip scene.
+     * 
+     * @memberof Scene_Equip
+     */
     createSlotWindow(): void;
+    /**
+     * Creates the item window within the equip scene.
+     * 
+     * @memberof Scene_Equip
+     */
     createItemWindow(): void;
+    /**
+     * Refreshes the actor within the equip scene.
+     * 
+     * @memberof Scene_Equip
+     */
     refreshActor(): void;
     commandEquip(): void;
     commandOptimize(): void;
@@ -572,7 +757,17 @@ declare class Scene_Equip extends Scene_MenuBase {
 declare class Scene_Status extends Scene_MenuBase {
     protected _statusWindow: Window_Status;
 
+    /**
+     * Refreshes the actor within the status scene.
+     * 
+     * @memberof Scene_Status
+     */
     refreshActor(): void;
+    /**
+     * Handler for when the actor is changed within the status scene.
+     * 
+     * @memberof Scene_Status
+     */
     onActorChange(): void;
 }
 
@@ -807,16 +1002,26 @@ declare class Scene_Shop extends Scene_MenuBase {
      * @memberof Scene_Shop
      */
     createSellWindow(): void;
+    /**
+     * Activates the buy window within the shop scene.
+     * 
+     * @memberof Scene_Shop
+     */
     activateBuyWindow(): void;
+    /**
+     * Activates the sell window within the shop scene.
+     * 
+     * @memberof Scene_Shop
+     */
     activateSellWindow(): void;
     /**
-     * Handler for pressing buy on the shop scene.
+     * Handler for pressing buy within the shop scene.
      * 
      * @memberof Scene_Shop
      */
     commandBuy(): void;
     /**
-     * Handler for pressing sell on the shop scene.
+     * Handler for pressing sell within the shop scene.
      * 
      * @memberof Scene_Shop
      */
