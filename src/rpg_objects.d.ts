@@ -366,21 +366,81 @@ declare class Game_Message {
 
     clear(): void;
     choices(): Array<string>;
+    /**
+     * Returns the name of the face image used for the message.
+     * 
+     * @returns {string} 
+     * @memberof Game_Message
+     */
     faceName(): string;
+    /**
+     * Returns the face index within the face image to display the
+     * correct face.
+     * @returns {number} 
+     * @memberof Game_Message
+     */
     faceIndex(): number;
+    /**
+     * Returns the background associated with the message;
+     * this is the background
+     * @returns {number} 
+     * @memberof Game_Message
+     */
     background(): number;
+    /**
+     * Returns the current position type of the message window.
+     * 
+     * @returns {number} 
+     * @memberof Game_Message
+     */
     positionType(): number;
     choiceDefaultType(): number;
     choiceCancelType(): number;
+    /**
+     * Returns the background type of the choice window.
+     * 
+     * @returns {number} 
+     * @memberof Game_Message
+     */
     choiceBackground(): number;
+    /**
+     * Returns the position of the choice window.
+     * 
+     * @returns {number} 
+     * @memberof Game_Message
+     */
     choicePositionType(): number;
     numInputVariableId(): number;
     numInputMaxDigits(): number;
     itemChoiceVariableId(): number;
     itemChoiceItypeId(): number;
+    /**
+     * Returns true if the scroll mode is set to true.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Message
+     */
     scrollMode(): boolean;
+    /**
+     * Returns the scroll speed.
+     * 
+     * @returns {number} 
+     * @memberof Game_Message
+     */
     scrollSpeed(): number;
+    /**
+     * Returns true if the scroll is set to not being fast.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Message
+     */
     scrollNoFast(): boolean;
+    /**
+     * Adds text to the game message object.
+     * 
+     * @param {string} text 
+     * @memberof Game_Message
+     */
     add(text: string): void;
     setFaceImage(faceName: string, faceIndex: number): void;
     setBackground(background: number): void;
@@ -399,6 +459,12 @@ declare class Game_Message {
     isItemChoice(): boolean;
     isBusy(): boolean;
     newPage(): void;
+    /**
+     * Returns all of the text contained within the message.
+     * 
+     * @returns {string} 
+     * @memberof Game_Message
+     */
     allText(): string;
 }
 
