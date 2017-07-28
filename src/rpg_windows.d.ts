@@ -2298,10 +2298,38 @@ declare class Window_NumberInput extends Window_Selectable {
 
     start(): void;
     updatePlacement(): void;
+    /**
+     * Returns the window width.
+     * 
+     * @returns {number} 
+     * @memberof Window_NumberInput
+     */
     windowWidth(): number;
+    /**
+     * Returns the window height.
+     * 
+     * @returns {number} 
+     * @memberof Window_NumberInput
+     */
     windowHeight(): number;
+    /**
+     * Returns the item width.
+     * 
+     * @returns {number} 
+     * @memberof Window_NumberInput
+     */
     itemWidth(): number;
+    /**
+     * Creates the number input window buttons.
+     * 
+     * @memberof Window_NumberInput
+     */
     createButtons(): void;
+    /**
+     * Places the number input window buttons.
+     * 
+     * @memberof Window_NumberInput
+     */
     placeButtons(): void;
     updateButtonsVisiblity(): void;
     showButtons(): void;
@@ -2326,8 +2354,25 @@ declare class Window_EventItem extends Window_ItemList {
 
     constructor(messageWindow: Window_Message);
 
+    /**
+     * Returns the height off the window.
+     * 
+     * @returns {number} 
+     * @memberof Window_EventItem
+     */
     windowHeight(): number;
+    /**
+     * Returns the number of visible rows.
+     * 
+     * @returns {number} 
+     * @memberof Window_EventItem
+     */
     numVisibleRows(): number;
+    /**
+     * Starts the event item window.
+     * 
+     * @memberof Window_EventItem
+     */
     start(): void;
     updatePlacement(): void;
     includes(item: RPG.BaseItem): boolean;
@@ -2361,27 +2406,129 @@ declare class Window_Message extends Window_Base {
     constructor();
 
     initMembers(): void;
+    /**
+     * Returns the sub windows attached to the message window.
+     * 
+     * @returns {Array<Window_Base>} 
+     * @memberof Window_Message
+     */
     subWindows(): Array<Window_Base>;
+    /**
+     * Creates the sub windows for the message window.
+     * 
+     * @memberof Window_Message
+     */
     createSubWindows(): void;
+    /**
+     * Returns the width of the window.
+     * 
+     * @returns {number} 
+     * @memberof Window_Message
+     */
     windowWidth(): number;
+    /**
+     * Returns the height of the window.
+     * 
+     * @returns {number} 
+     * @memberof Window_Message
+     */
     windowHeight(): number;
     clearFlags(): void;
+    /**
+     * Returns the number of visible rows within the message window.
+     * 
+     * @returns {number} 
+     * @memberof Window_Message
+     */
     numVisibleRows(): number;
     checkToNotClose(): void;
+    /**
+     * Returns true if the message window can start.
+     * 
+     * @returns {boolean} 
+     * @memberof Window_Message
+     */
     canStart(): boolean;
+    /**
+     * Starts the displaying of the message within the message window.
+     * 
+     * @memberof Window_Message
+     */
     startMessage(): void;
+    /**
+     * Updates the placement of the message window.
+     * 
+     * @memberof Window_Message
+     */
     updatePlacement(): void;
+    /**
+     * Updates the background of the message window.
+     * 
+     * @memberof Window_Message
+     */
     updateBackground(): void;
+    /**
+     * Terminates the message and closes the gold and message window.
+     * 
+     * @memberof Window_Message
+     */
     terminateMessage(): void;
+    /**
+     * Updates the wait of the message window.
+     * 
+     * @returns {boolean} 
+     * @memberof Window_Message
+     */
     updateWait(): boolean;
     updateLoading(): boolean;
+    /**
+     * Updates input when the message window is processing.
+     * 
+     * @returns {boolean} 
+     * @memberof Window_Message
+     */
     updateInput(): boolean;
+    /**
+     * Returns true if any sub window is active.
+     * 
+     * @returns {boolean} 
+     * @memberof Window_Message
+     */
     isAnySubWindowActive(): boolean;
+    /**
+     * Updates the message.
+     * 
+     * @returns {boolean} 
+     * @memberof Window_Message
+     */
     updateMessage(): boolean;
+    /**
+     * Handler for when there is no text left to display within
+     * the message window.
+     * @memberof Window_Message
+     */
     onEndOfText(): void;
     startInput(): boolean;
+    /**
+     * Returns true if the ok or cancel inputs have been triggered
+     * multiple times.
+     * @returns {boolean} 
+     * @memberof Window_Message
+     */
     isTriggered(): boolean;
+    /**
+     * Returns true if the message window still has text
+     * and settings have not changed.
+     * @returns {boolean} 
+     * @memberof Window_Message
+     */
     doesContinue(): boolean;
+    /**
+     * Returns true if the message window settings have been changed.
+     * 
+     * @returns {boolean} 
+     * @memberof Window_Message
+     */
     areSettingsChanged(): boolean;
     updateShowFast(): void;
     newPage(textState: MV.TextState): void;
@@ -2390,10 +2537,35 @@ declare class Window_Message extends Window_Base {
     newLineX(): number;
     processNewLine(textState: MV.TextState): void;
     processNewPage(textState: MV.TextState): void;
+    /**
+     * Returns true if there is no text left to display in the message
+     * window.
+     * @param {MV.TextState} textState 
+     * @returns {boolean} 
+     * @memberof Window_Message
+     */
     isEndOfText(textState: MV.TextState): boolean;
+    /**
+     * Returns true if the text state needs a new page to display text.
+     * 
+     * @param {MV.TextState} textState 
+     * @returns {boolean} 
+     * @memberof Window_Message
+     */
     needsNewPage(textState: MV.TextState): boolean;
     processEscapeCharacter(code: string, textState: MV.TextState): void;
+    /**
+     * Starts a wait for the message window.
+     * 
+     * @param {number} count 
+     * @memberof Window_Message
+     */
     startWait(count: number): void;
+    /**
+     * Starts a pause for the message window; this will only be
+     * lifted if the user presses a button.
+     * @memberof Window_Message
+     */
     startPause(): void;
 }
 
@@ -2411,12 +2583,34 @@ declare class Window_ScrollText extends Window_Base {
 
     constructor();
 
+    /**
+     * Starts the displaying of a message in the scroll text window.
+     * 
+     * @memberof Window_ScrollText
+     */
     startMessage(): void;
     refresh(): void;
     updateMessage(): void;
     scrollSpeed(): number;
+    /**
+     * Returns true if the scene is in fast forward mode.
+     * 
+     * @returns {boolean} 
+     * @memberof Window_ScrollText
+     */
     isFastForward(): boolean;
+    /**
+     * Returns the fast forward rate of the scroll text window.
+     * 
+     * @returns {number} 
+     * @memberof Window_ScrollText
+     */
     fastForwardRate(): number;
+    /**
+     * Terminates the message and the scroll text window is hidden.
+     * 
+     * @memberof Window_ScrollText
+     */
     terminateMessage(): void;
 }
 
@@ -2432,11 +2626,37 @@ declare class Window_MapName extends Window_Base {
 
     constructor();
 
+    /**
+     * Returns the window width.
+     * 
+     * @returns {number} 
+     * @memberof Window_MapName
+     */
     windowWidth(): number;
+    /**
+     * Returns the window height.
+     * 
+     * @returns {number} 
+     * @memberof Window_MapName
+     */
     windowHeight(): number;
     updateFadeIn(): void;
     updateFadeOut(): void;
+    /**
+     * Windows the map name window.
+     * 
+     * @memberof Window_MapName
+     */
     refresh(): void;
+    /**
+     * Draws the background of the map name window.
+     * 
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} width 
+     * @param {number} height 
+     * @memberof Window_MapName
+     */
     drawBackground(x: number, y: number, width: number, height: number): void;
 }
 
@@ -2563,10 +2783,36 @@ declare class Window_ActorCommand extends Window_Command {
 
     constructor();
 
+    /**
+     * Adds the attack command to the actor command window.
+     * 
+     * @memberof Window_ActorCommand
+     */
     addAttackCommand(): void;
+    /**
+     * Adds the skill command to the actor command window.
+     * 
+     * @memberof Window_ActorCommand
+     */
     addSkillCommands(): void;
+    /**
+     * Adds the guard command to the actor command window.
+     * 
+     * @memberof Window_ActorCommand
+     */
     addGuardCommand(): void;
+    /**
+     * Adds the item command to the actor command window.
+     * 
+     * @memberof Window_ActorCommand
+     */
     addItemCommand(): void;
+    /**
+     * Sets up the actor command window with a specified actor.
+     * 
+     * @param {Game_Actor} actor 
+     * @memberof Window_ActorCommand
+     */
     setup(actor: Game_Actor): void;
     selectLast(): void;
 }
@@ -2581,15 +2827,74 @@ declare class Window_ActorCommand extends Window_Command {
 declare class Window_BattleStatus extends Window_Selectable {
     constructor();
 
+    /**
+     * Returns the window width.
+     * 
+     * @returns {number} 
+     * @memberof Window_BattleStatus
+     */
     windowWidth(): number;
+    /**
+     * Returns the window height.
+     * 
+     * @returns {number} 
+     * @memberof Window_BattleStatus
+     */
     windowHeight(): number;
+    /**
+     * Returns the number of visible rows.
+     * 
+     * @returns {number} 
+     * @memberof Window_BattleStatus
+     */
     numVisibleRows(): number;
     basicAreaRect(index: number): Rectangle;
+    /**
+     * returns a rectangle for the gauges in the gauge area.
+     * 
+     * @param {number} index 
+     * @returns {Rectangle} 
+     * @memberof Window_BattleStatus
+     */
     gaugeAreaRect(index: number): Rectangle;
+    /**
+     * Returns the width of the guage area.
+     * 
+     * @returns {number} 
+     * @memberof Window_BattleStatus
+     */
     gaugeAreaWidth(): number;
+    /**
+     * Draws the basic area for actors within the battle status window.
+     * 
+     * @param {Rectangle} rect 
+     * @param {Game_Actor} actor 
+     * @memberof Window_BattleStatus
+     */
     drawBasicArea(rect: Rectangle, actor: Game_Actor): void;
+    /**
+     * Draws the gauge area for the actors within the battle status window.
+     * 
+     * @param {Rectangle} rect 
+     * @param {Game_Actor} actor 
+     * @memberof Window_BattleStatus
+     */
     drawGaugeArea(rect: Rectangle, actor: Game_Actor): void;
+    /**
+     * Draws the gauges in the basic area with tp included.
+     * 
+     * @param {Rectangle} rect 
+     * @param {Game_Actor} actor 
+     * @memberof Window_BattleStatus
+     */
     drawGaugeAreaWithTp(rect: Rectangle, actor: Game_Actor): void;
+    /**
+     * Draws the gauges in the basic area without tp included.
+     * 
+     * @param {Rectangle} rect 
+     * @param {Game_Actor} actor 
+     * @memberof Window_BattleStatus
+     */
     drawGaugeAreaWithoutTp(rect: Rectangle, actor: Game_Actor): void;
 }
 
@@ -2603,7 +2908,19 @@ declare class Window_BattleStatus extends Window_Selectable {
 declare class Window_BattleActor extends Window_BattleStatus {
     constructor(x: number, y: number);
 
+    /**
+     * Selects an actor within the battle actor window.
+     * 
+     * @param {number} index 
+     * @memberof Window_BattleActor
+     */
     select(index: number): void;
+    /**
+     * Returns the current selected actor.
+     * 
+     * @returns {Game_Actor} 
+     * @memberof Window_BattleActor
+     */
     actor(): Game_Actor;
 }
 
@@ -2619,11 +2936,47 @@ declare class Window_BattleEnemy extends Window_Selectable {
 
     constructor(x: number, y: number);
 
+    /**
+     * Returns the window width.
+     * 
+     * @returns {number} 
+     * @memberof Window_BattleEnemy
+     */
     windowWidth(): number;
+    /**
+     * Returns the window height.
+     * 
+     * @returns {number} 
+     * @memberof Window_BattleEnemy
+     */
     windowHeight(): number;
+    /**
+     * Returns the number of visible rows.
+     * 
+     * @returns {number} 
+     * @memberof Window_BattleEnemy
+     */
     numVisibleRows(): number;
+    /**
+     * Returns the current enemy.
+     * 
+     * @returns {Game_Enemy} 
+     * @memberof Window_BattleEnemy
+     */
     enemy(): Game_Enemy;
+    /**
+     * Returns the current index selected.
+     * 
+     * @returns {number} 
+     * @memberof Window_BattleEnemy
+     */
     enemyIndex(): number;
+    /**
+     * Selects a specified enemy using the index.
+     * 
+     * @param {number} index 
+     * @memberof Window_BattleEnemy
+     */
     select(index: number): void;
 }
 
