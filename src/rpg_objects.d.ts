@@ -9,15 +9,74 @@ declare class Game_Temp {
     protected _destinationX: number;
     protected _destinationY: number;
 
+    /**
+     * Determines if the game is in Play Test mode.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Temp
+     */
     isPlaytest(): boolean;
+    /**
+     * Reserves the given commonEventId to be processed later.
+     * 
+     * @param {number} commonEventId 
+     * @memberof Game_Temp
+     */
     reserveCommonEvent(commonEventId: number): void;
+    /**
+     * Clears the current reserved common event.
+     * 
+     * @memberof Game_Temp
+     */
     clearCommonEvent(): void;
+    /**
+     * Returns true if a common event has been reserved.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Temp
+     */
     isCommonEventReserved(): boolean;
-    reservedCommonEvent(): void;
+    /**
+     * Returns common event data from the database.
+     * 
+     * @returns {any} 
+     * @memberof Game_Temp
+     */
+    reservedCommonEvent(): any;
+    /**
+     * Sets the destination of the player for movement.
+     * 
+     * @param {number} x 
+     * @param {number} y 
+     * @memberof Game_Temp
+     */
     setDestination(x: number, y: number): void;
+    /**
+     * Clears the destination of movement for the player.
+     * 
+     * @memberof Game_Temp
+     */
     clearDestination(): void;
+    /**
+     * Determines if the destination for the player to move to is valid.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Temp
+     */
     isDestinationValid(): boolean;
+    /**
+     * Returns the x coordinate of the destination.
+     * 
+     * @returns {number} 
+     * @memberof Game_Temp
+     */
     destinationX(): number;
+    /**
+     * Returns the y coordinate of the destination.
+     * 
+     * @returns {number} 
+     * @memberof Game_Temp
+     */
     destinationY(): number;
 }
 
@@ -53,29 +112,142 @@ declare class Game_System {
     isRussian(): boolean;
     isSideView(): boolean;
     isSaveEnabled(): boolean;
+    /**
+     * Disables the ability to save the game.
+     * 
+     * @memberof Game_System
+     */
     disableSave(): void;
+    /**
+     * Enables the ability to save the game.
+     * 
+     * @memberof Game_System
+     */
     enableSave(): void;
+    /**
+     * Returns true if the menu is enabled.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_System
+     */
     isMenuEnabled(): boolean;
+    /**
+     * Disables the menu from being accessed.
+     * 
+     * @memberof Game_System
+     */
     disableMenu(): void;
+    /**
+     * Enables the menu to be accessed.
+     * 
+     * @memberof Game_System
+     */
     enableMenu(): void;
     isEncounterEnabled(): boolean;
+    /**
+     * Returns true if the player can encounter enemies.
+     * 
+     * @memberof Game_System
+     */
     disableEncounter(): void;
     enableEncounter(): void;
     isFormationEnabled(): boolean;
+    /**
+     * Disables the use of the formation command in the menu.
+     * 
+     * @memberof Game_System
+     */
     disableFormation(): void;
+    /**
+     * Enables the use of the formation command in the menu.
+     * 
+     * @memberof Game_System
+     */
     enableFormation(): void;
+    /**
+     * Returns the number of battles the player has participated in.
+     * 
+     * @returns {number} 
+     * @memberof Game_System
+     */
     battleCount(): number;
+    /**
+     * Returns the number of the wins the player has gained in battle.
+     * 
+     * @returns {number} 
+     * @memberof Game_System
+     */
     winCount(): number;
+    /**
+     * Returns the number of battles the player has escaped from in battle.
+     * 
+     * @returns {number} 
+     * @memberof Game_System
+     */
     escapeCount(): number;
+    /**
+     * Returns the number of saves the player has made in game.
+     * 
+     * @returns {number} 
+     * @memberof Game_System
+     */
     saveCount(): number;
+    /**
+     * Returns the version id represented in the database.
+     * 
+     * @returns {number} 
+     * @memberof Game_System
+     */
     versionId(): number;
+    /**
+     * Returns the tone of the window in the database.
+     * 
+     * @returns {Array<number>} 
+     * @memberof Game_System
+     */
     windowTone(): Array<number>;
     setWindowTone(value: Array<number>): void;
+    /**
+     * Returns the current battle background music.
+     * 
+     * @returns {RPG.AudioFile} 
+     * @memberof Game_System
+     */
     battleBgm(): RPG.AudioFile;
+    /**
+     * Sets the battle background music.
+     * 
+     * @param {RPG.AudioFile} value 
+     * @memberof Game_System
+     */
     setBattleBgm(value: RPG.AudioFile): void;
+    /**
+     * Returns the victory musical effect.
+     * 
+     * @returns {RPG.AudioFile} 
+     * @memberof Game_System
+     */
     victoryMe(): RPG.AudioFile;
+    /**
+     * Sets the victory musical effect.
+     * 
+     * @param {RPG.AudioFile} value 
+     * @memberof Game_System
+     */
     setVictoryMe(value: RPG.AudioFile): void;
+    /**
+     * Returns the defeat musical effect.
+     * 
+     * @returns {RPG.AudioFile} 
+     * @memberof Game_System
+     */
     defeatMe(): RPG.AudioFile;
+    /**
+     * Sets the defeat musical effect.
+     * 
+     * @param {RPG.AudioFile} value 
+     * @memberof Game_System
+     */
     setDefeatMe(value: RPG.AudioFile): void;
     onBattleStart(): void;
     onBattleWin(): void;
@@ -84,10 +256,36 @@ declare class Game_System {
     onAfterLoad(): void;
     playtime(): number;
     playtimeText(): string;
+    /**
+     * Saves background music to the game system object.
+     * 
+     * @memberof Game_System
+     */
     saveBgm(): void;
+    /**
+     * Replays the saved background music.
+     * 
+     * @memberof Game_System
+     */
     replayBgm(): void;
+    /**
+     * Saves the walking background music.
+     * 
+     * @memberof Game_System
+     */
     saveWalkingBgm(): void;
+    /**
+     * Replays the saved walking background music.
+     * 
+     * @memberof Game_System
+     */
     replayWalkingBgm(): void;
+    /**
+     * Saves the second walking bgm from the map data.
+     * 
+     * @memberof Game_System
+     */
+    saveWalkingBgm2(): void;
 }
 
 /**
@@ -99,11 +297,45 @@ declare class Game_Timer {
     protected _frames: number;
     protected _working: boolean;
 
+    /**
+     * Updates the game timer.
+     * 
+     * @param {boolean} sceneActive 
+     * @memberof Game_Timer
+     */
     update(sceneActive: boolean): void;
+    /**
+     * Starts the timer with the specified number of frames as count.
+     * 
+     * @param {number} count 
+     * @memberof Game_Timer
+     */
     start(count: number): void;
+    /**
+     * Stops the timer.
+     * 
+     * @memberof Game_Timer
+     */
     stop(): void;
+    /**
+     * Returns true if the timer is working and counting down.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Timer
+     */
     isWorking(): boolean;
+    /**
+     * Returns the number of seconds on the timer.
+     * 
+     * @returns {number} 
+     * @memberof Game_Timer
+     */
     seconds(): number;
+    /**
+     * Handler for when the time expires on the timer.
+     * 
+     * @memberof Game_Timer
+     */
     onExpire(): void;
 }
 
