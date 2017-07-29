@@ -2913,16 +2913,80 @@ declare class Game_Party extends Game_Unit {
     highestLevel(): number;
     addActor(actorId: number): void;
     removeActor(actorId: number): void;
+    /**
+     * Returns party gold.
+     * 
+     * @returns {number} 
+     * @memberof Game_Party
+     */
     gold(): number;
+    /**
+     * Increases the party gold given a specified amount.
+     * 
+     * @param {number} amount 
+     * @memberof Game_Party
+     */
     gainGold(amount: number): void;
+    /**
+     * Decreases the party gold given a specified amount.
+     * 
+     * @param {number} amount 
+     * @memberof Game_Party
+     */
     loseGold(amount: number): void;
+    /**
+     * Returns maximum gold of the party.
+     * 
+     * @returns {number} 
+     * @memberof Game_Party
+     */
     maxGold(): number;
+    /**
+     * Returns the number of steps the party has taken.
+     * 
+     * @returns {number} 
+     * @memberof Game_Party
+     */
     steps(): number;
+    /**
+     * Increases the number of steps the party has taken.
+     * 
+     * @memberof Game_Party
+     */
     increaseSteps(): void;
+    /**
+     * Returns the number of items in the possession of the party of the
+     * given item.
+     * @param {RPG.BaseItem} item 
+     * @returns {number} 
+     * @memberof Game_Party
+     */
     numItems(item: RPG.BaseItem): number;
+    /**
+     * Returns the maximum number of items of the given item.
+     * 
+     * @param {RPG.BaseItem} item 
+     * @returns {number} 
+     * @memberof Game_Party
+     */
     maxItems(item: RPG.BaseItem): number;
     hasMaxItems(item: RPG.BaseItem): boolean;
+    /**
+     * Returns true if the party has the given item;
+     * if includeEquip is set to true, this will also check party equipment.
+     * @param {RPG.BaseItem} item 
+     * @param {boolean} includeEquip 
+     * @returns {boolean} 
+     * @memberof Game_Party
+     */
     hasItem(item: RPG.BaseItem, includeEquip: boolean): boolean;
+    /**
+     * Returns true if any party member has the specified equip item.
+     * 
+     * @param {RPG.EquipItem} item 
+     * @returns {boolean} 
+     * @memberof Game_Party
+     */
     isAnyMemberEquipped(item: RPG.EquipItem): boolean;
     gainItem(item: RPG.BaseItem, amount: number, includeEquip: boolean): void;
     discardMembersEquip(item: RPG.EquipItem, amount: number): void;
@@ -2930,6 +2994,11 @@ declare class Game_Party extends Game_Unit {
     consumeItem(item: RPG.BaseItem): void;
     canUse(item: RPG.BaseItem): boolean;
     canInput(): boolean;
+    /**
+     * Handler for when the player walks.
+     * 
+     * @memberof Game_Party
+     */
     onPlayerWalk(): void;
     menuActor(): Game_Actor;
     setMenuActor(actor: Game_Actor): void;
@@ -2946,14 +3015,46 @@ declare class Game_Party extends Game_Unit {
     hasEncounterHalf(): boolean;
     hasEncounterNone(): boolean;
     hasCancelSurprise(): boolean;
+    /**
+     * Returns true if the party has an increased chance of preemptive strike.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Party
+     */
     hasRaisePreemptive(): boolean;
+    /**
+     * Returns true if the party has double gold in effect.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Party
+     */
     hasGoldDouble(): boolean;
     hasDropItemDouble(): boolean;
     ratePreemptive(troopAgi: number): number;
     rateSurprise(troopAgi: number): number;
+    /**
+     * Performs victory motion for the entire party.
+     * 
+     * @memberof Game_Party
+     */
     performVictory(): void;
+    /**
+     * Performs escape motion for the entire party.
+     * 
+     * @memberof Game_Party
+     */
     performEscape(): void;
+    /**
+     * Remove battle states from all actors in the party.
+     * 
+     * @memberof Game_Party
+     */
     removeBattleStates(): void;
+    /**
+     * Refreshes the motion on all actors in the party.
+     * 
+     * @memberof Game_Party
+     */
     requestMotionRefresh(): void;
 }
 
@@ -2975,26 +3076,118 @@ declare class Game_Troop extends Game_Unit {
     protected _turnCount: number;
     protected _namesCount: {[name: string]: number};
 
+    /**
+     * Returns all enemies in the battle.
+     * 
+     * @returns {Array<Game_Enemy>} 
+     * @memberof Game_Troop
+     */
     members(): Array<Game_Enemy>;
+    /**
+     * Returns all alive enemies.
+     * 
+     * @returns {Array<Game_Enemy>} 
+     * @memberof Game_Troop
+     */
     aliveMembers(): Array<Game_Enemy>;
+    /**
+     * Returns all dead enemies.
+     * 
+     * @returns {Array<Game_Enemy>} 
+     * @memberof Game_Troop
+     */
     deadMembers(): Array<Game_Enemy>;
+    /**
+     * Returns movable enemies.
+     * 
+     * @returns {Array<Game_Enemy>} 
+     * @memberof Game_Troop
+     */
     movableMembers(): Array<Game_Enemy>;
+    /**
+     * Returns true if event is running.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Troop
+     */
     isEventRunning(): boolean;
+    /**
+     * Updates the game interpreter.
+     * 
+     * @memberof Game_Troop
+     */
     updateInterpreter(): void;
+    /**
+     * Returns the turn count.
+     * 
+     * @returns {number} 
+     * @memberof Game_Troop
+     */
     turnCount(): number;
-    members(): Array<Game_Enemy>;
     clear(): void;
+    /**
+     * Returns troop information from the database.
+     * 
+     * @returns {RPG.Troop} 
+     * @memberof Game_Troop
+     */
     troop(): RPG.Troop;
     setup(troopId: number): void;
+    /**
+     * Creates unique names for each enemy.
+     * 
+     * @memberof Game_Troop
+     */
     makeUniqueNames(): void;
+    /**
+     * Returns the letter table for enemy troops.
+     * 
+     * @returns {Array<string>} 
+     * @memberof Game_Troop
+     */
     letterTable(): Array<string>;
+    /**
+     * Returns the name of enemies within the troop.
+     * 
+     * @returns {Array<string>} 
+     * @memberof Game_Troop
+     */
     enemyNames(): Array<string>;
     meetsConditions(page: RPG.BattleEventPage): boolean;
     setupBattleEvent(): void;
+    /**
+     * Increases the turn number.
+     * 
+     * @memberof Game_Troop
+     */
     increaseTurn(): void;
+    /**
+     * Returns the total exp of all members of the enemy troop.
+     * 
+     * @returns {number} 
+     * @memberof Game_Troop
+     */
     expTotal(): number;
+    /**
+     * Return the total gold of all enemies.
+     * 
+     * @returns {number} 
+     * @memberof Game_Troop
+     */
     goldTotal(): number;
+    /**
+     * Returns the gold rate based on game party gold rate.
+     * 
+     * @returns {number} 
+     * @memberof Game_Troop
+     */
     goldRate(): number;
+    /**
+     * Creates the drop items for all members of the enemy troop, and
+     * returns the item information.
+     * @returns {Array<RPG.BaseItem>} 
+     * @memberof Game_Troop
+     */
     makeDropItems(): Array<RPG.BaseItem>;
 }
 
@@ -3032,12 +3225,54 @@ declare class Game_Map {
     protected _needsRefresh: boolean;
 
     setup(mapId: number): void;
+    /**
+     * Returns true if an event is running.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Map
+     */
     isEventRunning(): boolean;
+    /**
+     * Returns tile width.
+     * 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     tileWidth(): number;
+    /**
+     * Returns tile height.
+     * 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     tileHeight(): number;
+    /**
+     * Returns map id.
+     * 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     mapId(): number;
+    /**
+     * Returns the tileset id.
+     * 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     tilesetId(): number;
+    /**
+     * Returns the display x coordinate.
+     * 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     displayX(): number;
+    /**
+     * Returns the display y coordinate.
+     * 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     displayY(): number;
     parallaxName(): string;
     battleback1Name(): string;
@@ -3046,17 +3281,77 @@ declare class Game_Map {
     isNameDisplayEnabled(): boolean;
     disableNameDisplay(): void;
     enableNameDisplay(): void;
+    /**
+     * Creates the vehicles for the game map.
+     * 
+     * @memberof Game_Map
+     */
     createVehicles(): void;
+    /**
+     * Refreshes the vehicles on the game map.
+     * 
+     * @memberof Game_Map
+     */
     refereshVehicles(): void;
     vehicles(): Array<Game_Vehicle>;
+    /**
+     * Returns the game vehicle specified by type.
+     * 
+     * @param {string} type 
+     * @returns {Game_Vehicle} 
+     * @memberof Game_Map
+     */
     vehicle(type: string): Game_Vehicle;
+    /**
+     * Returns the game boat.
+     * 
+     * @returns {Game_Vehicle} 
+     * @memberof Game_Map
+     */
     boat(): Game_Vehicle;
+    /**
+     * Returns the game ship.
+     * 
+     * @returns {Game_Vehicle} 
+     * @memberof Game_Map
+     */
     ship(): Game_Vehicle;
+    /**
+     * Returns the game airship.
+     * 
+     * @returns {Game_Vehicle} 
+     * @memberof Game_Map
+     */
     airship(): Game_Vehicle;
     setupEvents(): void;
+    /**
+     * Returns all events on the game map.
+     * 
+     * @returns {Array<Game_Event>} 
+     * @memberof Game_Map
+     */
     events(): Array<Game_Event>;
+    /**
+     * Returns an event, given the event id.
+     * 
+     * @param {number} eventId 
+     * @returns {Game_Event} 
+     * @memberof Game_Map
+     */
     event(eventId: number): Game_Event;
+    /**
+     * Erases the event given the event id.
+     * 
+     * @param {number} eventId 
+     * @memberof Game_Map
+     */
     eraseEvent(eventId: number): void;
+    /**
+     * Returns all the parallel running common events.
+     * 
+     * @returns {Array<RPG.CommonEvent>} 
+     * @memberof Game_Map
+     */
     parallelCommonEvents(): Array<RPG.CommonEvent>;
     setupScroll(): void;
     setupParallax(): void;
@@ -3067,16 +3362,82 @@ declare class Game_Map {
     tileset(): RPG.Tileset;
     tilesetFlags(): Array<number>;
     displayName(): string;
+    /**
+     * Returns the map width.
+     * 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     width(): number;
+    /**
+     * Returns the map height.
+     * 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     height(): number;
+    /**
+     * Returns the map data.
+     * 
+     * @returns {Array<number>} 
+     * @memberof Game_Map
+     */
     data(): Array<number>;
+    /**
+     * Returns true if the map loops horizontally.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Map
+     */
     isLoopHorizontal(): boolean;
+    /**
+     * Returns true if the map loops vertically.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Map
+     */
     isLoopVertical(): boolean;
+    /**
+     * Returns true if dash is disabled on the map.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Map
+     */
     isDashDisabled(): boolean;
+    /**
+     * Returns the list of possible encounters on the current map.
+     * 
+     * @returns {Array<RPG.Map.Encounter>} 
+     * @memberof Game_Map
+     */
     encounterList(): Array<RPG.Map.Encounter>;
+    /**
+     * Returns the number of encounter steps on the map.
+     * 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     encounterStep(): number;
+    /**
+     * Returns true if the map is an over world map.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Map
+     */
     isOverworld(): boolean;
+    /**
+     * Returns the screen tile x coordinate.
+     * 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     screenTileX(): number;
+    /**
+     * Returns the screen tile y coordinate.
+     * 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     screenTileY(): number;
     adjustX(x: number): number;
     adjustY(y: number): number;
@@ -3103,8 +3464,25 @@ declare class Game_Map {
     scrollLeft(distance: number): void;
     scrollRight(distance: number): void;
     scrollUp(distance: number): void;
+    /**
+     * Returns true if the x and y coordinates are valid.
+     * 
+     * @param {number} x 
+     * @param {number} y 
+     * @returns {boolean} 
+     * @memberof Game_Map
+     */
     isValid(x: number, y: number): boolean;
     checkPassage(x: number, y: number, bit: number): boolean;
+    /**
+     * Returns the tile id at the specified x, y, and z coordinates.
+     * 
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} z 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     tileId(x: number, y: number, z: number): number;
     layeredTiles(x: number, y: number): Array<number>;
     allTiles(x: number, y: number): Array<number>;
@@ -3114,6 +3492,14 @@ declare class Game_Map {
     isShipPassable(x: number, y: number): boolean;
     isAirshipLandOk(x: number, y: number): boolean;
     checkLayeredTilesFlags(x: number, y: number, bit: number): boolean;
+    /**
+     * Returns true if the specified element at the given x and y coordinates
+     * is a ladder.
+     * @param {number} x 
+     * @param {number} y 
+     * @returns {boolean} 
+     * @memberof Game_Map
+     */
     isLadder(x: number, y: number): boolean;
     isBush(x: number, y: number): boolean;
     isCounter(x: number, y: number): boolean;
@@ -3122,22 +3508,66 @@ declare class Game_Map {
     regionId(x: number, y: number): number;
     startScroll(direction: number, distance: number, speed: number): void;
     isScrolling(): boolean;
+    /**
+     * Updates the game map, given that the scene is active.
+     * 
+     * @param {boolean} sceneActive 
+     * @memberof Game_Map
+     */
     update(sceneActive: boolean): void;
     updateScroll(): void;
     scrollDistance(): number;
     doScroll(direction: number, distance: number): void;
+    /**
+     * Updates all events on the map.
+     * 
+     * @memberof Game_Map
+     */
     updateEvents(): void;
+    /**
+     * Updates all game vehicles on the map.
+     * 
+     * @memberof Game_Map
+     */
     updateVehicles(): void;
+    /**
+     * Updates the map parallaxes.
+     * 
+     * @memberof Game_Map
+     */
     updateParallax(): void;
+    /**
+     * Changes them ap tileset, given the tileset id.
+     * 
+     * @param {number} tilesetId 
+     * @memberof Game_Map
+     */
     changeTileset(tilesetId: number): void;
     changeBattleback(battleback1Name: string, battleback2Name: string): void;
     changeParallax(name: string, loopX: boolean, loopY: boolean, sx: number, sy: number): void;
+    /**
+     * Updates the map's game interpreter.
+     * 
+     * @memberof Game_Map
+     */
     updateInterpreter(): void;
+    /**
+     * Unlocks an event on the map given the event id.
+     * 
+     * @param {number} eventId 
+     * @memberof Game_Map
+     */
     unlockEvent(eventId: number): void;
     setupStartingEvent(): boolean;
     setupTestEvent(): boolean;
     setupStartingMapEvent(): boolean;
     setupAutorunCommonEvent(): boolean;
+    /**
+     * Returns true if any event is starting on the map.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Map
+     */
     isAnyEventStarting(): boolean;
 }
 
@@ -3155,10 +3585,38 @@ declare class Game_CommonEvent {
 
     constructor(commonEventId: number);
 
+    /**
+     * Returns the common event information from the database.
+     * 
+     * @returns {RPG.CommonEvent} 
+     * @memberof Game_CommonEvent
+     */
     event(): RPG.CommonEvent;
+    /**
+     * Returns the common event's list of event commands.
+     * 
+     * @returns {Array<RPG.EventCommand>} 
+     * @memberof Game_CommonEvent
+     */
     list(): Array<RPG.EventCommand>;
+    /**
+     * Refreshes the common event.
+     * 
+     * @memberof Game_CommonEvent
+     */
     refresh(): void;
+    /**
+     * Returns true if the common event is active.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_CommonEvent
+     */
     isActive(): boolean;
+    /**
+     * Updates the common event.
+     * 
+     * @memberof Game_CommonEvent
+     */
     update(): void;
 }
 
@@ -3210,6 +3668,12 @@ declare class Game_CharacterBase {
     initMembers(): void;
     pos(x: number, y: number): boolean;
     posNt(x: number, y: number): boolean;
+    /**
+     * Returns the move speed of the game character.
+     * 
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     moveSpeed(): number;
     setMoveSpeed(moveSpeed: number): void;
     moveFrequency(): number;
@@ -3222,6 +3686,12 @@ declare class Game_CharacterBase {
     setPriorityType(priorityType: number): void;
     isMoving(): boolean;
     isJumping(): boolean;
+    /**
+     * Returns the jump height of base character.
+     * 
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     jumpHeight(): number;
     isStopping(): boolean;
     checkStop(threshold: number): boolean;
@@ -3652,14 +4122,41 @@ declare class Game_Player extends Game_Character {
      * @memberof Game_Player
      */
     canMove(): boolean;
+    /**
+     * Gets the input direction of the player as a number.
+     * 
+     * @returns {number} 
+     * @memberof Game_Player
+     */
     getInputDirection(): number;
     executeMove(direction: number): void;
     update(sceneActive?: boolean): void;
     updateDashing(): void;
+    /**
+     * Returns true if the dash button is pressed.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     isDashButtonPressed(): boolean;
     updateScroll(lastScrolledX: number, lastScrolledY: number): void;
+    /**
+     * Updates the vehicle.
+     * 
+     * @memberof Game_Player
+     */
     updateVehicle(): void;
+    /**
+     * Updates the player getting on the vehicle.
+     * 
+     * @memberof Game_Player
+     */
     updateVehicleGetOn(): void;
+    /**
+     * Updates the player getting off the vehicle.
+     * 
+     * @memberof Game_Player
+     */
     updateVehicleGetOff(): void;
     updateNonmoving(wasMoving: boolean): void;
     triggerAction(): boolean;
@@ -3669,13 +4166,43 @@ declare class Game_Player extends Game_Character {
     triggerTouchActionD2(x2: number, y2: number): boolean;
     triggerTouchActionD3(x2: number, y2: number): boolean;
     updateEncounterCount(): void;
+    /**
+     * Returns true if the player can encounter enemies.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     canEncounter(): boolean;
+    /**
+     * Returns the encounter progress value of the player.
+     * 
+     * @returns {number} 
+     * @memberof Game_Player
+     */
     encounterProgressValue(): number;
     checkEventTriggerHere(triggers: Array<number>): void;
     checkEventTriggerThere(triggers: Array<number>): void;
     canStartLocalEvents(): boolean;
+    /**
+     * Returns true if the player is getting on/off a vehicle.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     getOnOffVehicle(): boolean;
+    /**
+     * Returns true if the player is getting on a vehicle.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     getOnVehicle(): boolean;
+    /**
+     * Returns true if the player is getting off a vehicle.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     getOffVehicle(): boolean;
     /**
      * Forces the player to move forward.
@@ -3683,7 +4210,19 @@ declare class Game_Player extends Game_Character {
      * @memberof Game_Player
      */
     forceMoveForward(): void;
+    /**
+     * Returns true if the player is on a floor that does damage.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     isOnDamageFloor(): boolean;
+    /**
+     * Moves the player straight, given a direction.
+     * 
+     * @param {number} d 
+     * @memberof Game_Player
+     */
     moveStraight(d: number): void;
     moveDiagonally(horz: number, vert: number): void;
     jump(xPlus: number, yPlus: number): void;
@@ -3790,6 +4329,13 @@ declare class Game_Followers {
      * @memberof Game_Followers
      */
     hide(): void;
+    /**
+     * Returns the followers at the specified index.
+     * 
+     * @param {number} index 
+     * @returns {Game_Follower} 
+     * @memberof Game_Followers
+     */
     follower(index: number): Game_Follower;
     forEach(callback: () => void, thisObject: any): void;
     reverseEach(callback: () => void, thisObject: any): void;
@@ -3804,6 +4350,12 @@ declare class Game_Followers {
      * @memberof Game_Followers
      */
     gather(): void;
+    /**
+     * Returns true if the followers are gathering.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Followers
+     */
     areGathering(): boolean;
     /**
      * Returns the visible followers.
@@ -3890,11 +4442,26 @@ declare class Game_Vehicle extends Game_Character {
      */
     vehicle(): RPG.System.Vehicle;
     loadSystemSettings(): void;
+    /**
+     * Refreshes the game vehicle.
+     * 
+     * @memberof Game_Vehicle
+     */
     refresh(): void;
     setLocation(mapId: number, x: number, y: number): void;
     pos(x: number, y: number): boolean;
     isMapPassable(x: number, y: number, d: number): boolean;
+    /**
+     * Gets on the vehicle.
+     * 
+     * @memberof Game_Vehicle
+     */
     getOn(): void;
+    /**
+     * Gets off the vehicle.
+     * 
+     * @memberof Game_Vehicle
+     */
     getOff(): void;
     /**
      * Sets the bgm associated with the vehicle.
@@ -3909,6 +4476,11 @@ declare class Game_Vehicle extends Game_Character {
      * @memberof Game_Vehicle
      */
     playBgm(): void;
+    /**
+     * Syncs the vehicle with the player.
+     * 
+     * @memberof Game_Vehicle
+     */
     syncWithPlayer(): void;
     /**
      * Returns the screen y position of the vehicle.
@@ -3918,19 +4490,25 @@ declare class Game_Vehicle extends Game_Character {
      */
     screenY(): number;
     /**
-     * Returns the shadow x position of the vehicle.
+     * Returns the shadow x position of the vehicle's shadow.
      * 
      * @returns {number} 
      * @memberof Game_Vehicle
      */
     shadowX(): number;
     /**
-     * Returns the shadow y position of the vehicle.
+     * Returns the shadow y position of the vehicle's shadow.
      * 
      * @returns {number} 
      * @memberof Game_Vehicle
      */
     shadowY(): number;
+    /**
+     * Returns the shadow opacity of the vehicle's shadow.
+     * 
+     * @returns {number} 
+     * @memberof Game_Vehicle
+     */
     shadowOpacity(): number;
     /**
      * Returns true if the vehicle can move.
@@ -3939,8 +4517,23 @@ declare class Game_Vehicle extends Game_Character {
      * @memberof Game_Vehicle
      */
     canMove(): boolean;
+    /**
+     * Updates the vehicle.
+     * 
+     * @memberof Game_Vehicle
+     */
     update(): void;
+    /**
+     * Updates the airship.
+     * 
+     * @memberof Game_Vehicle
+     */
     updateAirship(): void;
+    /**
+     * Updates airship altitude.
+     * 
+     * @memberof Game_Vehicle
+     */
     updateAirshipAltitude(): void;
     /**
      * Returns the max altitude of the vehicle.
@@ -3949,9 +4542,36 @@ declare class Game_Vehicle extends Game_Character {
      * @memberof Game_Vehicle
      */
     maxAltitude(): number;
+    /**
+     * Returns true if the vehicle is at it's lowest altitude.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Vehicle
+     */
     isLowest(): boolean;
+    /**
+     * Returns true if the vehicle is at it's highest altitude.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Vehicle
+     */
     isHighest(): boolean;
+    /**
+     * Returns true if take off is ok.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Vehicle
+     */
     isTakeoffOk(): boolean;
+    /**
+     * Returns true if the vehicle is capable of landing at the specified
+     * x, y coordinate, with the specified direction (d).
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} d 
+     * @returns {boolean} 
+     * @memberof Game_Vehicle
+     */
     isLandOk(x: number, y: number, d: number): boolean;
 }
 
@@ -4009,6 +4629,14 @@ declare class Game_Event extends Game_Character {
     list(): Array<RPG.EventCommand>;
     isCollidedWithCharacters(x: number, y: number): boolean;
     isCollidedWithEvents(x: number, y: number): boolean;
+    /**
+     * Returns true if the event has collided with the player character
+     * at the specified x and y coordinates.
+     * @param {number} x 
+     * @param {number} y 
+     * @returns {boolean} 
+     * @memberof Game_Event
+     */
     isCollidedWithPlayerCharacters(x: number, y: number): boolean;
     /**
      * Locks the game event.
@@ -4047,6 +4675,11 @@ declare class Game_Event extends Game_Character {
      * @memberof Game_Event
      */
     isStarting(): boolean;
+    /**
+     * Clears the starting flag.
+     * 
+     * @memberof Game_Event
+     */
     clearStartingFlag(): void;
     isTriggerIn(triggers: Array<number>): boolean;
     /**
