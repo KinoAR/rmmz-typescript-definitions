@@ -1990,45 +1990,278 @@ declare class Game_Actor extends Game_Battler {
      * @memberof Game_Actor
      */
     nickname(): string;
+    /**
+     * Sets the nickname of the actor.
+     * 
+     * @param {string} nickname 
+     * @memberof Game_Actor
+     */
     setNickname(nickname: string): void;
+    /**
+     * Returns the actor profile.
+     * 
+     * @returns {string} 
+     * @memberof Game_Actor
+     */
     profile(): string;
+    /**
+     * Sets the actor profile.
+     * 
+     * @param {string} profile 
+     * @memberof Game_Actor
+     */
     setProfile(profile: string): void;
+    /**
+     * Returns the face name of the actor; this is
+     * the image of faces for the actor.
+     * @returns {string} 
+     * @memberof Game_Actor
+     */
     faceName(): string;
+    /**
+     * Returns the face index of the actor.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     faceIndex(): number;
+    /**
+     * Clears all states from the actor.
+     * 
+     * @memberof Game_Actor
+     */
     clearStates(): void;
+    /**
+     * Erase the specified state from the actor.
+     * 
+     * @param {number} stateId 
+     * @memberof Game_Actor
+     */
     eraseState(stateId: number): void;
+    /**
+     * Reset state count of the specified state.
+     * 
+     * @param {number} stateId 
+     * @memberof Game_Actor
+     */
     resetStateCounts(stateId: number): void;
+    /**
+     * Initialize images of the actor.
+     * 
+     * @memberof Game_Actor
+     */
     initImages(): void;
+    /**
+     * Returns the exp required to level.
+     * 
+     * @param {number} level 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     expForLevel(level: number): number;
+    /**
+     * Initialize exp of the actor.
+     * 
+     * @memberof Game_Actor
+     */
     initExp(): void;
+    /**
+     * Returns the current experience points of the actor.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     currentExp(): number;
+    /**
+     * Returns the current level's experience for the actor.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     currentLevelExp(): number;
+    /**
+     * Returns the experience points for the next level of the actor.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     nextLevelExp(): number;
+    /**
+     * Returns the next required experience points for the actor to level up.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     nextRequiredExp(): number;
+    /**
+     * Returns the maximum level of the actor.
+     * 
+     * @memberof Game_Actor
+     */
     maxLevel(): void;
+    /**
+     * Returns true if the actor is max level.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Actor
+     */
     isMaxLevel(): boolean;
+    /**
+     * Initialize actor skills.
+     * 
+     * @memberof Game_Actor
+     */
     initSkills(): void;
+    /**
+     * Initialize actor equipment in the given slots.
+     * 
+     * @param {Array<number>} equips 
+     * @memberof Game_Actor
+     */
     initEquips(equips: Array<number>): void;
+    /**
+     * Returns the equip slots of the actor.
+     * 
+     * @returns {Array<number>} 
+     * @memberof Game_Actor
+     */
     equipSlots(): Array<number>;
+    /**
+     * Returns the equipment of the actor.
+     * 
+     * @returns {Array<RPG.EquipItem>} 
+     * @memberof Game_Actor
+     */
     equips(): Array<RPG.EquipItem>;
+    /**
+     * Returns the weapon of the actor.
+     * 
+     * @returns {Array<RPG.Weapon>} 
+     * @memberof Game_Actor
+     */
     weapons(): Array<RPG.Weapon>;
+    /**
+     * Returns the armor of the actor.
+     * 
+     * @returns {Array<RPG.Armor>} 
+     * @memberof Game_Actor
+     */
     armors(): Array<RPG.Armor>;
+    /**
+     * Returns true if the actor has a weapon.
+     * 
+     * @param {RPG.Weapon} weapon 
+     * @returns {boolean} 
+     * @memberof Game_Actor
+     */
     hasWeapon(weapon: RPG.Weapon): boolean;
+    /**
+     * Returns true if the actor has armor.
+     * 
+     * @param {RPG.Armor} armor 
+     * @returns {boolean} 
+     * @memberof Game_Actor
+     */
     hasArmor(armor: RPG.Armor): boolean;
+    /**
+     * Returns true if the equip change is okay in the given slot.
+     * 
+     * @param {number} slotId 
+     * @returns {boolean} 
+     * @memberof Game_Actor
+     */
     isEquipChangeOk(slotId: number): boolean;
+    /**
+     * Changes the actor equipment in the given slot with the
+     * given equip item. Places the original item into the party
+     * inventory.
+     * @param {number} slotId 
+     * @param {RPG.EquipItem} item 
+     * @memberof Game_Actor
+     */
     changeEquip(slotId: number, item: RPG.EquipItem): void;
+    /**
+     * Forces the actor to change equipment in the given slot
+     * with the given equip item without placing the item back into
+     * the party inventory.
+     * @param {number} slotId 
+     * @param {RPG.EquipItem} item 
+     * @memberof Game_Actor
+     */
     forceChangeEquip(slotId: number, item: RPG.EquipItem): void;
+    /**
+     * Trades the new item with the old item in the party inventory.
+     * 
+     * @param {RPG.EquipItem} newItem 
+     * @param {RPG.EquipItem} oldItem 
+     * @returns {boolean} 
+     * @memberof Game_Actor
+     */
     tradeItemWithParty(newItem: RPG.EquipItem, oldItem: RPG.EquipItem): boolean;
+    /**
+     * Changes the actor equip with an item based on the equip id.
+     * 
+     * @param {number} etypeId 
+     * @param {number} itemId 
+     * @memberof Game_Actor
+     */
     changeEquipById(etypeId: number, itemId: number): void;
+    /**
+     * Returns true if the actor is equipped with the specific item.
+     * 
+     * @param {RPG.EquipItem} item 
+     * @returns {boolean} 
+     * @memberof Game_Actor
+     */
     isEquipped(item: RPG.EquipItem): boolean;
+    /**
+     * Discards the given equip item from the actor; item
+     * is not return to the party inventory.
+     * @param {RPG.EquipItem} item 
+     * @memberof Game_Actor
+     */
     discardEquip(item: RPG.EquipItem): void;
+    /**
+     * Returns items the actor can't normally equip to the party inventory.
+     * 
+     * @param {boolean} forcing 
+     * @memberof Game_Actor
+     */
     releaseUnequippableItems(forcing: boolean): void;
+    /**
+     * Clears the actor's equipment; items are returned to the inventory.
+     * 
+     * @memberof Game_Actor
+     */
     clearEquipments(): void;
+    /**
+     * Optimize the actor's equipment.
+     * 
+     * @memberof Game_Actor
+     */
     optimizeEquipments(): void;
+    /**
+     * Equips the best item in the given slot.
+     * 
+     * @param {number} slotId 
+     * @memberof Game_Actor
+     */
     bestEquipItem(slotId: number): void;
+    /**
+     * Calculates the equip item performance and returns the sum/difference.
+     * 
+     * @param {RPG.EquipItem} item 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     calcEquipItemPerformance(item: RPG.EquipItem): number;
     isSkillWtypeOk(skill: RPG.Skill): boolean;
     isWtypeEquipped(wtypeId: number): boolean;
+    /**
+     * Refreshes the actor.
+     * 
+     * @memberof Game_Actor
+     */
     refresh(): void;
     friendsUnit(): Game_Party;
     opponentsUnit(): Game_Troop;
@@ -2044,11 +2277,41 @@ declare class Game_Actor extends Game_Battler {
     attackAnimationId1(): number;
     attackAnimationId2(): number;
     bareHandsAnimationId(): number;
+    /**
+     * Change the actor experience points; leveling up the actor
+     * if it's above the required exp for the current level.
+     * If show is set to true, actor level up with be displayed.
+     * @param {number} exp 
+     * @param {boolean} show 
+     * @memberof Game_Actor
+     */
     changeExp(exp: number, show: boolean): void;
+    /**
+     * Level up the actor.
+     * 
+     * @memberof Game_Actor
+     */
     levelUp(): void;
+    /**
+     * Level down the actor.
+     * 
+     * @memberof Game_Actor
+     */
     levelDown(): void;
     findNewSkills(lastSkills: Array<RPG.Skill>): Array<RPG.Skill>;
+    /**
+     * Displays the actor level up in a message window, with the learned skills.
+     * 
+     * @param {Array<RPG.Skill>} newSkills 
+     * @memberof Game_Actor
+     */
     displayLevelUp(newSkills: Array<RPG.Skill>): void;
+    /**
+     * Gives the specified exp to the actor.
+     * 
+     * @param {number} exp 
+     * @memberof Game_Actor
+     */
     gainExp(exp: number): void;
     finalExpRate(): number;
     benchMembersExpRate(): number;
@@ -2057,28 +2320,95 @@ declare class Game_Actor extends Game_Battler {
     learnSkill(skillId: number): void;
     forgetSkill(skillId: number): void;
     isLearnedSkill(skillId: number): boolean;
+    /**
+     * Changes the actor class; if keep is true, the actor
+     * will retain their experience points.
+     * @param {number} classId 
+     * @param {boolean} keepExp 
+     * @memberof Game_Actor
+     */
     changeClass(classId: number, keepExp: boolean): void;
     setCharacterImage(characterName: string, characterIndex: number): void;
+    /**
+     * Sets the face image of the actor given the face image (from database)
+     * and face index within the iamge.
+     * 
+     * @param {string} faceName 
+     * @param {number} faceIndex 
+     * @memberof Game_Actor
+     */
     setFaceImage(faceName: string, faceIndex: number): void;
     setBattlerImage(battlerName: string): void;
     isSpriteVisible(): boolean;
     startAnimation(animationId: number, mirror: boolean, delay: number): void;
+    /**
+     * Performs the attack motion for the actor.
+     * 
+     * @memberof Game_Actor
+     */
     performAttack(): void;
+    /**
+     * Perform the victory motion for the actor.
+     * 
+     * @memberof Game_Actor
+     */
     performVictory(): void;
+    /**
+     * Performs the escape motion for the actor.
+     * 
+     * @memberof Game_Actor
+     */
     performEscape(): void;
     makeActionList(): Array<Game_Action>;
+    /**
+     * Creates the auto battle actions for the game actor.
+     * 
+     * @memberof Game_Actor
+     */
     makeAutoBattleActions(): void;
     makeConfusionActions(): void;
+    /**
+     * Handler for when the player walks on the map scene.
+     * 
+     * @memberof Game_Actor
+     */
     onPlayerWalk(): void;
     updateStateSteps(state: RPG.State): void;
     showAddedStates(): void;
     showRemovedStates(): void;
     stepsForTurn(): number;
     turnEndOnMap(): void;
+    /**
+     * Checks the effect of the floor on the actor.
+     * 
+     * @memberof Game_Actor
+     */
     checkFloorEffect(): void;
+    /**
+     * Executes the floor dmaage on the actor.
+     * 
+     * @memberof Game_Actor
+     */
     executeFloorDamage(): void;
+    /**
+     * Returns the basic floor damage.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     basicFloorDamage(): number;
+    /**
+     * Returns the max floor damage.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     maxFloorDamage(): number;
+    /**
+     * Perform damage to the actor on the map scene.
+     * 
+     * @memberof Game_Actor
+     */
     performMapDamage(): void;
     clearActions(): void;
     inputtingAction(): Game_Action;
@@ -2110,24 +2440,100 @@ declare class Game_Enemy extends Game_Battler {
 
     initMembers(): void;
     setup(enemyId: number, x: number, y: number): void;
+    /**
+     * Returns the other troops in the enemy team.
+     * 
+     * @returns {Game_Troop} 
+     * @memberof Game_Enemy
+     */
     friendsUnit(): Game_Troop;
+    /**
+     * Returns the game party.
+     * 
+     * @returns {Game_Party} 
+     * @memberof Game_Enemy
+     */
     opponentsUnit(): Game_Party;
     isBattleMember(): boolean;
+    /**
+     * Returns the enemy id.
+     * 
+     * @returns {number} 
+     * @memberof Game_Enemy
+     */
     enemyId(): number;
+    /**
+     * Returns the enemy information from the database.
+     * 
+     * @returns {RPG.Enemy} 
+     * @memberof Game_Enemy
+     */
     enemy(): RPG.Enemy;
+    /**
+     * Returns the enemy's exp amount.
+     * 
+     * @memberof Game_Enemy
+     */
     exp(): void;
+    /**
+     * Returns enemy's given gold.
+     * 
+     * @memberof Game_Enemy
+     */
     gold(): void;
+    /**
+     * Creates the drop items for the enemy specified by the database.
+     * 
+     * @returns {Array<RPG.BaseItem>} 
+     * @memberof Game_Enemy
+     */
     makeDropItems(): Array<RPG.BaseItem>;
+    /**
+     * Returns the item drop rate of the enemy.
+     * 
+     * @returns {number} 
+     * @memberof Game_Enemy
+     */
     dropItemRate(): number;
     itemObject(kind: number, dataId: number): void;
+    /**
+     * Returns true if the enemy sprite is visible.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Enemy
+     */
     isSpriteVisible(): boolean;
+    /**
+     * Returns enemy screen X coordinate.
+     * 
+     * @returns {number} 
+     * @memberof Game_Enemy
+     */
     screenX(): number;
+    /**
+     * Returns enemy screen Y position.
+     * 
+     * @returns {number} 
+     * @memberof Game_Enemy
+     */
     screenY(): number;
     battlerHue(): number;
+    /**
+     * Returns the enemy original name.
+     * 
+     * @returns {string} 
+     * @memberof Game_Enemy
+     */
     originalName(): string;
     isLetterEmpty(): boolean;
     setLetter(letter: string): void;
     setPlural(plural: boolean): void;
+    /**
+     * Transform the enemy into another enemy based on id.
+     * 
+     * @param {number} enemyId 
+     * @memberof Game_Enemy
+     */
     transform(enemyId: number): void;
     meetsCondition(action: RPG.Enemy.Action): boolean;
     meetsTurnCondition(param1: number, param2: number): boolean;
@@ -2136,6 +2542,13 @@ declare class Game_Enemy extends Game_Battler {
     meetsStateCondition(param: number): boolean;
     meetsPartyLevelCondition(param: number): boolean;
     meetsSwitchCondition(param: number): boolean;
+    /**
+     * Returns true if the enemy action is valid.
+     * 
+     * @param {RPG.Enemy.Action} action 
+     * @returns {boolean} 
+     * @memberof Game_Enemy
+     */
     isActionValid(action: RPG.Enemy.Action): boolean;
     selectAction(actionList: Array<RPG.Enemy.Action>, ratingZero: number): RPG.Enemy.Action;
     selectAllActions(actionList: Array<RPG.Enemy.Action>): void;
@@ -2151,6 +2564,13 @@ declare class Game_Enemy extends Game_Battler {
 declare class Game_Actors {
     protected _data: Array<Game_Actor>;
 
+    /**
+     * Returns the actor with the specified id.
+     * 
+     * @param {number} actorId 
+     * @returns {Game_Actor} 
+     * @memberof Game_Actors
+     */
     actor(actorId: number): Game_Actor;
 }
 
