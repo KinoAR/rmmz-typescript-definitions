@@ -622,7 +622,7 @@ declare class Sprite_Enemy extends Sprite_Battler {
     setBattler(battler: Game_Enemy): void;
     loadBitmap(name: string, hue: number): void;
     /**
-     * Updates the state sprite of the sprite enemy.
+     * Updates the state sprite on the sprite enemy.
      * 
      * @memberof Sprite_Enemy
      */
@@ -631,13 +631,28 @@ declare class Sprite_Enemy extends Sprite_Battler {
     setupEffect(): void;
     startEffect(effectType: string): void;
     /**
-     * Starts the appearinig effect of the enemy.
+     * Starts the appearinig effect on the sprite enemy.
      * 
      * @memberof Sprite_Enemy
      */
     startAppear(): void;
+    /**
+     * Starts the disappearing effect on the sprite enemy.
+     * 
+     * @memberof Sprite_Enemy
+     */
     startDisappear(): void;
+    /**
+     * Starts the whiten effect on the sprite enemy.
+     * 
+     * @memberof Sprite_Enemy
+     */
     startWhiten(): void;
+    /**
+     * Starts the blink effect on the sprite enemy.
+     * 
+     * @memberof Sprite_Enemy
+     */
     startBlink(): void;
     /**
      * Starts the collapse effect of the sprite
@@ -665,9 +680,29 @@ declare class Sprite_Enemy extends Sprite_Battler {
      * @memberof Sprite_Enemy
      */
     isEffecting(): boolean;
+    /**
+     * Revers the sprite enemy to a normal state.
+     * 
+     * @memberof Sprite_Enemy
+     */
     revertToNormal(): void;
+    /**
+     * Updates the whiten effect on the sprite enemy.
+     * 
+     * @memberof Sprite_Enemy
+     */
     updateWhiten(): void;
+    /**
+     * Updates the blink effect on the sprite enemy.
+     * 
+     * @memberof Sprite_Enemy
+     */
     updateBlink(): void;
+    /**
+     * Updates the appear effect on the sprite enemy.
+     * 
+     * @memberof Sprite_Enemy
+     */
     updateAppear(): void;
     updateDisappear(): void;
     /**
@@ -731,6 +766,12 @@ declare class Sprite_Animation extends Sprite {
     updateHiding(): void;
     isPlaying(): boolean;
     loadBitmaps(): void;
+    /**
+     * Returns true if the sprite animation is ready.
+     * 
+     * @returns {boolean} 
+     * @memberof Sprite_Animation
+     */
     isReady(): boolean;
     createSprites(): void;
     createCellSprites(): void;
@@ -888,11 +929,42 @@ declare class Sprite_Picture extends Sprite {
 declare class Sprite_Timer extends Sprite {
     protected _seconds: number;
 
+    /**
+     * Creates the bitmap of the sprite timer.
+     * 
+     * @memberof Sprite_Timer
+     */
     createBitmap(): void;
+    /**
+     * Updates the bitmap of the sprite timer.
+     * 
+     * @memberof Sprite_Timer
+     */
     updateBitmap(): void;
+    /**
+     * Redraws the sprite timer.
+     * 
+     * @memberof Sprite_Timer
+     */
     redraw(): void;
+    /**
+     * Returns the text of the timer.
+     * 
+     * @returns {string} The text displayed on the timer.
+     * @memberof Sprite_Timer
+     */
     timerText(): string;
+    /**
+     * Updates the positon of the sprite timer.
+     * 
+     * @memberof Sprite_Timer
+     */
     updatePosition(): void;
+    /**
+     * Updates the visibility of the sprite timer.
+     * 
+     * @memberof Sprite_Timer
+     */
     updateVisibility(): void;
 }
 
@@ -905,8 +977,23 @@ declare class Sprite_Timer extends Sprite {
 declare class Sprite_Destination extends Sprite {
     protected _frameCount: number;
 
+    /**
+     * Creates the destination bitmap of the destination sprite.
+     * 
+     * @memberof Sprite_Destination
+     */
     createBitmap(): void;
+    /**
+     * Updates the position of the destination sprite.
+     * 
+     * @memberof Sprite_Destination
+     */
     updatePosition(): void;
+    /**
+     * Updates the destination sprite animation.
+     * 
+     * @memberof Sprite_Destination
+     */
     updateAnimation(): void;
 }
 
@@ -927,19 +1014,84 @@ declare class Spriteset_Base extends Sprite {
     protected _flashSprite: ScreenSprite;
     protected _fadeSprite: ScreenSprite;
 
+    /**
+     * Creates the lower layer including the base sprites.
+     * 
+     * @memberof Spriteset_Base
+     */
     createLowerLayer(): void;
+    /**
+     * Creates the upper layer including the pictures,
+     * timer, and screen sprites.
+     * @memberof Spriteset_Base
+     */
     createUpperLayer(): void;
+    /**
+     * Create the base sprite.
+     * 
+     * @memberof Spriteset_Base
+     */
     createBaseSprite(): void;
+    /**
+     * Creates the tone changer sprite.
+     * 
+     * @memberof Spriteset_Base
+     */
     createToneChanger(): void;
+    /**
+     * Creates the WebGL toner.
+     * 
+     * @memberof Spriteset_Base
+     */
     createWebGLToneChanger(): void;
+    /**
+     * Creates the Canvas tone.
+     * 
+     * @memberof Spriteset_Base
+     */
     createCanvasToneChanger(): void;
+    /**
+     * Creates a new sprite picture on the spritesetb ase.
+     * 
+     * @memberof Spriteset_Base
+     */
     createPictures(): void;
+    /**
+     * Creates a new Sprite timer on the spriteset base.
+     * 
+     * @memberof Spriteset_Base
+     */
     createTimer(): void;
+    /**
+     * Creates the screen sprite.
+     * 
+     * @memberof Spriteset_Base
+     */
     createScreenSprites(): void;
+    /**
+     * Updates the screen sprites on the spriteset base.
+     * 
+     * @memberof Spriteset_Base
+     */
     updateScreenSprites(): void;
     updateToneChanger(): void;
+    /**
+     * Updates the WebGL tone changer.
+     * 
+     * @memberof Spriteset_Base
+     */
     updateWebGLToneChanger(): void;
+    /**
+     * Updates the Canvas tone changer.
+     * 
+     * @memberof Spriteset_Base
+     */
     updateCanvasToneChanger(): void;
+    /**
+     * Updates the position of spriteset base.
+     * 
+     * @memberof Spriteset_Base
+     */
     updatePosition(): void;
 }
 
@@ -959,22 +1111,82 @@ declare class Spriteset_Map extends Spriteset_Base {
     protected _weather: Weather;
     protected _parallaxName: string;
 
+    /**
+     * Hides the map spriteset character sprites.
+     * 
+     * @memberof Spriteset_Map
+     */
     hideCharacters(): void;
+    /**
+     * Creates the map spriteset parallax.
+     * 
+     * @memberof Spriteset_Map
+     */
     createParallax(): void;
+    /**
+     * Creates the map spriteset tile map.
+     * 
+     * @memberof Spriteset_Map
+     */
     createTilemap(): void;
+    /**
+     * Loads the map spriteset tileset.
+     * 
+     * @memberof Spriteset_Map
+     */
     loadTileset(): void;
+    /**
+     * Creates the map spriteset character sprite.
+     * 
+     * @memberof Spriteset_Map
+     */
     createCharacters(): void;
+    /**
+     * Creates the map spriteset shadow sprite.
+     * 
+     * @memberof Spriteset_Map
+     */
     createShadow(): void;
+    /**
+     * Creates the map spriteset destination sprite.
+     * 
+     * @memberof Spriteset_Map
+     */
     createDestination(): void;
+    /**
+     * Creates the map spriteset weather.
+     * 
+     * @memberof Spriteset_Map
+     */
     createWeather(): void;
+    /**
+     * Updates the map spriteset tileset.
+     * 
+     * @memberof Spriteset_Map
+     */
     updateTileset(): void;
     /**
      * Simple fix for canvas parallax issue, destroy old parallax and readd to  the tree.
      */
     protected _canvasReAddParallax(): void;
     updateParallax(): void;
+    /**
+     * Updates the map spriteset tile map.
+     * 
+     * @memberof Spriteset_Map
+     */
     updateTilemap(): void;
+    /**
+     * Updates the map spriteset shadow.
+     * 
+     * @memberof Spriteset_Map
+     */
     updateShadow(): void;
+    /**
+     * Updates the map spriteset weather.
+     * 
+     * @memberof Spriteset_Map
+     */
     updateWeather(): void;
 }
 
@@ -993,33 +1205,183 @@ declare class Spriteset_Battle extends Spriteset_Base {
     protected _enemySprites: Array<Sprite_Enemy>;
     protected _actorSprites: Array<Sprite_Actor>;
 
+    /**
+     * Creates the background of the battle spriteset.
+     * 
+     * @memberof Spriteset_Battle
+     */
     createBackground(): void;
+    /**
+     * Creates the battlefield of the battle spriteset.
+     * 
+     * @memberof Spriteset_Battle
+     */
     createBattleField(): void;
+    /**
+     * Creates the battleback of the battle spriteset.
+     * 
+     * @memberof Spriteset_Battle
+     */
     createBattleback(): void;
+    /**
+     * Updates the battleback of the battle spriteset.
+     * 
+     * @memberof Spriteset_Battle
+     */
     updateBattleback(): void;
+    /**
+     * Locates the battleback and adjusts the coordinates of the
+     * battleback.
+     * @memberof Spriteset_Battle
+     */
     locateBattleback(): void;
+    /**
+     * Returns battleb ack 2 of the battle spriteset.
+     * 
+     * @returns {Bitmap} Instance of the Bitmap class.
+     * @memberof Spriteset_Battle
+     */
     battleback1Bitmap(): Bitmap;
+    /**
+     * Returns battleback 2 of the battle spriteset.
+     * 
+     * @returns {Bitmap} Instance of the Bitmap class.
+     * @memberof Spriteset_Battle
+     */
     battleback2Bitmap(): Bitmap;
+    /**
+     * 
+     * 
+     * @returns {string} Name of battleback 1 bitmap.
+     * @memberof Spriteset_Battle
+     */
     battleback1Name(): string;
+    /**
+     * 
+     * 
+     * @returns {string} Name of battleback 2 bitmap.
+     * @memberof Spriteset_Battle
+     */
     battleback2Name(): string;
+    /**
+     * Returns the battleback 1 name as a string.
+     * 
+     * @returns {string} Name of overworld battleback 1 bitmap.
+     * @memberof Spriteset_Battle
+     */
     overworldBattleback1Name(): string;
+    /**
+     * Returns the battleback 2 name as a string.
+     * 
+     * @returns {string} Name of overworld battleback 2 bitmap.
+     * @memberof Spriteset_Battle
+     */
     overworldBattleback2Name(): string;
+    /**
+     * 
+     * 
+     * @returns {string} Name of the normal battleback 1 bitmap.
+     * @memberof Spriteset_Battle
+     */
     normalBattleback1Name(): string;
+    /**
+     * 
+     * 
+     * @returns {string} Name of the normal battleback 2 bitmap.
+     * @memberof Spriteset_Battle
+     */
     normalBattleback2Name(): string;
+    /**
+     * Given the specified terrtain type, return
+     * the battleback 1 name.
+     * @param {number} type Terrain type.
+     * @returns {string} Name of the terrtain battleback 1 bitmap.
+     * @memberof Spriteset_Battle
+     */
     terrainBattleback1Name(type: number): string;
+    /**
+     * Given the specified terrain type, return
+     * the battleback 2 name.
+     * @param {number} type Terrain type.
+     * @returns {string} Name of the terrain battleback 2 bitmap.
+     * @memberof Spriteset_Battle
+     */
     terrainBattleback2Name(type: number): string;
+    /**
+     * 
+     * 
+     * @returns {string} Name of the default battleback 1 name.
+     * @memberof Spriteset_Battle
+     */
     defaultBattleback1Name(): string;
+    /**
+     * 
+     * 
+     * @returns {string} Name of the default battleback 2 name.
+     * @memberof Spriteset_Battle
+     */
     defaultBattleback2Name(): string;
+    /**
+     * 
+     * 
+     * @returns {string} Name of the ship battleback 1  bitmap.
+     * @memberof Spriteset_Battle
+     */
     shipBattleback1Name(): string;
+    /**
+     * 
+     * 
+     * @returns {string} Name of the ship battleback 2 bitmap.
+     * @memberof Spriteset_Battle
+     */
     shipBattleback2Name(): string;
     autotileType(z: number): number;
+    /**
+     * Creates sprite enemies for the battle spriteset.
+     * 
+     * @memberof Spriteset_Battle
+     */
     createEnemies(): void;
     compareEnemySprite(a: Sprite_Enemy, b: Sprite_Enemy): number;
+    /**
+     * Creates sprite actors for the battle spriteset.
+     * 
+     * @memberof Spriteset_Battle
+     */
     createActors(): void;
+    /**
+     * Updates the actor sprites on the battle spriteset.
+     * 
+     * @memberof Spriteset_Battle
+     */
     updateActors(): void;
+    /**
+     * Returns all battler sprites on the battle spriteset.
+     * 
+     * @returns {Array<Sprite_Battler>} 
+     * @memberof Spriteset_Battle
+     */
     battlerSprites(): Array<Sprite_Battler>;
+    /**
+     * Returns true if animation is playing on the battle spriteset.
+     * 
+     * @returns {boolean} 
+     * @memberof Spriteset_Battle
+     */
     isAnimationPlaying(): boolean;
     isEffecting(): boolean;
+    /**
+     * Returns true if any sprite actor or enemy is moving.
+     * 
+     * @returns {boolean} Representing whether any battle participants are moving.
+     * @memberof Spriteset_Battle
+     */
     isAnyoneMoving(): boolean;
+    /**
+     * Returns true if the battle spriteset is busy.
+     * 
+     * @returns {boolean} 
+     * @memberof Spriteset_Battle
+     */
     isBusy(): boolean;
 }
