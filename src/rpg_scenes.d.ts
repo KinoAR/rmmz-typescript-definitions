@@ -19,6 +19,11 @@ declare class Scene_Base extends Stage {
      * @memberof Scene_Base
      */
     detachReservation(): void;
+    /**
+     * Creates the scene's important properties.
+     * 
+     * @memberof Scene_Base
+     */
     create(): void;
     /**
      * Returns whether the scene is active or not.
@@ -34,8 +39,23 @@ declare class Scene_Base extends Stage {
      * @memberof Scene_Base
      */
     isReady(): boolean;
+    /**
+     * Starts the scene.
+     * 
+     * @memberof Scene_Base
+     */
     start(): void;
+    /**
+     * Updates the scene.
+     * 
+     * @memberof Scene_Base
+     */
     update(): void;
+    /**
+     * Stops the scene.
+     * 
+     * @memberof Scene_Base
+     */
     stop(): void;
     /**
      * Returns a boolean value.
@@ -89,6 +109,11 @@ declare class Scene_Base extends Stage {
     */
     startFadeOut(duration: number, white: boolean): void;
     createFadeSprite(white: boolean): void;
+    /**
+     * Updates the game's fade.
+     * 
+     * @memberof Scene_Base
+     */
     updateFade(): void;
     updateChildren(): void;
     /**
@@ -97,9 +122,26 @@ declare class Scene_Base extends Stage {
      * @memberof Scene_Base
      */
     popScene(): void;
+    /**
+     * Checks for game over.
+     * 
+     * @memberof Scene_Base
+     */
     checkGameover(): void;
     fadeOutAll(): void;
+    /**
+     * Returns the fade speed.
+     * 
+     * @returns {number} 
+     * @memberof Scene_Base
+     */
     fadeSpeed(): number;
+    /**
+     * Returns the slow fade speed.
+     * 
+     * @returns {number} 
+     * @memberof Scene_Base
+     */
     slowFadeSpeed(): number;
 }
 
@@ -118,6 +160,11 @@ declare class Scene_Boot extends Scene_Base {
      * @memberof Scene_Boot
      */
     loadSystemImages(): void;
+    /**
+     * Loads the system window image for showing
+     * all the windows in game.
+     * @memberof Scene_Boot
+     */
     loadSystemWindowImage(): void;
     /**
      * Returns true if the game font is loaded.
@@ -127,6 +174,11 @@ declare class Scene_Boot extends Scene_Base {
      */
     isGameFontLoaded(): boolean;
     updateDocumentTitle(): void;
+    /**
+     * Checks the player location upon booting the game.
+     * 
+     * @memberof Scene_Boot
+     */
     checkPlayerLocation(): void;
 }
 
@@ -142,13 +194,48 @@ declare class Scene_Title extends Scene_Base {
     protected _backSprite2: Sprite;
     protected _gameTitleSprite: Sprite;
 
+    /**
+     * Creates the title scene background.
+     * 
+     * @memberof Scene_Title
+     */
     createBackground(): void;
+    /**
+     * Creates the title screen foreground.
+     * 
+     * @memberof Scene_Title
+     */
     createForeground(): void;
+    /**
+     * Draws the game title.
+     * 
+     * @memberof Scene_Title
+     */
     drawGameTitle(): void;
     centerSprite(sprite: Sprite): void;
+    /**
+     * Creates the command window on the title scene.
+     * 
+     * @memberof Scene_Title
+     */
     createCommandWindow(): void;
+    /**
+     * Handler for the new game command.
+     * 
+     * @memberof Scene_Title
+     */
     commandNewGame(): void;
+    /**
+     * Handler for the continue command.
+     * 
+     * @memberof Scene_Title
+     */
     commandContinue(): void;
+    /**
+     * Handler for the options command.
+     * 
+     * @memberof Scene_Title
+     */
     commandOptions(): void;
     /**
      * Plays the title screen music
@@ -210,7 +297,19 @@ declare class Scene_Map extends Scene_Base {
      * @memberof Scene_Map
      */
     stop(): void;
+    /**
+     * Returns true if the map scene needs a slow fade in.
+     * 
+     * @returns {boolean} 
+     * @memberof Scene_Map
+     */
     needsFadeIn(): boolean;
+    /**
+     * Returns true if the map scene needs a slow fade out.
+     * 
+     * @returns {boolean} 
+     * @memberof Scene_Map
+     */
     needsSlowFadeOut(): boolean;
     updateWaitCount(): boolean;
     /**
@@ -344,6 +443,11 @@ declare class Scene_Map extends Scene_Base {
      * @memberof Scene_Map
      */
     stopAudioOnBattleStart(): void;
+    /**
+     * Starts the encounter effect on the map scene.
+     * 
+     * @memberof Scene_Map
+     */
     startEncounterEffect(): void;
     updateEncounterEffect(): void;
     /**
@@ -352,7 +456,19 @@ declare class Scene_Map extends Scene_Base {
      * @memberof Scene_Map
      */
     snapForBattleBackground(): void;
+    /**
+     * Starts a flash encounter effect on the map scene
+     * given a duration of the flash.
+     * @param {number} duration 
+     * @memberof Scene_Map
+     */
     startFlashForEncounter(duration: number): void;
+    /**
+     * Returns the speed of the encounter effect.
+     * 
+     * @returns {number} 
+     * @memberof Scene_Map
+     */
     encounterEffectSpeed(): number;
 }
 
@@ -736,7 +852,17 @@ declare class Scene_Equip extends Scene_MenuBase {
      * @memberof Scene_Equip
      */
     refreshActor(): void;
+    /**
+     * Handler for the equip command.
+     * 
+     * @memberof Scene_Equip
+     */
     commandEquip(): void;
+    /**
+     * Handler for the optimize command.
+     * 
+     * @memberof Scene_Equip
+     */
     commandOptimize(): void;
     commandClear(): void;
     onSlotOk(): void;
@@ -1026,7 +1152,17 @@ declare class Scene_Shop extends Scene_MenuBase {
      * @memberof Scene_Shop
      */
     commandSell(): void;
+    /**
+     * Handler for when buying is confirmed.
+     * 
+     * @memberof Scene_Shop
+     */
     onBuyOk(): void;
+    /**
+     * Handler for when buying is cancelled.
+     * 
+     * @memberof Scene_Shop
+     */
     onBuyCancel(): void;
     onCategoryOk(): void;
     onCategoryCancel(): void;
@@ -1189,6 +1325,12 @@ declare class Scene_Battle extends Scene_Base {
      * @memberof Scene_Battle
      */
     stop(): void;
+    /**
+     * Returns true if the battle needs a slow fade out.
+     * 
+     * @returns {boolean} 
+     * @memberof Scene_Battle
+     */
     needsSlowFadeOut(): boolean;
     /**
      * Updates the status window on the battle scene.
@@ -1196,6 +1338,11 @@ declare class Scene_Battle extends Scene_Base {
      * @memberof Scene_Battle
      */
     updateStatusWindow(): void;
+    /**
+     * Updates the position of the battle scene windows.
+     * 
+     * @memberof Scene_Battle
+     */
     updateWindowPositions(): void;
     /**
      * Creates all the display objects including:
@@ -1288,18 +1435,58 @@ declare class Scene_Battle extends Scene_Base {
      */
     commandEscape(): void;
     startActorCommandSelection(): void;
+    /**
+     * Handler for the attack command.
+     * 
+     * @memberof Scene_Battle
+     */
     commandAttack(): void;
+    /**
+     * Handler for the skill command.
+     * 
+     * @memberof Scene_Battle
+     */
     commandSkill(): void;
+    /**
+     * Handler for the guard command.
+     * 
+     * @memberof Scene_Battle
+     */
     commandGuard(): void;
+    /**
+     * Handler for the item command.
+     * 
+     * @memberof Scene_Battle
+     */
     commandItem(): void;
+    /**
+     * Selects the next command in the battle scene.
+     * 
+     * @memberof Scene_Battle
+     */
     selectNextCommand(): void;
+    /**
+     * Selects the previous command in the battle scene.
+     * 
+     * @memberof Scene_Battle
+     */
     selectPreviousCommand(): void;
     selectActorSelection(): void;
     onActorOk(): void;
     onActorCancel(): void;
     selectEnemySelection(): void;
+    /**
+     * Handler for when an enemy is selected.
+     * 
+     * @memberof Scene_Battle
+     */
     onEnemyOk(): void;
     onEnemyCancel(): void;
+    /**
+     * Handler for when a skill is selected.
+     * 
+     * @memberof Scene_Battle
+     */
     onSkillOk(): void;
     onSkillCancel(): void;
     onItemOk(): void;

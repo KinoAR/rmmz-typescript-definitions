@@ -857,6 +857,11 @@ interface PluginManagerStatic {
     _parameters: {[key: string]: {[key: string]: string}};
 
     setup(plugins: Array<MV.PluginSettings>): void;
+    /**
+     * Checks for errors in the plugins.
+     * 
+     * @memberof PluginManagerStatic
+     */
     checkErrors(): void;
     parameters(name: string): any;
     setParameters(name: string, parameters: {[key: string]: string}): void;
