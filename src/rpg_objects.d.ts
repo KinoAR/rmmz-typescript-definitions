@@ -1655,17 +1655,48 @@ declare class Game_Battler extends Game_BattlerBase {
     isDamagePopupRequested(): boolean;
     isEffectRequested(): boolean;
     isMotionRequested(): boolean;
+    /**
+     * Returns true if a weapon animation is requested.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Battler
+     */
     isWeaponAnimationRequested(): boolean;
     isMotionRefreshRequested(): boolean;
     isSelected(): boolean;
+    /**
+     * Returns the effect type of the battler.
+     * 
+     * @returns {string} 
+     * @memberof Game_Battler
+     */
     effectType(): string;
+    /**
+     * Returns the motion type of the battler.
+     * 
+     * @returns {string} 
+     * @memberof Game_Battler
+     */
     motionType(): string;
+    /**
+     * Returns the weapon image id.
+     * 
+     * @returns {number} 
+     * @memberof Game_Battler
+     */
     weaponImageId(): number;
     shiftAnimation(): MV.BattlerAnimation;
     startAnimation(animationId: number, mirror: boolean, delay: number): void;
     startDamagePopup(): void;
     startWeaponAnimation(weaponImageId: number): void;
     action(index: number): Game_Action;
+    /**
+     * Sets the action at the specified index for the battler.
+     * 
+     * @param {number} index 
+     * @param {Game_Action} action 
+     * @memberof Game_Battler
+     */
     setAction(index: number, action: Game_Action): void;
     numActions(): number;
     clearActions(): void;
@@ -1677,8 +1708,27 @@ declare class Game_Battler extends Game_BattlerBase {
     isStateRestrict(stateId: number): boolean;
     onRestrict(): void;
     removeState(stateId: number): void;
+    /**
+     * Has the battler escape from battle; plays a sound on escaping.
+     * 
+     * @memberof Game_Battler
+     */
     escape(): void;
+    /**
+     * Adds a buff to the battler for the specified number of turns
+     * on the selected parameter.
+     * @param {number} paramId 
+     * @param {number} turns 
+     * @memberof Game_Battler
+     */
     addBuff(paramId: number, turns: number): void;
+    /**
+     * Adds a debuff to the battler for the specified number of turns
+     * on the selected parameter.
+     * @param {number} paramId 
+     * @param {number} turns 
+     * @memberof Game_Battler
+     */
     addDebuff(paramId: number, turns: number): void;
     removeBuff(paramId: number): void;
     removeBattleStates(): void;
@@ -1688,19 +1738,70 @@ declare class Game_Battler extends Game_BattlerBase {
     removeStatesByDamage(): void;
     makeActionTimes(): number;
     makeActions(): void;
+    /**
+     * Returns the speed of the battler.
+     * 
+     * @returns {number} 
+     * @memberof Game_Battler
+     */
     speed(): number;
+    /**
+     * Calculates the speed of the battler.
+     * 
+     * @memberof Game_Battler
+     */
     makeSpeed(): void;
+    /**
+     * Returns the current action of the battler.
+     * 
+     * @returns {Game_Action} 
+     * @memberof Game_Battler
+     */
     currentAction(): Game_Action;
     removeCurrentAction(): void;
     setLastTarget(target: Game_Battler): void;
     forceAction(skillId: number, targetIndex: number): void;
     useItem(item: RPG.UsableItem): void;
     consumeItem(item: RPG.UsableItem): void;
+    /**
+     * Adds the specified amount of hp to the battler.
+     * 
+     * @param {number} value 
+     * @memberof Game_Battler
+     */
     gainHp(value: number): void;
+    /**
+     * Adds the specified amount of mp to the battler.
+     * 
+     * @param {number} value 
+     * @memberof Game_Battler
+     */
     gainMp(value: number): void;
+    /**
+     * Adds the specified amount of tp to the battler.
+     * 
+     * @param {number} value 
+     * @memberof Game_Battler
+     */
     gainTp(value: number): void;
+    /**
+     * Adds a specified amount of tp to the battler silently.
+     * 
+     * @param {number} value 
+     * @memberof Game_Battler
+     */
     gainSilentTp(value: number): void;
+    /**
+     * Initializes the battler's tp; tp is random.
+     * 
+     * @memberof Game_Battler
+     */
     initTp(): void;
+    /**
+     * Clears the battler's tp.
+     * 
+     * @memberof Game_Battler
+     */
     clearTp(): void;
     chargeTpByDamage(damageRate: number): void;
     regenerateHp(): void;
@@ -1743,18 +1844,87 @@ declare class Game_Battler extends Game_BattlerBase {
      * @memberof Game_Battler
      */
     isChanting(): boolean;
+    /**
+     * Returns true if the battler is waiting to guard.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Battler
+     */
     isGuardWaiting(): boolean;
+    /**
+     * Perform action start motion, given the specified game action.
+     * 
+     * @param {Game_Action} action 
+     * @memberof Game_Battler
+     */
     performActionStart(action: Game_Action): void;
+    /**
+     * Perform given action motion.
+     * 
+     * @param {Game_Action} action 
+     * @memberof Game_Battler
+     */
     performAction(action: Game_Action): void;
+    /**
+     * Perform action end motion.
+     * 
+     * @memberof Game_Battler
+     */
     performActionEnd(): void;
+    /**
+     * Perform damage motion.
+     * 
+     * @memberof Game_Battler
+     */
     performDamage(): void;
+    /**
+     * Perform miss motion.
+     * 
+     * @memberof Game_Battler
+     */
     performMiss(): void;
+    /**
+     * Perform recovery motion.
+     * 
+     * @memberof Game_Battler
+     */
     performRecovery(): void;
+    /**
+     * Perform evasion motion.
+     * 
+     * @memberof Game_Battler
+     */
     performEvasion(): void;
+    /**
+     * Perform magic evasion motion.
+     * 
+     * @memberof Game_Battler
+     */
     performMagicEvasion(): void;
+    /**
+     * Perform counter motion.
+     * 
+     * @memberof Game_Battler
+     */
     performCounter(): void;
+    /**
+     * Performs the reflect motion.
+     * 
+     * @memberof Game_Battler
+     */
     performReflection(): void;
+    /**
+     * Perform substitute motion with the specified game battler.
+     * 
+     * @param {Game_Battler} target 
+     * @memberof Game_Battler
+     */
     performSubstitute(target: Game_Battler): void;
+    /**
+     * Performs the collapse motion.
+     * 
+     * @memberof Game_Battler
+     */
     performCollapse(): void;
 }
 
@@ -1806,7 +1976,19 @@ declare class Game_Actor extends Game_Battler {
      * @memberof Game_Actor
      */
     actor(): RPG.Actor;
+    /**
+     * Sets the actor name.
+     * 
+     * @param {string} name 
+     * @memberof Game_Actor
+     */
     setName(name: string): void;
+    /**
+     * Returns the nickname of the actor.
+     * 
+     * @returns {string} 
+     * @memberof Game_Actor
+     */
     nickname(): string;
     setNickname(nickname: string): void;
     profile(): string;
