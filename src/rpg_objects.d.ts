@@ -746,15 +746,71 @@ declare class Game_Screen {
      * @memberof Game_Screen
      */
     zoomScale(): number;
+    /**
+     * Returns the current weather type.
+     * 
+     * @returns {string} 
+     * @memberof Game_Screen
+     */
     weatherType(): string;
+    /**
+     * Returns the weather power.
+     * 
+     * @returns {number} 
+     * @memberof Game_Screen
+     */
     weatherPower(): number;
+    /**
+     * Returns the specified picture given the picture id.
+     * 
+     * @param {number} pictureId 
+     * @returns {Game_Picture} 
+     * @memberof Game_Screen
+     */
     picture(pictureId: number): Game_Picture;
+    /**
+     * Returns the real picture id, given the picture id.
+     * 
+     * @param {number} pictureId 
+     * @returns {number} 
+     * @memberof Game_Screen
+     */
     realPictureId(pictureId: number): number;
+    /**
+     * Clears the screen fade.
+     * 
+     * @memberof Game_Screen
+     */
     clearFade(): void;
+    /**
+     * Clears the screen tone.
+     * 
+     * @memberof Game_Screen
+     */
     clearTone(): void;
+    /**
+     * Clears the screen flash.
+     * 
+     * @memberof Game_Screen
+     */
     clearFlash(): void;
+    /**
+     * Clears the screen shake.
+     * 
+     * @memberof Game_Screen
+     */
     clearShake(): void;
+    /**
+     * Clears the screen zoom.
+     * 
+     * @memberof Game_Screen
+     */
     clearZoom(): void;
+    /**
+     * Clears the screen weather.
+     * 
+     * @memberof Game_Screen
+     */
     clearWeather(): void;
     /**
      * Clears the pictures set on the game screen.
@@ -762,6 +818,11 @@ declare class Game_Screen {
      * @memberof Game_Screen
      */
     clearPictures(): void;
+    /**
+     * Erases the battle pictures.
+     * 
+     * @memberof Game_Screen
+     */
     eraseBattlePictures(): void;
     /**
      * Returns the maximum number of pictures set on the game screen.
@@ -778,14 +839,59 @@ declare class Game_Screen {
     startZoom(x: number, y: number, scale: number, duration: number): void;
     setZoom(x: number, y: number, scale: number): void;
     changeWeather(type: string, power: number, duration: number): void;
+    /**
+     * Updates the game screen.
+     * 
+     * @memberof Game_Screen
+     */
     update(): void;
+    /**
+     * Updates the screen fade out.
+     * 
+     * @memberof Game_Screen
+     */
     updateFadeOut(): void;
+    /**
+     * Updates the screen fade in.
+     * 
+     * @memberof Game_Screen
+     */
     updateFadeIn(): void;
+    /**
+     * Updates the screen tone.
+     * 
+     * @memberof Game_Screen
+     */
     updateTone(): void;
+    /**
+     * Update the screen flash.
+     * 
+     * @memberof Game_Screen
+     */
     updateFlash(): void;
+    /**
+     * Update the screen shake.
+     * 
+     * @memberof Game_Screen
+     */
     updateShake(): void;
+    /**
+     * Update the screen zoom.
+     * 
+     * @memberof Game_Screen
+     */
     updateZoom(): void;
+    /**
+     * Update the screen weather.
+     * 
+     * @memberof Game_Screen
+     */
     updateWeather(): void;
+    /**
+     * Update the screen pictures.
+     * 
+     * @memberof Game_Screen
+     */
     updatePictures(): void;
     startFlashForDamage(): void;
     showPicture(pictureId: number, name: string, origin: number, x: number, y: number,
@@ -846,14 +952,68 @@ declare class Game_Picture {
      * @memberof Game_Picture
      */
     name(): string;
+    /**
+     * Returns the origin of the game picture.
+     * 
+     * @returns {number} 
+     * @memberof Game_Picture
+     */
     origin(): number;
+    /**
+     * Returns the picture x coordinate.
+     * 
+     * @returns {number} 
+     * @memberof Game_Picture
+     */
     x(): number;
+    /**
+     * Returns the picture y coordinate.
+     * 
+     * @returns {number} 
+     * @memberof Game_Picture
+     */
     y(): number;
+    /**
+     * Returns x scale of the game picture.
+     * 
+     * @returns {number} 
+     * @memberof Game_Picture
+     */
     scaleX(): number;
+    /**
+     * Returns the y scale of the game picture.
+     * 
+     * @returns {number} 
+     * @memberof Game_Picture
+     */
     scaleY(): number;
+    /**
+     * Returns the opacity of the game picture.
+     * 
+     * @returns {number} 
+     * @memberof Game_Picture
+     */
     opacity(): number;
+    /**
+     * Returns the blend mode of the game picture.
+     * 
+     * @returns {number} 
+     * @memberof Game_Picture
+     */
     blendMode(): number;
+    /**
+     * Returns the tone of the game picture.
+     * 
+     * @returns {Array<number>} 
+     * @memberof Game_Picture
+     */
     tone(): Array<number>;
+    /**
+     * Returns the angle of the game picture.
+     * 
+     * @returns {number} 
+     * @memberof Game_Picture
+     */
     angle(): number;
     initBasic(): void;
     initTarget(): void;
@@ -863,10 +1023,35 @@ declare class Game_Picture {
     move(origin: number, x: number, y: number, scaleX: number, scaleY: number, opacity: number, blendMode: number, duration: number): void;
     rotate(speed: number): void;
     tint(tone: Array<number>, duration: number): void;
+    /**
+     * Erases the game picture.
+     * 
+     * @memberof Game_Picture
+     */
     erase(): void;
+    /**
+     * Updates the game picture.
+     * 
+     * @memberof Game_Picture
+     */
     update(): void;
+    /**
+     * Updates the movement of the game picture.
+     * 
+     * @memberof Game_Picture
+     */
     updateMove(): void;
+    /**
+     * Updates the tone of the game picture.
+     * 
+     * @memberof Game_Picture
+     */
     updateTone(): void;
+    /**
+     * Updates the rotation of the game picture.
+     * 
+     * @memberof Game_Picture
+     */
     updateRotation(): void;
 }
 
@@ -1103,15 +1288,45 @@ declare class Game_ActionResult {
     addedDebuffs: Array<number>;
     removedBuffs: Array<number>;
 
+    /**
+     * Clears the game action result.
+     * 
+     * @memberof Game_ActionResult
+     */
     clear(): void;
+    /**
+     * Returns the added states from the action result.
+     * 
+     * @returns {Array<RPG.State>} 
+     * @memberof Game_ActionResult
+     */
     addedStateObjects(): Array<RPG.State>;
+    /**
+     * Returns the removes states from the result.
+     * 
+     * @returns {Array<RPG.State>} 
+     * @memberof Game_ActionResult
+     */
     removedStateObjects(): Array<RPG.State>;
     isStatusAffected(): boolean;
+    /**
+     * Returns true if the action result is a hit.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_ActionResult
+     */
     isHit(): boolean;
     isStateAdded(stateId: number): boolean;
     pushAddedState(stateId: number): void;
     isStateRemoved(stateId: number): boolean;
     pushRemovedState(stateId: number): void;
+    /**
+     * Returns true if the a buff is added to the specified param
+     * from the action result.
+     * @param {number} paramId 
+     * @returns {boolean} 
+     * @memberof Game_ActionResult
+     */
     isBuffAdded(paramId: number): boolean;
     pushAddedBuff(paramId: number): void;
     isDebuffAdded(paramId: number): boolean;
@@ -1243,12 +1458,43 @@ declare class Game_BattlerBase {
      * @memberof Game_BattlerBase
      */
     eraseState(stateId: number): void;
+    /**
+     * Returns true if the battler is affected by the specified state given
+     * the state id.
+     * @param {number} stateId 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isStateAffected(stateId: number): boolean;
     isDeathStateAffected(): boolean;
+    /**
+     * Returns the death state id.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     deathStateId(): number;
+    /**
+     * Resets the state count of the specified state, given the state id.
+     * 
+     * @param {number} stateId 
+     * @memberof Game_BattlerBase
+     */
     resetStateCounts(stateId: number): void;
+    /**
+     * Returns true if the state, given the state id is expired.
+     * 
+     * @param {number} stateId 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isStateExpired(stateId: number): boolean;
     updateStateTurns(): void;
+    /**
+     * Clears buffs from the battler.
+     * 
+     * @memberof Game_BattlerBase
+     */
     clearBuffs(): void;
     eraseBuff(paramId: number): void;
     /**
@@ -1275,6 +1521,11 @@ declare class Game_BattlerBase {
     decreaseBuff(paramId: number): void;
     overwriteBuffTurns(paramId: number, turns: number): void;
     isBuffExpired(paramId: number): boolean;
+    /**
+     * Updates the buff turns on battler.
+     * 
+     * @memberof Game_BattlerBase
+     */
     updateBuffTurns(): void;
     /**
      * Kills the battler.
@@ -1288,6 +1539,12 @@ declare class Game_BattlerBase {
      * @memberof Game_BattlerBase
      */
     revive(): void;
+    /**
+     * Returns the states applied to the battler.
+     * 
+     * @returns {Array<RPG.State>} 
+     * @memberof Game_BattlerBase
+     */
     states(): Array<RPG.State>;
     /**
      * Returns the array of state icons attached to the battler;
@@ -1312,6 +1569,12 @@ declare class Game_BattlerBase {
      */
     allIcons(): Array<number>;
     traitObjects(): Array<any>;
+    /**
+     * Returns all the traits of the battler.
+     * 
+     * @returns {Array<RPG.Trait>} 
+     * @memberof Game_BattlerBase
+     */
     allTraits(): Array<RPG.Trait>;
     traits(code: number): Array<RPG.Trait>;
     traitsWithId(code: number, id: number): Array<RPG.Trait>;
@@ -1347,7 +1610,19 @@ declare class Game_BattlerBase {
     stateRate(stateId: number): number;
     stateResistSet(): Array<number>;
     isStateResist(stateId: number): boolean;
+    /**
+     * Returns the attack elements of the battler
+     * as a list of numbers.
+     * @returns {Array<number>} 
+     * @memberof Game_BattlerBase
+     */
     attackElements(): Array<number>;
+    /**
+     * Returns the attack states of the battler as a
+     * list of numbers.
+     * @returns {Array<number>} 
+     * @memberof Game_BattlerBase
+     */
     attackStates(): Array<number>;
     attackStatesRate(stateId: number): void;
     /**
@@ -1372,6 +1647,12 @@ declare class Game_BattlerBase {
     isEquipAtypeOk(atypeId: number): boolean;
     isEquipTypeLocked(etypeId: number): boolean;
     isEquipTypeSealed(etypeId: number): boolean;
+    /**
+     * Returns the battler slot type of a trait.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     slotType(): number;
     /**
      * Returns true if the battler dual wields.
@@ -1382,18 +1663,76 @@ declare class Game_BattlerBase {
     isDualWield(): boolean;
     actionPlusSet(): Array<number>;
     specialFlag(flagId: number): boolean;
+    /**
+     * Returns the collapse type of the battler.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     collapseType(): number;
     partyAbility(abilityId: number): boolean;
+    /**
+     * Returns true if the battler is set to battle automatically.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isAutoBattle(): boolean;
+    /**
+     * Returns true if the battler is guarding.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isGuard(): boolean;
     isSubstitute(): boolean;
+    /**
+     * Returns true if tp is preserved between battles.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isPreserveTp(): boolean;
     addParam(paramId: number, value: number): void;
+    /**
+     * Sets the battler hp.
+     * 
+     * @param {number} hp 
+     * @memberof Game_BattlerBase
+     */
     setHp(hp: number): void;
+    /**
+     * Sets the battler mp.
+     * 
+     * @param {number} mp 
+     * @memberof Game_BattlerBase
+     */
     setMp(mp: number): void;
+    /**
+     * Sets the battler tp.
+     * 
+     * @param {number} tp 
+     * @memberof Game_BattlerBase
+     */
     setTp(tp: number): void;
+    /**
+     * Returns the maximum tp of the battler.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     maxTp(): number;
+    /**
+     * Refreshes the battler.
+     * 
+     * @memberof Game_BattlerBase
+     */
     refresh(): void;
+    /**
+     * Recovers the battler from all states and restores the
+     * battler to maximum hp and mp.
+     * @memberof Game_BattlerBase
+     */
     recoverAll(): void;
     /**
      * Returns the percentage of the battler's hp left as a float.
@@ -1416,9 +1755,31 @@ declare class Game_BattlerBase {
      * @memberof Game_BattlerBase
      */
     tpRate(): number;
+    /**
+     * Hides the game battler.
+     * 
+     * @memberof Game_BattlerBase
+     */
     hide(): void;
+    /**
+     * Shows the game battler.
+     * 
+     * @memberof Game_BattlerBase
+     */
     appear(): void;
+    /**
+     * Returns true if the game battler is hidden.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isHidden(): boolean;
+    /**
+     * Returns true if the game battler is not hidden.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isAppeared(): boolean;
     /**
      * Returns true if the battler is dead.
@@ -1441,6 +1802,12 @@ declare class Game_BattlerBase {
      * @memberof Game_BattlerBase
      */
     isDying(): boolean;
+    /**
+     * Returns true if the game battler is restricted.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isRestricted(): boolean;
     /**
      * Returns true if the battler can input actions.
@@ -1457,6 +1824,12 @@ declare class Game_BattlerBase {
      * @memberof Game_BattlerBase
      */
     isConfused(): boolean;
+    /**
+     * Returns the confusion level of the battler.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     confusionLevel(): number;
     /**
      * Returns true if the battler is an actor.
@@ -1478,6 +1851,12 @@ declare class Game_BattlerBase {
      * @memberof Game_BattlerBase
      */
     sortStates(): void;
+    /**
+     * Returns the number of the restriction.
+     * 
+     * @returns {number} 
+     * @memberof Game_BattlerBase
+     */
     restriction(): number;
     /**
      * Adds a new state given a state id to the battler.
@@ -1486,6 +1865,11 @@ declare class Game_BattlerBase {
      * @memberof Game_BattlerBase
      */
     addNewState(stateId: number): void;
+    /**
+     * Handler for when the battler is restricted.
+     * 
+     * @memberof Game_BattlerBase
+     */
     onRestrict(): void;
     mostImportantStateText(): string;
     stateMotionIndex(): number;
@@ -1514,6 +1898,13 @@ declare class Game_BattlerBase {
      * @memberof Game_BattlerBase
      */
     skillTpCost(skill: RPG.Skill): number;
+    /**
+     * Returns true if the battler can pay the cost
+     * of the specified skill.
+     * @param {RPG.Skill} skill 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     canPaySkillCost(skill: RPG.Skill): boolean;
     /**
      * Pays the cost of the skill when activating the skill.
@@ -1522,6 +1913,13 @@ declare class Game_BattlerBase {
      * @memberof Game_BattlerBase
      */
     paySkillCost(skill: RPG.Skill): void;
+    /**
+     * Returns true if the item occasion is okay.
+     * 
+     * @param {RPG.UsableItem} item 
+     * @returns {boolean} 
+     * @memberof Game_BattlerBase
+     */
     isOccasionOk(item: RPG.UsableItem): boolean;
     meetsUsableItemConditions(item: RPG.UsableItem): boolean;
     /**
@@ -1638,15 +2036,64 @@ declare class Game_Battler extends Game_BattlerBase {
      * @memberof Game_Battler
      */
     battlerName(): string;
+    /**
+     * Returns the index of the battler.
+     * 
+     * @returns {number} 
+     * @memberof Game_Battler
+     */
     index(): number;
+    /**
+     * Returns the unit of the battler; this is either the 
+     * game party or game troop.
+     * @returns {Game_Unit} 
+     * @memberof Game_Battler
+     */
     friendsUnit(): Game_Unit;
+    /**
+     * Returns the opponents unit; this is either
+     * game party or game troop.
+     * @returns {Game_Unit} 
+     * @memberof Game_Battler
+     */
     opponentsUnit(): Game_Unit;
+    /**
+     * Clears animations from the battler.
+     * 
+     * @memberof Game_Battler
+     */
     clearAnimations(): void;
+    /**
+     * Clear damage pop up from the battler.
+     * 
+     * @memberof Game_Battler
+     */
     clearDamagePopup(): void;
+    /**
+     * Clear weapon animation from the battler.
+     * 
+     * @memberof Game_Battler
+     */
     clearWeaponAnimation(): void;
+    /**
+     * Clears effect from the battler.
+     * 
+     * @memberof Game_Battler
+     */
     clearEffect(): void;
+    /**
+     * Clears motion from the battler.
+     * 
+     * @memberof Game_Battler
+     */
     clearMotion(): void;
     requestEffect(effectType: string): void;
+    /**
+     * Request the specified motion on the game battler.
+     * 
+     * @param {string} motionType 
+     * @memberof Game_Battler
+     */
     requestMotion(motionType: string): void;
     requestMotionRefresh(): void;
     select(): void;
@@ -1654,6 +2101,12 @@ declare class Game_Battler extends Game_BattlerBase {
     isAnimationRequested(): boolean;
     isDamagePopupRequested(): boolean;
     isEffectRequested(): boolean;
+    /**
+     * Returns true if a motion is requested.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Battler
+     */
     isMotionRequested(): boolean;
     /**
      * Returns true if a weapon animation is requested.
@@ -1685,9 +2138,34 @@ declare class Game_Battler extends Game_BattlerBase {
      * @memberof Game_Battler
      */
     weaponImageId(): number;
+    /**
+     * Shifts the battler animation.
+     * 
+     * @returns {MV.BattlerAnimation} 
+     * @memberof Game_Battler
+     */
     shiftAnimation(): MV.BattlerAnimation;
+    /**
+     * Starts the specified animation, given the animation id on the
+     * battler.
+     * @param {number} animationId 
+     * @param {boolean} mirror 
+     * @param {number} delay 
+     * @memberof Game_Battler
+     */
     startAnimation(animationId: number, mirror: boolean, delay: number): void;
+    /**
+     * Starts a damage pop up on the battler.
+     * 
+     * @memberof Game_Battler
+     */
     startDamagePopup(): void;
+    /**
+     * Starts the weapon animation on te battler given a weapon id.
+     * 
+     * @param {number} weaponImageId 
+     * @memberof Game_Battler
+     */
     startWeaponAnimation(weaponImageId: number): void;
     action(index: number): Game_Action;
     /**
@@ -1698,15 +2176,74 @@ declare class Game_Battler extends Game_BattlerBase {
      * @memberof Game_Battler
      */
     setAction(index: number, action: Game_Action): void;
+    /**
+     * Returns the number of battler actions.
+     * 
+     * @returns {number} 
+     * @memberof Game_Battler
+     */
     numActions(): number;
+    /**
+     * Clears the battler actions.
+     * 
+     * @memberof Game_Battler
+     */
     clearActions(): void;
+    /**
+     * Returns the battler action result.
+     * 
+     * @returns {Game_ActionResult} 
+     * @memberof Game_Battler
+     */
     result(): Game_ActionResult;
+    /**
+     * Clears the battler action result.
+     * 
+     * @memberof Game_Battler
+     */
     clearResult(): void;
+    /**
+     * Refreshes the battler.
+     * 
+     * @memberof Game_Battler
+     */
     refresh(): void;
+    /**
+     * Adds a state to the battler given the specified
+     * state id.
+     * @param {number} stateId 
+     * @memberof Game_Battler
+     */
     addState(stateId: number): void;
+    /**
+     * Returns true if the specified state given the state id
+     * is addable.
+     * @param {number} stateId 
+     * @returns {boolean} 
+     * @memberof Game_Battler
+     */
     isStateAddable(stateId: number): boolean;
+    /**
+     * Returns true if the specified state given the state id
+     * restricts.
+     * 
+     * @param {number} stateId 
+     * @returns {boolean} 
+     * @memberof Game_Battler
+     */
     isStateRestrict(stateId: number): boolean;
+    /**
+     * Handler for when theb attler is restricted.
+     * 
+     * @memberof Game_Battler
+     */
     onRestrict(): void;
+    /**
+     * Removes the specified state given the state id.
+     * 
+     * @param {number} stateId 
+     * @memberof Game_Battler
+     */
     removeState(stateId: number): void;
     /**
      * Has the battler escape from battle; plays a sound on escaping.
@@ -1732,11 +2269,27 @@ declare class Game_Battler extends Game_BattlerBase {
     addDebuff(paramId: number, turns: number): void;
     removeBuff(paramId: number): void;
     removeBattleStates(): void;
+    /**
+     * Removes all buffs from the battler.
+     * 
+     * @memberof Game_Battler
+     */
     removeAllBuffs(): void;
     removeStatesAuto(timing: number): void;
     removeBuffsAuto(): void;
     removeStatesByDamage(): void;
+    /**
+     * Creates the number of times for
+     * an action.
+     * @returns {number} 
+     * @memberof Game_Battler
+     */
     makeActionTimes(): number;
+    /**
+     * Creates the actions for the battler.
+     * 
+     * @memberof Game_Battler
+     */
     makeActions(): void;
     /**
      * Returns the speed of the battler.
@@ -1758,10 +2311,27 @@ declare class Game_Battler extends Game_BattlerBase {
      * @memberof Game_Battler
      */
     currentAction(): Game_Action;
+    /**
+     * Removes the current battler action.
+     * 
+     * @memberof Game_Battler
+     */
     removeCurrentAction(): void;
     setLastTarget(target: Game_Battler): void;
     forceAction(skillId: number, targetIndex: number): void;
+    /**
+     * Has theb attler use the given item.
+     * 
+     * @param {RPG.UsableItem} item 
+     * @memberof Game_Battler
+     */
     useItem(item: RPG.UsableItem): void;
+    /**
+     * Has the battler consume the given item.
+     * 
+     * @param {RPG.UsableItem} item 
+     * @memberof Game_Battler
+     */
     consumeItem(item: RPG.UsableItem): void;
     /**
      * Adds the specified amount of hp to the battler.
@@ -1804,11 +2374,36 @@ declare class Game_Battler extends Game_BattlerBase {
      */
     clearTp(): void;
     chargeTpByDamage(damageRate: number): void;
+    /**
+     * Has the battler regenerate hp based on their hp regen.
+     * 
+     * @memberof Game_Battler
+     */
     regenerateHp(): void;
     maxSlipDamage(): number;
+    /**
+     * Has the battler regenerate mp based on their mp regen.
+     * 
+     * @memberof Game_Battler
+     */
     regenerateMp(): void;
+    /**
+     * Has the battler regenerate tp based on their tp regen.
+     * 
+     * @memberof Game_Battler
+     */
     regenerateTp(): void;
+    /**
+     * Has the battler regenerate all resources based on
+     * their respective regeneration stats.
+     * @memberof Game_Battler
+     */
     regenerateAll(): void;
+    /**
+     * Handler for when battle has started.
+     * 
+     * @memberof Game_Battler
+     */
     onBattleStart(): void;
     onAllActionsEnd(): void;
     onTurnEnd(): void;
@@ -2820,10 +3415,27 @@ declare class Game_Unit {
      */
     agility(): number;
     tgrSum(): number;
+    /**
+     * Returns a random target from the game unit.
+     * 
+     * @returns {Game_Battler} 
+     * @memberof Game_Unit
+     */
     randomTarget(): Game_Battler;
+    /**
+     * Returns a random dead target from the game unit.
+     * 
+     * @returns {Game_Battler} 
+     * @memberof Game_Unit
+     */
     randomDeadTarget(): Game_Battler;
     smoothTarget(index: number): Game_Battler;
     smoothDeadTarget(index: number): Game_Battler;
+    /**
+     * Clears the action results.
+     * 
+     * @memberof Game_Unit
+     */
     clearResults(): void;
     /**
      * Handler for when battle is started.
@@ -2887,31 +3499,163 @@ declare class Game_Party extends Game_Unit {
     protected _weapons: {[itemId: number]: number};
     protected _armors: {[itemId: number]: number};
 
+    /**
+     * Returns all party members.
+     * 
+     * @returns {Array<Game_Actor>} 
+     * @memberof Game_Party
+     */
     members(): Array<Game_Actor>;
+    /**
+     * Returns the living party members.
+     * 
+     * @returns {Array<Game_Actor>} 
+     * @memberof Game_Party
+     */
     aliveMembers(): Array<Game_Actor>;
+    /**
+     * Returns the dead party members.
+     * 
+     * @returns {Array<Game_Actor>} 
+     * @memberof Game_Party
+     */
     deadMembers(): Array<Game_Actor>;
+    /**
+     * Returns the movable members in the party.
+     * 
+     * @returns {Array<Game_Actor>} 
+     * @memberof Game_Party
+     */
     movableMembers(): Array<Game_Actor>;
+    /**
+     * Returns the battle members in the party.
+     * 
+     * @returns {Array<Game_Actor>} 
+     * @memberof Game_Party
+     */
     battleMembers(): Array<Game_Actor>;
+    /**
+     * Initialize all party items.
+     * 
+     * @memberof Game_Party
+     */
     initAllItems(): void;
+    /**
+     * Returns true if the game party exists.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Party
+     */
     exists(): boolean;
+    /**
+     * Returns the size of the party.
+     * 
+     * @returns {number} 
+     * @memberof Game_Party
+     */
     size(): number;
+    /**
+     * Returns true if the game party is empty.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Party
+     */
     isEmpty(): boolean;
+    /**
+     * Returns the maximum battle members in the party.
+     * 
+     * @returns {number} 
+     * @memberof Game_Party
+     */
     maxBattleMembers(): number;
+    /**
+     * Returns the leader of the party.
+     * 
+     * @returns {Game_Actor} 
+     * @memberof Game_Party
+     */
     leader(): Game_Actor;
+    /**
+     * Revive the battle members of the party.
+     * 
+     * @memberof Game_Party
+     */
     reviveBattleMembers(): void;
     items(): Array<RPG.Item>;
+    /**
+     * Returns the weapons of the party.
+     * 
+     * @returns {Array<RPG.Weapon>} 
+     * @memberof Game_Party
+     */
     weapons(): Array<RPG.Weapon>;
+    /**
+     * Returns the party's armor.
+     * 
+     * @returns {Array<RPG.Armor>} 
+     * @memberof Game_Party
+     */
     armors(): Array<RPG.Armor>;
+    /**
+     * Returns the party's equippable items.
+     * 
+     * @returns {Array<RPG.EquipItem>} 
+     * @memberof Game_Party
+     */
     equipItems(): Array<RPG.EquipItem>;
+    /**
+     * Returns all items within the party's posession.
+     * 
+     * @returns {Array<RPG.BaseItem>} 
+     * @memberof Game_Party
+     */
     allItems(): Array<RPG.BaseItem>;
     itemContainer(item: RPG.BaseItem): {[itemId: number]: number};
+    /**
+     * Sets up the starting party members.
+     * 
+     * @memberof Game_Party
+     */
     setupStartingMembers(): void;
     name(): string;
+    /**
+     * Sets up a test battle with the party.
+     * 
+     * @memberof Game_Party
+     */
     setupBattleTest(): void;
+    /**
+     * Sets up the battle test members.
+     * 
+     * @memberof Game_Party
+     */
     setupBattleTestMembers(): void;
+    /**
+     * Sets up the battle test items.
+     * 
+     * @memberof Game_Party
+     */
     setupBattleTestItems(): void;
+    /**
+     * Returns the highest level in the party.
+     * 
+     * @returns {number} 
+     * @memberof Game_Party
+     */
     highestLevel(): number;
+    /**
+     * Adds an actor to the party given the actor id.
+     * 
+     * @param {number} actorId 
+     * @memberof Game_Party
+     */
     addActor(actorId: number): void;
+    /**
+     * Removes an actor from the party given the actor id.
+     * 
+     * @param {number} actorId 
+     * @memberof Game_Party
+     */
     removeActor(actorId: number): void;
     /**
      * Returns party gold.
@@ -2991,7 +3735,20 @@ declare class Game_Party extends Game_Unit {
     gainItem(item: RPG.BaseItem, amount: number, includeEquip: boolean): void;
     discardMembersEquip(item: RPG.EquipItem, amount: number): void;
     loseItem(item: RPG.BaseItem, amount: number, includeEquip: boolean): void;
+    /**
+     * Has the party consume the given item.
+     * 
+     * @param {RPG.BaseItem} item 
+     * @memberof Game_Party
+     */
     consumeItem(item: RPG.BaseItem): void;
+    /**
+     * Returns true if the party can use the item.
+     * 
+     * @param {RPG.BaseItem} item 
+     * @returns {boolean} 
+     * @memberof Game_Party
+     */
     canUse(item: RPG.BaseItem): boolean;
     canInput(): boolean;
     /**
@@ -3000,19 +3757,55 @@ declare class Game_Party extends Game_Unit {
      * @memberof Game_Party
      */
     onPlayerWalk(): void;
+    /**
+     * Returns the actor that will be used in the current menu;
+     * this is for menu scenes that target one actor.
+     * @returns {Game_Actor} 
+     * @memberof Game_Party
+     */
     menuActor(): Game_Actor;
     setMenuActor(actor: Game_Actor): void;
     makeMenuActorNext(): void;
     makeMenuActorPrevious(): void;
     targetActor(): Game_Actor;
     setTargetActor(actor: Game_Actor): void;
+    /**
+     * Returns the last item selected by the game party.
+     * 
+     * @returns {RPG.BaseItem} 
+     * @memberof Game_Party
+     */
     lastItem(): RPG.BaseItem;
     setLastItem(item: RPG.BaseItem): void;
     swapOrder(index1: number, index2: number): void;
+    /**
+     * Returns the characters that go on the save life.
+     * 
+     * @returns {Array<Array<any>>} 
+     * @memberof Game_Party
+     */
     charactersForSavefile(): Array<Array<any>>;
+    /**
+     * Returns the actor faces for the save file.
+     * 
+     * @returns {Array<Array<any>>} 
+     * @memberof Game_Party
+     */
     facesForSavefile(): Array<Array<any>>;
     partyAbility(abilityId: number): boolean;
+    /**
+     * Returns true if the encounter rate is set to half.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Party
+     */
     hasEncounterHalf(): boolean;
+    /**
+     * Returns true if the encounter rate is set to none.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Party
+     */
     hasEncounterNone(): boolean;
     hasCancelSurprise(): boolean;
     /**
@@ -3275,11 +4068,39 @@ declare class Game_Map {
      */
     displayY(): number;
     parallaxName(): string;
+    /**
+     * Returns the name of battle back 1.
+     * 
+     * @returns {string} 
+     * @memberof Game_Map
+     */
     battleback1Name(): string;
+    /**
+     * Returns the name of battle back 2.
+     * 
+     * @returns {string} 
+     * @memberof Game_Map
+     */
     battleback2Name(): string;
     requestRefresh(mapId: number): void;
+    /**
+     * Returns true if the name display is enabled.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Map
+     */
     isNameDisplayEnabled(): boolean;
+    /**
+     * Disables name display.
+     * 
+     * @memberof Game_Map
+     */
     disableNameDisplay(): void;
+    /**
+     * Enable name display.
+     * 
+     * @memberof Game_Map
+     */
     enableNameDisplay(): void;
     /**
      * Creates the vehicles for the game map.
@@ -3359,8 +4180,26 @@ declare class Game_Map {
     setDisplayPos(x: number, y: number): void;
     parallaxOx(): number;
     parallaxOy(): number;
+    /**
+     * Returns the tilset of the game map.
+     * 
+     * @returns {RPG.Tileset} 
+     * @memberof Game_Map
+     */
     tileset(): RPG.Tileset;
+    /**
+     * Returns the tileset flags of the game map.
+     * 
+     * @returns {Array<number>} 
+     * @memberof Game_Map
+     */
     tilesetFlags(): Array<number>;
+    /**
+     * Returns the display name of the game map.
+     * 
+     * @returns {string} 
+     * @memberof Game_Map
+     */
     displayName(): string;
     /**
      * Returns the map width.
@@ -3450,12 +4289,39 @@ declare class Game_Map {
     deltaX(x1: number, x2: number): number;
     deltaY(y1: number, y2: number): number;
     distance(x1: number, y1: number, x2: number, y2: number): number;
+    /**
+     * Converts the x coordinate from canvas to map coordinate x.
+     * 
+     * @param {number} x 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     canvasToMapX(x: number): number;
+    /**
+     * Converts the y coordinate from canvas to map y coordinate.
+     * 
+     * @param {number} y 
+     * @returns {number} 
+     * @memberof Game_Map
+     */
     canvasToMapY(y: number): number;
+    /**
+     * Auto plays the game map.
+     * 
+     * @memberof Game_Map
+     */
     autoplay(): void;
     refreshIfNeeded(): void;
     refresh(): void;
     refreshTileEvents(): void;
+    /**
+     * Returns the game events at the specified
+     * x and y position.
+     * @param {number} x 
+     * @param {number} y 
+     * @returns {Array<Game_Event>} 
+     * @memberof Game_Map
+     */
     eventsXy(x: number, y: number): Array<Game_Event>;
     eventsXyNt(x: number, y: number): Array<Game_Event>;
     tileEventsXy(x: number, y: number): Array<Game_Event>;
@@ -3561,6 +4427,12 @@ declare class Game_Map {
     setupStartingEvent(): boolean;
     setupTestEvent(): boolean;
     setupStartingMapEvent(): boolean;
+    /**
+     * Sets up an auto run common event.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Map
+     */
     setupAutorunCommonEvent(): boolean;
     /**
      * Returns true if any event is starting on the map.
@@ -3676,15 +4548,51 @@ declare class Game_CharacterBase {
      */
     moveSpeed(): number;
     setMoveSpeed(moveSpeed: number): void;
+    /**
+     * Returns the move frequency of the character.
+     * 
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     moveFrequency(): number;
     setMoveFrequency(moveFrequency: number): void;
     opacity(): number;
     setOpacity(opacity: number): void;
+    /**
+     * Returns the blend mode of the character;
+     * these are represented by numbers.
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     blendMode(): number;
+    /**
+     * Sets the blend mode of the character;
+     * these are represented by numbers.
+     * @param {number} blendMode 
+     * @memberof Game_CharacterBase
+     */
     setBlendMode(blendMode: number): void;
+    /**
+     * Returns true if the character is
+     * normal priority; this means you can collide with them.
+     * @returns {boolean} 
+     * @memberof Game_CharacterBase
+     */
     isNormalPriority(): boolean;
     setPriorityType(priorityType: number): void;
+    /**
+     * Returns true if the character is moving.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_CharacterBase
+     */
     isMoving(): boolean;
+    /**
+     * Returns true if the character is jumping.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_CharacterBase
+     */
     isJumping(): boolean;
     /**
      * Returns the jump height of base character.
@@ -3693,13 +4601,35 @@ declare class Game_CharacterBase {
      * @memberof Game_CharacterBase
      */
     jumpHeight(): number;
+    /**
+     * Returns true if the character is stopping.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_CharacterBase
+     */
     isStopping(): boolean;
     checkStop(threshold: number): boolean;
+    /**
+     * Resets the step count of the character.
+     * 
+     * @memberof Game_CharacterBase
+     */
     resetStopCount(): void;
     realMoveSpeed(): number;
     distancePerFrame(): number;
+    /**
+     * Returns true if the character is dashing.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_CharacterBase
+     */
     isDashing(): boolean;
     isDebugThrough(): boolean;
+    /**
+     * Straightens the character.
+     * 
+     * @memberof Game_CharacterBase
+     */
     straighten(): void;
     reverseDir(d: number): number;
     canPass(x: number, y: number, d: number): boolean;
@@ -3712,14 +4642,50 @@ declare class Game_CharacterBase {
     copyPosition(character: Game_Player): void;
     locate(x: number, y: number): void;
     direction(): number;
+    /**
+     * Sets the direction of the character based on numpad
+     * directions.
+     * @param {number} d 
+     * @memberof Game_CharacterBase
+     */
     setDirection(d: number): void;
+    /**
+     * Returns true if the character is a tile; these
+     * are events without character sprites.
+     * @returns {boolean} 
+     * @memberof Game_CharacterBase
+     */
     isTile(): boolean;
+    /**
+     * Returns true if the character is an object character;
+     * these are events with character sprites.
+     * @returns {boolean} 
+     * @memberof Game_CharacterBase
+     */
     isObjectCharacter(): boolean;
     shiftY(): number;
     scrolledX(): number;
     scrolledY(): number;
+    /**
+     * Returns the character's scrreen x position.
+     * 
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     screenX(): number;
+    /**
+     * Returns the character's screen y position.
+     * 
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     screenY(): number;
+    /**
+     * Returns the character's screen z position.
+     * 
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     screenZ(): number;
     isNearTheScreen(): boolean;
     update(): void;
@@ -3728,19 +4694,64 @@ declare class Game_CharacterBase {
     updateMove(): void;
     updateAnimation(): void;
     animationWait(): number;
+    /**
+     * Updates the character's animation count.
+     * 
+     * @memberof Game_CharacterBase
+     */
     updateAnimationCount(): void;
     updatePattern(): void;
     maxPattern(): number;
+    /**
+     * Returns the pattern of the character; these are the walking 
+     * patterns.
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     pattern(): number;
+    /**
+     * Sets the pattern of the character, given 
+     * a pattern number.
+     * @param {number} pattern 
+     * @memberof Game_CharacterBase
+     */
     setPattern(pattern: number): void;
     isOriginalPattern(): boolean;
+    /**
+     * Resets the pattern of the character.
+     * 
+     * @memberof Game_CharacterBase
+     */
     resetPattern(): void;
     refreshBushDepth(): void;
     isOnLadder(): boolean;
     isOnBush(): boolean;
+    /**
+     * Returns the terrain tag of the character.
+     * 
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     terrainTag(): number;
+    /**
+     * Returns the region id of the character.
+     * 
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     regionId(): number;
+    /**
+     * Increases the character steps.
+     * 
+     * @memberof Game_CharacterBase
+     */
     increaseSteps(): void;
+    /**
+     * Returns the tile id of character.
+     * 
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     tileId(): number;
     characterName(): string;
     characterIndex(): number;
@@ -3755,24 +4766,99 @@ declare class Game_CharacterBase {
     jump(xPlus: number, yPlus: number): void;
     hasWalkAnime(): boolean;
     setWalkAnime(walkAnime: boolean): void;
+    /**
+     * Returns true if the character has step animation.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_CharacterBase
+     */
     hasStepAnime(): boolean;
     setStepAnime(stepAnime: boolean): void;
+    /**
+     * Returns true if the character is set to a fixed direction.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_CharacterBase
+     */
     isDirectionFixed(): boolean;
+    /**
+     * Sets the character to be fixed in a specified direction
+     * given a boolean value.
+     * @param {boolean} directionFix 
+     * @memberof Game_CharacterBase
+     */
     setDirectionFix(directionFix: boolean): void;
+    /**
+     * Returns true if the character is set to pass through.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_CharacterBase
+     */
     isThrough(): boolean;
     setThrough(through: boolean): void;
     isTransparent(): boolean;
+    /**
+     * Returns the bush depth around the character.
+     * 
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     bushDepth(): number;
     setTransparent(transparent: boolean): void;
+    /**
+     * Requests an animation given the animation id.
+     * 
+     * @param {number} animationId 
+     * @memberof Game_CharacterBase
+     */
     requestAnimation(animationId: number): void;
+    /**
+     * Requests the balloon animation given the balloon id.
+     * 
+     * @param {number} balloonId 
+     * @memberof Game_CharacterBase
+     */
     requestBalloon(balloonId: number): void;
+    /**
+     * Returns the animation id.
+     * 
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     animationId(): number;
+    /**
+     * Returns the id of the balloon animation.
+     * 
+     * @returns {number} 
+     * @memberof Game_CharacterBase
+     */
     balloonId(): number;
+    /**
+     * Starts the requested animation.
+     * 
+     * @memberof Game_CharacterBase
+     */
     startAnimation(): void;
+    /**
+     * Stars a balloon animation.
+     * 
+     * @memberof Game_CharacterBase
+     */
     startBalloon(): void;
     isAnimationPlaying(): boolean;
+    /**
+     * Returns true if a balloon animation is playing.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_CharacterBase
+     */
     isBalloonPlaying(): boolean;
     endAnimation(): void;
+    /**
+     * Ends the balloon animation on the character.
+     * 
+     * @memberof Game_CharacterBase
+     */
     endBalloon(): void;
 }
 
@@ -3992,6 +5078,12 @@ declare class Game_Character extends Game_CharacterBase {
     turnRandom(): void;
     swap(character: Game_Character): void;
     findDirectionTo(goalX: number, goalY: number): number;
+    /**
+     * Returns the search limit for path finding.
+     * 
+     * @returns {number} 
+     * @memberof Game_Character
+     */
     searchLimit(): number;
 }
 
@@ -4018,6 +5110,11 @@ declare class Game_Player extends Game_Character {
     protected _followers: Game_Followers;
     protected _encounterCount: number;
 
+    /**
+     * Clears the transfer information for the player.
+     * 
+     * @memberof Game_Player
+     */
     clearTransferInfo(): void;
     /**
      * Returns the player followers (party members).
@@ -4026,6 +5123,11 @@ declare class Game_Player extends Game_Character {
      * @memberof Game_Player
      */
     followers(): Game_Followers;
+    /**
+     * Refreshes the game player.
+     * 
+     * @memberof Game_Player
+     */
     refresh(): void;
     /**
      * Returns true if the player is stopping.
@@ -4034,11 +5136,32 @@ declare class Game_Player extends Game_Character {
      * @memberof Game_Player
      */
     isStopping(): boolean;
+    /**
+     * Reserves a transfer of the player to the specified map, at the given
+     * x and y coordinates, facing the given direction (d). Using a specific fade.
+     * @param {number} mapId 
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} [d] 
+     * @param {number} [fadeType] 
+     * @memberof Game_Player
+     */
     reserveTransfer(mapId: number, x: number, y: number, d?: number, fadeType?: number): void;
     requestMapReload(): void;
     isTransferring(): boolean;
+    /**
+     * Returns the new map id.
+     * 
+     * @returns {number} 
+     * @memberof Game_Player
+     */
     newMapId(): number;
     fadeType(): number;
+    /**
+     * Performs a transfer of the player to a different area or map.
+     * 
+     * @memberof Game_Player
+     */
     performTransfer(): void;
     isMapPassable(x: number, y: number, d: number): boolean;
     /**
@@ -4109,10 +5232,36 @@ declare class Game_Player extends Game_Character {
     center(x: number, y: number): void;
     locate(x: number, y: number): void;
     increaseSteps(): void;
+    /**
+     * Creates the encounter count for the player.
+     * 
+     * @memberof Game_Player
+     */
     makeEncounterCount(): void;
+    /**
+     * Creates the encounter troop id and returns it.
+     * 
+     * @returns {number} 
+     * @memberof Game_Player
+     */
     makeEncounterTroopId(): number;
     meetsEncounterConditions(encounter: RPG.Map.Encounter): boolean;
+    /**
+     * Executes an encounter.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     executeEncounter(): boolean;
+    /**
+     * Has the player start a map event at the given x and y coordinates.
+     * Also passing the triggers and whether the event start is normal.
+     * @param {number} x 
+     * @param {number} y 
+     * @param {Array<number>} triggers 
+     * @param {boolean} normal 
+     * @memberof Game_Player
+     */
     startMapEvent(x: number, y: number, triggers: Array<number>, normal: boolean): void;
     moveByInput(): void;
     /**
@@ -4131,6 +5280,11 @@ declare class Game_Player extends Game_Character {
     getInputDirection(): number;
     executeMove(direction: number): void;
     update(sceneActive?: boolean): void;
+    /**
+     * Updates the dashing of the player.
+     * 
+     * @memberof Game_Player
+     */
     updateDashing(): void;
     /**
      * Returns true if the dash button is pressed.
@@ -4161,10 +5315,21 @@ declare class Game_Player extends Game_Character {
     updateNonmoving(wasMoving: boolean): void;
     triggerAction(): boolean;
     triggerButtonAction(): boolean;
+    /**
+     * Returns true if the player triggered a touch action.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     triggerTouchAction(): boolean;
     triggerTouchActionD1(x1: number, y1: number): boolean;
     triggerTouchActionD2(x2: number, y2: number): boolean;
     triggerTouchActionD3(x2: number, y2: number): boolean;
+    /**
+     * Updates the player encounter count.
+     * 
+     * @memberof Game_Player
+     */
     updateEncounterCount(): void;
     /**
      * Returns true if the player can encounter enemies.
@@ -4182,6 +5347,12 @@ declare class Game_Player extends Game_Character {
     encounterProgressValue(): number;
     checkEventTriggerHere(triggers: Array<number>): void;
     checkEventTriggerThere(triggers: Array<number>): void;
+    /**
+     * Returns true if the player can start local events.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     canStartLocalEvents(): boolean;
     /**
      * Returns true if the player is getting on/off a vehicle.
@@ -4224,7 +5395,22 @@ declare class Game_Player extends Game_Character {
      * @memberof Game_Player
      */
     moveStraight(d: number): void;
+    /**
+     * Moves the player diagonally, given a horizontal
+     * and vertical direction. The numpad represents the directions.
+     * @param {number} horz 
+     * @param {number} vert 
+     * @memberof Game_Player
+     */
     moveDiagonally(horz: number, vert: number): void;
+    /**
+     * Has the player jump in the given direction at the specified
+     * x and y coordinate. This x and y will be added to the player's current
+     * position. 
+     * @param {number} xPlus 
+     * @param {number} yPlus 
+     * @memberof Game_Player
+     */
     jump(xPlus: number, yPlus: number): void;
     /**
      * Shows the player followers.
@@ -4288,6 +5474,11 @@ declare class Game_Follower extends Game_Character {
      * @memberof Game_Follower
      */
     isVisible(): boolean;
+    /**
+     * Updates the game follower.
+     * 
+     * @memberof Game_Follower
+     */
     update(): void;
     /**
      * Has the follower chase a game actor.
@@ -4339,8 +5530,23 @@ declare class Game_Followers {
     follower(index: number): Game_Follower;
     forEach(callback: () => void, thisObject: any): void;
     reverseEach(callback: () => void, thisObject: any): void;
+    /**
+     * Refreshes the game followers.
+     * 
+     * @memberof Game_Followers
+     */
     refresh(): void;
+    /**
+     * Updates the game followers.
+     * 
+     * @memberof Game_Followers
+     */
     update(): void;
+    /**
+     * Updates the movement of game followers.
+     * 
+     * @memberof Game_Followers
+     */
     updateMove(): void;
     jumpAll(): void;
     synchronize(x: number, y: number, d: number): void;
@@ -4700,12 +5906,38 @@ declare class Game_Event extends Game_Character {
      * @memberof Game_Event
      */
     refresh(): void;
+    /**
+     * Finds the proper page index of the game event for
+     * event command processing.
+     * @returns {number} 
+     * @memberof Game_Event
+     */
     findProperPageIndex(): number;
     meetsConditions(page: RPG.EventPage): boolean;
+    /**
+     * Sets up the event page.
+     * 
+     * @memberof Game_Event
+     */
     setupPage(): void;
+    /**
+     * Clears the page settings of the game event.
+     * 
+     * @memberof Game_Event
+     */
     clearPageSettings(): void;
+    /**
+     * Sets up the event page settings.
+     * 
+     * @memberof Game_Event
+     */
     setupPageSettings(): void;
     isOriginalPattern(): boolean;
+    /**
+     * Resets the pattern of the game event.
+     * 
+     * @memberof Game_Event
+     */
     resetPattern(): void;
     checkEventTriggerAuto(): void;
     update(): void;
@@ -4790,18 +6022,76 @@ declare class Game_Interpreter {
      */
     isRunning(): boolean;
     update(): void;
+    /**
+     * Updates the child game interpreter.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Interpreter
+     */
     updateChild(): boolean;
+    /**
+     * Updates the wait of the game interpreter.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Interpreter
+     */
     updateWait(): boolean;
     updateWaitCount(): boolean;
     updateWaitMode(): boolean;
+    /**
+     * Sets the wait mode of the interpreter.
+     * 
+     * @param {string} waitMode 
+     * @memberof Game_Interpreter
+     */
     setWaitMode(waitMode: string): void;
+    /**
+     * sets a specified wait duration for the interpreter.
+     * 
+     * @param {number} duration 
+     * @memberof Game_Interpreter
+     */
     wait(duration: number): void;
     fadeSpeed(): number;
+    /**
+     * Executes the event command;
+     * returns true or false based on execution.
+     * @returns {boolean} 
+     * @memberof Game_Interpreter
+     */
     executeCommand(): boolean;
+    /**
+     * Checks if the interpreter has frozen.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Interpreter
+     */
     checkFreeze(): boolean;
+    /**
+     * Terminates the game interpreter.
+     * 
+     * @memberof Game_Interpreter
+     */
     terminate(): void;
+    /**
+     * Skips a conditional branch on the interpreter.
+     * 
+     * @memberof Game_Interpreter
+     */
     skipBranch(): void;
+    /**
+     * Returns the current event command.
+     * 
+     * @returns {RPG.EventCommand} 
+     * @memberof Game_Interpreter
+     */
     currentCommand(): RPG.EventCommand;
+    /**
+     * Returns the next event code.
+     * 
+     * @returns {number} 
+     * @memberof Game_Interpreter
+     */
     nextEventCode(): number;
     iterateActorId(param: number, callback: (actor: Game_Actor) => void): void;
     iterateActorEx(param1: number, param2: number, callback: (actor: Game_Actor) => void): void;
