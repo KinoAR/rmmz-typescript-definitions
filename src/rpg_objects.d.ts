@@ -206,6 +206,12 @@ declare class Game_System {
      * @memberof Game_System
      */
     windowTone(): Array<number>;
+    /**
+     * Sets the window tone, given an array
+     * of rgb. Example: [0, 255, 255].
+     * @param {Array<number>} value 
+     * @memberof Game_System
+     */
     setWindowTone(value: Array<number>): void;
     /**
      * Returns the current battle background music.
@@ -254,6 +260,12 @@ declare class Game_System {
     onBattleEscape(): void;
     onBeforeSave(): void;
     onAfterLoad(): void;
+    /**
+     * Returns the total play time.
+     * 
+     * @returns {number} 
+     * @memberof Game_System
+     */
     playtime(): number;
     playtimeText(): string;
     /**

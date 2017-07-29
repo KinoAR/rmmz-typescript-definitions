@@ -223,12 +223,43 @@ declare class Sprite_Character extends Sprite_Base {
      */
     isTile(): boolean;
     tilesetBitmap(tileId: number): Bitmap;
+    /**
+     * Updates the bitmap of the sprite character.
+     * 
+     * @memberof Sprite_Character
+     */
     updateBitmap(): void;
+    /**
+     * Returns true if the sprite character image has changed.
+     * 
+     * @returns {boolean} 
+     * @memberof Sprite_Character
+     */
     isImageChanged(): boolean;
     setTileBitmap(): void;
+    /**
+     * Sets the sprite character bitmap.
+     * 
+     * @memberof Sprite_Character
+     */
     setCharacterBitmap(): void;
+    /**
+     * Updates the sprite character frame.
+     * 
+     * @memberof Sprite_Character
+     */
     updateFrame(): void;
+    /**
+     * Updates the sprite character tile frame.
+     * 
+     * @memberof Sprite_Character
+     */
     updateTileFrame(): void;
+    /**
+     * Updates the sprite character -- character frame.
+     * 
+     * @memberof Sprite_Character
+     */
     updateCharacterFrame(): void;
     characterBlockX(): number;
     characterBlockY(): number;
@@ -238,6 +269,11 @@ declare class Sprite_Character extends Sprite_Base {
     patternHeight(): number;
     updateHalfBodySprites(): void;
     createHalfBodySprites(): void;
+    /**
+     * Updates the position of the sprite character.
+     * 
+     * @memberof Sprite_Character
+     */
     updatePosition(): void;
     updateAnimation(): void;
     updateOther(): void;
@@ -296,22 +332,91 @@ declare class Sprite_Battler extends Sprite_Base {
     constructor(battler?: Game_Battler);
 
     initMembers(): void;
+    /**
+     * Sets the game battler of the sprite battler.
+     * 
+     * @param {Game_Battler} battler 
+     * @memberof Sprite_Battler
+     */
     setBattler(battler: Game_Battler): void;
+    /**
+     * Sets the home position of the sprite battler to the given
+     * x and y coordinates.
+     * @param {number} x 
+     * @param {number} y 
+     * @memberof Sprite_Battler
+     */
     setHome(x: number, y: number): void;
+    /**
+     * Updates the main loop of the sprite battler.
+     * 
+     * @memberof Sprite_Battler
+     */
     updateMain(): void;
+    /**
+     * Updates the bitmap of the sprite battler.
+     * 
+     * @memberof Sprite_Battler
+     */
     updateBitmap(): void;
+    /**
+     * Updates the sprite battler's current frame.
+     * 
+     * @memberof Sprite_Battler
+     */
     updateFrame(): void;
+    /**
+     * Updates movement on the sprite battler.
+     * 
+     * @memberof Sprite_Battler
+     */
     updateMove(): void;
+    /**
+     * Updates the position of the sprite battler.
+     * 
+     * @memberof Sprite_Battler
+     */
     updatePosition(): void;
+    /**
+     * Updates the sprite battler animation.
+     * 
+     * @memberof Sprite_Battler
+     */
     updateAnimation(): void;
+    /**
+     * Updates the damage pop up for the sprite battler.
+     * 
+     * @memberof Sprite_Battler
+     */
     updateDamagePopup(): void;
     updateSelectionEffect(): void;
+    /**
+     * Sets up animation on the sprite battler.
+     * 
+     * @memberof Sprite_Battler
+     */
     setupAnimation(): void;
+    /**
+     * Sets up damage popup on the sprite battler.
+     * 
+     * @memberof Sprite_Battler
+     */
     setupDamagePopup(): void;
     damageOffsetX(): number;
     damageOffsetY(): number;
     startMove(x: number, y: number, duration: number): void;
+    /**
+     * Handler for when movement has ended.
+     * 
+     * @memberof Sprite_Battler
+     */
     onMoveEnd(): void;
+    /**
+     * Returns false for sprite battler.
+     * 
+     * @returns {boolean} 
+     * @memberof Sprite_Battler
+     */
     isEffecting(): boolean;
     /**
      * Returns true if the sprite for the battler
@@ -320,6 +425,12 @@ declare class Sprite_Battler extends Sprite_Base {
      * @memberof Sprite_Battler
      */
     isMoving(): boolean;
+    /**
+     * Returns true if the sprite battler is in the home position.
+     * 
+     * @returns {boolean} 
+     * @memberof Sprite_Battler
+     */
     inHomePosition(): boolean;
 }
 
@@ -362,28 +473,122 @@ declare class Sprite_Actor extends Sprite_Battler {
     protected _stateSprite: Sprite_StateOverlay;
     protected _actor: Game_Actor;
 
+    /**
+     * Creates an instance of Sprite_Actor; can be passed
+     * a battler on creation.
+     * @param {Game_Actor} [battler] 
+     * @memberof Sprite_Actor
+     */
     constructor(battler?: Game_Actor);
 
+    /**
+     * Creates the main sprite of the sprite actor.
+     * 
+     * @memberof Sprite_Actor
+     */
     createMainSprite(): void;
+    /**
+     * Creates the shadow sprite of the sprite actor.
+     * 
+     * @memberof Sprite_Actor
+     */
     createShadowSprite(): void;
+    /**
+     * Sets the weapon sprite of the sprite actor.
+     * 
+     * @memberof Sprite_Actor
+     */
     createWeaponSprite(): void;
+    /**
+     * Creates the state sprite of the sprite actor.
+     * 
+     * @memberof Sprite_Actor
+     */
     createStateSprite(): void;
+    /**
+     * Sets the battler of the sprite actor.
+     * 
+     * @param {Game_Actor} battler 
+     * @memberof Sprite_Actor
+     */
     setBattler(battler: Game_Actor): void;
+    /**
+     * Moves the sprite actor to the start position.
+     * 
+     * @memberof Sprite_Actor
+     */
     moveToStartPosition(): void;
     setActorHome(index: number): void;
     updateShadow(): void;
+    /**
+     * Sets up motion on the sprite actor.
+     * 
+     * @memberof Sprite_Actor
+     */
     setupMotion(): void;
+    /**
+     * Sets up weapon animation on the sprite actor.
+     * 
+     * @memberof Sprite_Actor
+     */
     setupWeaponAnimation(): void;
+    /**
+     * Starts the motion given the specified motion
+     * type.
+     * @param {string} motionType 
+     * @memberof Sprite_Actor
+     */
     startMotion(motionType: string): void;
     updateTargetPosition(): void;
+    /**
+     * Updates the sprite actor's movement.
+     * 
+     * @memberof Sprite_Actor
+     */
     updateMove(): void;
+    /**
+     * Updates the sprite actor's motion.
+     * 
+     * @memberof Sprite_Actor
+     */
     updateMotion(): void;
     updateMotionCount(): void;
+    /**
+     * Returns the speed of the motion for the sprite actor.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Actor
+     */
     motionSpeed(): number;
+    /**
+     * Refreshes the motion of the sprite actor.
+     * 
+     * @memberof Sprite_Actor
+     */
     refreshMotion(): void;
+    /**
+     * Starts the entry motion of the sprite actor.
+     * 
+     * @memberof Sprite_Actor
+     */
     startEntryMotion(): void;
+    /**
+     * Has the sprite actor step forward.
+     * 
+     * @memberof Sprite_Actor
+     */
     stepForward(): void;
+    /**
+     * Has the sprite actor step back.
+     * 
+     * @memberof Sprite_Actor
+     */
     stepBack(): void;
+    /**
+     * Has the sprite actor retreat.
+     * 
+     * @memberof Sprite_Actor
+     */
     retreat(): void;
     damageOffsetX(): number;
     damageOffsetY(): number;
@@ -408,28 +613,80 @@ declare class Sprite_Enemy extends Sprite_Battler {
     constructor(battler: Game_Enemy);
 
     createStateIconSprite(): void;
+    /**
+     * Sets the battler to an instance of game enemy.
+     * 
+     * @param {Game_Enemy} battler Instance of game enemy.
+     * @memberof Sprite_Enemy
+     */
     setBattler(battler: Game_Enemy): void;
     loadBitmap(name: string, hue: number): void;
+    /**
+     * Updates the state sprite of the sprite enemy.
+     * 
+     * @memberof Sprite_Enemy
+     */
     updateStateSprite(): void;
     initVisibility(): void;
     setupEffect(): void;
     startEffect(effectType: string): void;
+    /**
+     * Starts the appearinig effect of the enemy.
+     * 
+     * @memberof Sprite_Enemy
+     */
     startAppear(): void;
     startDisappear(): void;
     startWhiten(): void;
     startBlink(): void;
+    /**
+     * Starts the collapse effect of the sprite
+     * enemy.
+     * @memberof Sprite_Enemy
+     */
     startCollapse(): void;
+    /**
+     * Starts the boss collapse effect of the sprite
+     * enemy.
+     * @memberof Sprite_Enemy
+     */
     startBossCollapse(): void;
+    /**
+     * Starts the instant collapse effect of the sprite enemy.
+     * 
+     * @memberof Sprite_Enemy
+     */
     startInstantCollapse(): void;
     updateEffect(): void;
+    /**
+     * Returns true if the effect type on the sprite enemy
+     * is not null.
+     * @returns {boolean} 
+     * @memberof Sprite_Enemy
+     */
     isEffecting(): boolean;
     revertToNormal(): void;
     updateWhiten(): void;
     updateBlink(): void;
     updateAppear(): void;
     updateDisappear(): void;
+    /**
+     * Updates the collapse effect.
+     * 
+     * @memberof Sprite_Enemy
+     */
     updateCollapse(): void;
+    /**
+     * Updates the boss collapse effect.
+     * 
+     * @memberof Sprite_Enemy
+     */
     updateBossCollapse(): void;
+    /**
+     * Updates the instant collapse effect.
+     * 
+     * @memberof Sprite_Enemy
+     */
     updateInstantCollapse(): void;
     damageOffsetX(): number;
     damageOffsetY(): number;
