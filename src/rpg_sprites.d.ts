@@ -6,7 +6,7 @@
  */
 declare class Sprite_Base extends Sprite {
     /**
-     * The animation sprites assigned to the 
+     * The animation sprites assigned to the
      * sprite object.
      * @protected
      * @type {Array<Sprite_Animation>}
@@ -23,7 +23,7 @@ declare class Sprite_Base extends Sprite {
     protected _effectTarget: Sprite_Base;
     /**
      * Property determining the sprite's visibility.
-     * 
+     *
      * @protected
      * @type {boolean}
      * @memberof Sprite_Base
@@ -38,13 +38,13 @@ declare class Sprite_Base extends Sprite {
 
     /**
      * Hides the sprite.
-     * 
+     *
      * @memberof Sprite_Base
      */
     hide(): void;
     /**
      * Shows the sprite.
-     * 
+     *
      * @memberof Sprite_Base
      */
     show(): void;
@@ -65,15 +65,15 @@ declare class Sprite_Base extends Sprite {
      * Starts a new animation on the current
      * sprite by assigning a new Sprite_Animation object to the
      * sprite's parent.
-     * @param {RPG.Animation} animation 
-     * @param {boolean} mirror 
-     * @param {number} delay 
+     * @param {RPG.Animation} animation
+     * @param {boolean} mirror
+     * @param {number} delay
      * @memberof Sprite_Base
      */
     startAnimation(animation: RPG.Animation, mirror: boolean, delay: number): void;
     /**
      * Returns true if an animation is currently playing.
-     * @returns {boolean} 
+     * @returns {boolean}
      * @memberof Sprite_Base
      */
     isAnimationPlaying(): boolean;
@@ -91,33 +91,81 @@ declare class Sprite_Button extends Sprite {
     protected _hotFrame: Rectangle;
     protected _clickHandler: () => void;
 
+    /**
+     * Update method, which checks if the sprite is being touched and updates
+     * the current frame.
+     *
+     * @memberof Sprite_Button
+     */
     updateFrame(): void;
+    /**
+     * Set the button sprites cold frame.
+     *
+     * @param {number} x
+     * @param {number} y
+     * @param {number} width
+     * @param {number} height
+     *
+     * @memberof Sprite_Button
+     *
+     */
     setColdFrame(x: number, y: number, width: number, height: number): void;
+    /**
+     * Set the button sprites hot frame
+     *
+     * @param {number} x
+     * @param {number} y
+     * @param {number} width
+     * @param {number} height
+     *
+     * @memberof Sprite_Button
+     *
+     */
     setHotFrame(x: number, y: number, width: number, height: number): void;
+    /**
+     * Creates a new handler and binds it to the button.
+     *
+     * @param {function} height
+     * @memberof Sprite_Button
+     */
     setClickHandler(method: () => void): void;
+    /**
+     * Calls the handler method bound to the button.
+     *
+     * @param {function} height
+     * @memberof Sprite_Button
+     */
     callClickHandler(): void;
+    /**
+     * Processes weather or not the button is being touched and calls the handler
+     * bound to the button.
+     * @memberof Sprite_Button
+     */
     processTouch(): void;
     /**
-     * Returns true if the sprite button
-     * is currently active.
-     * @returns {boolean} 
+     * Returns true if the sprite button is currently active.
+     * @returns {boolean}
      * @memberof Sprite_Button
      */
     isActive(): boolean;
+    /**
+     * Returns true is the button is presently being touched.
+     * @returns {boolean}
+     * @memberof Sprite_Button
+     */
     isButtonTouched(): boolean;
     /**
-     * Changes the x coordinate of the screen to
-     * local sprite x coordinate.
-     * @param {number} x 
-     * @returns {number} 
+     * Changes the x coordinate of the screen to local sprite x coordinate.
+     * @param {number} x
+     * @returns {number}
      * @memberof Sprite_Button
      */
     canvasToLocalX(x: number): number;
     /**
      * Changes the y coordinate of the screen
      * to local sprite y coordinate.
-     * @param {number} y 
-     * @returns {number} 
+     * @param {number} y
+     * @returns {number}
      * @memberof Sprite_Button
      */
     canvasToLocalY(y: number): number;
@@ -154,7 +202,7 @@ declare class Sprite_Character extends Sprite_Base {
 
     /**
      * Creates an instance of Sprite_Character.
-     * @param {Game_Character} character 
+     * @param {Game_Character} character
      * @memberof Sprite_Character
      */
     constructor(character: Game_Character);
@@ -163,14 +211,14 @@ declare class Sprite_Character extends Sprite_Base {
     /**
      * Sets the current Game_Character object
      * attached to the sprite.
-     * @param {Game_Character} character 
+     * @param {Game_Character} character
      * @memberof Sprite_Character
      */
     setCharacter(character: Game_Character): void;
     /**
      * Returns true if the Game_Character object
      * tileId is greater than 0.
-     * @returns {boolean} 
+     * @returns {boolean}
      * @memberof Sprite_Character
      */
     isTile(): boolean;
@@ -220,8 +268,8 @@ declare class Sprite_Character extends Sprite_Base {
     endBalloon(): void;
     /**
      * Returns true if a balloon animation
-     * is playing on the character. 
-     * @returns {boolean} 
+     * is playing on the character.
+     * @returns {boolean}
      * @memberof Sprite_Character
      */
     isBalloonPlaying(): boolean;
@@ -268,7 +316,7 @@ declare class Sprite_Battler extends Sprite_Base {
     /**
      * Returns true if the sprite for the battler
      * is moving.
-     * @returns {boolean} 
+     * @returns {boolean}
      * @memberof Sprite_Battler
      */
     isMoving(): boolean;
