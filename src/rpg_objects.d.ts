@@ -2265,17 +2265,84 @@ declare class Game_Actor extends Game_Battler {
     refresh(): void;
     friendsUnit(): Game_Party;
     opponentsUnit(): Game_Troop;
+    /**
+     * Returns true if the actor is a member in battle.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Actor
+     */
     isBattleMember(): boolean;
     isFormationChangeOk(): boolean;
+    /**
+     * Returns the current class of the actor from the database.
+     * 
+     * @returns {RPG.Class} 
+     * @memberof Game_Actor
+     */
     currentClass(): RPG.Class;
+    /**
+     * Returns true if the actor is the specified class from the database.
+     * 
+     * @param {RPG.Class} gameClass 
+     * @returns {boolean} 
+     * @memberof Game_Actor
+     */
     isClass(gameClass: RPG.Class): boolean;
+    /**
+     * Returns the actor's skills; even if the skills are not usable.
+     * 
+     * @returns {Array<RPG.Skill>} 
+     * @memberof Game_Actor
+     */
     skills(): Array<RPG.Skill>;
+    /**
+     * Returns the usable skills of the actor.
+     * 
+     * @returns {Array<RPG.Skill>} 
+     * @memberof Game_Actor
+     */
     usableSkills(): Array<RPG.Skill>;
+    /**
+     * Returns the attack element ids.
+     * 
+     * @returns {Array<number>} 
+     * @memberof Game_Actor
+     */
     attackElements(): Array<number>;
+    /**
+     * Returns true if the actor has no weapon.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Actor
+     */
     hasNoWeapons(): boolean;
+    /**
+     * Returns the element id of barehanded attacks.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     bareHandsElementId(): number;
+    /**
+     * Returns the first attack animation id.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     attackAnimationId1(): number;
+    /**
+     * Returns the second attack animation id.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     attackAnimationId2(): number;
+    /**
+     * Returns the animation id for a barehanded attack.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     bareHandsAnimationId(): number;
     /**
      * Change the actor experience points; leveling up the actor
@@ -2313,12 +2380,56 @@ declare class Game_Actor extends Game_Battler {
      * @memberof Game_Actor
      */
     gainExp(exp: number): void;
+    /**
+     * Returns the final exp rate of the actor based on if the actor 
+     * is a reserved party member or an active battle member. 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     finalExpRate(): number;
+    /**
+     * Returns the exp rate of actors not in battle; this is set in the database.
+     * 
+     * @returns {number} 
+     * @memberof Game_Actor
+     */
     benchMembersExpRate(): number;
+    /**
+     * Returns true if the actor should display level up in a message window.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Actor
+     */
     shouldDisplayLevelUp(): boolean;
+    /**
+     * Changes the actor level; if show is set to true,
+     * the actor level will be displayed.
+     * @param {number} level 
+     * @param {boolean} show 
+     * @memberof Game_Actor
+     */
     changeLevel(level: number, show: boolean): void;
+    /**
+     * Actor learns the specified skill given the skill id.
+     * 
+     * @param {number} skillId 
+     * @memberof Game_Actor
+     */
     learnSkill(skillId: number): void;
+    /**
+     * Actor forgets the specified skill given the skill id from 
+     * the actor's usable skills.
+     * @param {number} skillId 
+     * @memberof Game_Actor
+     */
     forgetSkill(skillId: number): void;
+    /**
+     * Returns true if the actor has learned the specified
+     * skill given the specified skill id.
+     * @param {number} skillId 
+     * @returns {boolean} 
+     * @memberof Game_Actor
+     */
     isLearnedSkill(skillId: number): boolean;
     /**
      * Changes the actor class; if keep is true, the actor
@@ -2338,8 +2449,29 @@ declare class Game_Actor extends Game_Battler {
      * @memberof Game_Actor
      */
     setFaceImage(faceName: string, faceIndex: number): void;
+    /**
+     * Sets the battler image of the actor; this is the sprite displayed
+     * in the side view mode.
+     * @param {string} battlerName 
+     * @memberof Game_Actor
+     */
     setBattlerImage(battlerName: string): void;
+    /**
+     * Returns true if the actor sprite is visible.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Actor
+     */
     isSpriteVisible(): boolean;
+    /**
+     * Starts the animation on the actor given the specified animation id;
+     * if  mirror is set to true, the animation will be mirrored. If a delay is enter,
+     * the animation will be delayed.
+     * @param {number} animationId 
+     * @param {boolean} mirror 
+     * @param {number} delay 
+     * @memberof Game_Actor
+     */
     startAnimation(animationId: number, mirror: boolean, delay: number): void;
     /**
      * Performs the attack motion for the actor.
@@ -2359,6 +2491,12 @@ declare class Game_Actor extends Game_Battler {
      * @memberof Game_Actor
      */
     performEscape(): void;
+    /**
+     * Creates the action list for the actor.
+     * 
+     * @returns {Array<Game_Action>} 
+     * @memberof Game_Actor
+     */
     makeActionList(): Array<Game_Action>;
     /**
      * Creates the auto battle actions for the game actor.
@@ -2374,7 +2512,17 @@ declare class Game_Actor extends Game_Battler {
      */
     onPlayerWalk(): void;
     updateStateSteps(state: RPG.State): void;
+    /**
+     * Shows the added states to the actor.
+     * 
+     * @memberof Game_Actor
+     */
     showAddedStates(): void;
+    /**
+     * Shows the removed states from the actor.
+     * 
+     * @memberof Game_Actor
+     */
     showRemovedStates(): void;
     stepsForTurn(): number;
     turnEndOnMap(): void;
@@ -2410,15 +2558,50 @@ declare class Game_Actor extends Game_Battler {
      * @memberof Game_Actor
      */
     performMapDamage(): void;
+    /**
+     * Clears all of the actor's animations.
+     * 
+     * @memberof Game_Actor
+     */
     clearActions(): void;
+    /**
+     * Returns action the actor is inputting.
+     * 
+     * @returns {Game_Action} 
+     * @memberof Game_Actor
+     */
     inputtingAction(): Game_Action;
     selectNextCommand(): boolean;
     selectPreviousCommand(): boolean;
+    /**
+     * Returns the last menu skill of the actor.
+     * 
+     * @returns {RPG.Skill} 
+     * @memberof Game_Actor
+     */
     lastMenuSkill(): RPG.Skill;
     setLastMenuSkill(skill: RPG.Skill): void;
+    /**
+     * Returns the last battle skill of the actor.
+     * 
+     * @returns {RPG.Skill} 
+     * @memberof Game_Actor
+     */
     lastBattleSkill(): RPG.Skill;
     setLastBattleSkill(skill: RPG.Skill): void;
+    /**
+     * Returns the last command symbol that the actor used.
+     * 
+     * @returns {string} 
+     * @memberof Game_Actor
+     */
     lastCommandSymbol(): string;
+    /**
+     * Sets the last command symbol to the given symbol; this is the
+     * selected command in the battle menu.
+     * @param {string} symbol 
+     * @memberof Game_Actor
+     */
     setLastCommandSymbol(symbol: string): void;
 }
 
@@ -2517,6 +2700,12 @@ declare class Game_Enemy extends Game_Battler {
      * @memberof Game_Enemy
      */
     screenY(): number;
+    /**
+     * Returns the hue of the enemy.
+     * 
+     * @returns {number} 
+     * @memberof Game_Enemy
+     */
     battlerHue(): number;
     /**
      * Returns the enemy original name.
@@ -2582,12 +2771,53 @@ declare class Game_Actors {
 declare class Game_Unit {
     protected _inBattle: boolean;
 
+    /**
+     * Returns true if unit is in battle.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Unit
+     */
     inBattle(): boolean;
+    /**
+     * Returns the list of battlers.
+     * 
+     * @returns {Array<Game_Battler>} 
+     * @memberof Game_Unit
+     */
     members(): Array<Game_Battler>;
+    /**
+     * Returns the list of alive battlers.
+     * 
+     * @returns {Array<Game_Battler>} 
+     * @memberof Game_Unit
+     */
     aliveMembers(): Array<Game_Battler>;
+    /**
+     * Returns the list of dead battlers.
+     * 
+     * @returns {Array<Game_Battler>} 
+     * @memberof Game_Unit
+     */
     deadMembers(): Array<Game_Battler>;
+    /**
+     * Returns the list of movable members.
+     * 
+     * @returns {Array<Game_Battler>} 
+     * @memberof Game_Unit
+     */
     movableMembers(): Array<Game_Battler>;
+    /**
+     * Clears the unit's actions.
+     * 
+     * @memberof Game_Unit
+     */
     clearActions(): void;
+    /**
+     * Returns the agility of the unit.
+     * 
+     * @returns {number} 
+     * @memberof Game_Unit
+     */
     agility(): number;
     tgrSum(): number;
     randomTarget(): Game_Battler;
@@ -2595,10 +2825,37 @@ declare class Game_Unit {
     smoothTarget(index: number): Game_Battler;
     smoothDeadTarget(index: number): Game_Battler;
     clearResults(): void;
+    /**
+     * Handler for when battle is started.
+     * 
+     * @memberof Game_Unit
+     */
     onBattleStart(): void;
+    /**
+     * Handler for when battle has ended.
+     * 
+     * @memberof Game_Unit
+     */
     onBattleEnd(): void;
+    /**
+     * Creates the action's of the game unit.
+     * 
+     * @memberof Game_Unit
+     */
     makeActions(): void;
+    /**
+     * Selects a member of the unit given a battler.
+     * 
+     * @param {Game_Battler} activeMember 
+     * @memberof Game_Unit
+     */
     select(activeMember: Game_Battler): void;
+    /**
+     * Returns true if all members of the unit are dead.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Unit
+     */
     isAllDead(): boolean;
     substituteBattler(): Game_Battler;
 }
