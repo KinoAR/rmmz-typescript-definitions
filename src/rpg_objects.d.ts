@@ -2510,33 +2510,156 @@ declare class Game_Character extends Game_CharacterBase {
     protected _waitCount: number;
 
     initMembers(): void;
+    /**
+     * Memorizes the movement route.
+     * 
+     * @memberof Game_Character
+     */
     memorizeMoveRoute(): void;
+    /**
+     * Restores the original movement route.
+     * 
+     * @memberof Game_Character
+     */
     restoreMoveRoute(): void;
+    /**
+     * Returns true if the move route is being forced.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Character
+     */
     isMoveRouteForcing(): boolean;
+    /**
+     * Sets the move route of the game character.
+     * 
+     * @param {RPG.MoveRoute} moveRoute 
+     * @memberof Game_Character
+     */
     setMoveRoute(moveRoute: RPG.MoveRoute): void;
+    /**
+     * Forces the move route of the game character.
+     * 
+     * @param {RPG.MoveRoute} moveRoute 
+     * @memberof Game_Character
+     */
     forceMoveRoute(moveRoute: RPG.MoveRoute): void;
     updateStop(): void;
+    /**
+     * Updates the game character's move routine.
+     * 
+     * @memberof Game_Character
+     */
     updateRoutineMove(): void;
+    /**
+     * Processes the given move commands.
+     * 
+     * @param {RPG.MoveCommand} command 
+     * @memberof Game_Character
+     */
     processMoveCommand(command: RPG.MoveCommand): void;
     deltaXFrom(x: number): number;
     deltaYFrom(y: number): number;
+    /**
+     * Move's the game character at random.
+     * 
+     * @memberof Game_Character
+     */
     moveRandom(): void;
+    /**
+     * Moves the game character toward the other game character.
+     * 
+     * @param {Game_Character} character 
+     * @memberof Game_Character
+     */
     moveTowardCharacter(character: Game_Character): void;
+    /**
+     * Moves the game character away from the other game character.
+     * 
+     * @param {Game_Character} character 
+     * @memberof Game_Character
+     */
     moveAwayFromCharacter(character: Game_Character): void;
+    /**
+     * Turns the game character toward the other game character.
+     * 
+     * @param {Game_Character} character 
+     * @memberof Game_Character
+     */
     turnTowardCharacter(character: Game_Character): void;
+    /**
+     * Turns the game character away from the other game character.
+     * 
+     * @param {Game_Character} character 
+     * @memberof Game_Character
+     */
     turnAwayFromCharacter(character: Game_Character): void;
+    /**
+     * Turns the game character toward the player.
+     * 
+     * @memberof Game_Character
+     */
     turnTowardPlayer(): void;
+    /**
+     * Turns the game character away from the player.
+     * 
+     * @memberof Game_Character
+     */
     turnAwayFromPlayer(): void;
+    /**
+     * Moves the game character toward the player.
+     * 
+     * @memberof Game_Character
+     */
     moveTowardPlayer(): void;
+    /**
+     * Moves the game character away from the player.
+     * 
+     * @memberof Game_Character
+     */
     moveAwayFromPlayer(): void;
+    /**
+     * Moves the game character forward.
+     * 
+     * @memberof Game_Character
+     */
     moveForward(): void;
+    /**
+     * Moves the game character backward.
+     * 
+     * @memberof Game_Character
+     */
     moveBackward(): void;
+    /**
+     * Handles the end of the move route.
+     * 
+     * @memberof Game_Character
+     */
     processRouteEnd(): void;
     advanceMoveRouteIndex(): void;
+    /**
+     * Turns the game character right by 90 degrees.
+     * 
+     * @memberof Game_Character
+     */
     turnRight90(): void;
+    /**
+     * Turns the game character left by 90 degrees.
+     * 
+     * @memberof Game_Character
+     */
     turnLeft90(): void;
     turn180(): void;
+    /**
+     * Turns the game character or left by 90 degrees.
+     * 
+     * @memberof Game_Character
+     */
     turnRightOrLeft90(): void;
+    /**
+     * Turns the game character at random.
+     * 
+     * @memberof Game_Character
+     */
     turnRandom(): void;
     swap(character: Game_Character): void;
     findDirectionTo(goalX: number, goalY: number): number;
@@ -2567,8 +2690,20 @@ declare class Game_Player extends Game_Character {
     protected _encounterCount: number;
 
     clearTransferInfo(): void;
+    /**
+     * Returns the player followers (party members).
+     * 
+     * @returns {Game_Followers} 
+     * @memberof Game_Player
+     */
     followers(): Game_Followers;
     refresh(): void;
+    /**
+     * Returns true if the player is stopping.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     isStopping(): boolean;
     reserveTransfer(mapId: number, x: number, y: number, d?: number, fadeType?: number): void;
     requestMapReload(): void;
@@ -2577,16 +2712,70 @@ declare class Game_Player extends Game_Character {
     fadeType(): number;
     performTransfer(): void;
     isMapPassable(x: number, y: number, d: number): boolean;
+    /**
+     * Returns the current vehicles the player is riding in.
+     * 
+     * @returns {Game_Vehicle} 
+     * @memberof Game_Player
+     */
     vehicle(): Game_Vehicle;
+    /**
+     * Returns true if the player is in a boat.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     isInBoat(): boolean;
+    /**
+     * Returns true if the player is in a ship.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     isInShip(): boolean;
+    /**
+     * Returns true if the player is in an airship.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     isInAirship(): boolean;
+    /**
+     * Returns true if the player is in a vehicle.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     isInVehicle(): boolean;
+    /**
+     * Returns true if the player is in their normal state.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     isNormal(): boolean;
-    isDashing(): boolean;
+    /**
+     * Returns true if the player is dashing.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
+    isDashRing(): boolean;
     isDebugThrough(): boolean;
     isCollided(x: number, y: number): boolean;
+    /**
+     * Returns the player's center x coordinate.
+     * 
+     * @returns {number} 
+     * @memberof Game_Player
+     */
     centerX(): number;
+    /**
+     * Returns the player's center y coordinate.
+     * 
+     * @returns {number} 
+     * @memberof Game_Player
+     */
     centerY(): number;
     center(x: number, y: number): void;
     locate(x: number, y: number): void;
@@ -2597,6 +2786,12 @@ declare class Game_Player extends Game_Character {
     executeEncounter(): boolean;
     startMapEvent(x: number, y: number, triggers: Array<number>, normal: boolean): void;
     moveByInput(): void;
+    /**
+     * Returns true if the player can move.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     canMove(): boolean;
     getInputDirection(): number;
     executeMove(direction: number): void;
@@ -2623,15 +2818,47 @@ declare class Game_Player extends Game_Character {
     getOnOffVehicle(): boolean;
     getOnVehicle(): boolean;
     getOffVehicle(): boolean;
+    /**
+     * Forces the player to move forward.
+     * 
+     * @memberof Game_Player
+     */
     forceMoveForward(): void;
     isOnDamageFloor(): boolean;
     moveStraight(d: number): void;
     moveDiagonally(horz: number, vert: number): void;
     jump(xPlus: number, yPlus: number): void;
+    /**
+     * Shows the player followers.
+     * 
+     * @memberof Game_Player
+     */
     showFollowers(): void;
+    /**
+     * Hides the player followers.
+     * 
+     * @memberof Game_Player
+     */
     hideFollowers(): void;
+    /**
+     * Gather followers around the player.
+     * 
+     * @memberof Game_Player
+     */
     gatherFollowers(): void;
+    /**
+     * Returns true if the followers are currently gathering.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     areFollowersGathering(): boolean;
+    /**
+     * Returns true if the followers are gathered.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Player
+     */
     areFollowersGathered(): boolean;
 }
 
@@ -2649,9 +2876,27 @@ declare class Game_Follower extends Game_Character {
     constructor(memberIndex: number);
 
     refresh(): void;
+    /**
+     * Returns the current actor.
+     * 
+     * @returns {Game_Actor} 
+     * @memberof Game_Follower
+     */
     actor(): Game_Actor;
+    /**
+     * Returns true if the follower is visible.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Follower
+     */
     isVisible(): boolean;
     update(): void;
+    /**
+     * Has the follower chase a game actor.
+     * 
+     * @param {Game_Character} character 
+     * @memberof Game_Follower
+     */
     chaseCharacter(character: Game_Character): void;
 }
 
@@ -2667,8 +2912,24 @@ declare class Game_Followers {
     protected _gathering: boolean;
     protected _data: Array<Game_Follower>;
 
+    /**
+     * Returns true if the followers are visible.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Followers
+     */
     isVisible(): boolean;
+    /**
+     * Shows  the followers.
+     * 
+     * @memberof Game_Followers
+     */
     show(): void;
+    /**
+     * Hides the followers.
+     * 
+     * @memberof Game_Followers
+     */
     hide(): void;
     follower(index: number): Game_Follower;
     forEach(callback: () => void, thisObject: any): void;
@@ -2678,11 +2939,43 @@ declare class Game_Followers {
     updateMove(): void;
     jumpAll(): void;
     synchronize(x: number, y: number, d: number): void;
+    /**
+     * Gathers the followers.
+     * 
+     * @memberof Game_Followers
+     */
     gather(): void;
     areGathering(): boolean;
+    /**
+     * Returns the visible followers.
+     * 
+     * @returns {Array<Game_Follower>} 
+     * @memberof Game_Followers
+     */
     visibleFollowers(): Array<Game_Follower>;
+    /**
+     * Returns true if the followers are moving.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Followers
+     */
     areMoving(): boolean;
+    /**
+     * Returns true if the followers are gathered.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Followers
+     */
     areGathered(): boolean;
+    /**
+     * Returns true if the specified follower is collided at the specified x and y
+     *coordinate.
+     * 
+     * @param {number} x 
+     * @param {number} y 
+     * @returns {boolean} 
+     * @memberof Game_Followers
+     */
     isSomeoneCollided(x: number, y: number): boolean;
 }
 
@@ -2702,11 +2995,40 @@ declare class Game_Vehicle extends Game_Character {
 
     constructor(type: string);
     initMembers(): void;
+    /**
+     * Returns true if the vehicle is a boat.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Vehicle
+     */
     isBoat(): boolean;
+    /**
+     * Returns true if the vehicle is a ship.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Vehicle
+     */
     isShip(): boolean;
+    /**
+     * Returns true if the vehicle is an airship.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Vehicle
+     */
     isAirship(): boolean;
+    /**
+     * Resets the direction of the vehicle.
+     * 
+     * @memberof Game_Vehicle
+     */
     resetDirection(): void;
     initMoveSpeed(): void;
+    /**
+     * Returns the current vehicle.
+     * 
+     * @returns {RPG.System.Vehicle} 
+     * @memberof Game_Vehicle
+     */
     vehicle(): RPG.System.Vehicle;
     loadSystemSettings(): void;
     refresh(): void;
@@ -2715,17 +3037,58 @@ declare class Game_Vehicle extends Game_Character {
     isMapPassable(x: number, y: number, d: number): boolean;
     getOn(): void;
     getOff(): void;
+    /**
+     * Sets the bgm associated with the vehicle.
+     * 
+     * @param {RPG.AudioFile} bgm 
+     * @memberof Game_Vehicle
+     */
     setBgm(bgm: RPG.AudioFile): void;
+    /**
+     * Plays the bgm associated with the vehicle.
+     * 
+     * @memberof Game_Vehicle
+     */
     playBgm(): void;
     syncWithPlayer(): void;
+    /**
+     * Returns the screen y position of the vehicle.
+     * 
+     * @returns {number} 
+     * @memberof Game_Vehicle
+     */
     screenY(): number;
+    /**
+     * Returns the shadow x position of the vehicle.
+     * 
+     * @returns {number} 
+     * @memberof Game_Vehicle
+     */
     shadowX(): number;
+    /**
+     * Returns the shadow y position of the vehicle.
+     * 
+     * @returns {number} 
+     * @memberof Game_Vehicle
+     */
     shadowY(): number;
     shadowOpacity(): number;
+    /**
+     * Returns true if the vehicle can move.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Vehicle
+     */
     canMove(): boolean;
     update(): void;
     updateAirship(): void;
     updateAirshipAltitude(): void;
+    /**
+     * Returns the max altitude of the vehicle.
+     * 
+     * @returns {number} 
+     * @memberof Game_Vehicle
+     */
     maxAltitude(): number;
     isLowest(): boolean;
     isHighest(): boolean;
@@ -2757,27 +3120,93 @@ declare class Game_Event extends Game_Character {
     constructor(mapId: number, eventId: number);
 
     initMembers(): void;
+    /**
+     * Returns the event id of the game event.
+     * 
+     * @returns {number} 
+     * @memberof Game_Event
+     */
     eventId(): number;
+    /**
+     * Returns the event database information.
+     * 
+     * @returns {RPG.Event} 
+     * @memberof Game_Event
+     */
     event(): RPG.Event;
+    /**
+     * Returns the event page created in the database.
+     * 
+     * @returns {RPG.EventPage} 
+     * @memberof Game_Event
+     */
     page(): RPG.EventPage;
+    /**
+     * Returns the list of event commands on the current page of the game event.
+     * 
+     * @returns {Array<RPG.EventCommand>} 
+     * @memberof Game_Event
+     */
     list(): Array<RPG.EventCommand>;
     isCollidedWithCharacters(x: number, y: number): boolean;
     isCollidedWithEvents(x: number, y: number): boolean;
     isCollidedWithPlayerCharacters(x: number, y: number): boolean;
+    /**
+     * Locks the game event.
+     * 
+     * @memberof Game_Event
+     */
     lock(): void;
+    /**
+     * Unlocks the game eveent.
+     * 
+     * @memberof Game_Event
+     */
     unlock(): void;
     updateStop(): void;
+    /**
+     * Updates the self movement of the game event.
+     * 
+     * @memberof Game_Event
+     */
     updateSelfMovement(): void;
     stopCountThreshold(): number;
     moveTypeRandom(): void;
     moveTypeTowardPlayer(): void;
+    /**
+     * Returns true if the game event is near the player.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Event
+     */
     isNearThePlayer(): boolean;
     moveTypeCustom(): void;
+    /**
+     * Returns true if the event is staring.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Event
+     */
     isStarting(): boolean;
     clearStartingFlag(): void;
     isTriggerIn(triggers: Array<number>): boolean;
+    /**
+     * Starts the game event.
+     * 
+     * @memberof Game_Event
+     */
     start(): void;
+    /**
+     * Erases the event.
+     * 
+     * @memberof Game_Event
+     */
     erase(): void;
+    /**
+     * Refreshes the game event.
+     * 
+     * @memberof Game_Event
+     */
     refresh(): void;
     findProperPageIndex(): number;
     meetsConditions(page: RPG.EventPage): boolean;
@@ -2790,6 +3219,12 @@ declare class Game_Event extends Game_Character {
     update(): void;
     updateParallel(): void;
     locate(x: number, y: number): void;
+    /**
+     * Forces the game event to move along the specified route.
+     * 
+     * @param {RPG.MoveRoute} moveRoute 
+     * @memberof Game_Event
+     */
     forceMoveRoute(moveRoute: RPG.MoveRoute): void;
 }
 
@@ -2819,11 +3254,48 @@ declare class Game_Interpreter {
 
     constructor(depth: number);
     checkOverflow(): void;
+    /**
+     * Clears the interpreter.
+     * 
+     * @memberof Game_Interpreter
+     */
     clear(): void;
+    /**
+     * Sets up the interpreter with the list of event commands, and the given
+     * event Id.
+     * 
+     * @param {Array<RPG.EventCommand>} list 
+     * @param {number} eventId 
+     * @memberof Game_Interpreter
+     */
     setup(list: Array<RPG.EventCommand>, eventId: number): void;
+    /**
+     * Returns the currrent eventId.
+     * 
+     * @returns {number} 
+     * @memberof Game_Interpreter
+     */
     eventId(): number;
+    /**
+     * Returns true if the event is on the current map.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Interpreter
+     */
     isOnCurrentMap(): boolean;
+    /**
+     * Returns true after setting up the reserved common event.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Interpreter
+     */
     setupReservedCommonEvent(): boolean;
+    /**
+     * Returns true if the interpreter is running.
+     * 
+     * @returns {boolean} 
+     * @memberof Game_Interpreter
+     */
     isRunning(): boolean;
     update(): void;
     updateChild(): boolean;
