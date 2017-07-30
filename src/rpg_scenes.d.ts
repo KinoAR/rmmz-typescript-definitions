@@ -6,7 +6,14 @@ declare class Scene_Base extends Stage {
     protected _fadeSprite: ScreenSprite;
     protected _imageReservationId: any | number;
     protected _windowLayer: WindowLayer;
-
+    
+    
+    /**
+     * Initializes the scene.
+     * 
+     * @memberof Scene_Base
+     */
+    initialize(): void 
     /**
      * Attach a reservation to the reserve queue
      * 

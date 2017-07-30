@@ -76,7 +76,13 @@ declare class Window_Base {
    * @memberof Window_Base
    */
   constructor(x: number, y: number, width: number, height: number);
-
+  
+  /**
+   * Initializes the window.
+   * 
+   * @memberof Window_Base
+   */
+  initialize(): void;
   /**
    * Returns the standard line height of the current window;
    * default is 36.
@@ -1164,10 +1170,10 @@ declare class Window_Command extends Window_Selectable {
    * @param {string} name 
    * @param {string} symbol 
    * @param {boolean} enabled 
-   * @param {(any | object)} ext 
+   * @param {(any | object)} [ext] 
    * @memberof Window_Command
    */
-  addCommand(name: string, symbol: string, enabled: boolean, ext: any | object)
+  addCommand(name: string, symbol: string, enabled: boolean, ext?: any | object)
   /**
    * Returns the command name given an index.
    * 

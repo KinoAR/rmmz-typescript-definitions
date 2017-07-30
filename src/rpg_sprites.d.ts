@@ -37,6 +37,12 @@ declare class Sprite_Base extends Sprite {
     constructor();
 
     /**
+     * Initializes the sprite.
+     * 
+     * @memberof Sprite_Base
+     */
+    initialize(): void;
+    /**
      * Hides the sprite.
      *
      * @memberof Sprite_Base
