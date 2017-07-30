@@ -7138,10 +7138,10 @@ interface SceneManagerStatic {
     isSceneChanging(): boolean;
     isCurrentSceneBusy(): boolean;
     isCurrentSceneStarted(): boolean;
-    isNextScene(sceneClass: () => void): boolean;
-    isPreviousScene(sceneClass: () => void): boolean;
-    goto(sceneClass: () => void): void;
-    push(sceneClass: () => void): void;
+    isNextScene(sceneClass: any): boolean;
+    isPreviousScene(sceneClass: any): boolean;
+    goto(sceneClass: any): void;
+    push(sceneClass: any): void;
     pop(): void;
     exit(): void;
     clearStack(): void;
@@ -17347,7 +17347,7 @@ declare class Window_Base {
    * 
    * @memberof Window_Base
    */
-  initialize(): void;
+  initialize(x?:number, y?:number, width?: number, height?: number): void;
   /**
    * Returns the standard line height of the current window;
    * default is 36.
