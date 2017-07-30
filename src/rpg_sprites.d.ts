@@ -263,9 +263,33 @@ declare class Sprite_Character extends Sprite_Base {
     updateCharacterFrame(): void;
     characterBlockX(): number;
     characterBlockY(): number;
-    characterPatternX(): void;
+    /**
+     * Returns the character x pattern.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Character
+     */
+    characterPatternX(): number;
+    /**
+     * Returns the character y pattern.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Character
+     */
     characterPatternY(): number;
+    /**
+     * Returns the pattern width.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Character
+     */
     patternWidth(): number;
+    /**
+     * Returns the pattern height.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Character
+     */
     patternHeight(): number;
     updateHalfBodySprites(): void;
     createHalfBodySprites(): void;
@@ -756,15 +780,53 @@ declare class Sprite_Animation extends Sprite {
 
     initMembers(): void;
     setup(target: Sprite_Base, animation: RPG.Animation, mirror: boolean, delay: number): void;
+    /**
+     * Removes the sprite animation.
+     * 
+     * @memberof Sprite_Animation
+     */
     remove(): void;
     setupRate(): void;
     setupDuration(): void;
+    /**
+     * Updates the flash animation of the sprite animation.
+     * 
+     * @memberof Sprite_Animation
+     */
     updateFlash(): void;
     updateScreenFlash(): void;
+    /**
+     * Returns the absolute x position of the sprite animation.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Animation
+     */
     absoluteX(): number;
+    /**
+     * Returns the absolute y position of the sprite aniamtion.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Animation
+     */
     absoluteY(): number;
+    /**
+     * Updates the hiding of the sprite animation.
+     * 
+     * @memberof Sprite_Animation
+     */
     updateHiding(): void;
+    /**
+     * Returns true if the sprite animation is playing.
+     * 
+     * @returns {boolean} 
+     * @memberof Sprite_Animation
+     */
     isPlaying(): boolean;
+    /**
+     * Loads the bitmaps of the sprite animation.
+     * 
+     * @memberof Sprite_Animation
+     */
     loadBitmaps(): void;
     /**
      * Returns true if the sprite animation is ready.
@@ -773,18 +835,60 @@ declare class Sprite_Animation extends Sprite {
      * @memberof Sprite_Animation
      */
     isReady(): boolean;
+    /**
+     * Create the sprites of the sprite animation.
+     * 
+     * @memberof Sprite_Animation
+     */
     createSprites(): void;
+    /**
+     * Create the cell sprites of the sprite animation.
+     * 
+     * @memberof Sprite_Animation
+     */
     createCellSprites(): void;
+    /**
+     * Create the screen flash sprite of the sprite animation.
+     * 
+     * @memberof Sprite_Animation
+     */
     createScreenFlashSprite(): void;
+    /**
+     * Updates the main loop of the sprite animation.
+     * 
+     * @memberof Sprite_Animation
+     */
     updateMain(): void;
+    /**
+     * Updates the position of the sprite animation.
+     * 
+     * @memberof Sprite_Animation
+     */
     updatePosition(): void;
+    /**
+     * Updates the frame of the sprite aniamtion.
+     * 
+     * @memberof Sprite_Animation
+     */
     updateFrame(): void;
+    /**
+     * Returns the current frame index of the sprite aniamtion.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Animation
+     */
     currentFrameIndex(): number;
     updateAllCellSprites(frame: Array<Array<number>>): void;
     updateCellSprite(sprite: Sprite, cell: Array<number>): void;
     processTimingData(timing: RPG.Animation.Timing): void;
     startFlash(color: Array<number>, duration: number): void;
     startScreenFlash(color: Array<number>, duration: number): void;
+    /**
+     * Starts hiding the sprite animation.
+     * 
+     * @param {number} duration The duration of the hide.
+     * @memberof Sprite_Animation
+     */
     startHiding(duration: number): void;
 }
 
@@ -802,14 +906,53 @@ declare class Sprite_Damage extends Sprite {
 
     setup(target: Game_Actor): void;
     setupCriticalEffect(): void;
+    /**
+     * Returns the digit width of the sprite damage.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Damage
+     */
     digitWidth(): number;
+    /**
+     * Returns the digit height of the sprite damage.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Damage
+     */
     digitHeight(): number;
+    /**
+     * Creates the miss display of the damage sprite.
+     * 
+     * @memberof Sprite_Damage
+     */
     createMiss(): void;
     createDigits(baseRow: number, value: number): void;
+    /**
+     * Creates the child sprite of the damage sprite for displaying damage.
+     * 
+     * @returns {Sprite} 
+     * @memberof Sprite_Damage
+     */
     createChildSprite(): Sprite;
     updateChild(sprite: Sprite): void;
+    /**
+     * Updates the flash of the damage sprite.
+     * 
+     * @memberof Sprite_Damage
+     */
     updateFlash(): void;
+    /**
+     * Updates the opacity of the damage sprite.
+     * 
+     * @memberof Sprite_Damage
+     */
     updateOpacity(): void;
+    /**
+     * Returns true if the damage sprite is playing.
+     * 
+     * @returns {boolean} 
+     * @memberof Sprite_Damage
+     */
     isPlaying(): boolean;
 }
 
@@ -828,11 +971,31 @@ declare class Sprite_StateIcon extends Sprite {
     protected _animationCount: number;
     protected _animationIndex: number;
 
+    /**
+     * Initializes the sprite state icon properties.
+     * 
+     * @memberof Sprite_StateIcon
+     */
     initMembers(): void;
+    /**
+     * Loads the bitmap of the sprite state icon.
+     * 
+     * @memberof Sprite_StateIcon
+     */
     loadBitmap(): void;
     setup(battler: Game_Battler): void;
     animationWait(): number;
+    /**
+     * Updates the icon displayed in the icon sprite.
+     * 
+     * @memberof Sprite_StateIcon
+     */
     updateIcon(): void;
+    /**
+     * Updates the state icon sprite frame.
+     * 
+     * @memberof Sprite_StateIcon
+     */
     updateFrame(): void;
 }
 
@@ -848,11 +1011,31 @@ declare class Sprite_StateOverlay extends Sprite_Base {
     protected _animationCount: number;
     protected _pattern: number;
 
+    /**
+     * Initialize the overlay sprite properties.
+     * 
+     * @memberof Sprite_StateOverlay
+     */
     initMembers(): void;
+    /**
+     * Loads the bitmap of the overlay sprite.
+     * 
+     * @memberof Sprite_StateOverlay
+     */
     loadBitmap(): void;
     setup(battler: Game_Battler): void;
     animationWait(): number;
+    /**
+     * Updates the overlay sprite pattern.
+     * 
+     * @memberof Sprite_StateOverlay
+     */
     updatePattern(): void;
+    /**
+     * Updates the overlay sprite frame.
+     * 
+     * @memberof Sprite_StateOverlay
+     */
     updateFrame(): void;
 }
 
@@ -867,12 +1050,38 @@ declare class Sprite_Weapon extends Sprite_Base {
     protected _animationCount: number;
     protected _pattern: number;
 
+    /**
+     * Initializes the members of the weapon sprite object.
+     * 
+     * @memberof Sprite_Weapon
+     */
     initMembers(): void;
     setup(weaponImageId: number): void;
     animationWait(): number;
+    /**
+     * Updates the pattern of the weapon sprite.
+     * 
+     * @memberof Sprite_Weapon
+     */
     updatePattern(): void;
+    /**
+     * Loads the bitmap of the weapon sprite.
+     * 
+     * @memberof Sprite_Weapon
+     */
     loadBitmap(): void;
+    /**
+     * Updates the weapon sprite frames.
+     * 
+     * @memberof Sprite_Weapon
+     */
     updateFrame(): void;
+    /**
+     * Returns true if the weapon sprite is playing.
+     * 
+     * @returns {boolean} 
+     * @memberof Sprite_Weapon
+     */
     isPlaying(): boolean;
 }
 
@@ -889,11 +1098,45 @@ declare class Sprite_Balloon extends Sprite_Base {
     initMembers(): void;
     loadBitmap(): void;
     setup(balloonId: number): void;
+    /**
+     * Updates the balloon sprite.
+     * 
+     * @memberof Sprite_Balloon
+     */
     update(): void;
+    /**
+     * Updates the balloon sprite frame.
+     * 
+     * @memberof Sprite_Balloon
+     */
     updateFrame(): void;
+    /**
+     * Returns the speed of the balloon animation.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Balloon
+     */
     speed(): number;
+    /**
+     * Returns the wait time.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Balloon
+     */
     waitTime(): number;
+    /**
+     * Returns the frame index of the balloon animation.
+     * 
+     * @returns {number} 
+     * @memberof Sprite_Balloon
+     */
     frameIndex(): number;
+    /**
+     * Returns true if the balloon animation is playing.
+     * 
+     * @returns {boolean} 
+     * @memberof Sprite_Balloon
+     */
     isPlaying(): boolean;
 }
 
