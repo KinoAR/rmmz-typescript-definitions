@@ -82,7 +82,7 @@ declare class Window_Base {
    * 
    * @memberof Window_Base
    */
-  initialize(): void;
+  initialize(x?:number, y?:number, width?: number, height?: number): void;
   /**
    * Returns the standard line height of the current window;
    * default is 36.
