@@ -17278,7 +17278,7 @@ declare class Spriteset_Battle extends Spriteset_Base {
  * @class Window_Base
  * @extends {Window}
  */
-declare class Window_Base {
+declare class Window_Base extends _Window {
   /**
    * The standard icon width;
    * default is 32.

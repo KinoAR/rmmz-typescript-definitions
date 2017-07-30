@@ -1,6 +1,8 @@
 //=============================================================================
 // rpg_managers.js v1.5.0
 //=============================================================================
+/** @global RPGMaker Plugin's Object */
+declare var $plugins: Array<PluginSetting>;
 /** @global RPGMakerMV Actor data. */
 declare var $dataActors: Array<RPG.Actor>;
 /** @global RPGMakerMV Class data. */
