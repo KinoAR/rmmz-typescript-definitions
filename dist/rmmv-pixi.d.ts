@@ -6444,7 +6444,7 @@ declare var Decrypter: DecrypterStatic;declare namespace RPG {
 // rpg_managers.js v1.5.0
 //=============================================================================
 /** @global RPGMaker Plugin's Object */
-declare var $plugins: Array<PluginSetting>;
+declare var $plugins: Array<MV.PluginSettings>;
 /** @global RPGMakerMV Actor data. */
 declare var $dataActors: Array<RPG.Actor>;
 /** @global RPGMakerMV Class data. */
@@ -11022,11 +11022,11 @@ declare class Game_Party extends Game_Unit {
     equipItems(): Array<RPG.EquipItem>;
     /**
      * Returns all items within the party's posession.
-     * 
+     * Items can be of equip item, or item type.
      * @returns {Array<RPG.BaseItem>} 
      * @memberof Game_Party
      */
-    allItems(): Array<RPG.BaseItem>;
+    allItems(): Array<RPG.BaseItem|RPG.EquipItem|RPG.Item>;
     itemContainer(item: RPG.BaseItem): {[itemId: number]: number};
     /**
      * Sets up the starting party members.

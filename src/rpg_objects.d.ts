@@ -3617,11 +3617,11 @@ declare class Game_Party extends Game_Unit {
     equipItems(): Array<RPG.EquipItem>;
     /**
      * Returns all items within the party's posession.
-     * 
+     * Items can be of equip item, or item type.
      * @returns {Array<RPG.BaseItem>} 
      * @memberof Game_Party
      */
-    allItems(): Array<RPG.BaseItem>;
+    allItems(): Array<RPG.BaseItem|RPG.EquipItem|RPG.Item>;
     itemContainer(item: RPG.BaseItem): {[itemId: number]: number};
     /**
      * Sets up the starting party members.
