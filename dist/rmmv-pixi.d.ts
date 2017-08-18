@@ -7355,6 +7355,7 @@ declare namespace MV {
         x: number;
         y: number;
         left: number;
+        text: string;
     }
     export interface BattleLogMethod {
         name: string;
