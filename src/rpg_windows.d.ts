@@ -1332,7 +1332,8 @@ declare class Window_Gold extends Window_Base {
 
 declare class Window_MenuCommand extends Window_Command {
   constructor(x: number, y: number);
-  initCommandPosition(): void;
+  static initCommandPosition(): void;
+  static _lastCommandSymbol: any;
   /**
    * Adds the standard game commands to the
    * RPGMakerMV main menu.
