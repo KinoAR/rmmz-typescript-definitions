@@ -1,5 +1,5 @@
 
-# RPGMakerMV Library Docs
+# RPGMakerMZ Library Docs
 
 
 
@@ -13,7 +13,7 @@ For those who want to code using the documentation, there is a way for most code
 
 ## Credits
 
-* Kino: http://endlessillusoft.com/
+* Kino: http://endlessillusoft.com/ & https://kinocreates.io/
 * LTNGames: https://ltngames.net/
 * Nio Kasgami
 * AsterAtwood: https://github.com/AsterAtwood

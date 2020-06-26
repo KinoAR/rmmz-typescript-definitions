@@ -1,6 +1,8 @@
-# RMMV-Typescript Definitions
+# RMMZ-Typescript Definitions - WIP Using MV As Base
 
-A repository containing typescript definitions for public use in RPGMakerMV.
+A repository containing typescript definitions for public use in RPGMakerMZ.
+
+# WIP -- Will Be Updated as MZ comes out
 
 ## Included Definitions:
 
